@@ -1,0 +1,69 @@
+---!
+    import os, glob
+    DEV = os.getenv("NODE_ENV") == "development"
+    CSS = "/static/css/app.css"
+    if not DEV:
+        hashed_css = glob.glob("public/static/css/app.*.css")
+        if hashed_css:
+            CSS = hashed_css[0][6:]
+
+- def head(title, domain, description='', short_description='')
+    title ${title}
+    link href="/favicon.ico" rel="shortcut icon"
+    link href="${CSS}" rel="stylesheet"
+    meta rel="canonical" href="https://${domain}"
+    meta charset="utf-8"
+    meta name="viewport" content=(
+      "width=device-width, "
+      "initial-scale=1.0, " +
+      "maximum-scale=1.0, " +
+      "shrink-to-fit=no")
+    meta itemprop="description" content="${description}"
+    meta itemprop="image" content="https://${domain}/static/img/screenshot/1280_screenshot.png"
+    meta itemprop="name" content="${title}"
+    meta name="apple-mobile-web-app-status-bar-style" content="black"
+    meta name="description" content="${description}"
+    meta name="image" content="https://${domain}/static/img/screenshot/1280_screenshot.png"
+    meta name="mobile-web-app-capable" content="no"
+    meta name="msapplication-TileColor" content="rgb(34, 30, 44)"
+    meta name="msapplication-TileImage" content="https://${domain}/static/img/icon/icon-128.png"
+    meta name="theme-color" content="rgb(34, 30, 44)"
+    meta property="og:description" content="${description}"
+    meta property="og:image" content="https://${domain}/static/img/screenshot/1280_screenshot.png"
+    meta property="og:site_name" content="${title}"
+    meta property="og:title" content="${title}"
+    meta property="og:type" content="website"
+    meta property="og:url" content="https://${domain}"
+    meta name="twitter:site" content="@lowtechguys"
+    meta name="twitter:title" content="${title}"
+    meta name="twitter:description" content="${description}"
+    meta name="twitter:card" content="summary_large_image"
+    meta name="twitter:image" content="https://${domain}/static/img/screenshot/1280_screenshot.png"
+    -coffee
+        document.addEventListener('DOMContentLoaded', ->
+            document.getElementById("paper-bg")?.style.height = "#{ '${ document.body.scrollHeight }' }px"
+        )
+        window.onresize = ->
+            document.getElementById("paper-bg")?.style.height = "#{ '${ document.body.scrollHeight }' }px"
+    -if not DEV
+        script async="true" defer="true" data-domain="${domain}" src="https://plausible.alinpanaitiu.com/js/plausible.js"
+    -coffee
+      if location.host != '${domain}'
+        domain = (location.host || 'localhost').split(':')[0]
+        document.write "<script src=\"http://#{ '${ domain }' }:35729/livereload.js?snipver=1\"><\/script>"
+
+
+    - stylus
+      @import "stylus/variables"
+      @import "stylus/modernize"
+
+- def videoset(video, cls)
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
+        source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="/static/video/${video}-h264.mp4" type='video/mp4; codecs=avc1'
+- def smallvideoset(video, cls)
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
+        source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'

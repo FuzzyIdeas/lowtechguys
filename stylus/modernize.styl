@@ -1,0 +1,45 @@
+body, input, button, optgroup, select, textarea, .font-sans
+    -moz-osx-font-smoothing auto
+    -webkit-font-smoothing auto
+    font-family primaryFont !important
+
+h1, h2, h3, h4, h5, h6, th, .font-heading
+    font-family primaryFont !important
+
+h1
+    font-weight 900
+h2
+    font-weight 800
+h3
+    font-weight 700
+h4
+    font-weight 600
+h5
+    font-weight 500
+
+button.disabled
+    cursor auto !important
+
+button
+    font-weight 500
+    transition all 0.2s easeOutCubic
+    outline none
+    cursor pointer
+
+    &:hover
+    &:focus
+    &:active
+        outline none !important
+
+a
+    cursor pointer
+    text-decoration none
+    &:hover
+    &:focus
+        text-decoration none
+
+img.cover
+    object-fit cover
+
+:not(img).cover
+    background-size cover

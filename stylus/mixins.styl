@@ -1,0 +1,164 @@
+ease(direction, props)
+    for prop in props
+        if prop in easing-speeds
+            speed = prop
+        if typeof(prop) is 'unit'
+            if duration is defined
+                delay = prop
+            else
+                duration = prop
+
+    _ = shift(props) if speed is defined
+    _ = shift(props) if duration is defined
+    _ = shift(props) if delay is defined
+
+    speed ?= 'cubic'
+    duration ?= 0.2s
+    delay ?= 0s
+
+    easing = lookup('ease-' + direction + '-' + speed)
+    newProps = ''
+    newProps += prop duration easing delay ',' for prop in props
+    transition: unquote(slice(newProps, 0, -2))
+
+ease-in(props...)
+    ease('in', props)
+
+ease-out(props...)
+    ease('out', props)
+
+ease-in-out(props...)
+    ease('in-out', props)
+
+bottom-shadow(length = 2px, blur = 4px, color = rgba(black, 0.4))
+    box-shadow: 0 length blur color
+
+top-shadow(length = 2px, blur = 4px, color = rgba(black, 0.4))
+    bottom-shadow(-length, blur, color)
+
+soft-shadow(color = pitchBlack, opacity = 0.04, size = 1, blur = 1)
+    box-shadow: 0 (size * 1px) (blur * 2px) alpha(color, opacity - 0.01), 0 (size * 4px) (blur * 16px) alpha(color, opacity)
+
+soft-text-shadow(color = pitchBlack, opacity = 0.04, size = 1, blur = 1)
+    text-shadow: 0 (size * 1px) (blur * 2px) alpha(color, opacity - 0.01), 0 (size * 4px) (blur * 16px) alpha(color, opacity)
+
+soft-drop-shadow(color = pitchBlack, opacity = 0.04, size = 1, blur = 1)
+    filter: drop-shadow(0 (size * 4px) (blur * 16px) alpha(color, opacity))
+
+glow(blur = 4px, color = rgba(yellow, 0.4))
+    box-shadow: 0 0 blur color
+
+reveal(prop, duration = 1s, delay = 0s)
+    animation: s('%s-reveal', prop) duration easeOutExpo delay forwards
+
+conceal(prop, duration = 1s, delay = 0s)
+    animation: s('%s-reveal', prop) duration easeOutExpo delay backwards
+
+pulse(duration = 1s, easing = easeOutExpo)
+    animation: opacity-pulse duration easing alternate infinite
+
+computeOffsets($size, $verticalPosition, $horizontalPosition)
+    $verticalOffset = ($size / -2)
+    $horizontalOffset = ($size / -2)
+    if $verticalPosition is center
+        $verticalOffset = s('calc(%s + 50%)', $verticalOffset)
+    if $horizontalPosition is center
+        $horizontalOffset = s('calc(%s + 50%)', $horizontalOffset)
+
+    $verticalPosition = top if $verticalPosition is center
+    $horizontalPosition = left if $horizontalPosition is center
+
+    {$verticalPosition}: $verticalOffset
+    {$horizontalPosition}: $horizontalOffset
+
+bg-reveal-fullsize($position = absolute, verticalPosition = bottom, horizontalPosition = left, states...)
+    .bg-reveal
+        position $position
+        @media screen and (orientation: portrait)
+            width 300vh
+            height @width
+            border-radius (@width / 2)
+
+            computeOffsets(@width, verticalPosition, horizontalPosition)
+
+        @media screen and (orientation: landscape)
+            width 300vw
+            height @width
+            border-radius (@width / 2)
+
+            computeOffsets(@width, verticalPosition, horizontalPosition)
+
+        opacity 0
+        pointer-events none
+        backface-visibility hidden
+        transform scale(0.01)
+        transition transform 0.5s easeOutExpo, opacity 0.05s linear 0.3s
+
+    for state in states
+        &:{state} .bg-reveal
+            ease-out quint 1s 'transform'
+            transform scale(1)
+            opacity 1
+
+    .bg-reveal.reveal
+        pointer-events auto
+        ease-out quint 1s 'transform'
+        transform scale(1)
+        opacity 1
+
+bg-reveal(size, verticalPosition = bottom, horizontalPosition = left, states...)
+    .bg-reveal
+        position absolute
+        width size
+        height size
+        border-radius 10000px
+
+        computeOffsets(size, verticalPosition, horizontalPosition)
+
+        opacity 0
+        pointer-events none
+        backface-visibility hidden
+        transform scale(0.01)
+        transition transform 0.5s easeOutExpo, opacity 0.05s linear 0.3s
+
+    for state in states
+        &:{state} .bg-reveal
+            ease-out quint 1s 'transform'
+            transform scale(1)
+            opacity 1
+
+    .bg-reveal.reveal
+        pointer-events auto
+        ease-out quint 1s 'transform'
+        transform scale(1)
+        opacity 1
+
+center($width, $height, $position = fixed)
+    position: $position
+    top: s('calc(50% - %s)', ($height / 2))
+    left: s('calc(50% - %s)', ($width / 2))
+
+center-top($width, $top = 0, $position = fixed)
+    position: $position
+    top: $top
+    left: s('calc(50% - %s)', ($width / 2))
+
+center-bottom($width, $bottom = 0, $position = fixed)
+    position: $position
+    bottom: $bottom
+    left: s('calc(50% - %s)', ($width / 2))
+
+center-left($height, $left = 0, $position = fixed)
+    position: $position
+    top: s('calc(50% - %s)', ($height / 2))
+    left: $left
+
+center-right($height, $right = 0, $position = fixed)
+    position: $position
+    top: s('calc(50% - %s)', ($height / 2))
+    right: $right
+
+exact-width($width)
+    width $width
+    min-width $width
+    max-width $width

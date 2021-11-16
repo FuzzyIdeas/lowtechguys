@@ -1,0 +1,263 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@import base
+@import animations
+@import fonts
+@import modernize
+
+.layout-container
+    margin 0
+    padding 0
+
+.spin-alternate-fast
+    animation spin 1.5s cubic-bezier(0, 0.4, 0, 0.89) alternate infinite
+
+.spin-fast
+    animation spin 1s linear infinite
+
+.spin
+    animation spin 1.5s linear infinite
+
+.no-anim
+    animation none
+
+.headline
+    font-family headlineFont !important
+
+h1
+    font-weight: theme('fontWeight.bold')
+    font-size: theme('fontSize.3xl')
+    color: theme('textColor.white')
+
+h2
+    font-weight: theme('fontWeight.bold')
+    font-size: theme('fontSize.2xl')
+    color: theme('textColor.white')
+
+h3
+    font-weight: theme('fontWeight.bold')
+    font-size: theme('fontSize.xl')
+    color: theme('textColor.white')
+
+h4
+    font-weight: theme('fontWeight.bold')
+    font-size: theme('fontSize.lg')
+    color: theme('textColor.white')
+
+a
+    font-weight: theme('fontWeight.medium')
+    color: theme('textColor.blue.muted')
+    transition-duration: theme('transitionDuration.200')
+    transition-property: theme('transitionProperty.DEFAULT')
+
+a:hover
+    color: theme('textColor.blue.calm')
+
+.btn
+    font-weight: theme('fontWeight.medium')
+    border-radius: theme('borderRadius.DEFAULT')
+    transition-duration: theme('transitionDuration.200')
+    transition-property: theme('transitionProperty.DEFAULT')
+    padding: theme('padding.3') theme('padding.5')
+
+body section#hero .btn-paddle,
+body section#pro .btn-paddle
+    font-size: 15px !important
+    font-family: sansSerif !important
+    font-weight: theme('fontWeight.medium') !important
+    border-radius: theme('borderRadius.DEFAULT') !important
+    transition-duration: theme('transitionDuration.200') !important
+    transition-property: theme('transitionProperty.DEFAULT') !important
+    padding: 0.9rem theme('padding.6') !important
+    color: theme('textColor.black') !important
+    background: theme('backgroundColor.white') !important
+    display: flex !important
+    justify-content center !important
+    align-items center !important
+    box-shadow: theme('boxShadow.lg') !important
+    border: none !important
+
+    &:hover
+        border: none !important
+        box-shadow: theme('boxShadow.2xl') !important
+        color: theme('textColor.yellow.bright') !important
+        background: theme('backgroundColor.mauve.blackish') !important
+
+.btn-yellow-lunar
+    background-color: theme('backgroundColor.yellow.lunar')
+    color: theme('textColor.black')
+
+.btn-yellow-lunar:hover
+    background-color: theme('backgroundColor.mauve.black')
+    color: theme('textColor.white')
+
+.btn-orange-bmac
+    background-color: theme('backgroundColor.orange.bmac')
+    color: theme('textColor.white')
+
+.btn-orange-bmac:hover
+    background-color: theme('backgroundColor.white')
+    color: theme('textColor.black')
+
+.flex-center
+    display: flex
+    justify-content: center
+    align-items: center
+
+.flex-col-center
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+.monospaced
+    font-family: secondaryFont !important
+
+for colorName, colorValue in colors
+    .glow-{colorName}
+        soft-shadow colorValue 0.4 1 0.5
+
+    .glow-text-{colorName}
+        soft-text-shadow colorValue 0.4 1 0.5
+
+    .glow-drop-{colorName}
+        soft-drop-shadow colorValue 0.4 1 0.5
+
+#top-stars
+    position fixed
+    top -8vw
+    left 0
+    opacity 0.7
+    z-index -1
+    +mobile()
+        bottom 0
+
+#paper-bg
+    position absolute
+    top 0
+    left 0
+    width 100vw
+    min-width 100vw
+    max-width 100vw
+    opacity 0.2
+    z-index -1
+    overflow hidden
+
+ul
+    list-style-type disc
+    list-style-position inside
+    margin: revert
+    padding: revert
+
+ol
+    list-style-type decimal
+    list-style-position inside
+    margin: revert
+    padding: revert
+
+code
+    background-color darkBlue
+    padding 2px 4px
+    border-radius 2px
+
+p
+    margin-top 0.5rem
+strong
+    color theme('colors.red.500')
+
+.tooltip
+    visibility hidden
+    position absolute
+
+.has-tooltip:hover .tooltip
+    visibility visible
+    z-index 100
+
+.has-tooltip-manual.show-tooltip .tooltip
+    visibility visible
+    z-index 100
+
+
+#answers
+#releases
+    .ais-Hits-list
+        list-style none
+        margin 0
+        padding 0
+    mark
+        background sunflower
+        color darkMauve
+        border-radius 2px
+        font-weight bold
+
+#searchbox
+    margin-bottom 1rem
+
+    .ais-SearchBox-form
+        display flex
+        background lunarYellow
+        border-radius 8px
+        soft-shadow pitchBlack 0.5 1 2
+        padding 1rem 2rem
+        max-width 90vw
+    button
+        margin 0 0.5rem
+    input
+        background transparent
+        width 500px
+        max-width 80vw
+        outline none
+        color mauve
+        font-weight 500
+
+        &::placeholder
+            color lightGrayMauve
+            opacity 0.7
+
+pre
+    background mix(black, darkMauve, 50%)
+    padding 1rem
+    margin 1rem auto
+    border-radius 8px
+    overflow-x scroll
+
+.content
+    transition-property: max-height
+    transition-timing-function: ease-out
+    transition-duration: 150ms
+
+hr
+    border-color marsRed
+    margin 0.8rem 0
+
+em
+    color peach
+h4
+    color grayBlue
+
+h3
+    color warmWhite
+    margin-top 1.5rem
+
+video
+    margin 1rem auto
+    border-radius 8px
+    soft-shadow pitchBlack 0.3 1 2
+
+.links
+    a
+        background-color alpha(white, 0.3)
+        color blackGray
+        border-radius 8px
+        padding 0.5rem 1rem
+        word-break keep-all
+        white-space nowrap
+        +mobile()
+            padding 0.35rem 0.7rem
+
+        &:hover
+        &:focus
+            background-color alpha(white, 0.8)
+            color black
