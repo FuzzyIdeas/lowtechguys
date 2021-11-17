@@ -6,7 +6,7 @@
         return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
 
     class CLS:
-        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        appcontainer = "flex flex-col flex-center bg-white bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
         feature = "flex flex-initial flex-col justify-center items-start"
         description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
 
@@ -23,27 +23,14 @@ html lang="en"
         / script src="https://cdn.paddle.com/paddle/paddle.js"
         / script Paddle.Setup({vendor: 122873})
 
-    body.bg-yellow-nice.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
-        #paper-bg
-            picture.object-cover.w-[100vw].max-w-[100vw].min-w-[100vw]
-                source type="image/webp" srcset=${srcset('paperbg', 'webp')}
-                img.object-cover.w-[100vw].min-w-[100vw].h-[100vh].min-h-[100vh] srcset=${srcset('paperbg', 'png')} alt="background"
-
-            picture.object-cover.w-[100vw].max-w-[100vw].min-w-[100vw]
-                source type="image/webp" srcset=${srcset('paperbg', 'webp')}
-                img.object-cover.w-[100vw].min-w-[100vw].h-[100vh].min-h-[100vh] srcset=${srcset('paperbg', 'png')} alt="background"
-
-            picture.object-cover.w-[100vw].max-w-[100vw].min-w-[100vw]
-                source type="image/webp" srcset=${srcset('paperbg', 'webp')}
-                img.object-cover.w-[100vw].min-w-[100vw].h-[100vh].min-h-[100vh] srcset=${srcset('paperbg', 'png')} alt="background"
-
+    body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         -def sources(img, width=1920, factor=2.5, mobile_factor=1)
             source type="image/webp" srcset=${srcset(img, 'webp', width, mobile_factor)}
             source type="image/webp" srcset=${srcset(img, 'webp', width, factor)} media="(min-width: 768px)"
             source type="image/png" srcset=${srcset(img, 'png', width, mobile_factor)}
             source type="image/png" srcset=${srcset(img, 'png', width, factor)} media="(min-width: 768px)"
 
-        .shadow-xl.backdrop-blur-sm.bg-white.bg-opacity-10.rounded-b-3xl
+        .shadow-xl.backdrop-blur-lg.bg-white.bg-opacity-10.rounded-b-3xl
             header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
                 a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                     icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
@@ -55,11 +42,11 @@ html lang="en"
             section#hero.min-w-100vw.flex-center.flex-col.relative.pb-20
                 #headline.mt-12.${'md:mt-0'}.w-screen.flex-center.flex-col
                     #title
-                        h1.headline.text-4xl.${'md:text-5xl'}.text-white.font-normal.text-left.glow-text-gray
+                        h1.headline.text-4xl.${'md:text-5xl'}.${'xl:text-6xl'}.text-white.font-normal.text-left.glow-text-gray
                             | the
-                        h1.headline.text-7xl.${'md:text-8xl'}.-mt-4.text-white.font-normal.text-center.glow-text-black.w-max
+                        h1.headline.text-7xl.${'md:text-8xl'}.${'xl:text-9xl'}.-mt-4.text-white.font-normal.text-center.glow-text-black.w-max
                             Low-Tech
-                        h1.headline.text-6xl.${'md:text-7xl'}.-mt-8.mb-3.text-white.font-normal.text-right.glow-text-gray
+                        h1.headline.text-6xl.${'md:text-7xl'}.${'xl:text-8xl'}.-mt-8.mb-3.text-white.font-normal.text-right.glow-text-gray
                             | guys
 
                 h5#subtitle.max-w-100vw.whitespace-nowrap.transition-opacity.mt-0.strike.text-sm.${'md:text-lg'}.font-bold.${'md:font-medium'}.text-mauve-gray
@@ -67,15 +54,15 @@ html lang="en"
 
                 .flex.flex-center.mt-10
                     .flex-center.flex-col.mr-0.${'md:mr-12'}
-                        icon.w-28.h-28.md:w-48.md:h-48 : alin
+                        icon.w-28.h-28.md:w-48.md:h-48.xl:w-60.xl:h-60 : alin
                         code.text-white.mt-2 guy #1
                     .flex-center.flex-col
-                        icon.w-28.h-28.md:w-48.md:h-48 : ovidiu
+                        icon.w-28.h-28.md:w-48.md:h-48.xl:w-60.xl:h-60 : ovidiu
                         code.text-white.mt-2 guy #2
 
         section#apps.min-w-100vw.flex-center.flex-col.relative.pb-10
             .flex-col.flex-center.mt-6
-                h1.font-sans.font-black.text-6xl.mb-8.text-mauve-blackish Our apps
+                h1.font-sans.font-black.text-6xl.${'xl:text-7xl'}.mb-12.${'xl:mb-20'}.text-mauve-blackish Our apps
                 .flex.flex-col.${'md:flex-row'}.flex-center.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}
                     a.${CLS.appcontainer} href="/rcmd"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : rcmd
@@ -92,7 +79,8 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | we haven't finished yet
 
-        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-mauve-blackish.hidden.${'md:block'} The low-tech guys © 2021
-            .links.w-full.${'md:w-auto'}
+        footer.flex.flex-col.${'md:flex-row'}.items-center.justify-center.${'md:justify-between'}.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            / h4.font-extralight.text-mauve-blackish.hidden.${'md:block'} The low-tech guys © 2021
+            h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2021
+            / .links.w-full.${'md:w-auto'}
                 / a.text-red-hot.ml-4 href="/contact" Contact

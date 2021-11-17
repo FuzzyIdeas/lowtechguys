@@ -39,12 +39,6 @@
     meta name="twitter:description" content="${description}"
     meta name="twitter:card" content="summary_large_image"
     meta name="twitter:image" content="https://${domain}/static/img/screenshot/1280_screenshot.png"
-    -coffee
-        document.addEventListener('DOMContentLoaded', ->
-            document.getElementById("paper-bg")?.style.height = "#{ '${ document.body.scrollHeight }' }px"
-        )
-        window.onresize = ->
-            document.getElementById("paper-bg")?.style.height = "#{ '${ document.body.scrollHeight }' }px"
     -if not DEV
         script async="true" defer="true" data-domain="${domain}" src="https://plausible.alinpanaitiu.com/js/plausible.js"
     -coffee
