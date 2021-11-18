@@ -24,12 +24,6 @@ html lang="en"
         / script Paddle.Setup({vendor: 122873})
 
     body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
-        -def sources(img, width=1920, factor=2.5, mobile_factor=1)
-            source type="image/webp" srcset=${srcset(img, 'webp', width, mobile_factor)}
-            source type="image/webp" srcset=${srcset(img, 'webp', width, factor)} media="(min-width: 768px)"
-            source type="image/png" srcset=${srcset(img, 'png', width, mobile_factor)}
-            source type="image/png" srcset=${srcset(img, 'png', width, factor)} media="(min-width: 768px)"
-
         .shadow-xl.backdrop-blur-lg.bg-white.bg-opacity-10.rounded-b-3xl
             header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
                 a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"

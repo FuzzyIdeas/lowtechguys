@@ -30,7 +30,7 @@ dev: export TAILWIND_MODE=build
 dev: export PYTHONWARNINGS=ignore
 dev:
 	@trap "pkill -9 -f -l 'netlify|livereload|/bin/sh -c livereload'" INT EXIT && \
-		livereload --wait 1 --host 0.0.0.0 -t public & \
+		livereload --wait 2 --host 0.0.0.0 -t public & \
 		netlify dev --offline & \
 		rg --files --type-add 'plim:*.plim' -t plim -t stylus | entr -s 'make all'
 
@@ -48,7 +48,7 @@ node-deps:
 deps: python-deps node-deps netlify-deps
 
 public/static/css/%.css: export TAILWIND_MODE=build
-public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js $(wildcard public/*.html)
+public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js $(wildcard public/*.html) $(wildcard public/**/*.html)
 	@echo Compiling $< to $@
 	@npx stylus -u rupture -c -m -o .css/ $<
 	@npx postcss --map -o $@ .css/$*.css

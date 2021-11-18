@@ -1,5 +1,11 @@
 ---!
     import os, glob
+
+    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
+
+    def srcset(image, ext, maxwidth=8120, factor=1):
+        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
+
     DEV = os.getenv("NODE_ENV") == "development"
     CSS = "/static/css/app.css"
     if not DEV:
@@ -56,8 +62,15 @@
         source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/${video}-h264.mp4" type='video/mp4; codecs=avc1'
+
 - def smallvideoset(video, cls)
     video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
         source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'
+
+-def sources(img, width=1920, factor=2.5, mobile_factor=1)
+    source type="image/webp" srcset=${srcset(img, 'webp', width, mobile_factor)}
+    source type="image/webp" srcset=${srcset(img, 'webp', width, factor)} media="(min-width: 768px)"
+    source type="image/png" srcset=${srcset(img, 'png', width, mobile_factor)}
+    source type="image/png" srcset=${srcset(img, 'png', width, factor)} media="(min-width: 768px)"
