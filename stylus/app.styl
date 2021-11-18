@@ -152,8 +152,10 @@ for colorName, colorValue in colors
 .paper-bg
     for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
         $url = "/static/img/paperbg/%s_paperbg.webp" % $width
-        @media screen and (max-width: unit($width, px))
-            background: center/cover repeat-y linear-gradient(to bottom, transparent, white), linear-gradient(0deg, alpha(niceYellow, 0.6), alpha(niceYellow, 0.6)), url($url)
+        @media screen and (max-width: unit($width, px)) and (orientation: landscape)
+            background: center/cover repeat linear-gradient(to bottom, transparent, transparent 55%, white), linear-gradient(0deg, alpha(niceYellow, 0.4), alpha(niceYellow, 0.4)), url($url)
+        @media screen and (max-width: unit($width, px)) and (orientation: portrait)
+            background: center/cover repeat linear-gradient(to bottom, transparent, transparent 30%, white), linear-gradient(0deg, alpha(niceYellow, 0.4), alpha(niceYellow, 0.4)), url($url)
 
 ul
     list-style-type disc
