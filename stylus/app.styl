@@ -153,7 +153,7 @@ for colorName, colorValue in colors
     for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
         $url = "/static/img/paperbg/%s_paperbg.webp" % $width
         @media screen and (max-width: unit($width, px))
-            background: center/cover repeat-y linear-gradient(0deg, alpha(niceYellow, 0.3), alpha(niceYellow, 0.3)), url($url)
+            background: center/cover repeat-y linear-gradient(to bottom, transparent, white), linear-gradient(0deg, alpha(niceYellow, 0.6), alpha(niceYellow, 0.6)), url($url)
 
 ul
     list-style-type disc
@@ -258,7 +258,7 @@ video
 
 .links
     a
-        background-color alpha(white, 0.3)
+        background-color alpha(white, 0.5)
         color blackGray
         border-radius 8px
         padding 0.5rem 1rem
