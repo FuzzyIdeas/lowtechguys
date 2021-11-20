@@ -23,7 +23,7 @@ html lang="en"
         link href="/static/img/rmcd-icon/rcmd-icon.png" rel="shortcut icon"
 
 
-    body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+    body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
@@ -31,10 +31,13 @@ html lang="en"
                 a.text-sm.${'md:text-base'}.ml-4 href="/rcmd/privacy" Privacy
                 a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
 
-        section#hero.min-w-100vw.flex-center.flex-col.relative.pb-20
+        section#hero.min-w-100vw.flex-center.flex-col.relative.pb-10
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : rcmd
             h1.text-4xl.text-red-hot.monospaced rcmd
             h5.text-white Reimagined Command-Tab
+
+        a.pb-10 href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
+            img.w-60.mb-10 src="/static/svg/appstore.svg"
 
         section#details.min-w-100vw.flex-center.flex-col.pb-20.space-y-24
             .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
