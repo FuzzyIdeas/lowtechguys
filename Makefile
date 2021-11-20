@@ -24,15 +24,25 @@ build: export NODE_ENV=production
 build: export PYTHONWARNINGS=ignore
 build: all
 
+watch-css: export TAILWIND_MODE=watch
+watch-css:
+	npx postcss --map -o public/static/css/app.css .css/*.css --watch
+
 dev: export SHELL=$$(which fish)
 dev: export NODE_ENV=development
-dev: export TAILWIND_MODE=build
+dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
 	@trap "pkill -9 -f -l 'netlify|livereload|/bin/sh -c livereload'" INT EXIT && \
-		livereload --wait 2 --host 0.0.0.0 -t public & \
+		livereload --host 0.0.0.0 -t 'public/**/*.html' & \
+		npx postcss --map -o public/static/css/app.css .css/*.css --watch & \
 		netlify dev --offline & \
-		rg --files --type-add 'plim:*.plim' -t plim -t stylus | entr -s 'make all'
+		rg --files --type-add 'plim:*.plim' -t plim -t stylus | entr -s 'make html stylus'
+
+.css/%.css: %.styl $(wildcard stylus/*.styl)
+	@echo Compiling $< to $@
+	@npx stylus -u rupture -c -m -o .css/ $<
+stylus: .css/app.css
 
 clean:
 	rm public/*.html || true
@@ -48,7 +58,7 @@ node-deps:
 deps: python-deps node-deps netlify-deps
 
 public/static/css/%.css: export TAILWIND_MODE=build
-public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js $(wildcard public/*.html) $(wildcard public/**/*.html)
+public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js # $(wildcard public/*.html) $(wildcard public/**/*.html)
 	@echo Compiling $< to $@
 	@npx stylus -u rupture -c -m -o .css/ $<
 	@npx postcss --map -o $@ .css/$*.css

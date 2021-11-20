@@ -2,20 +2,20 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./public/*.html', './public/**/*.html'],
+  purge: ['./public/*.html', './public/rcmd/*.html'],
   mode: 'jit',
   theme: {
     screens: {
-      'sm': '640px',
+      sm: '640px',
       // => @media (min-width: 640px) { ... }
 
-      'md': '768px',
+      md: '768px',
       // => @media (min-width: 768px) { ... }
 
-      'lg': '1024px',
+      lg: '1024px',
       // => @media (min-width: 1024px) { ... }
 
-      'xl': '1280px',
+      xl: '1280px',
       // => @media (min-width: 1280px) { ... }
 
       '2xl': '1536px',
@@ -83,8 +83,8 @@ module.exports = {
           '40%, 60%': { opacity: '1' },
         },
         darkinout: {
-          '0%, 100%': { 'filter': 'brightness(1)' },
-          '50%': { 'filter': 'brightness(0.2)' },
+          '0%, 100%': { filter: 'brightness(1)' },
+          '50%': { filter: 'brightness(0.2)' },
         },
       },
       animation: {
@@ -102,8 +102,8 @@ module.exports = {
       colors: {
         gray: {
           ...colors.warmGray,
-          black: "#363434",
-          white: "#FFEAD7"
+          black: '#363434',
+          white: '#FFEAD7',
         },
         yellow: {
           ...colors.yellow,
@@ -163,5 +163,14 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('tailwind-css-variables')(
+      {
+        // modules
+      },
+      {
+        // options
+      }
+    ),
+  ],
 }

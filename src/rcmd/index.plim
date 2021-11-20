@@ -21,6 +21,7 @@ html lang="en"
     head
         - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" defs:head
         link href="/static/img/rmcd-icon/rcmd-icon.png" rel="shortcut icon"
+        script async="true" defer="true" src="/static/js/anime.min.js"
 
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
@@ -36,8 +37,11 @@ html lang="en"
             h1.text-4xl.text-red-hot.monospaced rcmd
             h5.text-white Reimagined Command-Tab
 
-        a.pb-10 href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
+        a href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
             img.w-60.mb-10 src="/static/svg/appstore.svg"
+
+        section#animation
+            icon.w-[700px].max-w-[90vw] : keyboard
 
         section#details.min-w-100vw.flex-center.flex-col.pb-20.space-y-24
             .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
@@ -75,3 +79,176 @@ html lang="en"
                 a
                     background-color alpha(white, 0.1)
                     color warmWhite
+        -coffee
+            animateKeyboard = () ->
+                return unless anime?
+
+                clearInterval animeObserver
+
+                style = getComputedStyle(document.documentElement)
+                twcolor = (colorName) -> style.getPropertyValue("--color-#{ '${ colorName }' }")
+                keyColor = '#242424'
+                timeline = anime.timeline(
+                    easing: 'easeOutCirc'
+                    duration: 300
+                    loop: true
+                )
+                timeline
+                    .add(
+                        targets: '#rcmd-bg'
+                        delay: 1000
+                        fill: twcolor('red-mars')
+                    )
+                    .add(
+                        targets: '#m-bg'
+                        delay: 300
+                        fill: twcolor('red-mars')
+                        translateY: 5
+                        scaleY: 0.8
+                    )
+                    .add(
+                        targets: '#m-bg'
+                        fill: keyColor
+                        translateY: 0
+                        scaleY: 1.0
+                    )
+                    .add(
+                        targets: '#window #promo-title'
+                        duration: 100
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #elements'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#window #bg, #window #bg path'
+                        fill: "#FFFFFF"
+                    , '-=300')
+                    .add(
+                        targets: '#window #mail'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#p-bg'
+                        delay: 300
+                        fill: twcolor('red-mars')
+                        translateY: 5
+                        scaleY: 0.8
+                    )
+                    .add(
+                        targets: '#p-bg'
+                        fill: keyColor
+                        translateY: 0
+                        scaleY: 1.0
+                    )
+                    .add(
+                        targets: '#window #mail'
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #bg, #window #bg path'
+                        fill: "#0F1417"
+                    , '-=300')
+                    .add(
+                        targets: '#window #photoshop'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#c-bg'
+                        delay: 300
+                        fill: twcolor('red-mars')
+                        translateY: 5
+                        scaleY: 0.8
+                    )
+                    .add(
+                        targets: '#c-bg'
+                        fill: keyColor
+                        translateY: 0
+                        scaleY: 1.0
+                    )
+                    .add(
+                        targets: '#window #photoshop'
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #bg, #window #bg path'
+                        fill: "#FFFFFF"
+                    , '-=300')
+                    .add(
+                        targets: '#window #chrome'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#s-bg'
+                        delay: 300
+                        fill: twcolor('red-mars')
+                        translateY: 5
+                        scaleY: 0.8
+                    )
+                    .add(
+                        targets: '#s-bg'
+                        fill: keyColor
+                        translateY: 0
+                        scaleY: 1.0
+                    )
+                    .add(
+                        targets: '#window #chrome'
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #bg, #window #bg path'
+                        fill: "#000000"
+                    , '-=300')
+                    .add(
+                        targets: '#window #spotify'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#n-bg'
+                        delay: 300
+                        fill: twcolor('red-mars')
+                        translateY: 5
+                        scaleY: 0.8
+                    )
+                    .add(
+                        targets: '#n-bg'
+                        fill: keyColor
+                        translateY: 0
+                        scaleY: 1.0
+                    )
+                    .add(
+                        targets: '#window #spotify'
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #bg, #window #bg path'
+                        fill: "#FFFFFF"
+                    , '-=300')
+                    .add(
+                        targets: '#window #notes'
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#window #notes'
+                        delay: 1000
+                        opacity: 0
+                    )
+                    .add(
+                        targets: '#window #elements'
+                        delay: 500
+                        duration: 500
+                        opacity: 0
+                    , '-=1000')
+                    .add(
+                        targets: '#window #promo-title'
+                        duration: 500
+                        opacity: 1
+                    )
+                    .add(
+                        targets: '#rcmd-bg'
+                        duration: 1000
+                        fill: keyColor
+                    )
+
+            animeObserver = setInterval animateKeyboard, 100
