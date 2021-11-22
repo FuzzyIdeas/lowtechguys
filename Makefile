@@ -26,7 +26,7 @@ build: all
 
 watch-css: export TAILWIND_MODE=watch
 watch-css:
-	npx postcss --map -o public/static/css/app.css .css/*.css --watch
+	npx tailwindcss --postcss --jit -i .css/app.css -o public/static/css/app.css -w
 
 dev: export SHELL=$$(which fish)
 dev: export NODE_ENV=development
@@ -35,7 +35,7 @@ dev: export PYTHONWARNINGS=ignore
 dev:
 	@trap "pkill -9 -f -l 'netlify|livereload|/bin/sh -c livereload'" INT EXIT && \
 		livereload --host 0.0.0.0 -t 'public/**/*.html' & \
-		npx postcss --map -o public/static/css/app.css .css/*.css --watch & \
+		npx tailwindcss --postcss --jit -i .css/app.css -o public/static/css/app.css -w & \
 		netlify dev --offline & \
 		rg --files --type-add 'plim:*.plim' -t plim -t stylus | entr -s 'make html stylus'
 

@@ -30,7 +30,7 @@ html lang="en"
                 a.text-sm.${'md:text-base'}.ml-4 href="/rcmd/privacy" Privacy
                 a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
 
-        section#hero.min-w-100vw.min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
+        section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mt-20 : rcmd
             h1.text-4xl.text-red-hot.monospaced rcmd
             h5.text-white Reimagined Command-Tab
@@ -42,7 +42,7 @@ html lang="en"
 
             h6#scroll-hint.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
-        section#details.min-w-100vw.flex-center.flex-col.pb-20.space-y-24
+        section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
                 .${'md:w-1/2'}.text-left
                     h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Put that right Command key to good use
@@ -66,6 +66,24 @@ html lang="en"
                 picture#static.object-cover.${'md:w-1/2'}
                     -call img="static" factor=${1.5} mobile_factor=${0.5} defs:sources
                     img.rounded-2xl.shadow-2xl.object-cover.w-full srcset=${srcset('static', 'png', 1920, 1.5)}
+
+            h1.text-center FAQ
+            .text-left.text-white.self-start
+                -md
+                    ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
+
+                    Man.. do this:
+
+                    * and this
+                    * and this..
+
+                    ## What does Cycle do?
+
+                    Man.. do this:
+
+                    ## When I focus some apps, I only see the menu and no window gets focused.
+
+                    Man.. do this:
 
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021

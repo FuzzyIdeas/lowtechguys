@@ -33,7 +33,7 @@ html lang="en"
                     a.text-sm.${'md:text-base'}.text-black.ml-4 href="/contact" Contact
 
 
-            section#hero.min-w-100vw.flex-center.flex-col.relative.pb-10.${'4xl:pb-20'}
+            section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10.${'4xl:pb-20'}
                 #headline.mt-12.${'md:mt-0'}.w-screen.flex-center.flex-col
                     #title
                         h1.headline.text-4xl.${'md:text-5xl'}.${'4xl:text-6xl'}.text-white.font-normal.text-left.glow-text-gray
@@ -54,7 +54,7 @@ html lang="en"
                         icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60 : ovidiu
                         code.text-white.mt-2 guy #2
 
-        section#apps.min-w-100vw.flex-center.flex-col.relative.pb-10
+        section#apps.min-w-[100vw].flex-center.flex-col.relative.pb-10
             .flex-col.flex-center.mt-6
                 h1.font-sans.font-black.text-6xl.${'4xl:text-7xl'}.mb-12.${'4xl:mb-20'}.text-mauve-blackish Our apps
                 .flex.flex-col.${'md:flex-row'}.flex-center.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}
