@@ -38,7 +38,7 @@ html lang="en"
             icon.w-[1200px].h-[400px].md:h-[800px].max-w-[100vw] : keyboard
 
             a.flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
-                img.w-60 src="/static/svg/appstore.svg"
+                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
             h6#scroll-hint.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
@@ -52,7 +52,7 @@ html lang="en"
                         When pressing the key while the app is already focused, you can choose to hide the app or expose its windows.
                 picture#dynamic.object-cover.${'md:w-1/2'}
                     -call img="first-run" factor=${1.5} mobile_factor=${0.5} defs:sources
-                    img.rounded-2xl.shadow-2xl.object-cover.w-full srcset=${srcset('first-run', 'png', 1920, 1.5)}
+                    img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" srcset=${srcset('first-run', 'png', 1920, 1.5)}
             .flex.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row-reverse'}.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}.${'md:space-x-reverse'}.px-4
                 .${'md:w-1/2'}.text-left
                     h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Assign custom keys for your favorite apps
@@ -65,25 +65,41 @@ html lang="en"
                             li | the Hide/Expose setting can be adjusted on a per-app basis.
                 picture#static.object-cover.${'md:w-1/2'}
                     -call img="static" factor=${1.5} mobile_factor=${0.5} defs:sources
-                    img.rounded-2xl.shadow-2xl.object-cover.w-full srcset=${srcset('static', 'png', 1920, 1.5)}
+                    img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" srcset=${srcset('static', 'png', 1920, 1.5)}
 
             h1.text-center FAQ
-            .text-left.text-white.self-start
+            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw]
                 -md
                     ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
 
-                    Man.. do this:
+                    Best way to handle this is to assign a custom key for the second app.
 
-                    * and this
-                    * and this..
+                    For example, if **rcmd** focuses *Mail* on `⌘` + `M` and you want to assign `⌘` + `U` for *Music*:
+
+                    * Focus the *Music* app
+                    * Press `⌘` + `⌥` + `U`
+
+                    And that's it, from now on you can use `⌘` + `U` to focuse the *Music* app.
+
+                    ----
 
                     ## What does Cycle do?
 
-                    Man.. do this:
+                    If you have multiple apps with the same first letter, pressing that letter multiple times will cycle between those apps.
+
+                    For example, if you have *Safari*, *Spotify* and *Shortcuts* running:
+
+                    * Pressing `⌘` + `S` will focus *Safari*
+                    * Pressing `⌘` + `S` *again* will cycle and focus *Spotify*
+                    * Pressing `⌘` + `S` *yet again* will cycle and focus *Shortcuts*
+
+                    ----
 
                     ## When I focus some apps, I only see the menu and no window gets focused.
 
-                    Man.. do this:
+                    If all windows are **closed** or **minimised** for an app, focusing that app won't show any window.
+
+                    Unfortunately circumventing this needs special permissions to simulate a click on the Dock, and this is not allowed on the App Store.
 
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
@@ -91,6 +107,19 @@ html lang="en"
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"
+
+            #faq
+                code
+                    background-color white
+                    color var(--color-gray-black)
+                    font-weight bold
+
+                p
+                    color var(--color-gray-white)
+
+                hr
+                    border-color alpha(white, 0.1)
+
 
             .links
                 a

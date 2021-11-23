@@ -22,7 +22,7 @@
     meta name="viewport" content=(
       "width=device-width, "
       "initial-scale=1.0, " +
-      "maximum-scale=1.0, " +
+      "maximum-scale=6.0, " +
       "shrink-to-fit=no")
     meta itemprop="description" content="${description}"
     meta itemprop="image" content="https://${domain}/static/img/${screenshot}/${screenshot}.png"
