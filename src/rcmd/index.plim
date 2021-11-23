@@ -49,7 +49,7 @@ html lang="en"
                     .text-base.${'lg:text-lg'}.text-gray-white.mb-4
                         Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
                     .text-base.${'lg:text-lg'}.text-gray-white
-                        When pressing the key while the app is already focused, you can choose to hide the app or expose its windows.
+                        When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
                 picture#dynamic.object-cover.${'md:w-1/2'}
                     -call img="first-run" factor=${1.5} mobile_factor=${0.5} defs:sources
                     img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" srcset=${srcset('first-run', 'png', 1920, 1.5)}
@@ -62,7 +62,7 @@ html lang="en"
                         When an app is in the `b.small-caps.text-yellow-nice static` list:
                         ul
                             li | the assigned key can launch the app when it isn't running
-                            li | the Hide/Expose setting can be adjusted on a per-app basis.
+                            li | the Hide/Cycle setting can be adjusted on a per-app basis.
                 picture#static.object-cover.${'md:w-1/2'}
                     -call img="static" factor=${1.5} mobile_factor=${0.5} defs:sources
                     img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" srcset=${srcset('static', 'png', 1920, 1.5)}
@@ -110,15 +110,18 @@ html lang="en"
 
             #faq
                 code
-                    background-color white
+                    background-color alpha(white, 0.8)
                     color var(--color-gray-black)
                     font-weight bold
+                    font-size 0.9rem
 
                 p
                     color var(--color-gray-white)
 
                 hr
                     border-color alpha(white, 0.1)
+                li
+                    line-height 1.8
 
 
             .links
