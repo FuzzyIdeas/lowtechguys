@@ -30,7 +30,7 @@ html lang="en"
                 a.text-sm.${'md:text-base'}.ml-4 href="/rcmd" rcmd
                 a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
 
-        section#hero.min-w-100vw.flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : rcmd
             h1.text-4xl.text-red-hot.monospaced rcmd
             h5.text-white Reimagined Command-Tab
