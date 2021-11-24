@@ -95,6 +95,14 @@ html lang="en"
 
                     ----
 
+                    ## Can I cycle between windows of the same app?
+
+                    Unfortunately there's no macOS API that allows us to focus specific windows of an app.
+
+                    The Accessibility API would allow this in some manner but it is not allowed on the App Store.
+
+                    ----
+
                     ## When I focus some apps, I only see the menu and no window gets focused.
 
                     If all windows are **closed** or **minimised** for an app, focusing that app won't show any window.
