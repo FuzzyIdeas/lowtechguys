@@ -68,7 +68,7 @@ html lang="en"
                     img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" srcset=${srcset('static', 'png', 1920, 1.5)}
 
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw]
+            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
                 -md
                     ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
 
@@ -123,7 +123,12 @@ html lang="en"
                     font-weight bold
                     font-size 0.9rem
 
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
                 p
+                    padding 0.1rem 0.5rem
                     color var(--color-gray-white)
 
                 hr
@@ -138,6 +143,7 @@ html lang="en"
                     color warmWhite
         -coffee
             document.body.onscroll = () ->
+                return unless anime?
                 console.log "scrolled"
                 anime(
                     targets: '#scroll-hint'
@@ -147,13 +153,36 @@ html lang="en"
                 )
                 document.body.onscroll = null
 
+            style = getComputedStyle(document.documentElement)
+            twcolor = (colorName) -> style.getPropertyValue("--color-#{ '${ colorName }' }")
+
+            highlightQuestion = () ->
+                return unless location.hash
+                hash = location.hash[1..]
+
+                timelineFAQ = anime.timeline(
+                    easing: 'easeOutCirc'
+                    duration: 1000
+                    delay: 500
+                    loop: false
+                )
+                timelineFAQ.add(
+                    targets: location.hash
+                    backgroundColor: [twcolor('gray-900'), twcolor('red-low')]
+                    scale: 1.02
+                ).add(
+                    targets: location.hash
+                    easing: 'easeInExpo'
+                    backgroundColor: twcolor('gray-900')
+                    scale: 1.0
+                )
+
             animateKeyboard = () ->
                 return unless anime?
 
                 clearInterval animeObserver
+                highlightQuestion()
 
-                style = getComputedStyle(document.documentElement)
-                twcolor = (colorName) -> style.getPropertyValue("--color-#{ '${ colorName }' }")
                 keyColor = '#242424'
                 timeline = anime.timeline(
                     easing: 'easeOutCirc'

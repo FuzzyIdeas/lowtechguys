@@ -115,6 +115,7 @@ module.exports = {
           hot: '#FF1536',
           mars: '#862833',
           dull: '#C75764',
+          low: '#4B171D',
         },
         pink: {
           ...colors.pink,
