@@ -101,14 +101,6 @@ html lang="en"
 
                     The Accessibility API would allow this in some manner but it is not allowed on the App Store.
 
-                    ----
-
-                    ## When I focus some apps, I only see the menu and no window gets focused.
-
-                    If all windows are **closed** or **minimised** for an app, focusing that app won't show any window.
-
-                    Unfortunately circumventing this needs special permissions to simulate a click on the Dock, and this is not allowed on the App Store.
-
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
             .links.w-full.${'md:w-auto'}
