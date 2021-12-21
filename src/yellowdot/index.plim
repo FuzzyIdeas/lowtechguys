@@ -1,0 +1,113 @@
+- namespace name="defs" defs.plim
+---!
+    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
+
+    def srcset(image, ext, maxwidth=8120, factor=1):
+        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
+
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        feature = "flex flex-initial flex-col justify-center items-start"
+        description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
+
+        def circle(color, size=3):
+            return f"rounded-full h-{size} w-{size} bg-{color} inline-block mr-3"
+
+        def tag(color, text_color, size="sm"):
+            return f"rounded-full px-3 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
+
+doctype html
+html lang="en"
+    head
+        - call title="YellowDot - Hide the macOS yellow recording dot" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" defs:head
+        / script async="true" defer="true" src="/static/js/anime.min.js"
+
+    body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
+            .links
+                a.text-sm.${'md:text-base'}.ml-4 href="/yellowdot/privacy" Privacy
+                a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl : YellowDot
+            h1.mt-20.text-4xl.text-orange-dot.monospaced YellowDot
+            h5.text-white Hide the macOS yellow recording dot
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.btn-orange-dot.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/YellowDot.zip"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.${'md:text-base'} Download
+                a.btn.text-black.bg-white.${'hover:text-white'}.${'hover:bg-black'}.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/YellowDot"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.${'md:text-base'} View Source
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
+                .${'md:w-1/2'}.text-left
+                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Hide that pesky yellow dot
+                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+                        As long as the YellowDot app is running, the corner dot will always be hidden.
+                    .text-base.${'lg:text-lg'}.text-gray-white
+                        The app has no windows so the only indication that it's running is the `b.text-orange-400 Dock icon`. Clicking on `b.text-orange-400 Quit` from the Dock icon menu will let the yellow dot reappear.
+                picture#dynamic.object-cover.${'md:w-1/2'}
+                    -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} defs:sources
+                    img.rounded-lg.shadow-2xl.object-cover.w-full alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" srcset=${srcset('yellow-dot-arrow', 'png', 1920, 1.5)}
+
+            h1.text-center FAQ
+            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
+                -md
+                    ## How do I know that YellowDot is still working?
+
+                    If the app icon appears in the macOS Dock, then it's running and actively hiding any yellow dot that might appear.
+
+                    ----
+
+                    ## How do I quit YellowDot?
+
+                    * Hold `Ctrl` and click on the YellowDot icon in the macOS Dock
+                    * Click on **Quit**
+
+                    ----
+
+                    ## Why would I want to hide the yellow dot?
+
+                    The idea came from this HackerNews thread: [Apple added an orange dot that’s a showstopper for live visuals](https://news.ycombinator.com/item?id=29627382)
+
+                    When projecting live visuals, you might want to make the screen background black to give the impression of floating effects. The yellow dot in the corner breaks that illusion.
+
+                    The user **Sidnicious** posted a command-line implementation in that thread called [undot](https://github.com/s4y/undot) and I decided to make an easy to use app for it.
+
+        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
+            .links.w-full.${'md:w-auto'}
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #faq
+                code
+                    background-color alpha(white, 0.8)
+                    color var(--color-gray-black)
+                    font-weight bold
+                    font-size 0.9rem
+
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-white)
+
+                hr
+                    border-color alpha(white, 0.1)
+                li
+                    line-height 1.8
+
+
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color warmWhite

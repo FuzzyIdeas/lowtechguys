@@ -17,7 +17,7 @@ endif
 app.css: stylus/*.styl
 
 css: public/static/css/app.css
-html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/contact.html
+html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/contact.html
 all: html css
 
 build: export NODE_ENV=production
@@ -35,7 +35,6 @@ dev: export PYTHONWARNINGS=ignore
 dev:
 	@trap "pkill -9 -f -l 'netlify|livereload|/bin/sh -c livereload'" INT EXIT && \
 		livereload --host 0.0.0.0 -t 'public/**/*.html' & \
-		npx tailwindcss --postcss --jit -i .css/app.css -o public/static/css/app.css -w & \
 		netlify dev --offline & \
 		rg --files --type-add 'plim:*.plim' -t plim -t stylus | entr -s 'make html stylus'
 

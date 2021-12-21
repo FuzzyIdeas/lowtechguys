@@ -65,13 +65,13 @@ html lang="en"
                             We reimagined Command-Tab
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | to switch apps with no fuss
-                    .${CLS.appcontainer}
-                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.bg-red-hot.text-gray-black.rounded-2xl : lowtech
-                        h2.text-gray-black work in progress
+                    a.${CLS.appcontainer} href="/yellowdot"
+                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
+                        h2.text-mauve-gray YellowDot
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            A small and useful app
+                            Hide that pesky yellow dot
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            | we haven't finished yet
+                            | in the corner of your screen
 
         footer.flex.flex-col.${'md:flex-row'}.items-center.justify-center.${'md:justify-between'}.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             / h4.font-extralight.text-mauve-blackish.hidden.${'md:block'} The low-tech guys © 2021

@@ -2,7 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./public/*.html', './public/rcmd/*.html'],
+  purge: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html'],
   mode: 'jit',
   theme: {
     screens: {
@@ -23,6 +23,11 @@ module.exports = {
       1200: '1200px',
     },
     extend: {
+      dropShadow: {
+        '3xl': '0 35px 35px rgba(0, 0, 0, 0.45)',
+        '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
+        '5xl': '0 35px 35px rgba(0, 0, 0, 0.85)',
+      },
       screens: {
         portrait: { raw: '(orientation: portrait)' },
         portraitmd: { raw: '(orientation: portrait) and (min-width: 768px)' },
@@ -105,6 +110,7 @@ module.exports = {
         },
         orange: {
           ...colors.orange,
+          dot: '#FE9500',
           bright: '#F96332',
           peach: '#FBAB7E',
           bmac: '#ff813f',
@@ -132,6 +138,7 @@ module.exports = {
           dark: '#291B3B',
           blackish: '#120d13',
           black: '#1E1D22',
+          blue: '#161122',
         },
         green: {
           ...colors.green,
