@@ -2,7 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  purge: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html'],
+  content: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html'],
   mode: 'jit',
   theme: {
     screens: {
@@ -97,7 +97,7 @@ module.exports = {
       },
       colors: {
         gray: {
-          ...colors.warmGray,
+          ...colors.stone,
           black: '#363434',
           white: '#FFEAD7',
         },

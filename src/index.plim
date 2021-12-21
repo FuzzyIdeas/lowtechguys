@@ -65,6 +65,13 @@ html lang="en"
                             We reimagined Command-Tab
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | to switch apps with no fuss
+                    a.${CLS.appcontainer} href="https://lunar.fyi?source=lowtechguys"
+                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : lunar
+                        h2.text-mauve-gray Lunar
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Intelligent adaptive brightness
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | for your external displays
                     a.${CLS.appcontainer} href="/yellowdot"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
                         h2.text-mauve-gray YellowDot

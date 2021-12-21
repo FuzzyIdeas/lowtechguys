@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="824px" height="824px" viewBox="0 0 824 824" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>YellowDot icon</title>
+    <title>yellowdot</title>
     <defs>
-        <circle id="path-1" cx="412" cy="412" r="227"></circle>
         <filter x="-2.2%" y="-2.2%" width="104.4%" height="104.4%" filterUnits="objectBoundingBox" id="filter-2">
             <feGaussianBlur stdDeviation="10" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
             <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
@@ -10,11 +9,8 @@
             <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
         </filter>
     </defs>
-    <g id="Icon-Center-Image-Artwork" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="yellowdot" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path d="M243.569094,-9.84048292e-15 L580.430906,9.84048292e-15 C665.125186,-5.71760396e-15 695.837379,8.81843306 726.800342,25.3776069 C757.763305,41.9367807 782.063219,66.2366952 798.622393,97.1996582 C815.181567,128.162621 824,158.874814 824,243.569094 L824,580.430906 C824,665.125186 815.181567,695.837379 798.622393,726.800342 C782.063219,757.763305 757.763305,782.063219 726.800342,798.622393 C695.837379,815.181567 665.125186,824 580.430906,824 L243.569094,824 C158.874814,824 128.162621,815.181567 97.1996582,798.622393 C66.2366952,782.063219 41.9367807,757.763305 25.3776069,726.800342 C8.81843306,695.837379 3.81173598e-15,665.125186 -6.56032195e-15,580.430906 L6.56032195e-15,243.569094 C-3.81173598e-15,158.874814 8.81843306,128.162621 25.3776069,97.1996582 C41.9367807,66.2366952 66.2366952,41.9367807 97.1996582,25.3776069 C128.162621,8.81843306 158.874814,5.71760396e-15 243.569094,-9.84048292e-15 Z" id="Rectangle" fill="#18102A"></path>
-        <g id="Oval">
-            <use fill="#FE9500" fill-rule="evenodd" xlink:href="#path-1"></use>
-            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-        </g>
+        <circle id="path-1" cx="412" cy="412" r="227" fill="#FE9500"></circle>
     </g>
 </svg>
