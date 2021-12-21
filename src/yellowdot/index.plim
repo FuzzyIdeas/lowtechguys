@@ -58,16 +58,10 @@ html lang="en"
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
                 -md
-                    ## How do I know that YellowDot is still working?
-
-                    If the app icon appears in the macOS Dock, then it's running and actively hiding any yellow dot that might appear.
-
-                    ----
-
                     ## How do I quit YellowDot?
 
-                    * Hold `Ctrl` and click on the YellowDot icon in the macOS Dock
-                    * Click on **Quit**
+                    * Click on the menubar icon *(or launch YellowDot if the icon is hidden)*
+                    * Click on the **Quit** button
 
                     ----
 
