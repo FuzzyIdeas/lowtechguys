@@ -45,12 +45,20 @@ html lang="en"
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
-                .${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Hide that pesky yellow dot
-                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+                .flex.flex-col.space-y-2.${'md:w-1/2'}.text-left
+                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-1 Hide that pesky yellow dot
+                    .text-base.${'lg:text-lg'}.text-gray-white
                         As long as the YellowDot app is running, the corner dot will always be hidden.
                     .text-base.${'lg:text-lg'}.text-gray-white
-                        The app has no windows so the only indication that it's running is the `b.text-orange-400 Dock icon`. Clicking on `b.text-orange-400 Quit` from the Dock icon menu will let the yellow dot reappear.
+                        The `b.text-orange-400 menubar icon` allows you to `b.text-orange-400 Pause` hiding, `b.text-red-500 Quit` the app, and even `b.text-blue-200 Hide` the menubar icon itself.
+                    h4.text-orange-300 How it works?
+                    .text-sm.${'lg:text-base'}.text-gray-400
+                        YellowDot works by searching for the dot on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the dot hidden at all times.
+                    h4.text-orange-300 But why?
+                    .text-sm.${'lg:text-base'}.text-gray-400
+                        The yellow dot is useful in letting you know if an app is using the microphone without your permission, or if you forgot an app open that's still recording.
+                    .text-sm.${'lg:text-base'}.text-gray-400
+                        But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
                 picture#dynamic.object-cover.${'md:w-1/2'}
                     -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} defs:sources
                     img.rounded-lg.shadow-2xl.object-cover.w-full alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" srcset=${srcset('yellow-dot-arrow', 'png', 1920, 1.5)}
@@ -60,7 +68,7 @@ html lang="en"
                 -md
                     ## How do I quit YellowDot?
 
-                    * Click on the menubar icon *(or launch YellowDot if the icon is hidden)*
+                    * Click on the menubar icon *(or launch YellowDot again if the icon is hidden)*
                     * Click on the **Quit** button
 
                     ----
@@ -71,7 +79,7 @@ html lang="en"
 
                     When projecting live visuals, you might want to make the screen background black to give the impression of floating effects. The yellow dot in the corner breaks that illusion.
 
-                    The user **Sidnicious** posted a command-line implementation in that thread called [undot](https://github.com/s4y/undot) and I decided to make an easy to use app for it.
+                    The user **[Sydney San Martin](https://s4y.us/)** posted a command-line implementation in that thread called [undot](https://github.com/s4y/undot) and I decided to make an easy to use app for it.
 
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
@@ -100,7 +108,8 @@ html lang="en"
                 li
                     line-height 1.8
 
-
+            a
+                color var(--color-orange-400)
             .links
                 a
                     background-color alpha(white, 0.1)
