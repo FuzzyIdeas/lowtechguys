@@ -30,7 +30,7 @@ html lang="en"
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
             .links
-                a.text-sm.${'md:text-base'}.text-red-hot.ml-4 href="/rcmd" rcmd
+                a.text-sm.${'md:text-base'}.text-red-hot.ml-4 href="/" Apps
 
         div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
             h1.text-white.text-5xl.mt-[4vh].mb-10 Contact us
