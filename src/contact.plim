@@ -46,6 +46,13 @@ html lang="en"
                   input#license hidden="true" name="license" type="text"
                   input#email.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="email" placeholder="john@doe.com" required="" type="email"
 
+                  label.self-start.font-bold.ml-1 for="app" App
+                  select#app.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="app" placeholder="One of our apps" required=""
+                    option value="rcmd" rcmd
+                    option value="Lunar" Lunar
+                    option value="YellowDot" YellowDot
+                    option value="" Not about a specific app
+
                   label.self-start.font-bold.ml-1 for="subject" Subject
                   input#email-subject hidden="true" name="_email.subject" type="text"
                   input#subject.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="subject" placeholder="What's this message about?" required="" type="text"
@@ -63,9 +70,13 @@ html lang="en"
         userid = url.searchParams.get("userid")
         code = url.searchParams.get("code")
         email = url.searchParams.get("email")
+        app = url.searchParams.get("app") ? ""
 
         useridInput = document.getElementById("userid")
         useridInput.value = userid
+
+        appInput = document.getElementById("app")
+        appInput.value = app
 
         emailInput = document.getElementById("email")
         emailInput.value = email

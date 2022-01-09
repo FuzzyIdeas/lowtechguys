@@ -28,7 +28,7 @@ html lang="en"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
                 a.text-sm.${'md:text-base'}.ml-4 href="/rcmd/privacy" Privacy
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
+                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=rcmd" Contact
 
         section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mt-20 : rcmd
