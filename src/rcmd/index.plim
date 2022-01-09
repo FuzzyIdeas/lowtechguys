@@ -101,6 +101,51 @@ html lang="en"
 
                     The Accessibility API would allow this in some manner but it is not allowed on the App Store.
 
+                    There is a macOS native way to switch between windows of the same app:
+
+                    [![keyboard shortcut switch to windows of same app](/static/img/keyboard-shortcut-focus-window/keyboard-shortcut-focus-window.webp)](/static/img/keyboard-shortcut-focus-window/keyboard-shortcut-focus-window.webp)
+
+                    ----
+
+                    ## `Left Command` triggering rcmd?
+                    ## `Right Command`+`letter` not doing anything?
+
+                    It's possible that your keyboard is sending the wrong key codes.
+
+                    ### Checking keycodes
+
+                    You can check what keycodes get sent by downloading this simple app: [KeyCodes.zip](https://files.alinpanaitiu.com/KeyCodes.zip)
+
+                    After launching it, check the **Log key up events and modifier changes** checkbox.
+
+                    Now if you press your `Right Command` key and click on the Info button you should see:
+
+                    * **Modifiers: 104884`8` / 0x1001`10`**
+                    * **NX_DEVICE`RCMD`KEYMASK = `16` / 0x`10`**
+
+                    For the `Left Command` key you should see:
+
+                    * **Modifiers: 104884`0` / 0x1001`08`**
+                    * **NX_DEVICE`LCMD`KEYMASK = `8` / 0x`8`**
+
+                    [![keycodes app left and right command info](/static/img/keycodes-rcmd/keycodes-rcmd.webp)](/static/img/keycodes-rcmd/keycodes-rcmd.webp)
+
+                    If you don't see those key codes exactly, then it's a problem with your keyboard mapping.
+
+                    ### Possible causes:
+
+                    * Specific models of external keyboards
+                    * Changing the **Modifier Keys** settings in **System Preferences**
+
+                    [![modifier keys setting in macOS](/static/img/modifier-mapping/modifier-mapping.webp)](/static/img/modifier-mapping/modifier-mapping.webp)
+
+
+                    #### Workaround
+
+                    Keep in mind that you can always change the trigger key to something else than `Right Command` if that key is not working on your keyboard.
+
+                    [![rcmd trigger setting](/static/img/rcmd-trigger-setting/rcmd-trigger-setting.webp)](/static/img/rcmd-trigger-setting/rcmd-trigger-setting.webp)
+
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
             .links.w-full.${'md:w-auto'}
@@ -110,12 +155,11 @@ html lang="en"
 
             #faq
                 code
-                    background-color alpha(white, 0.8)
-                    color var(--color-gray-black)
+                    background-color alpha(white, 0.1)
+                    color var(--color-yellow-lunar)
                     font-weight bold
-                    font-size 0.9rem
 
-                h2
+                h2, h3, h4
                     padding 0.1rem 0.5rem
                     border-radius 0.5rem
 
@@ -128,6 +172,19 @@ html lang="en"
                 li
                     line-height 1.8
 
+                img
+                    max-width 700px
+                    max-height 300px
+                    transition: all .15s ease-out
+
+                    +mobile()
+                        max-height 60vh
+                        max-width 80vw
+
+                    &:hover
+                        max-width 1000px
+                        max-height 600px
+                        transition: all .1s ease-out
 
             .links
                 a
