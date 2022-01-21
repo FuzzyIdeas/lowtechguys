@@ -1,9 +1,10 @@
 {
-	"folders":
-	[
+	"folders": [
 		{
-			"folder_exclude_patterns":
-			[
+			"file_exclude_patterns": [
+				"*.html"
+			],
+			"folder_exclude_patterns": [
 				"node_modules"
 			],
 			"path": "."
