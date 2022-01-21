@@ -1,0 +1,108 @@
+- namespace name="defs" defs.plim
+---!
+    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
+
+    def srcset(image, ext, maxwidth=8120, factor=1):
+        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
+
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        feature = "flex flex-initial flex-col justify-center items-start"
+        description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
+
+        def circle(color, size=3):
+            return f"rounded-full h-{size} w-{size} bg-{color} inline-block mr-3"
+
+        def tag(color, text_color, size="sm"):
+            return f"rounded-full px-3 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
+
+doctype html
+html lang="en"
+    head
+        - call title="Volum - AV Receiver volume control" domain="lowtechguys.com" description="AV receiver volume control at your fingertips" short_description="AV receiver volume control at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
+        / script async="true" defer="true" src="/static/js/anime.min.js"
+
+    body.bg-gray-700.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-white : lowtech
+            .links
+                a.text-sm.${'md:text-base'}.ml-4 href="/volum/privacy" Privacy
+                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=Volum" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            .zstack
+                icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : volum
+                #volum-knob.z-10.shadow-lg.shadow-mauve-black/30
+                    #volum-knob-indicator.z-10
+                    #volum-knob-border.z-10
+            h1.mt-6.text-4xl.text-yellow-gold.monospaced Volum
+            h5.text-white AV Receiver volume control
+            h5.text-white at your fingertips
+
+            a.flex-grow.mt-20 href="https://apps.apple.com/us/app/volum-av-receiver-control/id1601814648"
+                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
+                .${'md:w-1/2'}.text-left
+                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Magical volume control for any receiver
+                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
+                    .text-base.${'lg:text-lg'}.text-gray-white
+                        When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
+
+                -call img="first-run" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
+            .flex.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row-reverse'}.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}.${'md:space-x-reverse'}.px-4
+                .${'md:w-1/2'}.text-left
+                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Assign custom keys for your favorite apps
+                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
+                    .text-base.${'lg:text-lg'}.text-gray-white
+                        When an app is in the `b.small-caps.text-yellow-nice static` list:
+                        ul
+                            li | the assigned key can launch the app when it isn't running
+                            li | the Hide/Cycle setting can be adjusted on a per-app basis.
+
+                -call img="static" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
+
+
+            h1.text-center FAQ
+            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
+                -md
+                    ## What devices are supported?
+
+                    Yamaha
+
+        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
+            .links.w-full.${'md:w-auto'}
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #faq
+                code
+                    background-color alpha(orange, 0.25)
+                    color var(--color-gray-white)
+                    padding 0 .5rem
+
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-white)
+
+                hr
+                    border-color alpha(white, 0.1)
+                li
+                    line-height 1.8
+
+            a
+                color var(--color-orange-400)
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color warmWhite

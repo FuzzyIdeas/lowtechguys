@@ -27,7 +27,7 @@ html lang="en"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
                 a.text-sm.${'md:text-base'}.ml-4 href="/yellowdot" YellowDot
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact" Contact
+                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=YellowDot" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-3xl : YellowDot

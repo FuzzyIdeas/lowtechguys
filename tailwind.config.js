@@ -2,7 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html'],
+  content: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html', './public/volum/*.html'],
   mode: 'jit',
   theme: {
     screens: {
@@ -107,6 +107,7 @@ module.exports = {
           bright: '#FFB500',
           sunflower: '#F7CE68',
           nice: '#F69200',
+          gold: '#F0D1AD',
         },
         orange: {
           ...colors.orange,

@@ -17,7 +17,7 @@ endif
 app.css: stylus/*.styl
 
 css: public/static/css/app.css
-html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/contact.html
+html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/volum/index.html public/volum/privacy.html public/contact.html
 all: html css
 
 build: export NODE_ENV=production

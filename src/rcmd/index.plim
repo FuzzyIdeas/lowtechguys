@@ -50,9 +50,8 @@ html lang="en"
                         Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
                     .text-base.${'lg:text-lg'}.text-gray-white
                         When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
-                picture#dynamic.object-cover.${'md:w-1/2'}
-                    -call img="first-run" factor=${1.5} mobile_factor=${0.5} defs:sources
-                    img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" srcset=${srcset('first-run', 'png', 1920, 1.5)}
+
+                -call img="first-run" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
             .flex.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row-reverse'}.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}.${'md:space-x-reverse'}.px-4
                 .${'md:w-1/2'}.text-left
                     h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Assign custom keys for your favorite apps
@@ -63,9 +62,8 @@ html lang="en"
                         ul
                             li | the assigned key can launch the app when it isn't running
                             li | the Hide/Cycle setting can be adjusted on a per-app basis.
-                picture#static.object-cover.${'md:w-1/2'}
-                    -call img="static" factor=${1.5} mobile_factor=${0.5} defs:sources
-                    img.rounded-2xl.shadow-2xl.object-cover.w-full alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" srcset=${srcset('static', 'png', 1920, 1.5)}
+
+                -call img="static" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}

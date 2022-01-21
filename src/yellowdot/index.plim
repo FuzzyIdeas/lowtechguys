@@ -60,9 +60,8 @@ html lang="en"
                         The yellow dot is useful in letting you know if an app is using the microphone without your permission, or if you forgot an app open that's still recording.
                     .text-sm.${'lg:text-base'}.text-gray-400
                         But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
-                picture#dynamic.object-cover.${'md:w-1/2'}
-                    -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} defs:sources
-                    img.rounded-lg.shadow-2xl.object-cover.w-full alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" srcset=${srcset('yellow-dot-arrow', 'png', 1920, 1.5)}
+
+                -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}

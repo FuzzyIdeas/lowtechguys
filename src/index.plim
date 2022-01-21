@@ -90,30 +90,6 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | in the corner of your screen
 
-                    -stylus
-                        #volum-knob
-                            position relative
-                            background: center / contain no-repeat linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4)), conic-gradient(from 1.5708rad at 50% 50%, #F1CEA3 2%, #E3BE93 4%, #CA9F75 17%, #E6C295 21%, #E1B68B 27%, #DFB287 31%, #F1CEA2 37%, #F6D7AB 41%, #C49E80 54%, #D0A580 65%, #C39B7F 73%, #F5D8AC 83%, #F5D8AB 88%, #DEB085 95%)
-                            width: 56%
-                            height: 56%
-                            border-radius: 9999px
-                            margin-top: -2%
-
-                            #volum-knob-border
-                                width: 100%
-                                height: 100%
-                                border: 2px solid rgba(255, 255, 255, 0.4)
-                                border-radius: 9999px
-
-                            #volum-knob-indicator
-                                width: 10%
-                                height: 10%
-                                border-radius: 9999px
-                                background #888
-                                position absolute
-                                bottom 24%
-                                left 12%
-
         footer.flex.flex-col.${'md:flex-row'}.items-center.justify-center.${'md:justify-between'}.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             / h4.font-extralight.text-mauve-blackish.hidden.${'md:block'} The low-tech guys © 2021
             h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2021
