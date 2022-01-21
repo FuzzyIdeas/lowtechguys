@@ -34,6 +34,7 @@ html lang="en"
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl : yellowdot
             h1.mt-20.text-4xl.text-orange-dot.monospaced YellowDot
             h5.text-white Hide the macOS yellow recording dot
+            h6.text-xs.text-orange-200.opacity-70 For macOS 12.2+ try `a href="https://github.com/cormiertyshawn895/RecordingIndicatorUtility" RecordingIndicatorUtility`
 
             .flex.flex-center.mt-8
                 a.mr-4.btn.btn-orange-dot.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/YellowDot.zip"
@@ -66,6 +67,16 @@ html lang="en"
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
                 -md
+                    ## Does it work on `macOS 12.2+`?
+
+                    Since macOS 12.2, the dot is no longer a simple window that can be moved away.
+
+                    Removing the dot in 12.2 and later requires altering system files, which YellowDot doesn't do.
+
+                    [Tyshawn Cormier](https://github.com/cormiertyshawn895) came up with a very clever solution for this in his [RecordingIndicatorUtility](https://github.com/cormiertyshawn895/RecordingIndicatorUtility) app. Check it out if you still want to hide the dot!
+
+                    ----
+
                     ## How do I quit YellowDot?
 
                     * Click on the menubar icon *(or launch YellowDot again if the icon is hidden)*
@@ -90,10 +101,9 @@ html lang="en"
 
             #faq
                 code
-                    background-color alpha(white, 0.8)
-                    color var(--color-gray-black)
-                    font-weight bold
-                    font-size 0.9rem
+                    background-color alpha(orange, 0.25)
+                    color var(--color-gray-white)
+                    padding 0 .5rem
 
                 h2
                     padding 0.1rem 0.5rem
