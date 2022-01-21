@@ -5,7 +5,6 @@
     WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
     DEV = os.getenv("NODE_ENV") == "development"
     DEPLOY_URL = os.getenv("DEPLOY_URL")
-    PAPER_BG_URL = f'https://img.alinpanaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp' if DEPLOY_URL else '/static/img/paperbg.png'
 
     def imgurl(image, ext, width, convert_to=""):
         if DEV:
@@ -78,7 +77,7 @@
 
       .paper-bg
           for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
-              $url = "${PAPER_BG_URL}" % $width
+              $url = '${f"https://img.alinpanaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp" if DEPLOY_URL else "/static/img/paperbg.png"}' % $width
               @media screen and (max-width: unit($width, px))
                   background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
 
