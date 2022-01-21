@@ -1,20 +1,7 @@
 - namespace name="defs" defs.plim
 ---!
-    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
-
-    def srcset(image, ext, maxwidth=8120, factor=1):
-        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
-
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
-        feature = "flex flex-initial flex-col justify-center items-start"
-        description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
-
-        def circle(color, size=3):
-            return f"rounded-full h-{size} w-{size} bg-{color} inline-block mr-3"
-
-        def tag(color, text_color, size="sm"):
-            return f"rounded-full px-3 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
 
 doctype html
 html lang="en"
