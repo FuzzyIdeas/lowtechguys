@@ -1,20 +1,7 @@
 - namespace name="defs" defs.plim
 ---!
-    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
-
-    def srcset(image, ext, maxwidth=8120, factor=1):
-        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
-
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
-        feature = "flex flex-initial flex-col justify-center items-start"
-        description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
-
-        def circle(color, size=3):
-            return f"rounded-full h-{size} w-{size} bg-{color} inline-block mr-3"
-
-        def tag(color, text_color, size="sm"):
-            return f"rounded-full px-3 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
 
 doctype html
 html lang="en"
@@ -101,7 +88,7 @@ html lang="en"
 
                     There is a macOS native way to switch between windows of the same app:
 
-                    [![keyboard shortcut switch to windows of same app](/static/img/keyboard-shortcut-focus-window/keyboard-shortcut-focus-window.webp)](/static/img/keyboard-shortcut-focus-window/keyboard-shortcut-focus-window.webp)
+                    [![keyboard shortcut switch to windows of same app](/static/img/keyboard-shortcut-focus-window.png)](/static/img/keyboard-shortcut-focus-window.png)
 
                     ----
 
@@ -126,7 +113,7 @@ html lang="en"
                     * **Modifiers: 104884`0` / 0x1001`08`**
                     * **NX_DEVICE`LCMD`KEYMASK = `8` / 0x`8`**
 
-                    [![keycodes app left and right command info](/static/img/keycodes-rcmd/keycodes-rcmd.webp)](/static/img/keycodes-rcmd/keycodes-rcmd.webp)
+                    [![keycodes app left and right command info](/static/img/keycodes-rcmd.png)](/static/img/keycodes-rcmd.png)
 
                     If you don't see those key codes exactly, then it's a problem with your keyboard mapping.
 
@@ -135,14 +122,14 @@ html lang="en"
                     * Specific models of external keyboards
                     * Changing the **Modifier Keys** settings in **System Preferences**
 
-                    [![modifier keys setting in macOS](/static/img/modifier-mapping/modifier-mapping.webp)](/static/img/modifier-mapping/modifier-mapping.webp)
+                    [![modifier keys setting in macOS](/static/img/modifier-mapping.png)](/static/img/modifier-mapping.png)
 
 
                     #### Workaround
 
                     Keep in mind that you can always change the trigger key to something else than `Right Command` if that key is not working on your keyboard.
 
-                    [![rcmd trigger setting](/static/img/rcmd-trigger-setting/rcmd-trigger-setting.webp)](/static/img/rcmd-trigger-setting/rcmd-trigger-setting.webp)
+                    [![rcmd trigger setting](/static/img/rcmd-trigger-setting.png)](/static/img/rcmd-trigger-setting.png)
 
         footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
