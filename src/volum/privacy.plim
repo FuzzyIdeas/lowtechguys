@@ -1,0 +1,37 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Volum - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
+
+    body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-white : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/volum" Volum
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Volum" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            .zstack
+                icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : volum
+                #volum-knob.z-10.shadow-lg.shadow-mauve-black/30
+                    #volum-knob-indicator.z-10
+                    #volum-knob-border.z-10
+            h1.mt-6.text-4xl.text-yellow-gold.monospaced Volum
+            h5.text-white AV Receiver volume control
+            h5.text-white at your fingertips
+            h3 Volum does not collect any personal information.
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2021
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color warmWhite

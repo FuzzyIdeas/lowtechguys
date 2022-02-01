@@ -1,12 +1,30 @@
 ---!
     import os, glob
+    import urllib.parse
 
     WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
-
-    def srcset(image, ext, maxwidth=8120, factor=1):
-        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
-
     DEV = os.getenv("NODE_ENV") == "development"
+    DEPLOY_URL = os.getenv("DEPLOY_URL")
+
+    def imgurl(image, ext, width, convert_to=""):
+        if DEV:
+            return f"/static/img/{urllib.parse.quote(image)}.{ext}"
+
+        conversion = f"@{convert_to}" if convert_to else ""
+        return f'https://img.alinpanaitiu.com/_/{width}/plain/{DEPLOY_URL}/static/img/{urllib.parse.quote(image)}.{ext}{conversion}'
+
+    def srcset(image, ext, maxwidth=8120, factor=1, convert_to=""):
+        if DEV:
+            return f"/static/img/{urllib.parse.quote(image)}.{ext}"
+
+        return ','.join(
+            f'{imgurl(image, ext, width, convert_to)} {int(round(float(width) / float(factor)))}w'
+            for width in WIDTHS if width <= float(maxwidth)
+        )
+
+    def images(folder, ext="png"):
+        return [os.path.splitext(img[18:])[0] for img in glob.glob(f"public/static/img/{folder}/*.{ext}")]
+
     CSS = "/static/css/app.css"
     if not DEV:
         hashed_css = glob.glob("public/static/css/app.*.css")
@@ -25,17 +43,17 @@
       "maximum-scale=6.0, " +
       "shrink-to-fit=no")
     meta itemprop="description" content="${description}"
-    meta itemprop="image" content="https://${domain}/static/img/${screenshot}/${screenshot}.png"
+    meta itemprop="image" content="https://${domain}/static/img/${screenshot}.png"
     meta itemprop="name" content="${title}"
     meta name="apple-mobile-web-app-status-bar-style" content="black"
     meta name="description" content="${description}"
-    meta name="image" content="https://${domain}/static/img/${screenshot}/${screenshot}.png"
+    meta name="image" content="https://${domain}/static/img/${screenshot}.png"
     meta name="mobile-web-app-capable" content="no"
     meta name="msapplication-TileColor" content="${color}"
     meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}/${f'{icon_size}_{icon}' if icon_size else icon}.png"
     meta name="theme-color" content="${color}"
     meta property="og:description" content="${description}"
-    meta property="og:image" content="https://${domain}/static/img/${screenshot}/${screenshot}.png"
+    meta property="og:image" content="https://${domain}/static/img/${screenshot}.png"
     meta property="og:site_name" content="${title}"
     meta property="og:title" content="${title}"
     meta property="og:type" content="website"
@@ -44,7 +62,7 @@
     meta name="twitter:title" content="${title}"
     meta name="twitter:description" content="${description}"
     meta name="twitter:card" content="summary_large_image"
-    meta name="twitter:image" content="https://${domain}/static/img/${screenshot}/${screenshot}.png"
+    meta name="twitter:image" content="https://${domain}/static/img/${screenshot}.png"
     -if not DEV
         script async="true" defer="true" data-domain="${domain}" src="https://plausible.alinpanaitiu.com/js/plausible.js"
     -coffee
@@ -56,6 +74,13 @@
     - stylus
       @import "stylus/variables"
       @import "stylus/modernize"
+
+      .paper-bg
+          for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
+              $url = '${f"https://img.alinpanaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp" if DEPLOY_URL else "/static/img/paperbg.png"}' % $width
+              @media screen and (max-width: unit($width, px))
+                  background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
+
 
 - def videoset(video, cls)
     video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
@@ -69,8 +94,19 @@
         source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'
 
--def sources(img, width=1920, factor=2.5, mobile_factor=1)
-    source type="image/webp" srcset=${srcset(img, 'webp', width, mobile_factor)}
-    source type="image/webp" srcset=${srcset(img, 'webp', width, factor)} media="(min-width: 768px)"
-    source type="image/png" srcset=${srcset(img, 'png', width, mobile_factor)}
-    source type="image/png" srcset=${srcset(img, 'png', width, factor)} media="(min-width: 768px)"
+-def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='')
+    picture.object-cover.${pcls}
+        -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} self:sources
+        img.object-cover.${icls} alt=${alt} srcset=${srcset(img, ext, width, factor)} title=${os.path.split(img)[-1]}
+
+-def images(folder, ext='png', width=1920, factor=0.4, mobile_factor=1, acls='', pcls='', icls='')
+    -for img in images(folder, ext)
+        a.${acls} href="/static/img/${urllib.parse.quote(img)}.${ext}"
+            -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} pcls=${pcls} icls=${icls} self:image
+
+-def sources(img, ext='png', width=1920, factor=0.4, mobile_factor=1)
+    -if not DEV
+        source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")}
+        source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
+    source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)}
+    source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"

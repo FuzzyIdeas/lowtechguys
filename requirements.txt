@@ -1,4 +1,4 @@
 livereload
 lxml
-plim
+git+https://github.com/alin23/Plim.git@master#egg=plim
 requests

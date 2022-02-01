@@ -9,15 +9,15 @@ public/%.html: src/%.plim src/defs.plim
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
-	@pudb3 $$(which plimc) -H -p extensions:svg -o $@ $<
+	@pudb3 $$(which plimc) -H -p extensions:preprocessor -o $@ $<
 else
-	@plimc -H -p extensions:svg -o $@ $<
+	@plimc -H -p extensions:preprocessor -o $@ $<
 endif
 
 app.css: stylus/*.styl
 
 css: public/static/css/app.css
-html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/contact.html
+html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/volum/index.html public/volum/privacy.html public/contact.html
 all: html css
 
 build: export NODE_ENV=production

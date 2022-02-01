@@ -6,7 +6,7 @@
         return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
 
     class CLS:
-        appcontainer = "flex flex-col flex-center bg-white bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        appcontainer = "flex flex-col flex-center bg-white bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition m-4 md:m-8"
         feature = "flex flex-initial flex-col justify-center items-start"
         description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
 
@@ -25,28 +25,28 @@ html lang="en"
 
     body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         div
-            header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
                 a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                     icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
                 .links
-                    a.text-sm.${'md:text-base'}.text-black.ml-4 href="/contact" Contact
+                    a.text-sm.md:text-base.text-black.ml-4 href="/contact" Contact
 
 
             section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10.${'4xl:pb-20'}
-                #headline.mt-12.${'md:mt-0'}.w-screen.flex-center.flex-col
+                #headline.mt-12.md:mt-0.w-screen.flex-center.flex-col
                     #title
-                        h1.headline.text-4xl.${'md:text-5xl'}.${'4xl:text-6xl'}.text-white.font-normal.text-left.glow-text-gray
+                        h1.headline.text-4xl.md:text-5xl.${'4xl:text-6xl'}.text-white.font-normal.text-left.glow-text-gray
                             | the
-                        h1.headline.text-7xl.${'md:text-8xl'}.${'4xl:text-9xl'}.-mt-4.text-white.font-normal.text-center.glow-text-black.w-max
+                        h1.headline.text-7xl.md:text-8xl.${'4xl:text-9xl'}.-mt-4.text-white.font-normal.text-center.glow-text-black.w-max
                             Low-Tech
-                        h1.headline.text-6xl.${'md:text-7xl'}.${'4xl:text-8xl'}.-mt-8.mb-3.text-white.font-normal.text-right.glow-text-gray
+                        h1.headline.text-6xl.md:text-7xl.${'4xl:text-8xl'}.-mt-8.mb-3.text-white.font-normal.text-right.glow-text-gray
                             | guys
 
-                h5#subtitle.max-w-100vw.whitespace-nowrap.transition-opacity.mt-0.strike.text-sm.${'md:text-lg'}.font-bold.${'md:font-medium'}.text-mauve-gray
+                h5#subtitle.max-w-100vw.whitespace-nowrap.transition-opacity.mt-0.strike.text-sm.md:text-lg.font-bold.md:font-medium.text-mauve-gray
                     No-buzzwords driven development.
 
                 .flex.flex-center.mt-10
-                    .flex-center.flex-col.mr-0.${'md:mr-12'}
+                    .flex-center.flex-col.mr-0.md:mr-12
                         icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60 : alin
                         code.text-white.mt-2 guy #1
                     .flex-center.flex-col
@@ -56,7 +56,7 @@ html lang="en"
         section#apps.min-w-[100vw].flex-center.flex-col.relative.pb-10
             .flex-col.flex-center.mt-6
                 h1.font-sans.font-black.text-6xl.${'4xl:text-7xl'}.mb-12.${'4xl:mb-20'}.text-mauve-blackish Our apps
-                .flex.flex-col.${'md:flex-row'}.flex-center.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}
+                .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="/rcmd"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : rcmd
                         h2.text-mauve-gray rcmd
@@ -71,6 +71,17 @@ html lang="en"
                             Intelligent adaptive brightness
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | for your external displays
+                    a.${CLS.appcontainer} href="/volum"
+                        .zstack
+                            icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : volum
+                            #volum-knob.z-10.shadow-lg.shadow-mauve-black/30
+                                #volum-knob-indicator.z-10
+                                #volum-knob-border.z-10
+                        h2.text-mauve-gray Volum
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            AV Receiver volume control
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | at your fingertips
                     a.${CLS.appcontainer} href="/yellowdot"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
                         h2.text-mauve-gray YellowDot
@@ -79,8 +90,8 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | in the corner of your screen
 
-        footer.flex.flex-col.${'md:flex-row'}.items-center.justify-center.${'md:justify-between'}.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            / h4.font-extralight.text-mauve-blackish.hidden.${'md:block'} The low-tech guys © 2021
+        footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2021
             h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2021
-            / .links.w-full.${'md:w-auto'}
+            / .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact

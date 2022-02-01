@@ -4,15 +4,15 @@ import re
 from collections import defaultdict
 from copy import deepcopy
 
-import markdown2
-from plim import lexer, preprocessor_factory
-from plim.util import u
-
-from stylus import Stylus
+from plim import preprocessor_factory
+from plim.extensions import md_to_html
 
 # icon#id.cls-[1rem]: filename
 PARSE_SVG_PATH_RE = re.compile(
     r"icon(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[A-Za-z\-/0-9\[\]:]+)+)? : (?P<path>[A-Za-z\-0-9/_]+)"
+)
+PARSE_MDFILE_PATH_RE = re.compile(
+    r"md(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[A-Za-z\-/0-9\[\]:]+)+)? : (?P<path>[A-Za-z\-0-9/_]+)"
 )
 
 PARSE_INDEX_RE = re.compile(
@@ -50,7 +50,9 @@ def send_index(index, db):
     except:
         pass
 
-INVALID_DOCUMENT_ID_RE = re.compile(r'[^A-Za-z0-9\-_]')
+
+INVALID_DOCUMENT_ID_RE = re.compile(r"[^A-Za-z0-9\-_]")
+
 
 def parse_index(indent_level, current_line, matched, source, syntax):
     global INDEX_DATA
@@ -78,9 +80,35 @@ def parse_index(indent_level, current_line, matched, source, syntax):
 
         # dom = fromstring(html)
         # html_text = dom.text_content()
-        INDEX_DATA[index].append({"id": INVALID_DOCUMENT_ID_RE.sub("_", _id), "title": title, "content": md_source})
+        INDEX_DATA[index].append(
+            {
+                "id": INVALID_DOCUMENT_ID_RE.sub("_", _id),
+                "title": title,
+                "content": md_source,
+            }
+        )
 
     return (html, indent_level, "", source)
+
+
+def parse_md_path(indent_level, current_line, matched, source, syntax):
+    path = matched.group("path")
+    md_id = matched.group("id") or ""
+    md_class = (matched.group("cls") or "").replace(".", " ")
+    md_file = f"public/static/markdown/{path}.md"
+
+    if not os.path.exists(md_file):
+        return "", indent_level, "", source
+
+    with open(md_file) as f:
+        rt = f.read()
+    parsed = md_to_html(rt)
+    return (
+        f'<article id="{md_id}" class="{md_class}">{parsed}</article>',
+        indent_level,
+        "",
+        source,
+    )
 
 
 def parse_svg_path(indent_level, current_line, matched, source, syntax):
@@ -102,22 +130,9 @@ def parse_svg_path(indent_level, current_line, matched, source, syntax):
     )
 
 
-def stylus_to_css(source):
-    compiler = Stylus(compress=True, plugins={"rupture": {}})
-    css = compiler.compile(source).strip()
-    return u("<style>{css}</style>").format(css=css)
-
-
-def md_to_html(source):
-    return markdown2.markdown(source, use_file_vars=True, extras=["header-ids"])
-
-
 CUSTOM_PARSERS = [
     (PARSE_SVG_PATH_RE, parse_svg_path),
+    (PARSE_MDFILE_PATH_RE, parse_md_path),
     (PARSE_INDEX_RE, parse_index),
 ]
-lexer.MARKUP_LANGUAGES["stylus"] = stylus_to_css
-lexer.MARKUP_LANGUAGES["md"] = md_to_html
-lexer.MARKUP_LANGUAGES["markdown"] = md_to_html
-
-svg = preprocessor_factory(custom_parsers=CUSTOM_PARSERS, syntax="mako")
+preprocessor = preprocessor_factory(custom_parsers=CUSTOM_PARSERS, syntax="mako")
