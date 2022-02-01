@@ -9,13 +9,13 @@ html lang="en"
         - call title="Volum - AV Receiver volume control" domain="lowtechguys.com" description="AV receiver volume control at your fingertips" short_description="AV receiver volume control at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
-    body.bg-gray-700.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+    body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-white : lowtech
             .links
-                a.text-sm.${'md:text-base'}.ml-4 href="/volum/privacy" Privacy
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=Volum" Contact
+                a.text-sm.md:text-base.ml-4 href="/volum/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Volum" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             .zstack
@@ -27,43 +27,49 @@ html lang="en"
             h5.text-white AV Receiver volume control
             h5.text-white at your fingertips
 
-            a.flex-grow.mt-20 href="https://apps.apple.com/us/app/volum-av-receiver-control/id1601814648"
-                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
+            a.flex-grow.mt-6 href="https://testflight.apple.com/join/L4aq4o6t"
+                img.w-60.sepia-[.5] width="225" height="70" alt="Try the app on TestFlight" src="/static/svg/testflight.svg"
 
-        section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
-                .${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Magical volume control for any receiver
-                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
-                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
-                    .text-base.${'lg:text-lg'}.text-gray-white
-                        When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
+        section#details.flex-center.flex-col.pb-20.space-y-20.md:space-y-48
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                -call img="yamaha-av" factor=${1.5} mobile_factor=${0.5} icls="rounded-2xl h-full" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="yamaha av receiver" defs:image
 
-                -call img="first-run" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
-            .flex.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row-reverse'}.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}.${'md:space-x-reverse'}.px-4
-                .${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Assign custom keys for your favorite apps
-                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
-                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
-                    .text-base.${'lg:text-lg'}.text-gray-white
-                        When an app is in the `b.small-caps.text-yellow-nice static` list:
+                .md:w-1/2.text-left.md:px-10
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Adjust volume using the keyboard
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Volum automatically assigns the following hotkeys for controlling receiver volume:
                         ul
-                            li | the assigned key can launch the app when it isn't running
-                            li | the Hide/Cycle setting can be adjusted on a per-app basis.
+                            li.mb-1 `span.inline-block.bg-orange-200.text-center.text-black.rounded.min-w-[2.4rem].font-extrabold F10` Mute
+                            li.mb-1 `span.inline-block.bg-orange-200.text-center.text-black.rounded.min-w-[2.4rem].font-extrabold F11` Volume `span.text-red-300 Down`
+                            li `span.inline-block.bg-orange-200.text-center.text-black.rounded.min-w-[2.4rem].font-extrabold F12` Volume `span.text-green-300 Up`
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Holding `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` while using the hotkeys allows you to adjust all receivers at the same time.
 
-                -call img="static" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Automatic input switching
+                    .text-base.lg:text-lg.text-gray-white
+                        You can bind a receiver to a `b.text-orange-300 Mac audio output` so that when you select that output, the receiver automatically `b.text-red-300 powers on`, `b.text-red-300 unmutes` and switches to the correct `b.text-orange-300 input` and `b.text-orange-300 zone`.
+
+            h1.text-4xl.px-10.text-center.md:text-left.lg:text-5xl.mb-4 Control AVs from any device
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-full.md:max-w-[1400px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.items-end.justify-around
+                .flex.items-end.space-x-10
+                    .flex.flex-center.flex-col
+                        -call img="volum-iphone" factor=${1.5} mobile_factor=${0.5} icls="h-full drop-shadow-2xl" pcls="md:h-[20rem]" alt="screenshot of the app interface on iphone" defs:image
+                        h1 iPhone
+                    .flex.flex-center.flex-col
+                        -call img="volum-ipad" factor=${1.5} mobile_factor=${0.5} icls="h-full drop-shadow-2xl" pcls="md:h-[30rem]" alt="screenshot of the app interface on ipad" defs:image
+                        h1 iPad
+                .flex.flex-center.flex-col
+                    -call img="volum-macbook" factor=${1.5} mobile_factor=${0.5} icls="h-full drop-shadow-2xl" pcls="md:h-[30rem]" alt="screenshot of the app interface opened from the menu bar" defs:image
+                    h1 Mac
 
 
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
-                -md
-                    ## What devices are supported?
+            #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+                md : faq-volum
 
-                    Yamaha
-
-        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
-            .links.w-full.${'md:w-auto'}
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2021
+            .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"

@@ -10,12 +10,12 @@ html lang="en"
         script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
-                a.text-sm.${'md:text-base'}.ml-4 href="/rcmd/privacy" Privacy
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=rcmd" Contact
+                a.text-sm.md:text-base.ml-4 href="/rcmd/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
 
         section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mt-20 : rcmd
@@ -30,21 +30,21 @@ html lang="en"
             h6#scroll-hint.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
         section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
-                .${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Put that right Command key to good use
-                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Put that right Command key to good use
+                    .text-base.lg:text-lg.text-gray-white.mb-4
                         Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
-                    .text-base.${'lg:text-lg'}.text-gray-white
+                    .text-base.lg:text-lg.text-gray-white
                         When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
 
                 -call img="first-run" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
-            .flex.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row-reverse'}.space-y-10.${'md:space-y-0'}.${'md:space-x-10'}.${'md:space-x-reverse'}.px-4
-                .${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-4 Assign custom keys for your favorite apps
-                    .text-base.${'lg:text-lg'}.text-gray-white.mb-4
+            .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Assign custom keys for your favorite apps
+                    .text-base.lg:text-lg.text-gray-white.mb-4
                         Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
-                    .text-base.${'lg:text-lg'}.text-gray-white
+                    .text-base.lg:text-lg.text-gray-white
                         When an app is in the `b.small-caps.text-yellow-nice static` list:
                         ul
                             li | the assigned key can launch the app when it isn't running
@@ -53,87 +53,12 @@ html lang="en"
                 -call img="static" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
 
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
-                -md
-                    ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
+            #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+                md : faq-rcmd
 
-                    Best way to handle this is to assign a custom key for the second app.
-
-                    For example, if **rcmd** focuses *Mail* on `⌘` + `M` and you want to assign `⌘` + `U` for *Music*:
-
-                    * Focus the *Music* app
-                    * Press `⌘` + `⌥` + `U`
-
-                    And that's it, from now on you can use `⌘` + `U` to focuse the *Music* app.
-
-                    ----
-
-                    ## What does Cycle do?
-
-                    If you have multiple apps with the same first letter, pressing that letter multiple times will cycle between those apps.
-
-                    For example, if you have *Safari*, *Spotify* and *Shortcuts* running:
-
-                    * Pressing `⌘` + `S` will focus *Safari*
-                    * Pressing `⌘` + `S` *again* will cycle and focus *Spotify*
-                    * Pressing `⌘` + `S` *yet again* will cycle and focus *Shortcuts*
-
-                    ----
-
-                    ## Can I cycle between windows of the same app?
-
-                    Unfortunately there's no macOS API that allows us to focus specific windows of an app.
-
-                    The Accessibility API would allow this in some manner but it is not allowed on the App Store.
-
-                    There is a macOS native way to switch between windows of the same app:
-
-                    [![keyboard shortcut switch to windows of same app](/static/img/keyboard-shortcut-focus-window.png)](/static/img/keyboard-shortcut-focus-window.png)
-
-                    ----
-
-                    ## `Left Command` triggering rcmd?
-                    ## `Right Command`+`letter` not doing anything?
-
-                    It's possible that your keyboard is sending the wrong key codes.
-
-                    ### Checking keycodes
-
-                    You can check what keycodes get sent by downloading this simple app: [KeyCodes.zip](https://files.alinpanaitiu.com/KeyCodes.zip)
-
-                    After launching it, check the **Log key up events and modifier changes** checkbox.
-
-                    Now if you press your `Right Command` key and click on the Info button you should see:
-
-                    * **Modifiers: 104884`8` / 0x1001`10`**
-                    * **NX_DEVICE`RCMD`KEYMASK = `16` / 0x`10`**
-
-                    For the `Left Command` key you should see:
-
-                    * **Modifiers: 104884`0` / 0x1001`08`**
-                    * **NX_DEVICE`LCMD`KEYMASK = `8` / 0x`8`**
-
-                    [![keycodes app left and right command info](/static/img/keycodes-rcmd.png)](/static/img/keycodes-rcmd.png)
-
-                    If you don't see those key codes exactly, then it's a problem with your keyboard mapping.
-
-                    ### Possible causes:
-
-                    * Specific models of external keyboards
-                    * Changing the **Modifier Keys** settings in **System Preferences**
-
-                    [![modifier keys setting in macOS](/static/img/modifier-mapping.png)](/static/img/modifier-mapping.png)
-
-
-                    #### Workaround
-
-                    Keep in mind that you can always change the trigger key to something else than `Right Command` if that key is not working on your keyboard.
-
-                    [![rcmd trigger setting](/static/img/rcmd-trigger-setting.png)](/static/img/rcmd-trigger-setting.png)
-
-        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
-            .links.w-full.${'md:w-auto'}
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2021
+            .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"

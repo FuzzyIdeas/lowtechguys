@@ -10,12 +10,12 @@ html lang="en"
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
-                a.text-sm.${'md:text-base'}.ml-4 href="/yellowdot/privacy" Privacy
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=YellowDot" Contact
+                a.text-sm.md:text-base.ml-4 href="/yellowdot/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=YellowDot" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl : yellowdot
@@ -26,61 +26,37 @@ html lang="en"
             .flex.flex-center.mt-8
                 a.mr-4.btn.btn-orange-dot.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/YellowDot.zip"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
-                    span.ml-2.text-sm.${'md:text-base'} Download
+                    span.ml-2.text-sm.md:text-base Download
                 a.btn.text-black.bg-white.${'hover:text-white'}.${'hover:bg-black'}.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/YellowDot"
                     icon.h-4.w-4.md:h-7.md:w-7 : github
-                    span.ml-2.text-sm.${'md:text-base'} View Source
+                    span.ml-2.text-sm.md:text-base View Source
 
         section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.${'md:space-x-10'}.w-screen.max-w-[576px].${'md:w-auto'}.${'md:max-w-[1200px]'}.flex-col.${'md:flex-row'}.space-y-10.${'md:space-y-0'}.px-4
-                .flex.flex-col.space-y-2.${'md:w-1/2'}.text-left
-                    h1.text-3xl.text-center.${'md:text-left'}.${'lg:text-4xl'}.mb-1 Hide that pesky yellow dot
-                    .text-base.${'lg:text-lg'}.text-gray-white
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1 Hide that pesky yellow dot
+                    .text-base.lg:text-lg.text-gray-white
                         As long as the YellowDot app is running, the corner dot will always be hidden.
-                    .text-base.${'lg:text-lg'}.text-gray-white
+                    .text-base.lg:text-lg.text-gray-white
                         The `b.text-orange-400 menubar icon` allows you to `b.text-orange-400 Pause` hiding, `b.text-red-500 Quit` the app, and even `b.text-blue-200 Hide` the menubar icon itself.
                     h4.text-orange-300 How it works?
-                    .text-sm.${'lg:text-base'}.text-gray-400
+                    .text-sm.lg:text-base.text-gray-400
                         YellowDot works by searching for the dot on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the dot hidden at all times.
                     h4.text-orange-300 But why?
-                    .text-sm.${'lg:text-base'}.text-gray-400
+                    .text-sm.lg:text-base.text-gray-400
                         The yellow dot is useful in letting you know if an app is using the microphone without your permission, or if you forgot an app open that's still recording.
-                    .text-sm.${'lg:text-base'}.text-gray-400
+                    .text-sm.lg:text-base.text-gray-400
                         But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
 
                 -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
 
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.${'md:self-start'}.max-w-[90vw].${'md:px-4'}
-                -md
-                    ## Does it work on `macOS 12.2+`?
+            #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+                md : faq-yellowdot
 
-                    Since macOS 12.2, the dot is no longer a simple window that can be moved away.
-
-                    Removing the dot in 12.2 and later requires altering system files, which YellowDot doesn't do.
-
-                    [Tyshawn Cormier](https://github.com/cormiertyshawn895) came up with a very clever solution for this in his [RecordingIndicatorUtility](https://github.com/cormiertyshawn895/RecordingIndicatorUtility) app. Check it out if you still want to hide the dot!
-
-                    ----
-
-                    ## How do I quit YellowDot?
-
-                    * Click on the menubar icon *(or launch YellowDot again if the icon is hidden)*
-                    * Click on the **Quit** button
-
-                    ----
-
-                    ## Why would I want to hide the yellow dot?
-
-                    The idea came from this HackerNews thread: [Apple added an orange dot that’s a showstopper for live visuals](https://news.ycombinator.com/item?id=29627382)
-
-                    When projecting live visuals, you might want to make the screen background black to give the impression of floating effects. The yellow dot in the corner breaks that illusion.
-
-                    The user **[Sydney San Martin](https://s4y.us/)** posted a command-line implementation in that thread called [undot](https://github.com/s4y/undot) and I decided to make an easy to use app for it.
-
-        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
-            .links.w-full.${'md:w-auto'}
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2021
+            .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"

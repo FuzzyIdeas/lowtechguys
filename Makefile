@@ -9,9 +9,9 @@ public/%.html: src/%.plim src/defs.plim
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
-	@pudb3 $$(which plimc) -H -p extensions:svg -o $@ $<
+	@pudb3 $$(which plimc) -H -p extensions:preprocessor -o $@ $<
 else
-	@plimc -H -p extensions:svg -o $@ $<
+	@plimc -H -p extensions:preprocessor -o $@ $<
 endif
 
 app.css: stylus/*.styl

@@ -6,12 +6,12 @@ html lang="en"
         - call title="YellowDot - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" defs:head
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
-                a.text-sm.${'md:text-base'}.ml-4 href="/yellowdot" YellowDot
-                a.text-sm.${'md:text-base'}.ml-4 href="/contact?app=YellowDot" Contact
+                a.text-sm.md:text-base.ml-4 href="/yellowdot" YellowDot
+                a.text-sm.md:text-base.ml-4 href="/contact?app=YellowDot" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-3xl : YellowDot
@@ -19,9 +19,9 @@ html lang="en"
             h5.text-white Hide the macOS yellow recording dot
             h3 YellowDot does not collect any personal information.
 
-        footer.flex.items-center.justify-between.px-2.${'md:px-8'}.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-100.hidden.${'md:block'} The low-tech guys © 2021
-            .links.w-full.${'md:w-auto'}
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2021
+            .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"
