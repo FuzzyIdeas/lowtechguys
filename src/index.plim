@@ -73,8 +73,8 @@ html lang="en"
                             | for your external displays
                     a.${CLS.appcontainer} href="/volum"
                         .zstack
-                            icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : volum
-                            #volum-knob.z-10.shadow-lg.shadow-mauve-black/30
+                            icon.w-[5rem].h-[5rem].md:w-[7rem].md:h-[7rem].filter.drop-shadow-lg : volum
+                            #volum-knob.w-[2.8rem].h-[2.8rem].md:w-[3.92rem].md:h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
                                 #volum-knob-indicator.z-10
                                 #volum-knob-border.z-10
                         h2.text-mauve-gray Volum

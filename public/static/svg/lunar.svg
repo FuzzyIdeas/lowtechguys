@@ -6,21 +6,12 @@
             <stop stop-color="#FFD586" offset="0%"></stop>
             <stop stop-color="#FFE3AD" offset="100%"></stop>
         </linearGradient>
-        <filter x="-3.9%" y="-3.9%" width="107.8%" height="107.8%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="1" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.804489357   0 0 0 0 0.804489357   0 0 0 0 0.804489357  0 0 0 0.63243007 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
     </defs>
     <g id="AppIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Icon-Artwork-Lite" transform="translate(-24.000000, -24.000000)">
             <g id="Group" transform="translate(24.000000, 24.000000)">
                 <path d="M178.206311,3.46897778 C167.8872,0 161.160711,0 137.191022,0 L70.8078222,0 C46.8381333,0 40.1128,0 29.7936889,3.46897778 C17.5933333,7.92826667 7.92826667,17.5933333 3.46897778,29.7925333 C0,40.1128 0,46.8381333 0,70.8078222 L0,137.191022 C0,161.160711 0,167.8872 3.46897778,178.206311 C7.92826667,190.405511 17.5933333,200.071733 29.7936889,204.529867 C40.1128,208 46.8381333,208 70.8078222,208 L137.191022,208 C161.160711,208 167.8872,208 178.206311,204.529867 C190.405511,200.071733 200.071733,190.405511 204.529867,178.206311 C208,167.8872 208,161.160711 208,137.191022 L208,70.8078222 C208,46.8381333 208,40.1128 204.529867,29.7925333 C200.071733,17.5933333 190.405511,7.92826667 178.206311,3.46897778" id="Squircle" fill="url(#linearGradient-1)"></path>
-                <g transform="translate(21.000000, 21.000000)" id="Moon" filter="url(#filter-2)">
+                <g transform="translate(21.000000, 21.000000)" id="Moon">
                     <ellipse fill="#FFFCF2" cx="82.7877238" cy="83" rx="82.7877238" ry="83"></ellipse>
                     <g id="Craters" transform="translate(17.972277, 11.385343)" fill="#E7B24D" fill-opacity="0.3">
                         <path d="M19.812889,66.363754 C19.812889,72.633535 15.3785273,77.7150681 9.90755009,77.7150681 C4.43657289,77.7150681 0,72.633535 0,66.363754 C0,60.0957465 4.43657289,55.0146568 9.90755009,55.0146568 C15.3785273,55.0146568 19.812889,60.0957465 19.812889,66.363754 Z" id="Path"></path>
