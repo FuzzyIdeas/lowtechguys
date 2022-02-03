@@ -28,9 +28,16 @@ module.exports = {
         '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
         '5xl': '0 35px 35px rgba(0, 0, 0, 0.85)',
       },
+      boxShadow: {
+        '3xl': '0 35px 35px rgba(0, 0, 0, 0.45)',
+        '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
+        '5xl': '0 35px 35px rgba(0, 0, 0, 0.85)',
+      },
       screens: {
         portrait: { raw: '(orientation: portrait)' },
         portraitmd: { raw: '(orientation: portrait) and (min-width: 768px)' },
+        tablet: { raw: '(orientation: portrait) and (max-width: 1023px)' },
+        mobile: { raw: '(orientation: portrait) and (max-width: 768px)' },
       },
       fontFamily: {
         mono: ['Meslo', ...fontFamily.mono],
