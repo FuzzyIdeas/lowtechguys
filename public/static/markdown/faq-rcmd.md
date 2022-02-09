@@ -35,6 +35,27 @@ There is a macOS native way to switch between windows of the same app:
 
 ----
 
+## New window is opened when activating an already running app
+
+To fix this, restart the app you are trying to focus.
+
+[]()
+
+#### Why does it happen?
+
+This happens because that app has updated itself in the background while it was running.
+
+Because the app on disk is different than the running app, the system creates another app instance when rcmd tries to focus it.
+
+This usually happens with browser as they update frequently.
+
+rcmd will try to detect this and fix the problem itself but information about the binary may be missing and the detection doesn't always work.
+
+[![rcmd notification of detected changed binary](/static/img/rcmd-detect-changed-binary.png)](/static/img/rcmd-detect-changed-binary.png)
+
+
+----
+
 ## `Left Command` triggering rcmd?
 ## `Right Command`+`letter` not doing anything?
 
