@@ -94,3 +94,54 @@ If you don't see those key codes exactly, then it's a problem with your keyboard
 Keep in mind that you can always change the trigger key to something else than `Right Command` if that key is not working on your keyboard.
 
 [![rcmd trigger setting](/static/img/rcmd-trigger-setting.png)](/static/img/rcmd-trigger-setting.png)
+
+----
+
+## High CPU Usage?
+
+Looking at the **% CPU usage** is not a very accurate way of judging the app's efficiency.
+
+
+### Why do I see CPU usage spikes?
+
+rcmd has to listen on window change events and keep track of how often an app is switched to. 
+
+This is used in the scoring algorithm for choosing which apps get priority in the dynamic first letter assignment.
+
+The compute workload is minimal and the spike only lasts a few milliseconds.
+
+### Should I worry about it?
+
+Usually, you shouldn't look at the **% CPU** field, but at the **CPU Time** metric. By default Activity Monitor updates every 5 seconds, so even if the CPU % was at 7% for a few milliseconds, you'll still see it for 5 seconds.
+
+Even with the **Very often (1 sec)** setting, the **% CPU** metric is still not best for judging app efficiency.
+
+[![activity monitor update frequency](/static/img/activity-monitor-update-frequency.png)](/static/img/activity-monitor-update-frequency.png)
+
+---
+
+In the following case, from the time **rcmd** started running **(3 days ago)** until now, it only consumed about **20 minutes** of CPU time. 
+
+That's an incredibly small amount of CPU power used for an app that I use 20 times a minute. My finger basically rests on the Right Command key.
+
+```sh
+❯ echo "rcmd was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey rcmd | cut -d= -f2)') as time')" ago"
+rcmd was launched 2 days 21 hours 49 min 5 s ago
+```
+
+[![rcmd cpu time](/static/img/rcmd-cpu-time.png)](/static/img/rcmd-cpu-time.png)
+
+---
+
+If you compare that to other keyboard utilities like BetterTouchTool for example, you'll see their CPU Time can be 50x~70x of what rcmd uses.
+
+That doesn't mean they aren't efficient, they just have to do a lot more polling. I'm just stating the fact that even for an app with 50 times more CPU usage, you never notice lag or excessive battery drain, so you have nothing to worry about with rcmd.
+
+For example in the same case, **BetterTouchTool** was just launched **2 hours and 20 minutes ago** and it already consumed **30 minutes** of CPU time (disregarding the other processes like the *PrioWatcher* which consumed *1h15m*).
+
+```sh
+❯ echo "BetterTouchTool was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey BetterTouchTool | cut -d= -f2)') as time')" ago"
+BetterTouchTool was launched 2 hours 10 min 27 s ago
+```
+
+[![BetterTouchTool cpu time](/static/img/btt-cpu-time.png)](/static/img/btt-cpu-time.png)

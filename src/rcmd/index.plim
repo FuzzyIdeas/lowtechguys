@@ -8,6 +8,7 @@ html lang="en"
     head
         - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" defs:head
         script async="true" defer="true" src="/static/js/anime.min.js"
+        link href="/static/css/code.css" rel="stylesheet"
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
@@ -69,6 +70,14 @@ html lang="en"
                     color var(--color-yellow-lunar)
                     font-weight bold
 
+                pre code
+                    background-color transparent
+                    color revert
+                    font-weight 500
+                    padding 0
+                    border-radius 0
+
+
                 h2, h3, h4
                     padding 0.1rem 0.5rem
                     border-radius 0.5rem
@@ -86,6 +95,7 @@ html lang="en"
                     max-width 700px
                     max-height 300px
                     transition: all .15s ease-out
+                    border-radius 8px
 
                     +mobile()
                         max-height 60vh
