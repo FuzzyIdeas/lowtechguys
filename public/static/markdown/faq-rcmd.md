@@ -101,6 +101,8 @@ Keep in mind that you can always change the trigger key to something else than `
 
 Looking at the **% CPU usage** is not a very accurate way of judging the app's efficiency.
 
+Especially on M1, read more about it in this article: [CPU percentage is misleading on M1 Macs by The Eclectic Light Company](https://eclecticlight.co/2022/02/24/cpu-percentage-is-misleading-on-m1-macs/)
+
 
 ### Why do I see CPU usage spikes?
 
