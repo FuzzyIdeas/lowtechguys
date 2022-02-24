@@ -1,5 +1,5 @@
 import warnings
-warnings.filterwarnings("ignore", category=PkgResourcesDeprecationWarning)
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 import atexit
 import os
