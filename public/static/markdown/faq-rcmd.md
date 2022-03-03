@@ -135,15 +135,13 @@ rcmd was launched 2 days 21 hours 49 min 5 s ago
 
 ---
 
-If you compare that to other keyboard utilities like BetterTouchTool for example, you'll see their CPU Time can be 50x~70x of what rcmd uses.
+If you compare that to other keyboard utilities like BetterTouchTool for example, you'll see their CPU Time is comparable to rcmd.
 
-That doesn't mean they aren't efficient, they just have to do a lot more polling. I'm just stating the fact that even for an app with 50 times more CPU usage, you never notice lag or excessive battery drain, so you have nothing to worry about with rcmd.
-
-For example in the same case, **BetterTouchTool** was just launched **2 hours and 20 minutes ago** and it already consumed **1 hour** of CPU time.
+For example in the same case, **BetterTouchTool** was just launched **30 minutes ago** and it already consumed **2 minutes** of CPU time.
 
 ```sh
 ❯ echo "BetterTouchTool was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey BetterTouchTool | cut -d= -f2)') as time')" ago"
-BetterTouchTool was launched 2 hours 10 min 27 s ago
+BetterTouchTool was launched 30 min 27 s ago
 ```
 
 [![BetterTouchTool cpu time](/static/img/btt-cpu-time.png)](/static/img/btt-cpu-time.png)
