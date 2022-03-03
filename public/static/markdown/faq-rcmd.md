@@ -126,22 +126,28 @@ In the following case, from the time **rcmd** started running **(3 days ago)** u
 
 That's an incredibly small amount of CPU power used for an app that I use 20 times a minute. My finger basically rests on the Right Command key.
 
+[![rcmd cpu time](/static/img/rcmd-cpu-time.png)](/static/img/rcmd-cpu-time.png)
+
 ```sh
 ❯ echo "rcmd was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey rcmd | cut -d= -f2)') as time')" ago"
 rcmd was launched 2 days 21 hours 49 min 5 s ago
-```
 
-[![rcmd cpu time](/static/img/rcmd-cpu-time.png)](/static/img/rcmd-cpu-time.png)
+❯ soulver "(19 min 29 s) is what % of (2 days 21 hours 49 min 5 s)"
+0.465%
+```
 
 ---
 
 If you compare that to other keyboard utilities like BetterTouchTool for example, you'll see their CPU Time is comparable to rcmd.
 
-For example in the same case, **BetterTouchTool** was just launched **30 minutes ago** and it already consumed **2 minutes** of CPU time.
+For example in the same case, **BetterTouchTool** was just launched **2 hours 16 minutes ago** and it already consumed **2 minutes** of CPU time.
 
 ```sh
 ❯ echo "BetterTouchTool was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey BetterTouchTool | cut -d= -f2)') as time')" ago"
-BetterTouchTool was launched 30 min 27 s ago
+BetterTouchTool was launched 2 hours 16 min 26 s ago
+
+❯ soulver '(2 min 9 s) is what % of (2 hours 16 min 26 s)'
+1.576%
 ```
 
 [![BetterTouchTool cpu time](/static/img/btt-cpu-time.png)](/static/img/btt-cpu-time.png)
