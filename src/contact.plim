@@ -52,6 +52,7 @@ html lang="en"
                     option value="Lunar" Lunar
                     option value="YellowDot" YellowDot
                     option value="Volum" Volum
+                    option value="ZoomHider" ZoomHider
                     option value="" Not about a specific app
 
                   label.self-start.font-bold.ml-1 for="subject" Subject

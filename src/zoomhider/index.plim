@@ -1,0 +1,77 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="ZoomHider - Hide Zoom floating controls when sharing screen" domain="lowtechguys.com" description="Hide Zoom floating controls when sharing screen. Keep them hidden even when pressing Esc." short_description="Hide Zoom floating controls when sharing screen" favicon="/zoomhider/favicon.ico" icon="zoomhider-icon" icon_size="1280" screenshot="zoomhider-screenshot" color="rgb(255, 255, 255)" defs:head
+
+    body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-400 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/zoomhider/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=ZoomHider" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.png"
+            h1.mt-10.text-4xl.text-blue-400 ZoomHider
+            h5.text-gray-800 Hide Zoom floating controls when sharing screen
+            h5.text-gray-800 Keep them hidden even when pressing Esc
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.text-white.bg-blue-500.${'hover:text-black'}.${'hover:bg-blue-300'}.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/ZoomHider.zip"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-white.bg-gray-900.${'hover:text-black'}.${'hover:bg-gray-300'}.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/ZoomHider"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.md:text-base View Source
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.flex-center
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Hide those annoying floating controls for good
+                    .text-base.lg:text-lg.text-gray-600
+                        As long as the ZoomHider app is running, the Zoom screen sharing controls will be kept hidden.
+                    .text-base.lg:text-lg.text-gray-600
+                        The `b.text-orange-400 menubar icon` allows you to `b.text-blue-400 Pause` hiding, `b.text-red-500 Quit` the app, and even `b.text-green-500 Hide` the menubar icon itself.
+                    h4.text-blue-400 How it works?
+                    .text-sm.lg:text-base.text-gray-600
+                        ZoomHider works by searching for the floating controls window on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the controls hidden at all times.
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #faq
+                code
+                    background-color alpha(blue, 0.25)
+                    color var(--color-gray-700)
+                    padding 0 .5rem
+
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-700)
+
+                hr
+                    border-color alpha(blue, 0.1)
+                li
+                    line-height 1.8
+
+            a
+                color var(--color-blue-400)
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

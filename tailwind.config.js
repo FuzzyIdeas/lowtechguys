@@ -2,7 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html', './public/volum/*.html'],
+  content: ['./public/*.html', './public/rcmd/*.html', './public/yellowdot/*.html', './public/zoomhider/*.html', './public/volum/*.html'],
   mode: 'jit',
   theme: {
     screens: {
