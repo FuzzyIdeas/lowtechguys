@@ -17,7 +17,7 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/contact?app=ZoomHider" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
-            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.png"
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.png"
             h1.mt-10.text-4xl.text-blue-400 ZoomHider
             h5.text-gray-800 Hide Zoom floating controls when sharing screen
             h5.text-gray-800 Keep them hidden even when pressing Esc
@@ -31,17 +31,20 @@ html lang="en"
                     span.ml-2.text-sm.md:text-base View Source
 
         section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.flex-center
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Hide those annoying floating controls for good
                     .text-base.lg:text-lg.text-gray-600
-                        As long as the ZoomHider app is running, the Zoom screen sharing controls will be kept hidden.
+                        As long as the ZoomHider app is running, the Zoom screen sharing controls will be kept hidden, even if you press `span.bg-black.text-white.rounded.py-1.px-2 Esc`.
                     .text-base.lg:text-lg.text-gray-600
-                        The `b.text-orange-400 menubar icon` allows you to `b.text-blue-400 Pause` hiding, `b.text-red-500 Quit` the app, and even `b.text-green-500 Hide` the menubar icon itself.
+                        The `b.text-orange-400 menubar icon` allows you to `b.text-blue-400 Pause` hiding, `b.text-red-500 Quit` the app, and `b.text-green-500 Hide` the menubar icon itself.
+                    .text-base.lg:text-lg.text-gray-600
+                        There's a `span.bg-black.text-white.rounded.py-1.px-2 ⌥ Right Option` + `span.bg-black.text-white.rounded.py-1.px-2 Z` hotkey to bring back the floating controls when you need them.
                     h4.text-blue-400 How it works?
-                    .text-sm.lg:text-base.text-gray-600
+                    .text-sm.lg:text-base.text-gray-500
                         ZoomHider works by searching for the floating controls window on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the controls hidden at all times.
 
+                -call video="zoomhider-demo" cls="md:w-1/2 rounded-none object-cover" defs:videoset
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
