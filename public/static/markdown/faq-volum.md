@@ -1,5 +1,3 @@
-## What devices are supported?
+## Is Volum completely free?
 
-* Yamaha receivers that are network connected
-
-**For suggestions of devices that we should support, please send us a message on the [Contact](/contact?app=Volum) page.**
+At the moment, Volum is free. We are thinking of adding paid features in the future. Enjoy!

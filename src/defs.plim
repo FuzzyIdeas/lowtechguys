@@ -94,10 +94,10 @@
         source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'
 
--def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='')
-    picture.object-cover.${pcls}
+-def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
+    picture.object-${fit}.${pcls}
         -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} self:sources
-        img.object-cover.${icls} alt=${alt} srcset=${srcset(img, ext, width, factor)} title=${os.path.split(img)[-1]}
+        img.object-${fit}.${icls} alt=${alt} srcset=${srcset(img, ext, width, factor)} title=${os.path.split(img)[-1]}
 
 -def images(folder, ext='png', width=1920, factor=0.4, mobile_factor=1, acls='', pcls='', icls='')
     -for img in images(folder, ext)

@@ -40,7 +40,7 @@ module.exports = {
         mobile: { raw: '(orientation: portrait) and (max-width: 768px)' },
       },
       fontFamily: {
-        mono: ['Meslo', ...fontFamily.mono],
+        mono: ['ui-monospace', 'Meslo', ...fontFamily.mono],
       },
       keyframes: {
         top450: {
@@ -111,22 +111,26 @@ module.exports = {
         yellow: {
           ...colors.yellow,
           lunar: '#FFD586',
+          lunarP3: 'color(display-p3 1 0.786 0.432 / 1)',
           bright: '#FFB500',
           sunflower: '#F7CE68',
           nice: '#F69200',
           gold: '#F0D1AD',
+          peach: '#FFC895',
         },
         orange: {
           ...colors.orange,
           dot: '#FE9500',
           bright: '#F96332',
           peach: '#FBAB7E',
-          bmac: '#ff813f',
+          bmac: '#FF813F',
         },
         red: {
           ...colors.red,
           bright: '#F23343',
+          brightP3: 'color(display-p3 1 0.721 0 / 1)',
           hot: '#FF1536',
+          hotP3: 'color(display-p3 1 0.043 0.131 / 1)',
           mars: '#862833',
           dull: '#C75764',
           low: '#4B171D',
@@ -134,18 +138,18 @@ module.exports = {
         pink: {
           ...colors.pink,
           magenta: '#E14283',
-          magentish: '#811a4c',
+          magentish: '#811A4C',
         },
-        maroon: '#aa9483',
+        maroon: '#AA9483',
         sepia: '#B97F64',
         mauve: {
-          default: '#312A4C',
-          gray: '#454157',
-          lightgray: '#40365d',
-          darkgray: '#292837',
-          dark: '#291B3B',
+          default: '#3D304C',
+          gray: '#4D3E56',
+          lightgray: '#352A3C',
+          darkgray: '#2A252A',
+          dark: '#2E2236',
           blackish: '#120d13',
-          black: '#1E1D22',
+          black: '#201D22',
           blue: '#161122',
         },
         green: {

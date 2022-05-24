@@ -3,7 +3,7 @@
   publish = "public"
 
 [build]
-  command = "make -j build && make -B html"
+  command = "make clean; make -B -j html && make css"
   publish = "public/"
 [build.environment]
   NODE_ENV = "production"

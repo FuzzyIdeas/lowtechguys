@@ -1,0 +1,11 @@
+{
+    http_port 3998
+}
+
+http://localhost, http://gray.local {
+    root * public/
+
+    file_server
+    try_files {path}.html
+    encode zstd gzip
+}

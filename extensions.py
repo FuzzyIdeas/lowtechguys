@@ -1,21 +1,23 @@
-import warnings
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-
 import atexit
 import os
 import re
+import warnings
 from collections import defaultdict
 from copy import deepcopy
 
 from plim import preprocessor_factory
 from plim.extensions import md_to_html
 
+warnings.filterwarnings("ignore", category=DeprecationWarning)
+
+
+
 # icon#id.cls-[1rem]: filename
 PARSE_SVG_PATH_RE = re.compile(
-    r"icon(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[A-Za-z\-/0-9\[\]:]+)+)? : (?P<path>[A-Za-z\-0-9/_]+)"
+    r"icon(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[!A-Za-z\-/0-9\[\]:${}]+)+)? : (?P<path>[A-Za-z\-0-9/_\.]+)"
 )
 PARSE_MDFILE_PATH_RE = re.compile(
-    r"md(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[A-Za-z\-/0-9\[\]:]+)+)? : (?P<path>[A-Za-z\-0-9/_]+)"
+    r"md(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[A-Za-z\-/0-9\[\]:]+)+)? : (?P<path>[A-Za-z\-0-9/_\.]+)"
 )
 
 PARSE_INDEX_RE = re.compile(
@@ -47,7 +49,7 @@ def send_index(index, db):
 
         requests.post(
             f"{SEARCH_URL}/indexes/{index}/documents",
-            headers={"X-Meili-API-Key": API_KEY},
+            headers={"Authorization": f"Bearer {API_KEY}"},
             json=db,
         )
     except:
@@ -138,4 +140,5 @@ CUSTOM_PARSERS = [
     (PARSE_MDFILE_PATH_RE, parse_md_path),
     (PARSE_INDEX_RE, parse_index),
 ]
+
 preprocessor = preprocessor_factory(custom_parsers=CUSTOM_PARSERS, syntax="mako")
