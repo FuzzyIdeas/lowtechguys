@@ -64,7 +64,7 @@ html lang="en"
                             We reimagined Command-Tab
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | to switch apps with no fuss
-                    a.${CLS.appcontainer} href="https://lunar.fyi?source=lowtechguys"
+                    a.${CLS.appcontainer} target="_blank" href="https://lunar.fyi?source=lowtechguys"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : lunar
                         h2.text-mauve-gray Lunar
                         p.text-sm.leading-3.text-gray-black.font-medium
@@ -79,9 +79,11 @@ html lang="en"
                                 #volum-knob-border.z-10
                         h2.text-mauve-gray Volum
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            AV Receiver volume control
+                            Home lights and sounds
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | at your fingertips
+
+                .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="/yellowdot"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
                         h2.text-mauve-gray YellowDot

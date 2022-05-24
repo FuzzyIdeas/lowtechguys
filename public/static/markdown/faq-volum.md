@@ -1,3 +1,5 @@
 ## Is Volum completely free?
 
-At the moment, Volum is free. We are thinking of adding paid features in the future. Enjoy!
+At the moment, Volum is completely free for all supported Apple devices. 
+
+We are considering adding paid features in the future.

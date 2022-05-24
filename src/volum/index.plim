@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Volum - AV Receiver volume control" domain="lowtechguys.com" description="AV receiver volume control at your fingertips" short_description="AV receiver volume control at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
+        - call title="Volum - Home lights and sounds" domain="lowtechguys.com" description="Home lights and sounds at your fingertips" short_description="Home lights and sounds at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
@@ -24,21 +24,18 @@ html lang="en"
                     #volum-knob-indicator.z-10
                     #volum-knob-border.z-10
             h1.mt-6.text-4xl.text-yellow-gold.monospaced Volum
-            h5.text-white AV Receiver volume control
+            h5.text-white Home lights and sounds
             h5.text-white at your fingertips
 
-            / a.flex-grow.mt-6 href="https://testflight.apple.com/join/L4aq4o6t"
-            /     img.w-60.sepia-[.5] width="225" height="70" alt="Try the app on TestFlight" src="/static/svg/testflight.svg"
-            a.flex-grow.mt-6 href="https://apps.apple.com/us/app/volume/id1601814648"
+            a.flex-grow.mt-6 href="https://apps.apple.com/us/app/volum-control-smart-devices/id1601814648"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
-
 
         section#details.flex-center.flex-col.pb-20.space-y-20.xl:space-y-48
             section#hero.flex.flex-col.flex-center.space-y-10
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                    -call img="macos-volum-menu" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full max-h-[30rem]" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="macos menu for the Volum app" fit="contain" defs:image
-                    .md:w-1/2.text-left.md:px-10
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Control your home lights using the keyboard
+                    -call img="macos-volum-menu" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full max-h-[30rem]" pcls="md:w-1/2 max-h-[30rem] flex-center px-10 contrast-125 brightness-90" alt="macos menu for the Volum app" fit="cover" defs:image
+                    .md:w-1/2.text-left.md:px-10.max-w-[650px]
+                        h1.text-3xl.text-left.lg:text-4xl.mb-4 Control your home lights from the comfort of your keyboard
                         .text-base.lg:text-lg.text-gray-white.mb-4
                             Volum automatically assigns the following hotkeys:
                             ul
@@ -48,7 +45,7 @@ html lang="en"
                         .text-base.lg:text-lg.text-gray-white.mb-4
                             Holding `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` while using the hotkeys allows you to adjust all devices at the same time.
 
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 `span.text-orange-300 Lights`, `span.text-blue-300 sounds`, `span.text-red-400 heat`
+                        h1.text-3xl.text-left.lg:text-4xl.mb-4 `span.text-orange-300 Light`, `span.text-blue-300 sounds`, `span.text-red-400 heat`
                         .text-base.lg:text-lg.text-gray-white
                             Volum can control any device as long as it has `b.text-orange-300 network controls`.
                         .text-base.lg:text-lg.text-gray-white.mt-2
@@ -56,23 +53,23 @@ html lang="en"
 
             section#templates.flex.flex-col.flex-center.space-y-10
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                    .md:w-1/2.text-left.md:px-10
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Powerful templating engine
+                    .md:w-1/2.text-left.md:px-10.max-w-[650px]
+                        h1.text-3xl.text-left.lg:text-4xl.mb-4 Powerful templating engine
                         .text-base.lg:text-lg.text-gray-white.mb-4
                             With support for `b.text-blue-200 HomeAssistant`, `b.text-green-300 ESPHome`, `b.text-orange-300 Snapcast` and many more to come, our templating engine enables everyone to contribute to the Volum community of tinkerers.
 
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mt-8.mb-4 Integrated network scanner
+                        h1.text-3xl.text-left.lg:text-4xl.mt-8.mb-4 Integrated network scanner
                         .text-base.lg:text-lg.text-gray-white
                             Adding a new device is a breeze, as Volum can automatically detect your devices on the network.
-                    -call img="volum-templates-menu" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full max-h-[30rem]" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="macOS Templates screen of the Volum app" fit="contain" defs:image
+                    -call img="volum-templates-menu" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full max-h-[30rem] rounded-lg md:rounded-2xl shadow-lg md:shadow-3xl" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="macOS Templates screen of the Volum app" fit="cover" defs:image
 
             section#yamaha.flex.flex-col.flex-center.space-y-10
                 h1.text-4xl.px-10.text-center.md:text-left.lg:text-5xl.mb-4.text-orange-200 Yamaha AVR native support
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                    -call img="yamaha-av" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="yamaha av receiver" defs:image
+                    -call img="yamaha-av" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="yamaha av receiver" defs:image
 
-                    .md:w-1/2.text-left.md:px-10
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Native volume control for AVRs
+                    .md:w-1/2.text-left.md:px-10.max-w-[650px]
+                        h1.text-3xl.text-left.lg:text-4xl.mb-4 Native volume control for AVRs
                         .text-base.lg:text-lg.text-gray-white.mb-4
                             Volum adds native support for controlling the following functions of your Yamaha AVR:
                             ul
@@ -82,26 +79,28 @@ html lang="en"
                                 li.text-stone-300.font-extrabold Control any zone
                                 li.text-blue-200.font-extrabold Mute/unmute
 
-                        h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Automatic input switching
+                        h1.text-3xl.text-left.lg:text-4xl.mb-4 Automatic input switching
                         .text-base.lg:text-lg.text-gray-white
                             You can bind a receiver to a `b.text-orange-300 Mac audio output` so that when you select that output, the receiver automatically `b.text-red-300 powers on`, `b.text-red-300 unmutes` and switches to the correct `b.text-orange-300 input` and `b.text-orange-300 zone`.
 
-            section#multiplatform.flex.flex-col.flex-center.space-y-10
+            section#multiplatform.flex.flex-col.flex-center
                 h1.text-4xl.px-10.text-center.md:text-left.lg:text-5xl.mb-4.text-orange-200 Control AVs from any device
 
-                .text-base.lg:text-lg.text-gray-white.mb-32
-                    Volum is a native app for both iOS and macOS, and will synchronize between all your Apple devices.
+                .text-base.text-gray-white.mb-0.pb-0.font-mono
+                    Volum is a native app for both iOS and macOS
+                .text-base.text-gray-white.mb-32.mt-0.pt-0.font-mono
+                    | and will synchronize between all your Apple devices.
 
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-full.md:max-w-[1400px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.items-end.justify-around
                     .flex.items-end.space-x-10
                         .flex.flex-center.flex-col
-                            -call img="volum-iphone" fit="contain" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[20rem]" pcls="flex items-end md:h-[20rem]" alt="screenshot of the app interface on iphone" defs:image
+                            -call img="volum-iphone" fit="contain" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[20rem]" pcls="flex items-end md:h-[20rem]" alt="screenshot of the app interface on iphone" defs:image
                             h1 iPhone
                         .flex.flex-center.flex-col
-                            -call img="volum-ipad" fit="contain" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[30rem]" pcls="flex items-end md:h-[30rem]" alt="screenshot of the app interface on ipad" defs:image
+                            -call img="volum-ipad" fit="contain" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[30rem]" pcls="flex items-end md:h-[30rem]" alt="screenshot of the app interface on ipad" defs:image
                             h1 iPad
                     .flex.flex-center.flex-col
-                        -call img="volum-macbook" fit="contain" factor=${1.5} mobile_factor=${0.5} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[30rem]" pcls="flex items-end md:h-[30rem]" alt="screenshot of the app interface opened from the menu bar" defs:image
+                        -call img="volum-macbook" fit="contain" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full drop-shadow-2xl md:h-[30rem]" pcls="flex items-end md:h-[30rem]" alt="screenshot of the app interface opened from the menu bar" defs:image
                         h1 Mac
 
 
