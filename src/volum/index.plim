@@ -28,7 +28,7 @@ html lang="en"
             h5.text-white at your fingertips
 
             a.flex-grow.mt-6 href="https://apps.apple.com/us/app/volum-control-smart-devices/id1601814648"
-                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
+                img.w-60 width="225" height="58" alt="Download on the App Store" src="/static/svg/universal-appstore.svg"
 
         section#details.flex-center.flex-col.pb-20.space-y-20.xl:space-y-48
             section#hero.flex.flex-col.flex-center.space-y-10

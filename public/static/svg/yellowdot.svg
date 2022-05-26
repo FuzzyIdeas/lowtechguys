@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="824px" height="824px" viewBox="0 0 824 824" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>yellowdot</title>
     <defs>
         <filter x="-2.2%" y="-2.2%" width="104.4%" height="104.4%" filterUnits="objectBoundingBox" id="filter-2">
             <feGaussianBlur stdDeviation="10" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
