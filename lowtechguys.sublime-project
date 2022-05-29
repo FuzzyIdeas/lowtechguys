@@ -7,7 +7,10 @@
 			"folder_exclude_patterns": [
 				"node_modules"
 			],
-			"path": "."
-		}
-	]
+			"path": ".",
+		},
+		{
+			"path": "/Users/alin/Library/Group Containers/G78RJ6NLJU.group.at.EternalStorms.Yoink/Documents/YoinkPromisedFiles/ESSYoinkSnippets/919DD5A6-0E1D-45AC-90F2-4547583041A8.rtfd"
+		},
+	],
 }
