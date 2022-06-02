@@ -6,15 +6,23 @@
 doctype html
 html lang="en"
     head
-        - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" defs:head
+        - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" defs:head
         script async="true" defer="true" src="/static/js/anime.min.js"
         link href="/static/css/code.css" rel="stylesheet"
+
+        meta property="og:video" content="https://files.lowtechguys.com/rcmd-og.mp4"
+        meta property="og:video:url" content="https://files.lowtechguys.com/rcmd-og.mp4"
+        meta property="og:video:secure_url" content="https://files.lowtechguys.com/rcmd-og.mp4"
+        meta property="og:video:type" content="video/mp4"
+        meta property="og:video:width" content="1200"
+        meta property="og:video:height" content="630"
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
+                a.text-sm.md:text-base.ml-4 href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/rcmd/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
 

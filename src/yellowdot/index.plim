@@ -14,6 +14,7 @@ html lang="en"
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
+                a.text-sm.md:text-base.ml-4 href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/yellowdot/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=YellowDot" Contact
 

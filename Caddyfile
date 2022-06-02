@@ -1,8 +1,9 @@
 {
     http_port 3998
+    auto_https off
 }
 
-http://localhost, http://gray.local {
+http://localhost, http://gray.local, http://ltg.tunnel.darkwoods.win {
     root * public/
 
     file_server

@@ -31,7 +31,7 @@
         if hashed_css:
             CSS = hashed_css[0][6:]
 
-- def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)')
+- def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='')
     title ${title}
     link href="${favicon}" rel="shortcut icon"
     link href="${CSS}" rel="stylesheet"
@@ -43,17 +43,27 @@
       "maximum-scale=6.0, " +
       "shrink-to-fit=no")
     meta itemprop="description" content="${description}"
-    meta itemprop="image" content="https://${domain}/static/img/${screenshot}.png"
     meta itemprop="name" content="${title}"
     meta name="apple-mobile-web-app-status-bar-style" content="black"
     meta name="description" content="${description}"
-    meta name="image" content="https://${domain}/static/img/${screenshot}.png"
+
+    -if gif
+        meta itemprop="image" content="${gif}"
+        meta name="image" content="${gif}"
+        meta property="og:image" content="${gif}"
+        meta property="og:image:type" content="image/gif"
+        meta name="twitter:image" content="${gif}"
+    -else
+        meta itemprop="image" content="https://${domain}/static/img/${screenshot}.png"
+        meta name="image" content="https://${domain}/static/img/${screenshot}.png"
+        meta property="og:image" content="https://${domain}/static/img/${screenshot}.png"
+        meta name="twitter:image" content="https://${domain}/static/img/${screenshot}.png"
+
     meta name="mobile-web-app-capable" content="no"
     meta name="msapplication-TileColor" content="${color}"
     meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}/${f'{icon_size}_{icon}' if icon_size else icon}.png"
     meta name="theme-color" content="${color}"
     meta property="og:description" content="${description}"
-    meta property="og:image" content="https://${domain}/static/img/${screenshot}.png"
     meta property="og:site_name" content="${title}"
     meta property="og:title" content="${title}"
     meta property="og:type" content="website"
@@ -62,7 +72,7 @@
     meta name="twitter:title" content="${title}"
     meta name="twitter:description" content="${description}"
     meta name="twitter:card" content="summary_large_image"
-    meta name="twitter:image" content="https://${domain}/static/img/${screenshot}.png"
+
     -if not DEV
         script async="true" defer="true" data-domain="${domain}" src="https://plausible.alinpanaitiu.com/js/plausible.js"
     -coffee

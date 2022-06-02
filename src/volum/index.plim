@@ -6,7 +6,18 @@
 doctype html
 html lang="en"
     head
-        - call title="Volum - Home lights and sounds" domain="lowtechguys.com" description="Home lights and sounds at your fingertips" short_description="Home lights and sounds at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" defs:head
+        - call title="Volum - Home lights and sounds at your fingertips" domain="lowtechguys.com" description="Control those smart home devices that don't have easy to use apps, from your Mac keyboard, iPhone or iPad, using just a slider and a few buttons" short_description="Control smart home devices from your Mac keyboard, iPhone or iPad" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" gif="https://files.lowtechguys.com/volum-og.gif" defs:head
+
+        meta property="og:image:width" content="600"
+        meta property="og:image:height" content="315"
+
+        meta property="og:video" content="https://files.lowtechguys.com/volum-og.mp4"
+        meta property="og:video:url" content="https://files.lowtechguys.com/volum-og.mp4"
+        meta property="og:video:secure_url" content="https://files.lowtechguys.com/volum-og.mp4"
+        meta property="og:video:type" content="video/mp4"
+        meta property="og:video:width" content="1200"
+        meta property="og:video:height" content="630"
+
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
@@ -14,6 +25,7 @@ html lang="en"
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-white : lowtech
             .links
+                a.text-sm.md:text-base.ml-4 href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/volum/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Volum" Contact
 
@@ -27,10 +39,11 @@ html lang="en"
             h5.text-white Home lights and sounds
             h5.text-white at your fingertips
 
-            a.flex-grow.mt-6 href="https://apps.apple.com/us/app/volum-control-smart-devices/id1601814648"
-                img.w-60 width="225" height="58" alt="Download on the App Store" src="/static/svg/universal-appstore.svg"
-            a.flex-grow.mt-6 href="itms-beta://testflight.apple.com/join/L4aq4o6t"
-                img.w-60 width="185" height="58" alt="Try the beta on Testflight" src="/static/svg/testflight-try-beta.svg"
+            .flex.justify-center.items-center.flex-col.md:flex-row.md:space-x-4
+                a.flex-grow.mt-6 href="https://apps.apple.com/us/app/volum-control-smart-devices/id1601814648"
+                    img.w-60 width="225" height="58" alt="Download on the App Store" src="/static/svg/universal-appstore.svg"
+                a.flex-grow.mt-6 href="itms-beta://testflight.apple.com/join/L4aq4o6t"
+                    img.w-64 width="198" height="62" alt="Try the beta on Testflight" src="/static/svg/testflight-try-beta.svg"
 
         section#details.flex-center.flex-col.pb-20.space-y-20.xl:space-y-48
             section#hero.flex.flex-col.flex-center.space-y-10
