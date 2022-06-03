@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 
+export DEPLOY_URL=https://ltg.tunnel.darkwoods.win
+
 trap "pkill -9 -f -l 'caddy|livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss'" INT EXIT
 cd public/ && npx -y livereloadx --static &
 
