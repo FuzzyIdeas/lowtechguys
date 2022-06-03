@@ -20,12 +20,12 @@ html lang="en"
 
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
-    body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+    body.bg-zinc-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-white : lowtech
             .links
-                a.text-sm.md:text-base.ml-4 href="/" Other apps
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/volum/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Volum" Contact
 
@@ -48,7 +48,9 @@ html lang="en"
         section#details.flex-center.flex-col.pb-20.space-y-20.xl:space-y-48
             section#hero.flex.flex-col.flex-center.space-y-10
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                    img.w-full.xl:w-auto.xl:h-full.max-h-[30rem] alt="MacBook with the Volum app menu open" src="/static/svg/volum-macbook.svg"
+                    / img.w-full.xl:w-auto.xl:h-full.max-h-[30rem] alt="MacBook with the Volum app menu open" src="/static/svg/volum-macbook.svg"
+                    -call video="volum-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" webm=false poster="/static/svg/volum-macbook.svg" defs:videoset
+
                     / -call img="macos-volum-menu" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full max-h-[30rem]" pcls="md:w-1/2 max-h-[30rem] flex-center px-10 contrast-125 brightness-90" alt="macos menu for the Volum app" fit="cover" defs:image
                     .md:w-1/2.text-left.md:px-10.max-w-[650px]
                         h1.text-3xl.text-left.lg:text-4xl.mb-4 Control your home lights from the comfort of your keyboard
@@ -72,15 +74,19 @@ html lang="en"
                     .md:w-1/2.text-left.md:px-10.max-w-[650px]
                         h1.text-3xl.text-left.lg:text-4xl.mb-4 Powerful templating engine
                         .text-base.lg:text-lg.text-gray-white.mb-4
-                            With support for `b.text-blue-200 HomeAssistant`, `b.text-green-300 ESPHome`, `b.text-orange-300 Snapcast` and many more to come, our templating engine enables everyone to contribute to the Volum community of tinkerers.
+                            With support for `a.text-blue-200.!underline.!decoration-current.!decoration-dotted.!decoration-2 target="_blank" href="https://www.home-assistant.io/" HomeAssistant`, `a.text-green-300.!underline.!decoration-current.!decoration-dotted.!decoration-2 target="_blank" href="https://esphome.io/" ESPHome`, `a.text-blue-500.!underline.!decoration-current.!decoration-dotted.!decoration-2 target="_blank" href="https://kno.wled.ge/" WLED`, `a.text-orange-300.!underline.!decoration-current.!decoration-dotted.!decoration-2 target="_blank" href="https://github.com/badaix/snapcast" Snapcast` and many more to come, our templating engine enables everyone to contribute to the Volum community of tinkerers.
 
                         h1.text-3xl.text-left.lg:text-4xl.mt-8.mb-4 Integrated network scanner
                         .text-base.lg:text-lg.text-gray-white
                             Adding a new device is a breeze, as Volum can automatically detect your devices on the network.
+
+                        .text-base.lg:text-lg.text-gray-white.mt-2
+                            Just press the `b.text-orange-200 Scan Local Network` button and let Volum find devices that support the currently used template.
+
                     -call img="volum-templates-menu" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full max-h-[30rem] rounded-lg md:rounded-2xl shadow-lg md:shadow-3xl" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="macOS Templates screen of the Volum app" fit="cover" defs:image
 
             section#yamaha.flex.flex-col.flex-center.space-y-10
-                h1.text-4xl.px-10.text-center.md:text-left.lg:text-5xl.mb-4.text-orange-200 Yamaha AVR native support
+                h1.text-5xl.px-10.text-center.md:text-left.mb-4.text-orange-200 Yamaha AVR native support
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1600px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                     -call img="yamaha-av" factor=${3} mobile_factor=${1.2} icls="w-full xl:w-auto xl:h-full" pcls="md:w-1/2 max-h-[30rem] flex-center px-10" alt="yamaha av receiver" defs:image
 
@@ -100,11 +106,11 @@ html lang="en"
                             You can bind a receiver to a `b.text-orange-300 Mac audio output` so that when you select that output, the receiver automatically `b.text-red-300 powers on`, `b.text-red-300 unmutes` and switches to the correct `b.text-orange-300 input` and `b.text-orange-300 zone`.
 
             section#multiplatform.flex.flex-col.flex-center
-                h1.text-4xl.px-10.text-center.md:text-left.lg:text-5xl.mb-4.text-orange-200 Control AVs from any device
+                h1.text-5xl.px-10.text-center.md:text-left.mb-4.text-orange-200 Control AVs from any device
 
-                .text-base.text-gray-white.mb-0.pb-0.font-mono
+                .text-sm.md:text-base.text-gray-white.mb-0.pb-0.font-mono
                     Volum is a native app for both iOS and macOS
-                .text-base.text-gray-white.mb-32.mt-0.pt-0.font-mono
+                .text-sm.md:text-base.text-gray-white.mb-32.mt-0.pt-0.font-mono
                     | and will synchronize between all your Apple devices.
 
                 .flex.md:space-x-10.w-screen.max-w-[576px].md:w-full.md:max-w-[1400px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.items-end.justify-around

@@ -30,21 +30,17 @@ build: all
 
 watch-css: export TAILWIND_MODE=watch
 watch-css:
-	npx tailwindcss --postcss --jit -i .css/app.css -o public/static/css/app.css -w
+	npx -y tailwindcss --postcss --jit -i .css/app.css -o public/static/css/app.css -w
 
-dev: export SHELL=$$(which fish)
 dev: export NODE_ENV=development
 dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
-	@trap "pkill -9 -f -l 'caddy|livereload|/bin/sh -c livereload'" INT EXIT && \
-		cd public/ && npx livereloadx --static & \
-		cd - && caddy run -watch & \
-		rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript | entr -s 'make html stylus js'
+	fish run.fish
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@
-	@npx stylus -u rupture -c -m -o .css/ $<
+	@npx -y stylus -u rupture -c -m -o .css/ $<
 stylus: .css/app.css
 
 clean:
@@ -63,6 +59,6 @@ deps: python-deps node-deps netlify-deps
 public/static/css/%.css: export TAILWIND_MODE=build
 public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js # $(wildcard public/*.html) $(wildcard public/**/*.html)
 	@echo Compiling $< to $@
-	@npx stylus -u rupture -c -m -o .css/ $<
-	@npx tailwindcss --postcss --jit -i .css/$*.css -o $@
+	@npx -y stylus -u rupture -c -m -o .css/ $<
+	@npx -y tailwindcss --postcss --jit -i .css/$*.css -o $@
 

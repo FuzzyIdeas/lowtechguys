@@ -92,16 +92,18 @@
                   background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
 
 
-- def videoset(video, cls)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
+- def videoset(video, cls, webm=True, poster=None)
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or "/static/img/${video}-poster/${video}-poster.webp"} )
         source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
-        source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/${video}-h264.mp4" type='video/mp4; codecs=avc1'
+        -if webm
+            source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="/static/video/${video}-h264.mp4"
 
-- def smallvideoset(video, cls)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster/${video}-poster.webp")
+- def smallvideoset(video, cls, webm=True, poster=None)
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or "/static/img/${video}-poster/${video}-poster.webp"} )
         source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
-        source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        -if webm
+            source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'
 
 -def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
