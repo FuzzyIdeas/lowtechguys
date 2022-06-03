@@ -97,14 +97,14 @@
         source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
             source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/${video}-h264.mp4"
+        source src="/static/video/${video}-h264.mp4" type="video/mp4"
 
 - def smallvideoset(video, cls, webm=True, poster=None)
     video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or "/static/img/${video}-poster/${video}-poster.webp"} )
         source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
             source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/small/${video}-h264.mp4" type='video/mp4; codecs=avc1'
+        source src="/static/video/small/${video}-h264.mp4" type='video/mp4'
 
 -def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
     picture.object-${fit}.${pcls}
