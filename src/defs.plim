@@ -25,16 +25,10 @@
     def images(folder, ext="png"):
         return [os.path.splitext(img[18:])[0] for img in glob.glob(f"public/static/img/{folder}/*.{ext}")]
 
-    CSS = "/static/css/app.css"
-    if not DEV:
-        hashed_css = glob.glob("public/static/css/app.*.css")
-        if hashed_css:
-            CSS = hashed_css[0][6:]
-
 - def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='')
     title ${title}
     link href="${favicon}" rel="shortcut icon"
-    link href="${CSS}" rel="stylesheet"
+    link href="/static/css/app.css" rel="stylesheet"
     meta rel="canonical" href="https://${domain}"
     meta charset="utf-8"
     meta name="viewport" content=(
@@ -64,7 +58,7 @@
 
     meta name="mobile-web-app-capable" content="no"
     meta name="msapplication-TileColor" content="${color}"
-    meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}/${f'{icon_size}_{icon}' if icon_size else icon}.png"
+    meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}.png"
     meta name="theme-color" content="${color}"
     meta property="og:description" content="${description}"
     meta property="og:site_name" content="${title}"
