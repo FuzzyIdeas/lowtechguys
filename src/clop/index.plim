@@ -1,0 +1,95 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="Clop - Clipboard optimizer for images" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" short_description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" defs:head
+
+    body.bg-zinc-300.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/clop/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
+            h1.mb-6.text-4xl.text-zinc-600 Clop
+            h5.text-gray-500.m-0.p-0 Clipboard optimizer for images
+            h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.text-white.bg-zinc-700.${'hover:text-black'}.${'hover:bg-zinc-500'}.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/Clop.zip"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-white.bg-gray-900.${'hover:text-black'}.${'hover:bg-gray-300'}.flex.justify-center.items-center href="https://github.com/alin23/Clop"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.md:text-base View Source
+            .text-red-700.text-xxs.mt-4.font-medium.opacity-30
+                | compatible with macOS `b 13.0+` (Ventura and later)
+
+        section#details.flex-center.flex-col.pb-20.space-y-24.px-8
+            .flex.flex-col.space-y-2.md:w-2/3.text-left
+                h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Optimize images as soon as you copy them
+                .text-base.lg:text-lg.text-gray-600
+                    As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimize` it to the `b smallest possible size`.
+                .text-base.lg:text-lg.text-gray-600
+                    -md
+                        Clop uses the following utilities for optimizing different kinds of images:
+
+                        * `pngquant` for PNG
+                        * `jpegoptim` for JPEG
+                        * `gifsicle` for GIF
+            .flex.flex-col.space-y-2.md:w-2/3.text-left
+                h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 What's up with the hat in the icon?
+                .text-base.lg:text-lg.text-gray-600
+                    -md
+                        *Clop* is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn more as an adorment in days of celebration.
+
+                        We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll of the tongue as easily. We're <b class="text-red-hot">Rom</b><b class="text-amber-500">an</b><b class="text-blue-500">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            em
+                color var(--color-orange-800)
+            strong
+                color var(--color-red-700)
+            li
+                margin-bottom 4px
+
+            #faq
+                code
+                    background-color alpha(blue, 0.25)
+                    color var(--color-gray-700)
+                    padding 0 .5rem
+
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-700)
+
+                hr
+                    border-color alpha(blue, 0.1)
+                li
+                    line-height 1.8
+
+            a
+                color var(--color-blue-400)
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

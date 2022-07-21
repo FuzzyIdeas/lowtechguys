@@ -20,7 +20,7 @@ css: export PYTHONWARNINGS=ignore
 css: public/static/css/app.css
 
 html: export PYTHONWARNINGS=ignore
-html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/zoomhider/index.html public/zoomhider/privacy.html public/volum/index.html public/volum/privacy.html public/contact.html
+html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/zoomhider/index.html public/zoomhider/privacy.html public/clop/index.html public/clop/privacy.html public/volum/index.html public/volum/privacy.html public/gammadimmer/index.html public/gammadimmer/privacy.html public/contact.html
 
 all: html css
 

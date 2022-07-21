@@ -5,13 +5,13 @@
     "cssnano": "^4.1.10",
     "livereloadx": "^0.3.10",
     "lodash": "^4.17.21",
-    "postcss": "^8.4.13",
-    "postcss-cli": "^9.1.0",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
     "postcss-easings": "^3.0.1",
     "rupture": "^0.7.1",
-    "stylus": "^0.57.0",
+    "stylus": "^0.58.1",
     "tailwind-css-variables": "^3.0.1",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.1.6"
   },
   "devDependencies": {
     "netlify": "^4.1.1",

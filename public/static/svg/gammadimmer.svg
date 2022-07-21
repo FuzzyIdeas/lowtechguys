@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="212px" height="208px" viewBox="0 0 212 208" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="47.1613987%" id="linearGradient-gd">
+            <stop stop-color="#1D1D1D" offset="0%"></stop>
+            <stop stop-color="#262626" offset="100%"></stop>
+        </linearGradient>
+        <path d="M76,0 C117.973641,0 152,34.026359 152,76 C152,87.7843276 149.31792,98.9422218 144.530893,108.896548 C144.840873,106.244899 145,103.547058 145,100.812051 C145,62.7044036 114.107648,31.8120514 76,31.8120514 C37.8923523,31.8120514 7,62.7044036 7,100.812051 C7,103.547058 7.15912688,106.244899 7.46862744,108.896821 C2.6820805,98.9422218 0,87.7843276 0,76 C0,34.026359 34.026359,0 76,0 Z" id="path-2"></path>
+        <filter x="-36.2%" y="-32.1%" width="172.4%" height="201.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="15" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="AppIcon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-Artwork-Lite" transform="translate(-22.000000, -23.000000)">
+            <g id="Group" transform="translate(24.000000, 23.000000)">
+                <path d="M178.206311,3.46897778 C167.8872,0 161.160711,0 137.191022,0 L70.8078222,0 C46.8381333,0 40.1128,0 29.7936889,3.46897778 C17.5933333,7.92826667 7.92826667,17.5933333 3.46897778,29.7925333 C0,40.1128 0,46.8381333 0,70.8078222 L0,137.191022 C0,161.160711 0,167.8872 3.46897778,178.206311 C7.92826667,190.405511 17.5933333,200.071733 29.7936889,204.529867 C40.1128,208 46.8381333,208 70.8078222,208 L137.191022,208 C161.160711,208 167.8872,208 178.206311,204.529867 C190.405511,200.071733 200.071733,190.405511 204.529867,178.206311 C208,167.8872 208,161.160711 208,137.191022 L208,70.8078222 C208,46.8381333 208,40.1128 204.529867,29.7925333 C200.071733,17.5933333 190.405511,7.92826667 178.206311,3.46897778" id="Squircle" fill="url(#linearGradient-gd)"></path>
+                <g id="Combined-Shape" transform="translate(28.000000, 28.432483)">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="#FFB465" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

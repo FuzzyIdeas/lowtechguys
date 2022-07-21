@@ -52,9 +52,9 @@
         meta property="og:image" content="${webp}"
         meta property="og:image:type" content="image/webp"
     -else
-        meta itemprop="image" content="https://${domain}/static/img/${screenshot}.png"
-        meta name="image" content="https://${domain}/static/img/${screenshot}.png"
-        meta property="og:image" content="https://${domain}/static/img/${screenshot}.png"
+        meta itemprop="image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta name="image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta property="og:image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
 
     meta name="mobile-web-app-capable" content="no"
     meta name="msapplication-TileColor" content="${color}"
@@ -120,3 +120,43 @@
         source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
     source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)}
     source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"
+
+- def anchors()
+    -coffee
+        tagNames = [
+          'h1'
+          'h2'
+          'h3'
+          'h4'
+          'h5'
+          'h6'
+        ]
+        tagSelector = tagNames.join()
+        elements = document.querySelectorAll(tagSelector)
+
+        createAnchor = (href) ->
+          link = document.createElement('a')
+          link.className = 'anchor-headings'
+          link.href = href
+          link.appendChild document.createTextNode('#')
+          link
+
+        for element in elements
+          id = element.id
+          if not id
+            # Check if heading has any nested elements with id
+            innerElement = element.querySelector('[id]')
+            if innerElement
+              id = innerElement.id
+
+          if not id
+            continue
+
+          href = '#' + id
+          existingAnchor = element.querySelector('[href]')
+
+          if existingAnchor
+            continue
+
+          anchor = createAnchor(href)
+          element.appendChild anchor

@@ -8,6 +8,8 @@ module.exports = {
     './public/yellowdot/*.html',
     './public/zoomhider/*.html',
     './public/volum/*.html',
+    './public/gammadimmer/*.html',
+    './public/clop/*.html',
   ],
   mode: 'jit',
   theme: {
@@ -29,6 +31,11 @@ module.exports = {
       1200: '1200px',
     },
     extend: {
+      fontSize: {
+        xxxs: ['0.55rem', '9px'],
+        xxs: ['0.7rem', '11px'],
+        xs: ['0.75rem', '13px'],
+      },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.45)',
         '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
@@ -46,7 +53,7 @@ module.exports = {
         mobile: { raw: '(orientation: portrait) and (max-width: 768px)' },
       },
       fontFamily: {
-        mono: ['ui-monospace', 'Meslo', ...fontFamily.mono],
+        mono: ['ui-monospace', ...fontFamily.mono],
       },
       keyframes: {
         top450: {

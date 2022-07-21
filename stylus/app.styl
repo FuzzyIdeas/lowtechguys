@@ -66,10 +66,12 @@ a:hover
 
 .btn
     font-weight: theme('fontWeight.medium')
-    border-radius: theme('borderRadius.xl')
-    transition-duration: theme('transitionDuration.200')
+    border-radius: theme('borderRadius.2xl')
+    transition-duration: theme('transitionDuration.150')
     transition-property: theme('transitionProperty.DEFAULT')
     padding: theme('padding.3') theme('padding.5')
+    text-decoration none !important
+
 
 body section#hero .btn-paddle,
 body section#pro .btn-paddle
@@ -94,6 +96,18 @@ body section#pro .btn-paddle
         color: theme('textColor.yellow.bright') !important
         background: theme('backgroundColor.mauve.blackish') !important
 
+.btn-white
+    background-color: theme('backgroundColor.white')
+    color: theme('textColor.black')
+
+.btn-white:hover
+    background-color: theme('backgroundColor.yellow.lunar')
+    background-color: theme('backgroundColor.yellow.lunarP3')
+    color: theme('textColor.mauve.lightgray')
+
+    svg
+        filter sepia(1)
+
 .btn-yellow-lunar
     background-color: theme('backgroundColor.yellow.lunar')
     color: theme('textColor.black')
@@ -101,6 +115,22 @@ body section#pro .btn-paddle
 .btn-yellow-lunar:hover
     background-color: theme('backgroundColor.mauve.black')
     color: theme('textColor.white')
+
+.btn-yellow-bright
+    background-color: theme('backgroundColor.yellow.bright')
+    color: theme('textColor.black')
+
+.btn-yellow-bright:hover
+    background-color: theme('backgroundColor.amber.400')
+    color: theme('textColor.black')
+
+.btn-yellow-peach
+    background-color: theme('backgroundColor.yellow.peach')
+    color: theme('textColor.black')
+
+.btn-yellow-peach:hover
+    background-color: theme('backgroundColor.yellow.lunar')
+    color: theme('textColor.black')
 
 .btn-orange-dot
     background-color: theme('backgroundColor.orange.dot')
@@ -209,14 +239,18 @@ strong
             opacity 0.7
 
 code
-    background-color darkBlue
+    background-color lightGrayMauve
     padding 2px 4px
-    border-radius 2px
+    border-radius 8px
+    border solid 2px alpha(warmWhite, 30%)
+    font-weight 600
+    color lunarYellow
 
 pre code
     background-color transparent
     padding 0
     border-radius 0
+    border none
 
 pre
     background mix(black, darkMauve, 50%)
@@ -238,6 +272,7 @@ pre
         border-radius revert
         overflow-x revert
         color white
+
 
 .content
     transition-property: max-height
@@ -307,3 +342,19 @@ video
         position absolute
         bottom 24%
         left 12%
+
+.anchor-headings
+    margin: 0 5px
+    font-weight: bold
+    font-size: smaller
+    font-family: monoSpace
+    color: lunarYellow
+    opacity: 0.5
+    &:hover
+        opacity: 1
+
+    &:visited
+        color: peach
+
+    &:active
+        color: dullRed

@@ -1,0 +1,319 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+    - call title="Gamma Dimmer - Dim any screen brightness" domain="lowtechguys.com" description="Dim any screen brightness and keep monitors in sync without losing color accuracy" short_description="Dim any screen and keep color accuracy" favicon="/gammadimmer/favicon.ico" icon="gammadimmer-icon" icon_size="1280" screenshot="gammadimmer-screenshot" color="rgb(23, 23, 23)" defs:head
+
+    body.bg-neutral-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-yellow-peach : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/gammadimmer/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=GammaDimmer" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mt-20.mb-4 : gammadimmer
+            h1.text-4xl.text-yellow-peach.monospaced Gamma Dimmer
+            h5.text-white Dim any screen and keep color accuracy
+            a.mt-10.flex-grow href="https://apps.apple.com/us/app/gamma-dimmer/1635180752"
+                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
+
+            a.btn.btn-yellow-peach.mt-10.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/GammaDimmer.zip" Try for free
+            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+
+
+        section#details.flex-center.flex-col.pb-20.space-y-24.mt-20
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Screen dimmer without compromises
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Instead of placing a `b.text-stone-400 dark overlay`, the app dims brightness by `b.text-yellow-bright altering the RGB Gamma tables` of each screen.
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        This makes the colors appear `b.text-stone-400 darker` while keeping them `b.text-blue-200 vivid` and `b.text-red-300 accurate`.
+                    .text-base.lg:text-lg.text-gray-white
+                        A dark overlay is still used for screens not supporting Gamma, or when Gamma is already in use by another app like `a href="https://justgetflux.com/" f.lux`, `a href="https://lunar.fyi/" Lunar`, `a href="https://michelf.ca/projects/gamma-control/" Gamma Control` etc.
+
+                -call img="gammadimmer-sliders" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing screens with brightness sliders" defs:image
+
+            .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.md:space-x-10.md:space-x.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Auto-learning brightness curves
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        With multiple displays, some screens can be brighter than others at the same brightness percentage.
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        After dimming a screen to match others, the `b.text-red-400 All Displays` slider will learn the brightness curve and keep it in sync with others.
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Brightness keyboard control
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Use the `span.bg-white.text-black.rounded.py-1.px-2.font-mono.font-bold F1` and `span.bg-white.text-black.rounded.py-1.px-2.font-mono.font-bold F2` keys to adjust brightness of the active display.
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Add the `span.bg-white.text-black.rounded.py-1.px-2.font-mono.font-bold Shift` modifier to control all displays and `b.text-yellow-nice keep them in sync`.
+
+            video.shadow-lg.md:shadow-2xl.rounded-lg.md:rounded-2xl.w-[90vw].max-w-[700px] (autoplay muted loop disablePictureInPicture playsinline src="/static/video/gammadimmer-demo.mp4" )
+
+            h1.text-center FAQ
+            #faq.text-left.text-white.self-center.md:self-start.w-[900px].max-w-[90vw].md:px-4.mx-auto
+                md : faq-gammadimmer
+
+            section#comparison.flex.flex-col.flex-center.w-screen.py-10
+                h1.text-red-hot.p-0.m-0.4xl:text-5xl.font-extrabold Gamma Dimmer
+                h2.text-orange-200.p-0.m-0.4xl:text-4xl.!font-mono vs
+                h1.text-yellow-bright.p-0.m-0.4xl:text-5xl.font-extrabold Lunar Pro
+                div.flex.flex-col.flex-center.w-screen.mt-8
+                    table.w-[95vw].xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
+                        thead
+                            tr
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium Feature
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium Gamma Dimmer
+                                th.text-sm.md:text-xl.py-5.px-1.font-bold.font-mono Lunar Pro
+                        tbody
+                            tr
+                                td
+                                    a.font-normal.text-black href="https://lunar.fyi/#ddc" DDC support
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Real brightness control for all modern monitors
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td:
+                                    a.font-normal.text-black href="https://lunar.fyi/#fallback" Brightness Dimming
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Software dimming using Gamma or Dark Overlay
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.font-normal.text-black href="https://lunar.fyi/#keys" Brightness keys support
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Control monitors using the `img.inline.h-3.w-3.-mt-1 src='/static/svg/sun.svg'` keys
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.font-normal.text-black href="https://lunar.fyi/#keys" Function keys support
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Control monitors using F1/F2
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td:
+                                    a.font-normal.text-black href="https://lunar.fyi/#subzero" Dim brightness below zero
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use software dimming to go below the screen 0% brightness limit
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-yellow-lunar.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 Needs manual lowering
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 of real monitor brightness
+                            tr
+                                td
+                                    .font-medium : Control multiple monitors
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Single hotkey and slider to control all monitors
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.text-black href="https://lunar.fyi/#keys" Input switching
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Switch to HDMI/DisplayPort/USB-C port from the app
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.text-black href="https://lunar.fyi/#sync" Sync brightness between displays
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Allows macOS adaptive brightness on external monitors
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.text-black href="https://lunar.fyi/#blackout" Built-in light sensor support
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Monitors adapt to ambient light even when the MacBook display is off
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.text-black href="https://lunar.fyi/#blackout" Turn off the MacBook display
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Automatically turn on/off the MacBook display when a monitor is connected
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+
+                            tr
+                                td
+                                    a.text-black href="https://lunar.fyi/#xdr" XDR brightness
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Go over the 500nits limit of the 2021 MacBook Pro
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+
+                            tr
+                                td: a.text-black href="https://lunar.fyi/#sensor" External light sensor support
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td: a.text-black href="https://lunar.fyi/#clock" Scheduled brightness presets
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+
+                            tr
+                                td.font-medium : a.text-black href="https://lunar.fyi/#cli" Command-line integration
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td.font-medium : Color calibration controls
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td.font-medium Automatic App-based Presets
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td: a.text-black href="https://lunar.fyi/#facelight" Use monitor as a light-panel in meetings
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td: a.text-black href="https://lunar.fyi/#location" Sunrise/sunset based adaptive brightness
+                                td: icon.w-6.h-6.text-red-hot.mx-auto : xmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+
+                            tr
+                                td.font-bold.text-lg.text-stone-600 Pricing
+                                td.font-bold.text-stone-500.text-lg $5
+                                td.font-bold.text-stone-400.text-lg
+                                    p.my-0.text-green-muted Free
+                                    p.my-0.text-xxs.md:text-xs.font-medium for manual adjustments
+                                    p.my-0.text-red-400 $23
+                                    p.my-0.text-xxs.md:text-xs.font-medium for adaptive brightness
+
+                a.btn.btn-white.flex.justify-center.items-center.max-h-14.hover:scale-105.hover:shadow-3xl.w-[16rem].mx-auto.mt-5.no-underline target="_blank" href="https://lunar.fyi/"
+                    icon.filter.drop-shadow-sm.w-8.h-8 : lunar
+                    div.ml-3.flex.flex-col.items-start
+                        span.text-base.font-semibold.leading-5.mt-1 Check out Lunar `span.text-red-bright Pro`
+                        span.text-[0.7rem].-mt-1 for more advanced features
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2022
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+
+        -call defs:anchors
+
+        -stylus
+            @import "stylus/base"
+
+            #comparison table
+                overflow hidden
+
+                a
+                    text-decoration none !important
+
+                tbody tr td:first-of-type, thead tr th:first-of-type
+                    text-align left
+                    padding-left 3rem
+                    +tablet()
+                        padding-left 2rem
+                    +mobile()
+                        padding-left 1rem
+
+                tbody tr td:not(first-of-type)
+                    padding-left 3rem
+                    padding-right 3rem
+                    +tablet()
+                        padding-left 2rem
+                        padding-right 2rem
+                    +mobile()
+                        padding-left 0.1rem
+                        padding-right 0.1rem
+
+                tbody tr td:last-of-type, thead tr th:last-of-type
+                    text-align center
+                    padding-right 3rem
+                    padding-left 3rem
+                    +tablet()
+                        padding-right 2rem
+                        padding-left 2rem
+                    +mobile()
+                        padding-right 1rem
+                        padding-left 1rem
+
+                tbody tr:nth-child(odd)
+                    background-color hsla(290, 19%, 6%, 0.05)
+
+
+            #faq
+                code
+                    background-color alpha(white, 0.1)
+                    color var(--color-yellow-lunar)
+                    font-weight bold
+                    word-break break-all
+
+                pre code
+                    background-color transparent
+                    color revert
+                    font-weight 500
+                    padding 0
+                    border-radius 0
+
+
+                h2, h3, h4
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-white)
+
+                hr
+                    border-color alpha(white, 0.1)
+                li
+                    line-height 1.8
+
+                img
+                    max-width 700px
+                    max-height 300px
+                    transition: all .15s ease-out
+                    border-radius 8px
+
+                    +mobile()
+                        max-height 60vh
+                        max-width 80vw
+
+                    &:hover
+                        max-width 1000px
+                        max-height 600px
+                        transition: all .1s ease-out
+
+            a
+                color peach
+                text-decoration underline !important
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color warmWhite
+                    text-decoration none !important
+        -coffee
+            style = getComputedStyle(document.documentElement)
+            twcolor = (colorName) -> style.getPropertyValue("--color-#{ '${ colorName }' }")
+
+            highlightQuestion = () ->
+                return unless location.hash
+                hash = location.hash[1..]
+
+                timelineFAQ = anime.timeline(
+                    easing: 'easeOutCirc'
+                    duration: 1000
+                    delay: 500
+                    loop: false
+                )
+                timelineFAQ.add(
+                    targets: location.hash
+                    backgroundColor: [twcolor('gray-900'), twcolor('red-low')]
+                    scale: 1.02
+                ).add(
+                    targets: location.hash
+                    easing: 'easeInExpo'
+                    backgroundColor: twcolor('gray-900')
+                    scale: 1.0
+                )
+
+            highlightQuestion()
