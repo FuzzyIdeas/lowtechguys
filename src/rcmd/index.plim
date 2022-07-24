@@ -36,23 +36,30 @@ html lang="en"
             a.flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
+            a.btn.btn-yellow-peach.mt-10.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/rcmd.zip" Try for free
+            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+
             h6#scroll-hint.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Put that right Command key to good use
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Instant app switching with a rarely used key
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
+                        The `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌘ command` key on the `b.text-yellow-nice right side of the space bar` is almost never used, so we found a clever way to take advantage of it!
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Hold down `span.bg-red-bright.text-black.font-bold.rounded.md:rounded-lg.py-1.px-2 rcmd` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
                     .text-base.lg:text-lg.text-gray-white
                         When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
 
                 -call img="first-run" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
+
             .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
                 .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Assign custom keys for your favorite apps
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Launch apps if they aren't already running
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        Hold down `span.bg-white.text-black.rounded.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
+                        Hold down `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
                     .text-base.lg:text-lg.text-gray-white
                         When an app is in the `b.small-caps.text-yellow-nice static` list:
                         ul
@@ -60,6 +67,20 @@ html lang="en"
                             li | the Hide/Cycle setting can be adjusted on a per-app basis.
 
                 -call img="static" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
+
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Fast and pretty app switcher interface
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        While `b.text-red-400 rcmd` is best used without an UI, you still have the choice of showing an `b.text-zinc-400 App Switcher` if you need it.
+                    .text-base.lg:text-lg.text-gray-white
+                        When holding `span.bg-red-bright.text-black.font-bold.rounded.md:rounded-lg.py-1.px-2 rcmd`, the switcher can appear instantly or with a delay, and there are three beautiful themes to choose from:
+                        ul
+                            li | Clean `em | (no transparency, text-based)`
+                            li | Compact `em | (less transparency, less padding)`
+                            li | Comfortable `em | (vibrancy, more separation)`
+
+                -call img="rcmd-app-switcher-ui" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
