@@ -90,6 +90,7 @@ html lang="en"
             h4.font-extralight.text-gray-100.hidden.md:block The low-tech guys © 2022
             .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
+        -call defs:anchors
         -stylus
             @import "stylus/base"
 
