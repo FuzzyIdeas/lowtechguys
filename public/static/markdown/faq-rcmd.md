@@ -1,10 +1,12 @@
 ## App not working after upgrade to v2?
 
-There was a bug in the migration of the settings and in handling number keys in v2.0.0.
+There was a bug in the migration of the settings and in handling number keys in *v2.0.0*.
 
-Make sure you're running rcmd **v2.0.1** or later, check if the **Apps Key** is configured correctly and restart the app.
+Make sure you're running rcmd **v2.0.1** or later, check if the **Apps Key** is configured correctly and **restart** the app.
 
 [![apps key setting](https://files.alinpanaitiu.com/fd5b0e7f925ab9465174f5924c9c52bd9f474e34.png)](https://files.alinpanaitiu.com/fd5b0e7f925ab9465174f5924c9c52bd9f474e34.png)
+
+----
 
 ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
 
