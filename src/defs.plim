@@ -116,9 +116,9 @@
 
 -def sources(img, ext='png', width=1920, factor=0.4, mobile_factor=1)
     -if not DEV
-        source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")}
+        source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")} media="(max-width: 767px)"
         source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
-    source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)}
+    source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)} media="(max-width: 767px)"
     source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"
 
 - def anchors()
