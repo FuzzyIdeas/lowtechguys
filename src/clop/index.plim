@@ -30,7 +30,7 @@ html lang="en"
                 a.btn.text-white.bg-gray-900.${'hover:text-black'}.${'hover:bg-gray-300'}.flex.justify-center.items-center href="https://github.com/alin23/Clop"
                     icon.h-4.w-4.md:h-7.md:w-7 : github
                     span.ml-2.text-sm.md:text-base View Source
-            .text-red-700.text-xxs.mt-4.font-medium.opacity-30
+            .text-red-700.text-xxs.mt-4.font-medium.opacity-50
                 | compatible with macOS `b 13.0+` (Ventura and later)
 
         section#details.flex-center.flex-col.pb-20.space-y-24.px-8
