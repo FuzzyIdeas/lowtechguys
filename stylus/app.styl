@@ -57,12 +57,22 @@ h4
 
 a
     font-weight: theme('fontWeight.medium')
-    color: theme('textColor.blue.muted')
+    color: theme('textColor.red.dull')
     transition-duration: theme('transitionDuration.200')
-    transition-property: theme('transitionProperty.DEFAULT')
+    transition-property: theme('transitionProperty.all')
+    text-decoration-line: underline
+    text-decoration-thickness: 1px
+    text-decoration-color: currentColor
 
-a:hover
-    color: theme('textColor.blue.calm')
+    &:hover
+        color: theme('textColor.red.hot')
+        text-decoration-line: underline
+        text-decoration-thickness: 2px
+        text-decoration-color: currentColor
+
+.links
+    a, a:hover, a:focus
+        text-decoration none !important
 
 .btn
     font-weight: theme('fontWeight.medium')

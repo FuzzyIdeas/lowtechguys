@@ -13,7 +13,7 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/gammadimmer" Gamma Dimmer
                 a.text-sm.md:text-base.ml-4 href="/contact?app=gammadimmer" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mb-4 : gammadimmer
                 h1.text-4xl.text-yellow-peach.monospaced Gamma Dimmer
                 h5.text-white Dim any screen and keep color accuracy

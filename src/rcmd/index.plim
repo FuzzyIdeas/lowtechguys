@@ -40,7 +40,7 @@ html lang="en"
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
-            h6#scroll-hint.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
+            h6#scroll-hint.no-anchor.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
@@ -81,6 +81,23 @@ html lang="en"
                             li | Comfortable `em | (vibrancy, more separation)`
 
                 -call img="rcmd-app-switcher-ui" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
+
+            .flex.md:space-x-10.md:space-x-reverse.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Focus a specific window
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Focusing a specific window from a multi-window app is possible, but `b.text-red-400 experimental`
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Because of `b.text-blue-500 App Store` and `b.text-red-500 macOS Sandbox limitations`, rcmd needs to use an external app called `a.text-amber-400 target="_blank" href="https://www.hammerspoon.org" Hammerspoon` to achieve window switching capabilities.
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        If you're interested in the technical reasons of why this solution is so convoluted, you can read the following blog post:
+                    a.btn.btn-white.mt-2.text-left.flex.flex-center.w-max href="https://alinpanaitiu.com/blog/window-switcher-app-store/" target="_blank"
+                        img.mr-3 width="48" height="48" src="https://alinpanaitiu.com/svg/logo.svg"
+                        span.flex.flex-col.leading-tight
+                            span A window switcher on the Mac App Store?
+                            span.font-bold Is it even possible?
+
+                -call img="rcmd-window-experimental" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4

@@ -13,7 +13,7 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/clop" Clop
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
             img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
             h1.mb-6.text-4xl.text-zinc-600 Clop
             h5.text-gray-500.m-0.p-0 Clipboard optimizer for images

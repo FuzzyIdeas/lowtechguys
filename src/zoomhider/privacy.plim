@@ -13,7 +13,7 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/zoomhider" ZoomHider
                 a.text-sm.md:text-base.ml-4 href="/contact?app=ZoomHider" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
             img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.png"
             h1.mt-10.text-4xl.text-blue-400 ZoomHider
             h5.text-gray-800 Hide Zoom floating controls when sharing screen

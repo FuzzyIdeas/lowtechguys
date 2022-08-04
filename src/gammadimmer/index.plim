@@ -285,7 +285,7 @@ html lang="en"
 
             a
                 color peach
-                text-decoration underline !important
+
             .links
                 a
                     background-color alpha(white, 0.1)

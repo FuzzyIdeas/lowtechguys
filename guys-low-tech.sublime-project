@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"file_exclude_patterns": [
+				"*.html"
+			],
+			"folder_exclude_patterns": [
+				"node_modules"
+			],
+			"path": ".",
+		},
+	],
+	"settings":
+	{
+		"LSP":
+		{
+			"LSP-tailwindcss":
+			{
+				"enabled": false,
+			},
+		},
+	},
+}

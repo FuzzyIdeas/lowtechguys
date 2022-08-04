@@ -13,7 +13,7 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/volum" Volum
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Volum" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
             .zstack
                 icon.w-[5rem].h-[5rem].md:w-[7rem].md:h-[7rem].filter.drop-shadow-lg : volum
                 #volum-knob.w-[2.8rem].h-[2.8rem].md:w-[3.92rem].md:h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
