@@ -86,14 +86,16 @@ html lang="en"
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Focus a specific window
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        Focusing a specific window from a multi-window app is possible, but `b.text-red-400 experimental`
-                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        As opposed to `b.text-orange-200 app switching` which works out of the box, `b.text-stone-300 window switching` is not as straightforward and still `b.text-red-400 experimental`.
+                    .text-sm.lg:text-base.text-gray-white.mb-4.opacity-70
                         Because of `b.text-blue-500 App Store` and `b.text-red-500 macOS Sandbox limitations`, rcmd needs to use an external app called `a.text-amber-400 target="_blank" href="https://www.hammerspoon.org" Hammerspoon` to achieve window switching capabilities.
-                    .text-base.lg:text-lg.text-gray-white.mb-4
+                    .text-base.lg:text-lg.text-gray-white.mb-10
+                        Click on `span.bg-white.bg-opacity-10.text-white.text-base.rounded.md:rounded-lg.py-1.px-2 Switcher` and scroll to the bottom to find the button that enables window switching.
+                    .text-sm.lg:text-base.text-stone-400.mb-4
                         If you're interested in the technical reasons of why this solution is so convoluted, you can read the following blog post:
-                    a.btn.btn-white.mt-2.text-left.flex.flex-center.w-max href="https://alinpanaitiu.com/blog/window-switcher-app-store/" target="_blank"
-                        img.mr-3 width="48" height="48" src="https://alinpanaitiu.com/svg/logo.svg"
-                        span.flex.flex-col.leading-tight
+                    a.btn.btn-white.text-left.flex.flex-center.w-max.!px-3.lg:!px-6.!py-2.lg:!py-4.mx-auto.md:m-0.!rounded-lg.lg:!rounded-2xl href="https://alinpanaitiu.com/blog/window-switcher-app-store/" target="_blank"
+                        img.mr-1.lg:mr-3.w-10.h-10.lg:w-12.lg:h-12 width="48" height="48" src="https://alinpanaitiu.com/svg/logo.svg"
+                        span.flex.flex-col.leading-tight.text-sm.lg:text-base
                             span A window switcher on the Mac App Store?
                             span.font-bold Is it even possible?
 
