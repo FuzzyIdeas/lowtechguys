@@ -10,8 +10,6 @@ from plim.extensions import md_to_html
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-
-
 # icon#id.cls-[1rem]: filename
 PARSE_SVG_PATH_RE = re.compile(
     r"icon(?:#(?P<id>[A-Za-z\-0-9]+))?(?P<cls>(?:\.[!A-Za-z\-/0-9\[\]:${}]+)+)? : (?P<path>[A-Za-z\-0-9/_\.]+)"
