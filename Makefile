@@ -5,7 +5,8 @@ vpath %.plim src
 .css:
 	mkdir -p .css
 
-public/%.html: src/%.plim src/defs.plim
+svgfiles := $(wildcard public/*/*.svg)
+public/%.html: src/%.plim src/defs.plim $(svgfiles)
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
@@ -19,13 +20,16 @@ app.css: stylus/*.styl
 css: export PYTHONWARNINGS=ignore
 css: public/static/css/app.css
 
+htmlfiles := $(filter-out %/defs.html,$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out %/defs.html,$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
 html: export PYTHONWARNINGS=ignore
-html: public/index.html public/rcmd/index.html public/rcmd/privacy.html public/yellowdot/index.html public/yellowdot/privacy.html public/zoomhider/index.html public/zoomhider/privacy.html public/clop/index.html public/clop/privacy.html public/volum/index.html public/volum/privacy.html public/gammadimmer/index.html public/gammadimmer/privacy.html public/contact.html
+html: $(htmlfiles)
 
 all: html css
 
 build: export NODE_ENV=production
+build: export TAILWIND_MODE=build
 build: export PYTHONWARNINGS=ignore
+build: export DEPLOY_URL=https://lowtechguys.com
 build: all
 
 watch-css: export TAILWIND_MODE=watch
@@ -37,6 +41,12 @@ dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
 	fish run.fish
+
+watch: export NODE_ENV=production
+watch: export TAILWIND_MODE=build
+watch: export PYTHONWARNINGS=ignore
+watch:
+	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j build'
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@
@@ -50,11 +60,9 @@ clean:
 
 python-deps:
 	pip install -r requirements.txt
-netlify-deps:
-	npm i -g netlify-cli
 node-deps:
 	npm i --save postcss-cli@latest tailwindcss@latest postcss@latest autoprefixer@latest stylus@latest coffeescript@latest livereloadx@latest
-deps: python-deps node-deps netlify-deps
+deps: python-deps node-deps
 
 public/static/css/%.css: export TAILWIND_MODE=build
 public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js # $(wildcard public/*.html) $(wildcard public/**/*.html)

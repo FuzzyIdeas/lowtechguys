@@ -166,3 +166,4 @@ public/**/*.html
 public/static/css
 !public/static/css/code.css
 .css
+.stversions
