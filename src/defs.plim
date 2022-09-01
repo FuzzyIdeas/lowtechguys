@@ -1,29 +1,6 @@
 ---!
-    import os, glob
-    import urllib.parse
-
-    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
-    DEV = os.getenv("NODE_ENV") == "development"
-    DEPLOY_URL = os.getenv("DEPLOY_URL")
-
-    def imgurl(image, width, ext="png", convert_to=""):
-        if DEV:
-            return f"/static/img/{urllib.parse.quote(image)}.{ext}"
-
-        conversion = f"@{convert_to}" if convert_to else ""
-        return f'https://img.alinpanaitiu.com/_/{width}/plain/{DEPLOY_URL}/static/img/{urllib.parse.quote(image)}.{ext}{conversion}'
-
-    def srcset(image, ext="png", maxwidth=8120, factor=1, convert_to=""):
-        if DEV:
-            return f"/static/img/{urllib.parse.quote(image)}.{ext}"
-
-        return ','.join(
-            f'{imgurl(image, width, ext, convert_to)} {int(round(float(width) / float(factor)))}w'
-            for width in WIDTHS if width <= float(maxwidth)
-        )
-
-    def images(folder, ext="png"):
-        return [os.path.splitext(img[18:])[0] for img in glob.glob(f"public/static/img/{folder}/*.{ext}")]
+    import os
+    from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
 
 - def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='')
     title ${title}
@@ -52,9 +29,9 @@
         meta property="og:image" content="${webp}"
         meta property="og:image:type" content="image/webp"
     -else
-        meta itemprop="image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
-        meta name="image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
-        meta property="og:image" content="https://img.alinpanaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta itemprop="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta name="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta property="og:image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
 
     meta name="mobile-web-app-capable" content="no"
     meta name="msapplication-TileColor" content="${color}"
@@ -85,7 +62,7 @@
 
       .paper-bg
           for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
-              $url = '${f"https://img.alinpanaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp" if DEPLOY_URL else "/static/img/paperbg.png"}' % $width
+              $url = '${f"https://img.panaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp" if DEPLOY_URL else "/static/img/paperbg.png"}' % $width
               @media screen and (max-width: unit($width, px))
                   background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
 
@@ -116,6 +93,9 @@
 
 -def sources(img, ext='png', width=1920, factor=0.4, mobile_factor=1)
     -if not DEV
+        source type="image/avif" srcset=${srcset(img, ext, width, mobile_factor, convert_to="avif")} media="(max-width: 767px)"
+        source type="image/avif" srcset=${srcset(img, ext, width, factor, convert_to="avif")} media="(min-width: 768px)"
+
         source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")} media="(max-width: 767px)"
         source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
     source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)} media="(max-width: 767px)"
