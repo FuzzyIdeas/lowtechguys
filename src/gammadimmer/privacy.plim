@@ -3,14 +3,14 @@
 doctype html
 html lang="en"
     head
-        - call title="Gamma Dimmer - Privacy Policy" domain="lowtechguys.com" description="Dim any screen brightness without losing color accuracy" short_description="Dim any screen and keep color accuracy" favicon="/gammadimmer/favicon.ico" icon="gammadimmer-icon" icon_size="1280" screenshot="gammadimmer-screenshot" color="rgb(23, 23, 23)" defs:head
+        - call title="Gamma Dimmer - Privacy Policy" domain="lowtechguys.com" description="Dim any screen brightness without losing color accuracy" short_description="Dim any screen and keep color accuracy" favicon="/gammadimmer/favicon.ico" icon="gammadimmer-icon" icon_size="1280" screenshot="gammadimmer-screenshot" color="rgb(23, 23, 23)" canonical="/gammadimmer/privacy" defs:head
 
     body.bg-neutral-900.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-yellow-peach : lowtech
             .links
-                a.text-sm.md:text-base.ml-4 href="/gammadimmer" Gamma Dimmer
+                a.text-sm.md:text-base.ml-4 href="/gammadimmer/" Gamma Dimmer
                 a.text-sm.md:text-base.ml-4 href="/contact?app=gammadimmer" Contact
 
         section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20

@@ -1,11 +1,12 @@
 #!/usr/bin/env fish
 
+touch DEVMODE
 export DEPLOY_URL=https://ltg.tunnel.darkwoods.win
 
-trap "pkill -9 -f -l 'caddy|livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss'" INT EXIT
+trap "pkill -9 -f -l 'caddy|livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss'; rm DEVMODE" INT EXIT
 cd public/ && npx -y livereloadx --static &
 
-cd - && caddy run -watch &
+cd - && caddy run --watch &
 
 inlets client --url wss://inlets.darkwoods.win --upstream=ltg.tunnel.darkwoods.win=http://localhost:3998 --token=$INLETS_TOKEN &
 

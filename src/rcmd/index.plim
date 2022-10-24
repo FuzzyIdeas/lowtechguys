@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" defs:head
+        - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
         script async="true" defer="true" src="/static/js/anime.min.js"
         link href="/static/css/code.css" rel="stylesheet"
 
@@ -100,6 +100,12 @@ html lang="en"
                             span.font-bold Is it even possible?
 
                 -call img="rcmd-window-experimental" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
+
+            .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.px-4.justify-cetner.items-center
+                .text-center
+                    h1.text-3xl.text-center.lg:text-4xl.mb-4 Stage Manager ready
+                    h5.text-gray-300.text-center.mb-4 Navigate stages in `b.text-orange-200 macOS Ventura` using the keyboard
+                -call video="rcmd-stage-manager" webm=False cls="md:w-2/3 rounded-xl object-cover" defs:lazyvideoset
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4

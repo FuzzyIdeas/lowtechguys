@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="YellowDot - Hide the macOS yellow recording dot" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" defs:head
+        - call title="YellowDot - Hide the macOS yellow recording dot" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" canonical="/yellowdot/" defs:head
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden

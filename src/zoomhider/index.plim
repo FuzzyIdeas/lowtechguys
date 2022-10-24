@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="ZoomHider - Hide Zoom floating controls when sharing screen" domain="lowtechguys.com" description="Hide Zoom floating controls when sharing screen. Keep them hidden even when pressing Esc." short_description="Hide Zoom floating controls when sharing screen" favicon="/zoomhider/favicon.ico" icon="zoomhider-icon" icon_size="1280" screenshot="zoomhider-screenshot" color="rgb(255, 255, 255)" defs:head
+        - call title="ZoomHider - Hide Zoom floating controls when sharing screen" domain="lowtechguys.com" description="Hide Zoom floating controls when sharing screen. Keep them hidden even when pressing Esc." short_description="Hide Zoom floating controls when sharing screen" favicon="/zoomhider/favicon.ico" icon="zoomhider-icon" icon_size="1280" screenshot="zoomhider-screenshot" color="rgb(255, 255, 255)" canonical="/zoomhider/" defs:head
 
     body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

@@ -2,10 +2,12 @@
     import os
     from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
 
-- def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='')
+- def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
     title ${title}
     link href="${favicon}" rel="shortcut icon"
     link href="/static/css/app.css" rel="stylesheet"
+    -if canonical
+        link rel="canonical" href="https://${domain}${canonical}"
     meta rel="canonical" href="https://${domain}"
     meta charset="utf-8"
     meta name="viewport" content=(
@@ -66,16 +68,22 @@
               @media screen and (max-width: unit($width, px))
                   background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
 
+- def lazyvideoset(video, cls, webm=True, poster=None)
+    video.${cls} (preload="none" muted loop disablePictureInPicture playsinline controls poster="/static/img/${video}-poster.webp" )
+        source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="/static/video/${video}-h264.mp4" type="video/mp4"
 
 - def videoset(video, cls, webm=True, poster=None)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or "/static/img/${video}-poster/${video}-poster.webp"} )
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster.webp" )
         source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
             source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
         source src="/static/video/${video}-h264.mp4" type="video/mp4"
 
 - def smallvideoset(video, cls, webm=True, poster=None)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or "/static/img/${video}-poster/${video}-poster.webp"} )
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster.webp" )
         source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
             source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'

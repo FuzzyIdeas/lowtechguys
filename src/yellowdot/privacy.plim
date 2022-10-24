@@ -3,14 +3,14 @@
 doctype html
 html lang="en"
     head
-        - call title="YellowDot - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" defs:head
+        - call title="YellowDot - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" canonical="/yellowdot/privacy" defs:head
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
-                a.text-sm.md:text-base.ml-4 href="/yellowdot" YellowDot
+                a.text-sm.md:text-base.ml-4 href="/yellowdot/" YellowDot
                 a.text-sm.md:text-base.ml-4 href="/contact?app=YellowDot" Contact
 
         section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20

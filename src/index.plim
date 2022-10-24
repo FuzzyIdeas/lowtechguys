@@ -19,7 +19,7 @@
 doctype html
 html lang="en"
     head
-        - call title="The low-tech guys" domain="lowtechguys.com" description="No-buzzwords driven development" short_description="We create those apps that you never thought you need but now you can't stop using them." defs:head
+        - call title="The low-tech guys" domain="lowtechguys.com" description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." short_description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." canonical="/" defs:head
         / script src="https://cdn.paddle.com/paddle/paddle.js"
         / script Paddle.Setup({vendor: 122873})
 
@@ -57,7 +57,7 @@ html lang="en"
             .flex-col.flex-center.mt-6
                 h1.font-sans.font-black.text-6xl.${'4xl:text-7xl'}.mb-12.${'4xl:mb-20'}.text-mauve-blackish Our apps
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.${CLS.appcontainer} href="/rcmd"
+                    a.${CLS.appcontainer} href="/rcmd/"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : rcmd
                         h2.text-mauve-gray rcmd
                         p.text-sm.leading-3.text-gray-black.font-medium
@@ -71,7 +71,7 @@ html lang="en"
                             Intelligent adaptive brightness
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | for your external displays
-                    a.${CLS.appcontainer} href="/volum"
+                    a.${CLS.appcontainer} href="/volum/"
                         .zstack
                             icon.w-[5rem].h-[5rem].md:w-[7rem].md:h-[7rem].filter.drop-shadow-lg : volum
                             #volum-knob.w-[2.8rem].h-[2.8rem].md:w-[3.92rem].md:h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
@@ -84,14 +84,14 @@ html lang="en"
                             | at your fingertips
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.${CLS.appcontainer} href="/clop"
+                    a.${CLS.appcontainer} href="/clop/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/clop-icon.webp"
                         h2.text-mauve-gray Clop
                         p.text-sm.leading-3.text-gray-black.font-medium
                             Clipboard optimizer for images
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | copy large, paste small, send fast
-                    a.${CLS.appcontainer} href="/gammadimmer"
+                    a.${CLS.appcontainer} href="/gammadimmer/"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : gammadimmer
                         h2.text-mauve-gray Gamma Dimmer
                         p.text-sm.leading-3.text-gray-black.font-medium
@@ -99,7 +99,7 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | without losing color accuracy
 
-                    a.${CLS.appcontainer} href="/zoomhider"
+                    a.${CLS.appcontainer} href="/zoomhider/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
                         h2.text-mauve-gray ZoomHider
                         p.text-sm.leading-3.text-gray-black.font-medium
@@ -117,7 +117,7 @@ html lang="en"
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot"
+                    a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot/"
                         .${CLS.appcontainer}.blur-sm.hover:blur-none.transition.z-0.hover:z-20
                             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
                             h2.text-mauve-gray YellowDot

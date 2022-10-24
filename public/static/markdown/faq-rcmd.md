@@ -1,10 +1,8 @@
-## App not working after upgrade to v2?
+## App fails to install from App Store after using the trial.
 
-There was a bug in the migration of the settings and in handling number keys in *v2.0.0*.
+This happens when there's another instance of `rcmd.app` on your disk.
 
-Make sure you're running rcmd **v2.0.1** or later, check if the **Apps Key** is configured correctly and **restart** the app.
-
-[![apps key setting](https://files.alinpanaitiu.com/fd5b0e7f925ab9465174f5924c9c52bd9f474e34.png)](https://files.alinpanaitiu.com/fd5b0e7f925ab9465174f5924c9c52bd9f474e34.png)
+Delete any `rcmd.app` you can find, even those in the `Downloads` folder, then try installing again.
 
 ----
 
@@ -111,7 +109,7 @@ Keep in mind that you can always change the trigger key to something else than `
 
 Looking at the **% CPU usage** is not a very accurate way of judging the app's efficiency.
 
-Especially on M1, read more about it in this article: [CPU percentage is misleading on M1 Macs by The Eclectic Light Company](https://eclecticlight.co/2022/02/24/cpu-percentage-is-misleading-on-m1-macs/)
+Especially on Apple Silicon. Read more about it in this article: [CPU percentage is misleading on M1 Macs by The Eclectic Light Company](https://eclecticlight.co/2022/02/24/cpu-percentage-is-misleading-on-m1-macs/)
 
 
 ### Why do I see CPU usage spikes?
