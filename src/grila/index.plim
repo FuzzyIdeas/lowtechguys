@@ -58,25 +58,33 @@ html lang="en"
                     .text-base.lg:text-lg.text-stone-500.mb-4
                         The UI can be morphed into a `b.text-rose-500 full-year view` or a `b.text-amber-500 single-month view` by pressing the `span.keyb |=` `em |(equals)` key.
 
-                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Pin window
-                    .text-base.lg:text-lg.text-stone-500.mb-4
-                        Pressing `span.keyb .` `em |(dot)` will pin the window in an always-on-top semi-transparent state for easy referencing while doing other tasks.
-
-                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Hourly Chime
-                    .text-base.lg:text-lg.text-stone-500.mb-4
-                        You can choose to hear a `b.text-zinc-400 quiet chime sound` on every hour.
-
-                    .text-base.lg:text-lg.text-stone-500.mb-4
-                        The chime can be `b.text-zinc-400 muted` when a `span.keyb.opacity-60 ☾ Focus` mode is active and the hour interval can also be configured manually.
-
-                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Compact date menubar icon
-                    .text-base.lg:text-lg.text-stone-500.mb-4
-                        The menubar icon can be configured to show today's day and weekday or month name. A simple graphical no-text icon is also available.
-
+                    video.mt-16.shadow-lg.md:shadow-2xl.rounded-lg.md:rounded-2xl.w-full (autoplay muted loop disablePictureInPicture playsinline src="/static/video/grila-themes-and-colors.mp4" )
 
                 .months-view.zstack.md:w-1/2
                     -call img="grila-3-months-light" factor=${0.3} mobile_factor=${0.9} pcls="months-light" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
                     -call img="grila-3-months-dark" factor=${0.3} mobile_factor=${0.9} pcls="months-dark" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
+
+        section#features.flex-center.flex-col.pb-20.space-y-24.mt-20
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-4.text-stone-600 Tiny things that matter
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-1.text-stone-500.mt-6 Pin window
+                    .text-base.lg:text-lg.text-stone-500.mb-1
+                        Pressing `span.keyb .` `em |(dot)` will pin the window in an always-on-top semi-transparent state for easy referencing while doing other tasks.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-1.text-stone-500.mt-6 Hourly Chime
+                    .text-base.lg:text-lg.text-stone-500.mb-1
+                        You can choose to hear a `b.text-zinc-400 quiet chime sound` on every hour.
+
+                    .text-base.lg:text-lg.text-stone-500.mb-1
+                        The chime can be `b.text-zinc-400 muted` when a `span.keyb.opacity-60 ☾ Focus` mode is active and the hour interval can also be configured manually.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-1.text-stone-500.mt-6 Compact date menubar icon
+                    .text-base.lg:text-lg.text-stone-500.mb-1
+                        The menubar icon can be configured to show today's day and weekday or month name. A simple graphical no-text icon is also available.
+                .md:w-1/2.text-left
+                    video.shadow-lg.md:shadow-2xl.rounded-lg.md:rounded-2xl.w-full (autoplay muted loop disablePictureInPicture playsinline src="/static/video/grila-navigation.mp4" )
 
         section#events.flex-center.flex-col.pb-20.space-y-12.mt-4
             .flex.md:space-x-10.w-screen.max-w-[576px].md:flex-row-reverse.md:space-x-reverse.md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
