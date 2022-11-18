@@ -99,13 +99,13 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | without losing color accuracy
 
-                    a.${CLS.appcontainer} href="/zoomhider/"
-                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
-                        h2.text-mauve-gray ZoomHider
+                    a.${CLS.appcontainer} href="/grila/"
+                        img.h-20.md:h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07] src="/static/img/grila-icon.webp"
+                        h2.text-mauve-gray Grila
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            Keep Zoom screen sharing controls
+                            Calendar for keyboard addicts
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            | hidden even when pressing Esc
+                            | instantly available on a hotkey
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys"
@@ -115,6 +115,14 @@ html lang="en"
                             Find underground parties
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+
+                    a.${CLS.appcontainer} href="/zoomhider/"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
+                        h2.text-mauve-gray ZoomHider
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Keep Zoom screen sharing controls
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | hidden even when pressing Esc
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot/"

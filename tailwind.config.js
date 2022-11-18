@@ -10,6 +10,7 @@ module.exports = {
     './public/volum/*.html',
     './public/gammadimmer/*.html',
     './public/clop/*.html',
+    './public/grila/*.html',
   ],
   mode: 'jit',
   theme: {

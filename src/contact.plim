@@ -55,6 +55,7 @@ html lang="en"
                     option value="ZoomHider" ZoomHider
                     option value="GammaDimmer" GammaDimmer
                     option value="Clop" Clop
+                    option value="Grila" Grila
                     option value="" Not about a specific app
 
                   label.self-start.font-bold.ml-1 for="subject" Subject

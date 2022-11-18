@@ -46,6 +46,16 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://lowtechguys.com/grila/</loc>
+        <lastmod>2022-11-15T20:12:49+02:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://lowtechguys.com/grila/privacy</loc>
+        <lastmod>2022-11-15T20:12:49+02:00</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://lowtechguys.com/zoomhider/</loc>
         <lastmod>2022-07-29T14:35:01+03:00</lastmod>
         <priority>1.00</priority>

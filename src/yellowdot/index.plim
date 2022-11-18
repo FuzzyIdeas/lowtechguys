@@ -49,7 +49,7 @@ html lang="en"
                     .text-sm.lg:text-base.text-gray-400
                         But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
 
-                -call img="yellow-dot-arrow" factor=${1.5} mobile_factor=${0.5} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
+                -call img="yellow-dot-arrow" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
 
             h1.text-center FAQ
             #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4

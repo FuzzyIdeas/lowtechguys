@@ -53,7 +53,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-white
                         When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
 
-                -call img="first-run" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
+                -call img="first-run" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
             .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
                 .md:w-1/2.text-left
@@ -66,7 +66,7 @@ html lang="en"
                             li | the assigned key can launch the app when it isn't running
                             li | the Hide/Cycle setting can be adjusted on a per-app basis.
 
-                -call img="static" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
+                -call img="static" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
 
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
@@ -80,7 +80,7 @@ html lang="en"
                             li | Compact `em | (less transparency, less padding)`
                             li | Comfortable `em | (vibrancy, more separation)`
 
-                -call img="rcmd-app-switcher-ui" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
+                -call img="rcmd-app-switcher-ui" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
 
             .flex.md:space-x-10.md:space-x-reverse.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
@@ -99,7 +99,7 @@ html lang="en"
                             span A window switcher on the Mac App Store?
                             span.font-bold Is it even possible?
 
-                -call img="rcmd-window-experimental" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
+                -call img="rcmd-window-experimental" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
 
             .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.px-4.justify-cetner.items-center
                 .text-center

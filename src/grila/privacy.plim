@@ -1,0 +1,33 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Grila - Privacy Policy" domain="lowtechguys.com" description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" short_description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" favicon="/grila/favicon.ico" icon="grila-icon" icon_size="1280" screenshot="grila-screenshot" color="rgb(250, 250, 249)" canonical="/grila/privacy" defs:head
+
+    body.bg-stone-50.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-amber-500 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/grila/" Grila
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Grila" Contact
+
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
+            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/grila-icon.png"
+            h1.mb-6.text-4xl.text-amber-500 Grila
+            h5.text-gray-400.m-0.p-0 Calendar for keyboard addicts
+            h5.text-gray-400.m-0.p-0.-mt-1 instantly available on a hotkey
+            h3.text-zinc-600 Grila does not collect any personal information.
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

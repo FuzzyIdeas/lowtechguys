@@ -21,10 +21,10 @@ html lang="en"
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg.mt-20.mb-4 : gammadimmer
             h1.text-4xl.text-yellow-peach.monospaced Gamma Dimmer
             h5.text-white Dim any screen and keep color accuracy
-            a.mt-10.flex-grow href="https://apps.apple.com/us/app/gamma-dimmer/1635180752"
+            a.mt-10.flex-grow href="https://apps.apple.com/us/app/gamma-dimmer/id1635180752"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
-            a.btn.btn-yellow-peach.mt-10.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/GammaDimmer.zip" Try for free
+            a.btn.btn-yellow-peach.mt-4.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/GammaDimmer.zip" Try for free
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
@@ -40,7 +40,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-white
                         A dark overlay is still used for screens not supporting Gamma, or when Gamma is already in use by another app like `a href="https://justgetflux.com/" f.lux`, `a href="https://lunar.fyi/" Lunar`, `a href="https://michelf.ca/projects/gamma-control/" Gamma Control` etc.
 
-                -call img="gammadimmer-sliders" factor=${3} mobile_factor=${1.2} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing screens with brightness sliders" defs:image
+                -call img="gammadimmer-sliders" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing screens with brightness sliders" defs:image
 
             .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.md:space-x-10.md:space-x.px-4
                 .md:w-1/2.text-left

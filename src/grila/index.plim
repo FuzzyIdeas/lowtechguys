@@ -1,0 +1,201 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="Grila - Calendar for keyboard addicts" domain="lowtechguys.com" description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" short_description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" favicon="/grila/favicon.ico" icon="grila-icon" icon_size="1280" screenshot="grila-screenshot" color="rgb(250, 250, 249)" canonical="/grila/" defs:head
+
+    body.bg-stone-50.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-amber-500 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/grila/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Grila" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/grila-icon.png"
+            h1.mb-6.text-4xl.text-amber-500 Grila
+            h5.text-stone-500.m-0.p-0 Calendar for keyboard addicts
+            h5.text-stone-500.m-0.p-0.-mt-1 instantly available on a hotkey
+
+            a.mt-10.flex-grow href="https://apps.apple.com/us/app/grila-calendar-for-typers/id6444335028"
+                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
+
+            a.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2.font-mono.font-semibold href="https://files.lowtechguys.com/Grila.zip" Try for free
+            .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+
+        section#details.flex-center.flex-col.pb-20.space-y-24.mt-20
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left.md:mt-10.scale-100.md:scale-75.lg:scale-90.xl:scale-100
+                    h1.text-3xl.text-left.lg:text-4xl.mb-4.text-stone-600 Keyboard-driven calendar
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        A calendar that's always one hotkey away.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        | `span.keyb ⌥ right option` + `span.keyb.font-bold ＼` `em |(backslash)` will show and hide the app instantly, and the hotkey can be configured to any other combination.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500 Navigate by typing
+                    ul.text-base.lg:text-lg.text-stone-500.mb-4.font-medium.pl-2.md:pl-4
+                        li `span.keyb.red 1` … `span.keyb.red 9` numbers will set the day
+                        li `span.keyb.blue A` … `span.keyb.blue Z` letters will set the month
+                        li typing `span.keyb ;` `em |(semicolon)` then `span.keyb.red 1` … `span.keyb.red 9` will set the year
+
+                    h3.text-lg.text-left.lg:text-xl.mb-4.text-stone-400 Examples
+                    ul.text-base.lg:text-lg.text-stone-500.mb-4.font-medium.pl-2.md:pl-4
+                        li type `span.keyb.blue s` `span.keyb.red 3` `span.keyb.red 0` to go to `b.text-blue-400 September` `b.text-rose-400 30th`
+                        li type `span.keyb.blue a` `span.keyb.blue p` `span.keyb.red 1` to go to `b.text-blue-400 April` `b.text-rose-400 1st`
+
+                    h1.text-3xl.text-left.lg:text-4xl.mb-4.text-stone-600.mt-10 Optimal 3-months view
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        By default, Grila shows the current month, along with the next and previous 2-3 weeks.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        This allows for less moving between months when planning events or checking when's the next event.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        The UI can be morphed into a `b.text-rose-500 full-year view` or a `b.text-amber-500 single-month view` by pressing the `span.keyb |=` `em |(equals)` key.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Pin window
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        Pressing `span.keyb .` `em |(dot)` will pin the window in an always-on-top semi-transparent state for easy referencing while doing other tasks.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Hourly Chime
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        You can choose to hear a `b.text-zinc-400 quiet chime sound` on every hour.
+
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        The chime can be `b.text-zinc-400 muted` when a `span.keyb.opacity-60 ☾ Focus` mode is active and the hour interval can also be configured manually.
+
+                    h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500.mt-8 Compact date menubar icon
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        The menubar icon can be configured to show today's day and weekday or month name. A simple graphical no-text icon is also available.
+
+
+                .months-view.zstack.md:w-1/2
+                    -call img="grila-3-months-light" factor=${0.3} mobile_factor=${0.9} pcls="months-light" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
+                    -call img="grila-3-months-dark" factor=${0.3} mobile_factor=${0.9} pcls="months-dark" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
+
+        section#events.flex-center.flex-col.pb-20.space-y-12.mt-4
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:flex-row-reverse.md:space-x-reverse.md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2.text-left.scale-100.md:scale-75.lg:scale-90.xl:scale-100
+                    h1.text-3xl.text-left.lg:text-4xl.mb-4.text-stone-600.md:mt-4 Events and reminders
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        Press `span.keyb ⏎ enter` to show a color-coded list of `b.text-orange-400 events` and `b.text-green-400 reminders` starting from the selected date.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        Separate calendars and reminder lists can be disabled by pressing the `span.keyb |,` `em |(comma)` key to open the settings window.
+
+                    h1.text-2xl.text-left.lg:text-3xl.mb-4.text-stone-600.md:mt-8 Read-only, a feature not a bug
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        Grila `b.text-rose-500 can't` and `b.text-rose-500 won't` modify, add or delete events in your calendars and reminder lists.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        You can go fast and reckless with your typing, there's nothing to break.
+                    h1.text-2xl.text-left.lg:text-3xl.mb-4.text-stone-600.md:mt-8 Personal, not busy
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        On birthday events, the app will show the contact photo and will hide possible duplicated events for a cleaner look.
+                    .text-base.lg:text-lg.text-stone-500.mb-4
+                        Recurring events will show how often they happen in an easily readable form `em |(e.g. every 1 month)` and `b.text-amber-400 colored` `b.text-rose-400 dots` under each day can help you see future holidays and free time at a glance.
+
+                .events-view.zstack.md:w-1/2
+                    -call img="grila-events-light" factor=${0.3} mobile_factor=${0.9} pcls="events-light" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in light mode" defs:image
+                    -call img="grila-events-dark" factor=${0.3} mobile_factor=${0.9} pcls="events-dark" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in dark mode" defs:image
+
+        section#views.flex-center.flex-col.pb-20.space-y-12.mt-4
+            .text-center
+                h1.text-3xl.text-center.lg:text-5xl.text-stone-600 Themes and colors
+                h2.text-xl.text-center.lg:text-2xl.text-stone-400 Custom light and dark mode appearance
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/2
+                    -call img="grila-all-views-light" factor=${0.3} mobile_factor=${0.9} icls="w-full" alt="screenshot of the app interface showing the year, month and 3-months views of the calendar" defs:image
+                    h1.text-3xl.text-center.lg:text-5xl.text-stone-600 Light mode
+
+                .md:w-1/2
+                    -call img="grila-all-views-dark" factor=${0.3} mobile_factor=${0.9} icls="w-full" alt="screenshot of the app interface showing the year, month and 3-months views of the calendar" defs:image
+                    h1.text-3xl.text-center.lg:text-5xl.text-stone-600 Dark mode
+            hr.border-rose-200.border-dashed.w-2/3
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .md:w-1/3
+                    -call img="grila-whitespaces-light" factor=${0.2} mobile_factor=${0.9} icls="w-full" alt="screenshot of the app interface showing the Whitespaces theme of the calendar" defs:image
+                    h1.text-3xl.text-center.lg:text-4xl.text-stone-500 Whitespaces
+
+                .md:w-1/3
+                    -call img="grila-mendeleev-light" factor=${0.2} mobile_factor=${0.9} icls="w-full" alt="screenshot of the app interface showing the Mendeleev theme of the calendar" defs:image
+                    h1.text-3xl.text-center.lg:text-4xl.text-stone-500 Mendeleev
+
+                .md:w-1/3
+                    -call img="grila-shadowy-light" factor=${0.2} mobile_factor=${0.9} icls="w-full" alt="screenshot of the app interface showing the Shadowy theme of the calendar" defs:image
+                    h1.text-3xl.text-center.lg:text-4xl.text-stone-500 Shadowy
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            for cls in months events
+                .{cls}-view
+                    .{cls}-light
+                        transform: rotateZ(0deg) rotateY(0deg)
+                        transition .2s transform ease-out
+
+                    .{cls}-dark
+                        transform: rotateZ(10deg) rotateY(90deg)
+                        transition .2s transform ease-out
+
+                    &:hover
+                        .{cls}-light
+                            transform: rotateZ(10deg) rotateY(90deg)
+                            transition .2s transform ease-out
+                        .{cls}-dark
+                            transform: rotateZ(0deg) rotateY(0deg)
+                            transition .2s transform ease-out
+
+            .keyb
+                background-color var(--color-stone-700)
+                color var(--color-orange-300)
+                border-radius .5rem
+                padding .25rem .6rem
+                font-weight bold
+
+                &.red
+                    color var(--color-rose-400)
+
+                &.blue
+                    color var(--color-blue-400)
+
+            em
+                color var(--color-orange-800)
+            strong
+                color var(--color-red-700)
+            li
+                margin-bottom 4px
+
+            #faq
+                code
+                    background-color alpha(blue, 0.25)
+                    color var(--color-gray-700)
+                    padding 0 .5rem
+
+                h2
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-700)
+
+                hr
+                    border-color alpha(blue, 0.1)
+                li
+                    line-height 1.8
+
+            a
+                color var(--color-blue-400)
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
