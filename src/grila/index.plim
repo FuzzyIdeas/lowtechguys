@@ -61,8 +61,8 @@ html lang="en"
                     video.mt-16.shadow-lg.md:shadow-2xl.rounded-lg.md:rounded-2xl.w-full (autoplay muted loop disablePictureInPicture playsinline src="/static/video/grila-themes-and-colors.mp4" )
 
                 .months-view.zstack.md:w-1/2
-                    -call img="grila-3-months-light" factor=${0.3} mobile_factor=${0.9} pcls="months-light" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
-                    -call img="grila-3-months-dark" factor=${0.3} mobile_factor=${0.9} pcls="months-dark" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
+                    -call img="grila-3-months-light" factor=${0.3} mobile_factor=${0.9} pcls="months-light w-full" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
+                    -call img="grila-3-months-dark" factor=${0.3} mobile_factor=${0.9} pcls="months-dark w-full" icls="w-full" alt="screenshot of the app interface showing the 3-months view of the calendar" defs:image
 
         section#features.flex-center.flex-col.pb-20.space-y-24.mt-20
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
@@ -107,8 +107,8 @@ html lang="en"
                         Recurring events will show how often they happen in an easily readable form `em |(e.g. every 1 month)` and `b.text-amber-400 colored` `b.text-rose-400 dots` under each day can help you see future holidays and free time at a glance.
 
                 .events-view.zstack.md:w-1/2
-                    -call img="grila-events-light" factor=${0.3} mobile_factor=${0.9} pcls="events-light" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in light mode" defs:image
-                    -call img="grila-events-dark" factor=${0.3} mobile_factor=${0.9} pcls="events-dark" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in dark mode" defs:image
+                    -call img="grila-events-light" factor=${0.3} mobile_factor=${0.9} pcls="events-light w-full" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in light mode" defs:image
+                    -call img="grila-events-dark" factor=${0.3} mobile_factor=${0.9} pcls="events-dark w-full" icls="w-full" alt="screenshot of the app interface showing the list of events and reminders on the calendar in dark mode" defs:image
 
         section#views.flex-center.flex-col.pb-20.space-y-12.mt-4
             .text-center
