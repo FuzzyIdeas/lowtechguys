@@ -3,7 +3,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Volum - Privacy Policy" domain="lowtechguys.com" description="Home lights and sounds at your fingertips" short_description="Home lights and sounds at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" canonical="/volum/privacy" defs:head
+        - call title="Volum - Privacy Policy" domain="lowtechguys.com" description="Home lights and sounds at your fingertips" favicon="/volum/favicon.ico" icon="volum-icon" icon_size="1280" screenshot="volum-screenshot" color="rgb(68 64 60)" canonical="/volum/privacy" defs:head
 
     body.bg-zinc-800.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

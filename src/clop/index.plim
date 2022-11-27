@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Clop - Clipboard optimizer for images" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" short_description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" canonical="/clop/" defs:head
+        - call title="Clop - Clipboard optimizer for images" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" canonical="/clop/" defs:head
 
     body.bg-zinc-300.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

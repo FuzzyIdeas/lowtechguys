@@ -3,7 +3,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Gamma Dimmer - Privacy Policy" domain="lowtechguys.com" description="Dim any screen brightness without losing color accuracy" short_description="Dim any screen and keep color accuracy" favicon="/gammadimmer/favicon.ico" icon="gammadimmer-icon" icon_size="1280" screenshot="gammadimmer-screenshot" color="rgb(23, 23, 23)" canonical="/gammadimmer/privacy" defs:head
+        - call title="Gamma Dimmer - Privacy Policy" domain="lowtechguys.com" description="Dim any screen brightness without losing color accuracy" favicon="/gammadimmer/favicon.ico" icon="gammadimmer-icon" icon_size="1280" screenshot="gammadimmer-screenshot" color="rgb(23, 23, 23)" canonical="/gammadimmer/privacy" defs:head
 
     body.bg-neutral-900.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

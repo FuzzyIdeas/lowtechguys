@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="rcmd - Reimagined Cmd-Tab app switcher" domain="lowtechguys.com" description="Reimagined Command-Tab app switcher to switch apps with no fuss" short_description="Reimagined Command-Tab app switcher" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
+        - call title="rcmd - Switch apps instantly using the ⌘ Right Command key" domain="lowtechguys.com" description="Use the Right Command key and the first letter of the app name to switch to that app instantly. Forget about Command Tab Tab Tab... you get the idea." favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
         script async="true" defer="true" src="/static/js/anime.min.js"
         link href="/static/css/code.css" rel="stylesheet"
 

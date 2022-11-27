@@ -19,7 +19,7 @@
 doctype html
 html lang="en"
     head
-        - call title="The low-tech guys" domain="lowtechguys.com" description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." short_description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." canonical="/" defs:head
+        - call title="The low-tech guys" domain="lowtechguys.com" description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." canonical="/" defs:head
         / script src="https://cdn.paddle.com/paddle/paddle.js"
         / script Paddle.Setup({vendor: 122873})
 

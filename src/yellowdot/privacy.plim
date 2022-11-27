@@ -3,7 +3,7 @@
 doctype html
 html lang="en"
     head
-        - call title="YellowDot - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" short_description="Hide the macOS yellow recording dot" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" canonical="/yellowdot/privacy" defs:head
+        - call title="YellowDot - Privacy Policy" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" canonical="/yellowdot/privacy" defs:head
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

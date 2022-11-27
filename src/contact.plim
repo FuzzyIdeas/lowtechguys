@@ -19,7 +19,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Contact us" domain="example.org" description="" short_description="" canonical="/contact" defs:head
+        - call title="Contact us" domain="lowtechguys.com" description="" canonical="/contact" defs:head
         / script src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch/dist/instant-meilisearch.umd.min.js"
         / script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
         / script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"

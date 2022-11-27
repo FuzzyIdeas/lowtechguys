@@ -3,7 +3,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Grila - Privacy Policy" domain="lowtechguys.com" description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" short_description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" favicon="/grila/favicon.ico" icon="grila-icon" icon_size="1280" screenshot="grila-screenshot" color="rgb(250, 250, 249)" canonical="/grila/privacy" defs:head
+        - call title="Grila - Privacy Policy" domain="lowtechguys.com" description="Calendar for keyboard addicts: keyboard-driven and instantly available on a hotkey" favicon="/grila/favicon.ico" icon="grila-icon" icon_size="1280" screenshot="grila-screenshot" color="rgb(250, 250, 249)" canonical="/grila/privacy" defs:head
 
     body.bg-stone-50.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

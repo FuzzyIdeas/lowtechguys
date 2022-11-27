@@ -2,7 +2,7 @@
     import os
     from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
 
-- def head(title, domain, description='', short_description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
+- def head(title, domain, description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
     title ${title}
     link href="${favicon}" rel="shortcut icon"
     link href="/static/css/app.css" rel="stylesheet"
