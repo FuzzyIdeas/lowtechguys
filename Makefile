@@ -61,7 +61,7 @@ clean:
 python-deps:
 	pip install -r requirements.txt
 node-deps:
-	npm i --save postcss-cli@latest tailwindcss@latest postcss@latest autoprefixer@latest stylus@latest coffeescript@latest livereloadx@latest
+	npm i --save postcss-cli@latest tailwindcss@latest postcss@latest autoprefixer@latest stylus@latest coffeescript@latest livereloadx@latest postcss-easings@latest postcss-easing-gradients@latest
 deps: python-deps node-deps
 
 public/static/css/%.css: export TAILWIND_MODE=build

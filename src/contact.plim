@@ -1,29 +1,14 @@
 - namespace name="defs" defs.plim
 ---!
     import os
-    WIDTHS = [8120, 5260, 3840, 2560, 1920, 1280, 1024, 768, 640, 320]
-    DEV = os.getenv("NODE_ENV") == "development"
-
-    def srcset(image, ext, maxwidth=8120, factor=1):
-        return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
 
     class CLS:
         section = "p-4 md:p-8 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[600px] text-mauve-blackish bg-white backdrop-blur rounded-2xl text-left bg-opacity-40 shadow-lg"
-
-        def circle(color, size=3):
-            return f"rounded-full h-{size} w-{size} bg-{color} inline-block mr-3"
-
-        def tag(color, text_color, size="sm"):
-            return f"rounded-full px-5 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
 
 doctype html
 html lang="en"
     head
         - call title="Contact us" domain="lowtechguys.com" description="" canonical="/contact" defs:head
-        / script src="https://cdn.jsdelivr.net/npm/@meilisearch/instant-meilisearch/dist/instant-meilisearch.umd.min.js"
-        / script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"
-        / script src="https://cdn.jsdelivr.net/npm/showdown@1.9.1/dist/showdown.min.js"
-
 
     body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

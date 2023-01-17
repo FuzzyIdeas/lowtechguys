@@ -58,16 +58,6 @@
         document.write "<script src=\"http://#{ '${ domain }' }:35729/livereload.js?snipver=1\"><\/script>"
 
 
-    - stylus
-      @import "stylus/variables"
-      @import "stylus/modernize"
-
-      .paper-bg
-          for $width in (8120 5260 3840 2560 1920 1280 1024 768 640 320)
-              $url = '${f"https://img.panaitiu.com/_/%s/plain/{DEPLOY_URL}/static/img/paperbg.png@webp" if DEPLOY_URL else "/static/img/paperbg.png"}' % $width
-              @media screen and (max-width: unit($width, px))
-                  background: center/cover repeat linear-gradient(0deg, alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82), alpha(desaturate(lighten(niceYellow, 40%), 25%), 0.82)), url($url)
-
 - def lazyvideoset(video, cls, webm=True, poster=None)
     video.${cls} (preload="none" muted loop disablePictureInPicture playsinline controls poster="/static/img/${video}-poster.webp" )
         source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
