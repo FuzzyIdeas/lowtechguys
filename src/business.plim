@@ -40,7 +40,7 @@ html lang="en"
 
                   button.btn.btn-white.${'hover:bg-mauve-darkgray'}.${'hover:text-white'}.!py-1.!rounded-lg.opacity-80 type="submit" Send
 
-            .text-gray-300.w-[550px].max-w-[90vw].text-left.py-10
+            .text-gray-300.w-[570px].max-w-[90vw].text-left.py-10
                 h2 Can we sync?
 
                 p We're fast, not reckless.
@@ -48,8 +48,19 @@ html lang="en"
 
                 h2.mt-4 Pricing?
 
-                p For `b.text-yellow-peach $60/hr` `span.font-mono.text-sm.text-stone-300.opacity-70 &#40;USD&#41;` you get both of us working at full speed.
+                p For `b.text-yellow-peach $75/hr` `span.font-mono.text-sm.text-stone-300.opacity-70 &#40;USD&#41;` you get both of us working at full speed.
                 p We accept payment by card, Wise, Revolut or wire transfer into either US or EU accounts. We don't accept PayPal.
+
+                h2.mt-4 What can we do?
+
+                p We engineer, architect and design apps from back to front. You can forget about the need to hire multiple teams.
+                p If you already have the backend, or design mockups, we can follow the rules.
+                p We can handle anything, from simple apps that are only a front for some data, to complex apps working with device sensors, graphics, servers and databases.
+
+                p.text-stone-400.monospaced.font-bold.mt-6 Interested in technical details?
+                p.text-stone-400.monospaced.text-sm We use `b SwiftUI` for building the app interface and `b Swift` `span.opacity-70 &#40;plus C or Obj-C where needed&#41;` for the app logic.
+                p.text-stone-400.monospaced.text-sm If a server or `b API` is required, we work in `b Python` for most workloads. We choose `b Go` or `b Rust` for compute intensive tasks.
+                p.text-stone-400.monospaced.text-sm For static web pages we use plain HTML, CSS and vanilla JS to avoid complexity and technical debt.
 
 
             / -if not DEV

@@ -53,7 +53,7 @@ html lang="en"
                         icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60 : ovidiu
                         code.text-white.mt-2.bg-zinc-800.border-0.px-2.py-1 guy #2
 
-                a.text-sm.flex.flex-col.items-start.px-4.py-3.bg-mauve-darkgray.bg-opacity-50.text-gray-200.no-underline.hover:text-white.scale-90.hover:scale-100.hover:no-underline.shadow-lg.hover:shadow-2xl.rounded-xl.mt-10 href="/business"
+                a.text-sm.flex.flex-col.items-start.px-4.py-3.bg-mauve-darkgray.bg-opacity-50.!text-gray-200.no-underline.hover:text-white.scale-90.hover:scale-100.hover:no-underline.shadow-lg.hover:shadow-2xl.rounded-xl.mt-10 href="/business"
                     span Need a `b macOS` or `b iOS` app for your `span.text-orange-200 business`? `b We can build it.`
 
         section#apps.min-w-[100vw].flex-center.flex-col.relative.pb-10
