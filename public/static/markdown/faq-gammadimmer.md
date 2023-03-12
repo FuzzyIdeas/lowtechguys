@@ -43,15 +43,39 @@ If you want to keep using those apps, the best choice is to switch Gamma Dimmer 
 
 ## Dimming not working?
 
-Some types of monitors don't have support for Gamma dimming *(DisplayLink, Luna Display, Sidecar etc.)*.
+Some types of monitors don't have support for Gamma dimming *(DisplayLink, Luna Display, Sidecar, Airplay etc.)*.
 
-To force using a *Dark Overlay* instead of *Gamma*, enable the **Use dark overlay instead of Gamma dimming** setting and restart the app.
+To force using a *Dark Overlay* instead of *Gamma*, enable the **Use dark overlay instead of Gamma dimming** setting and restart the app. *(note that overlays are more limited and can't be applied to fullscreen windows)*
 
 [![switch overlay button](https://files.lowtechguys.com/gammadimmer-switch-overlay.png)](https://files.lowtechguys.com/gammadimmer-switch-overlay.png)
 
 There are cases where not even the dark overlay works *(some mirroring setups, virtual displays etc.)*.
 
 Sometimes, **restarting the computer** or **disabling mirroring** can also fix the issue, but in case nothing works, please [contact us here](/contact?app=GammaDimmer).
+
+![]()
+![]()
+
+#### Fullscreen windows and spaces
+
+Because of a macOS limitation, App Store apps are not allowed to place dark overlays above fullscreen windows.
+
+Only the **Gamma Dimming** method works on fullscreen windows.
+
+If you don't need to dim displays that require overlays *(DisplayLink, Luna Display, Sidecar, Airplay etc.)* then make sure the following setting is disabled *(unchecked)* to take full advantage of the Gamma Dimming functionality:
+
+[![switch overlay button](https://files.lowtechguys.com/gammadimmer-switch-overlay.png)](https://files.lowtechguys.com/gammadimmer-switch-overlay.png)
+
+![]()
+![]()
+
+#### Dimming not applied after standby/wake
+
+Because of how macOS works, the dimming can be unapplied by the system after waking the device from sleep.
+
+GammaDimmer tries to reapply the dimming continuously for a few seconds after wake to work around this, but in some cases it may not work.
+
+Moving the GammaDimmer slider or pressing the Fn+F1/F2 hotkeys will reapply the dimming,
 
 ----
 

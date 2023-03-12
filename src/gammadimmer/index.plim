@@ -245,7 +245,8 @@ html lang="en"
                     background-color alpha(white, 0.1)
                     color var(--color-yellow-lunar)
                     font-weight bold
-                    word-break break-all
+                    +mobile()
+                        word-break break-all
 
                 pre code
                     background-color transparent
