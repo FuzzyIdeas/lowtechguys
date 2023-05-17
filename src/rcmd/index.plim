@@ -42,8 +42,8 @@ html lang="en"
 
             h6#scroll-hint.no-anchor.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
-        section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+        section#details.flex-center.flex-col.pb-20
+            #switch.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Instant app switching with a rarely used key
                     .text-base.lg:text-lg.text-gray-white.mb-4
@@ -55,7 +55,7 @@ html lang="en"
 
                 -call img="first-run" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
-            .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
+            #launch.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Launch apps if they aren't already running
                     .text-base.lg:text-lg.text-gray-white.mb-4
@@ -68,7 +68,7 @@ html lang="en"
 
                 -call img="static" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
 
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+            #ui.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Fast and pretty app switcher interface
                     .text-base.lg:text-lg.text-gray-white.mb-4
@@ -82,7 +82,7 @@ html lang="en"
 
                 -call img="rcmd-app-switcher-ui" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
 
-            .flex.md:space-x-10.md:space-x-reverse.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.px-4
+            #windows.py-12.flex.md:space-x-10.md:space-x-reverse.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Focus a specific window
                     .text-base.lg:text-lg.text-gray-white.mb-4
@@ -101,14 +101,14 @@ html lang="en"
 
                 -call img="rcmd-window-experimental" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
 
-            .flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.px-4.justify-cetner.items-center
+            #stages.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.px-4.justify-cetner.items-center
                 .text-center
                     h1.text-3xl.text-center.lg:text-4xl.mb-4 Stage Manager ready
                     h5.text-gray-300.text-center.mb-4 Navigate stages in `b.text-orange-200 macOS Ventura` using the keyboard
                 -call video="rcmd-stage-manager" webm=False cls="md:w-2/3 rounded-xl object-cover" defs:lazyvideoset
 
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+            #faq.py-12.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
                 md : faq-rcmd
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
@@ -143,6 +143,7 @@ html lang="en"
 
                 hr
                     border-color alpha(white, 0.1)
+                    margin 2rem 0
                 li
                     line-height 1.8
 
