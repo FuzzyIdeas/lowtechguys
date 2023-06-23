@@ -20,7 +20,7 @@ html lang="en"
         div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
             h1.text-white.text-5xl.mt-[4vh].mb-10 Contact us
 
-            h6.w-11/12.md:w-[500px].text-stone-600 If `a href="/rcmd" rcmd` is showing `b.text-red-500 Trial Expired` on a purchased app, try checking for updates or wait for `b.text-mauve-gray v2.3.6` to be available on the App Store.
+            h6.w-11/12.md:w-[500px].text-stone-600 If `a href="/rcmd" rcmd` is showing `b.text-red-500 Trial Expired` on a purchased app, try checking for updates or `b.text-mauve-gray delete` the app and reinstall it from App Store.
             section#contact.${CLS.section}
                 form.flex.flex-col.items-center.justify-center action="https://submit-form.com/avoNYywI" data-botpoison-public-key="pk_66b4914d-198e-42d4-92fc-d8c2ef33089c"
                   label.self-start.font-bold.ml-1 for="name" Name

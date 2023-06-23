@@ -51,7 +51,7 @@
     meta property="twitter:image" content="${imgurl(screenshot, 1200, convert_to='webp')}"
 
     -if not DEV
-        script async="true" defer="true" data-domain="${domain}" src="https://plausible.alinpanaitiu.com/js/plausible.js"
+        script async="true" defer="true" data-domain="${domain}" file-types="dmg,pkg,zip,pdf" src="https://plausible.alinpanaitiu.com/js/plausible.hash.file-downloads.outbound-links.js"
     -coffee
       if location.host != '${domain}'
         domain = (location.host || 'localhost').split(':')[0]
