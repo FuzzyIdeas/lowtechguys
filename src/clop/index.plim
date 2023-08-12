@@ -2,15 +2,18 @@
 ---!
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        section = " flex md:space-x-10 w-screen max-w-[576px] md:w-full md:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
 
 doctype html
 html lang="en"
     head
-        - call title="Clop - Clipboard optimizer for images" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" canonical="/clop/" defs:head
+        - call title="Clop - Image, video and clipboard optimizer" domain="lowtechguys.com" description="Image, video and clipboard optimizer. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
+        -if not DEV
+            script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
-    body.bg-zinc-300.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+    body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
@@ -20,44 +23,116 @@ html lang="en"
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
             img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
             h1.mb-6.text-4xl.text-zinc-600 Clop
-            h5.text-gray-500.m-0.p-0 Clipboard optimizer for images
+            h5.text-gray-500.m-0.p-0 Image, video and clipboard optimizer
             h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
 
-            .flex.flex-center.mt-8
-                a.mr-4.btn.text-white.bg-zinc-700.${'hover:text-black'}.${'hover:bg-zinc-500'}.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/Clop.zip"
-                    icon.h-4.w-4.md:h-7.md:w-7 : package
-                    span.ml-2.text-sm.md:text-base Download
-                a.btn.text-white.bg-gray-900.${'hover:text-black'}.${'hover:bg-gray-300'}.flex.justify-center.items-center href="https://github.com/alin23/Clop"
-                    icon.h-4.w-4.md:h-7.md:w-7 : github
-                    span.ml-2.text-sm.md:text-base View Source
+            .flex.flex-center.mt-8.mb-2
+                a.btn.text-white.bg-zinc-700.hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
+                    .flex.flex-col.items-start
+                        span.text-lg.!leading-4.mt-1 Download
+                        span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.0.0`
+                a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px].ml-4 href="#!" data-product="841006"
+                    .flex.flex-col.items-start
+                        span.text-lg.!leading-4.mt-1 Buy Clop Pro
+                        span.text-[0.7rem].opacity-70.font-mono Lifetime license costs `span.text-amber-300 $8`
+            -stylus
+                a#btn-paddle-hero.btn-paddle.paddle_button
+                    background: var(--color-neutral-600) !important
+                    box-shadow: var(--shadows-xl) !important
+
+            a.btn.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/alin23/Clop"
+                icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
+                .flex.flex-col.items-start
+                    span.text-sm.md:text-base Source code
+                    span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-pink-600 GPLv3`
             .text-red-700.text-xxs.mt-4.font-medium.opacity-50
                 | compatible with macOS `b 13.0+` (Ventura and later)
 
-        section#details.flex-center.flex-col.pb-20.space-y-24.px-8
-            .flex.flex-col.space-y-2.md:w-2/3.text-left
-                h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Optimize images as soon as you copy them
-                .text-base.lg:text-lg.text-gray-600
-                    As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimize` it to the `b smallest possible size`.
-                .text-base.lg:text-lg.text-gray-600
-                    -md
-                        Clop uses the following utilities for optimizing different kinds of images:
+        section#details.flex-center.flex-col.pb-20.space-y-16.px-8
+            #clipboard.${CLS.section}
+                .md:w-1/2.text-left.max-w-64
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Optimize images as soon as you copy them
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimize` it to the `b smallest possible size`.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The optimized image will have minimal to zero loss in quality, and will be `b ready to paste` in any app.
+                -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimized images as floating results in the bottom right corner of the screen" defs:image
+            #video.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
+                .md:w-1/2.text-left.max-w-64
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Screen recordings as small as screenshots
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Sending screen recordings becomes 10x faster with Clop. The app will optimize the video as soon as you stop recording.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The video will be available as a `b floating thumbnail`, ready for you to `b drag and drop` in any app.
+                    .text-base.lg:text-lg.text-gray-600.mt-6.italic
+                        Clop can use Apple Silicon's dedicated `b Media Engine chip` for battery-efficient video encoding without using the CPU.
+                -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimized videos as floating results in the bottom right corner of the screen" defs:image
+            #downscale.${CLS.section}
+                .md:w-1/2.text-left.max-w-64
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Downscale in a pinch
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Get images and videos ready for sharing by scaling them down to any resolution.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Use handy hotkeys or the floating buttons to downscale the image or video and get an even smaller file size.
+                    .text-base.lg:text-lg.text-gray-600
+                        -md
+                            * `-` downscales incrementally from 90% until 10% of the original resolution
+                            * `1..9` are for downscaling to specific sizes
+                -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
 
-                        * `pngquant` for PNG
-                        * `jpegoptim` for JPEG
-                        * `gifsicle` for GIF
-            .flex.flex-col.space-y-2.md:w-2/3.text-left
-                h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 What's up with the hat in the icon?
-                .text-base.lg:text-lg.text-gray-600
-                    -md
-                        *Clop* is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn more as an adorment in days of celebration.
+            hr.w-2/4.border
+            #technicalities.${CLS.section}.items-center.md:flex-row-reverse.md:space-x-reverse
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Technical details
+                    .text-base.lg:text-lg.text-gray-600
+                        -md
+                            Clop uses the following open source tools for optimizing files, images and videos:
 
-                        We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll off the tongue as easily. We're <b class="text-red-hot">Rom</b><b class="text-amber-500">an</b><b class="text-blue-500">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
+                            * `pngquant` for PNG
+                            * `jpegoptim` for JPEG
+                            * `gifsicle` for GIF
+                            * `ffmpeg` for videos
+
+                            It may also use `libvips` for resizing images if it is installed on your system.
+
+                            The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/v2.0.0/LICENSE.md) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
+                .md:w-1/2.flex.flex-center.flex-col
+                    icon.h-48 : open-source
+                    p `b open` source
+
+            #traditions.${CLS.section}
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 What's up with the hat?
+                    .text-base.lg:text-lg.text-gray-600
+                        -md
+                            *Clop* is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn more as an adorment in days of celebration.
+
+                            We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll off the tongue as easily. We're <b class="text-red-hot">Rom</b><b class="text-amber-500">an</b><b class="text-blue-500">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
+                -call img="clop-hat" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-none shadow-none w-2/4 mx-auto" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
             .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
+        -coffee
+            url = new URL(location)
+            coupon = url.searchParams.get('coupon')
+
+            if coupon
+                document.getElementById('btn-paddle-hero')?.setAttribute('data-coupon', coupon)
+                document.getElementById('btn-paddle-footer')?.setAttribute('data-coupon', coupon)
+
+            setupPaddle = () ->
+                return unless Paddle?
+                clearInterval paddleObserver
+                Paddle.Setup({vendor: 122873})
+
+            paddleObserver = setInterval setupPaddle, 100
+
         -stylus
             @import "stylus/base"
 
@@ -68,24 +143,19 @@ html lang="en"
             li
                 margin-bottom 4px
 
-            #faq
-                code
-                    background-color alpha(blue, 0.25)
-                    color var(--color-gray-700)
-                    padding 0 .5rem
+            code
+                background-color alpha(blue, 0.25)
+                color var(--color-gray-700)
+                padding 0 .5rem
 
-                h2
-                    padding 0.1rem 0.5rem
-                    border-radius 0.5rem
+            h2
+                padding 0.1rem 0.5rem
+                border-radius 0.5rem
 
-                p
-                    padding 0.1rem 0.5rem
-                    color var(--color-gray-700)
-
-                hr
-                    border-color alpha(blue, 0.1)
-                li
-                    line-height 1.8
+            hr
+                border-color alpha(blue, 0.1)
+            li
+                line-height 1.8
 
             a
                 color var(--color-blue-400)

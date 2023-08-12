@@ -12,7 +12,7 @@ html lang="en"
 
     body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
             .links
                 a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
@@ -51,7 +51,7 @@ html lang="en"
                   label.self-start.font-bold.ml-1 for="message" Message
                   textarea#message.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="message" placeholder="Something about our apps perhaps" required="" type="text" rows="6"
 
-                  button.btn.btn-yellow-lunar.${'hover:bg-white'}.${'hover:text-black'}.!py-1 type="submit" Send
+                  button.btn.btn-yellow-lunar.hover:bg-white.hover:text-black.!py-1 type="submit" Send
 
             -if not DEV
                 script async="true" src="https://unpkg.com/@botpoison/browser"

@@ -11,7 +11,7 @@ html lang="en"
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-dot : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
@@ -28,7 +28,7 @@ html lang="en"
                 a.mr-4.btn.btn-orange-dot.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/YellowDot.zip"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
-                a.btn.text-black.bg-white.${'hover:text-white'}.${'hover:bg-black'}.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/YellowDot"
+                a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/YellowDot"
                     icon.h-4.w-4.md:h-7.md:w-7 : github
                     span.ml-2.text-sm.md:text-base View Source
 

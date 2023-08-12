@@ -19,7 +19,7 @@ html lang="en"
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
@@ -33,10 +33,10 @@ html lang="en"
 
             icon.w-[1200px].h-[400px].md:h-[800px].max-w-[100vw] : keyboard
 
-            a.flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
+            a.md:flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
-            a.btn.btn-yellow-peach.mt-10.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/rcmd.zip" Try for free
+            a.btn.btn-yellow-peach.mt-10.md:flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/rcmd.zip" Try for free
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 

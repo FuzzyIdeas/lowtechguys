@@ -1,13 +1,18 @@
 - namespace name="defs" defs.plim
 
+---!
+    class CLS:
+        mode_heading = "text-2xl md:text-xl lg:text-2xl xl:text-3xl font-sans font-extrabold text-black"
+        section = " p-6 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[1200px] text-gray-900 bg-white rounded-lg text-left"
+
 doctype html
 html lang="en"
     head
         - call title="Clop - Privacy Policy" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" canonical="/clop/privacy" defs:head
 
-    body.bg-zinc-300.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+    body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
             .links
                 a.text-sm.md:text-base.ml-4 href="/clop/" Clop
@@ -16,9 +21,48 @@ html lang="en"
         section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
             img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
             h1.mb-6.text-4xl.text-zinc-600 Clop
-            h5.text-gray-500.m-0.p-0 Clipboard optimizer for images
-            h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
+            h5.text-stone-600.m-0.p-0 Clipboard optimizer for images
+            h5.text-stone-600.m-0.p-0.-mt-1 Copy large, paste small, send fast
             h3.text-zinc-800 Clop does not collect any personal information.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading} User Data
+                -md
+                    Clop does not collect, store or sell any user identifiable data.
+
+                    We don't care who you are.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Behavioral Data
+                -md
+                    Clop does not collect, store or sell any behavioral data.
+
+                    We don't care how you use the app as long as it works for you.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Error Reporting
+                -md
+                    Clop uses [Sentry](https://sentry.io/) for collecting crash data.
+
+                    The data may contain:
+
+                    * Device info *(OS version, Mac type)*
+                    * IP Address
+                    * Email
+                        - *(only if you explicitly gave your consent to be contacted by me when you bought a Pro license)*
+
+                    ![Paddle email consent](/static/img/paddle-consent.webp)
+
+                    The data is only used for fixing Clop errors.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Licensing
+                -md
+                    Clop uses [Paddle](https://paddle.com/) for checkout and licensing.
+
+                    Please check their privacy policy for data they collect: [Paddle Privacy Policy](https://www.paddle.com/legal/privacy)
+
+                    **Clop doesn't handle any payment info.**
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
@@ -31,3 +75,15 @@ html lang="en"
                 a
                     background-color alpha(black, 0.1)
                     color black
+
+            section
+                img
+                    max-width 50%
+                    margin 2rem auto
+                    border-radius 1.5rem
+                    box-shadow 0 1px 18px 0 rgb(200 200 200), 0 1px 2px -1px rgb(200 200 200)
+                em
+                    font-style italic
+                    color alpha(black, 0.5)
+                strong, a
+                    color var(--color-blue-400)

@@ -10,7 +10,7 @@ html lang="en"
 
     body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-400 : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
@@ -24,10 +24,10 @@ html lang="en"
             h5.text-gray-800 Keep them hidden even when pressing Esc
 
             .flex.flex-center.mt-8
-                a.mr-4.btn.text-white.bg-blue-500.${'hover:text-black'}.${'hover:bg-blue-300'}.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/ZoomHider.zip"
+                a.mr-4.btn.text-white.bg-blue-500.hover:text-black.hover:bg-blue-300.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/ZoomHider.zip"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
-                a.btn.text-white.bg-gray-900.${'hover:text-black'}.${'hover:bg-gray-300'}.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/ZoomHider"
+                a.btn.text-white.bg-gray-900.hover:text-black.hover:bg-gray-300.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/ZoomHider"
                     icon.h-4.w-4.md:h-7.md:w-7 : github
                     span.ml-2.text-sm.md:text-base View Source
 

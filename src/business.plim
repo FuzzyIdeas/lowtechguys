@@ -12,7 +12,7 @@ html lang="en"
 
     body.paper-bg-serious.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            a.flex.flex-center.${'hover:transform'}.${'hover:scale-110'} href="/"
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-orange-200 : lowtech
             .links
                 a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Our apps
@@ -38,7 +38,7 @@ html lang="en"
                   label.self-start.font-bold.ml-1.text-yellow-peach.opacity-60 for="message" Message
                   textarea#message.placeholder-gray-400.placeholder-opacity-60.text-white.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-mauve-darkgray.w-full name="message" placeholder="Something about an app you'd like us to build for you perhaps." required="" type="text" rows="6"
 
-                  button.btn.btn-white.${'hover:bg-mauve-darkgray'}.${'hover:text-white'}.!py-1.!rounded-lg.opacity-80 type="submit" Send
+                  button.btn.btn-white.hover:bg-mauve-darkgray.hover:text-white.!py-1.!rounded-lg.opacity-80 type="submit" Send
 
             .text-gray-300.w-[570px].max-w-[90vw].text-left.py-10
                 h2 Can we sync?

@@ -38,12 +38,12 @@ module.exports = {
         xs: ['0.75rem', '13px'],
       },
       dropShadow: {
-        '3xl': '0 35px 35px rgba(0, 0, 0, 0.45)',
+        '3xl': '0 10px 20px rgba(0, 0, 0, 0.45)',
         '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
         '5xl': '0 35px 35px rgba(0, 0, 0, 0.85)',
       },
       boxShadow: {
-        '3xl': '0 35px 35px rgba(0, 0, 0, 0.45)',
+        '3xl': '0 10px 20px rgba(0, 0, 0, 0.45)',
         '4xl': '0 35px 35px rgba(0, 0, 0, 0.65)',
         '5xl': '0 35px 35px rgba(0, 0, 0, 0.85)',
       },
