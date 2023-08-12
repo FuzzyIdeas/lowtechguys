@@ -33,14 +33,14 @@ html lang="en"
                     We don't care who you are.
 
             section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Behavioral Data
+                h1.${CLS.mode_heading}.font-sans.font-extrabold Behavioral Data
                 -md
                     Clop does not collect, store or sell any behavioral data.
 
                     We don't care how you use the app as long as it works for you.
 
             section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Error Reporting
+                h1.${CLS.mode_heading}.font-sans.font-extrabold Error Reporting
                 -md
                     Clop uses [Sentry](https://sentry.io/) for collecting crash data.
 
@@ -56,7 +56,7 @@ html lang="en"
                     The data is only used for fixing Clop errors.
 
             section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-white Licensing
+                h1.${CLS.mode_heading}.font-sans.font-extrabold Licensing
                 -md
                     Clop uses [Paddle](https://paddle.com/) for checkout and licensing.
 
