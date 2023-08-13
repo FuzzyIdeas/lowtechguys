@@ -2,7 +2,7 @@
 ---!
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
-        section = " flex md:space-x-10 w-screen max-w-[576px] md:w-full md:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
+        section = "pt-2 flex md:space-x-10 w-screen max-w-[576px] md:w-full md:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
 
 doctype html
 html lang="en"
@@ -27,25 +27,29 @@ html lang="en"
             h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
 
             .flex.flex-center.mt-8.mb-2
-                a.btn.text-white.bg-zinc-700.hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
-                    .flex.flex-col.items-start
-                        span.text-lg.!leading-4.mt-1 Download
-                        span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.0.0`
-                a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px].ml-4 href="#!" data-product="841006"
-                    .flex.flex-col.items-start
-                        span.text-lg.!leading-4.mt-1 Buy Clop Pro
-                        span.text-[0.7rem].opacity-70.font-mono Lifetime license costs `span.text-amber-300 $8`
+                .flex.flex-col.justify-center.items.center
+                    a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Download
+                            span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.0.2`
+                    a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
+                .flex.flex-col.justify-center.items.center.ml-4
+                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Buy Clop Pro
+                            span.text-[0.7rem].opacity-70.font-mono Lifetime license costs `span.text-amber-300 $8`
+                    a.text-xs.mt-1.text-stone-500.decoration-dotted href="#pro" Why Clop Pro?
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
                     background: var(--color-neutral-600) !important
                     box-shadow: var(--shadows-xl) !important
 
-            a.btn.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/alin23/Clop"
+            a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/alin23/Clop"
                 icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
                 .flex.flex-col.items-start
                     span.text-sm.md:text-base Source code
                     span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-pink-600 GPLv3`
-            .text-red-700.text-xxs.mt-4.font-medium.opacity-50
+            .text-red-700.text-xxs.mt-1.font-medium.opacity-50
                 | compatible with macOS `b 13.0+` (Ventura and later)
 
         section#details.flex-center.flex-col.pb-20.space-y-16.px-8
@@ -58,6 +62,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-600.mt-2
                         The optimized image will have minimal to zero loss in quality, and will be `b ready to paste` in any app.
                 -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimized images as floating results in the bottom right corner of the screen" defs:image
+
             #video.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
                 .md:w-1/2.text-left.max-w-64
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
@@ -69,6 +74,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-600.mt-6.italic
                         Clop can use Apple Silicon's dedicated `b Media Engine chip` for battery-efficient video encoding without using the CPU.
                 -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimized videos as floating results in the bottom right corner of the screen" defs:image
+
             #downscale.${CLS.section}
                 .md:w-1/2.text-left.max-w-64
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
@@ -82,6 +88,137 @@ html lang="en"
                             * `-` downscales incrementally from 90% until 10% of the original resolution
                             * `1..9` are for downscaling to specific sizes
                 -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
+            #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.md:rounded-xl
+                -stylus
+                    #power-user
+                        code
+                            background-color alpha(white, 0.15)
+                            color var(--color-gray-100)
+                        em
+                            color var(--color-orange-200)
+                        strong
+                            color var(--color-orange-400)
+
+                h1.text-3xl.text-center.lg:text-4xl.mb-1.text-white
+                    Fit for power users
+                .flex.flex-col.md:flex-row.justify-around.items-start.space-y-8.md:space-y-0.md:space-x-8.w-[90vw].max-w-7xl.shadow-2xl
+                    .md:w-1/3.text-left
+                        h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
+                            On-demand optimisation
+                        .text-base.lg:text-lg.text-gray-300
+                            -md
+                                Press `Ctrl`-`Shift`-`C` to manually optimise the current clipboard.
+
+                                The action works on *images*, *video* files, *paths*, *URLs*, even base64 encoded images.
+
+                                For more aggressive optimisation, `Ctrl`-`Shift`-`A` is also available.
+                    .md:w-1/3.text-left
+                        h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
+                            Compatible formats
+                        .text-base.lg:text-lg.text-gray-300
+                            -md
+                                Clop automatically **converts** less compatible formats like `HEIC`, `tiff`, `mov` to formats understood by most devices.
+
+                                The conversion is fully configurable from the app settings.
+
+                                Original files are kept in a backup folder which can be accessed from the app menu.
+                    .md:w-1/3.text-left
+                        h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
+                            | macOS Shortcuts
+                        .text-base.lg:text-lg.text-gray-300
+                            -md
+                                Integrate Clop optimisation in your workflows through **native macOS Shortcuts**.
+
+                                - Downscale and optimise images that you email weekly
+                                - Download optimised images directly into your slideshow
+                                - ..and so on
+
+            #pro.flex.flex-col.flex-center
+                -stylus
+                    @import "stylus/base"
+
+                    #pro table
+                        overflow hidden
+                        a
+                            text-decoration none
+
+                    tbody tr td:first-of-type, thead tr th:first-of-type
+                        text-align left
+                        padding-left 3rem
+                        +tablet()
+                            padding-left 2rem
+                        +mobile()
+                            padding-left 1rem
+
+                    tbody tr td(:not(:first-of-type))
+                        padding-left 3rem
+                        padding-right 3rem
+                        +tablet()
+                            padding-left 2rem
+                            padding-right 2rem
+                        +mobile()
+                            padding-left 0.1rem
+                            padding-right 0.1rem
+
+                    tbody tr:nth-child(odd)
+                        background-color hsla(290, 19%, 6%, 0.05)
+
+                h1.text-stone-800.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-blue-400 Free` `span.text-stone-400.text-xl.font-medium vs` `span.font-bold.text-red-hot Pro`
+                h6.text-sm.text-stone-400.-mt-1 Free version features are free `b forever`
+                h6.text-sm.text-stone-400.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
+                div.flex.flex-col.flex-center.w-screen.mt-8
+                    table.w-[95vw].xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
+                        thead
+                            tr
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium Feature
+                                th.text-sm.md:text-xl.py-5.px-1.font-bold.font-mono Clop Pro
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium Free version
+                        tbody
+                            tr
+                                td
+                                    a.font-normal.text-black href="#clipboard" Clipboard optimisation
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Automatically optimise any image that gets copied to clipboard
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.font-normal.text-black href="#downscale" Downscale images
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to scale images down to smaller resolutions
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.text-black href="#video" Optimise screen recordings
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for video files and optimise them as they get created
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                            tr
+                                td
+                                    p.text-black  Optimise screenshot files
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for image files and optimise them as they get created
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                            tr
+                                td
+                                    a.text-black href="#ondemand" On-demand optimisation
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any image, video, URL etc. from the clipboard
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                            tr
+                                td
+                                    a.text-black href="#shortcuts" Shortcuts support
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use native macOS Shortcuts to integrate optimised files in your workflows
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+
 
             hr.w-2/4.border
             #technicalities.${CLS.section}.items-center.md:flex-row-reverse.md:space-x-reverse
@@ -98,7 +235,7 @@ html lang="en"
 
                             It may also use `libvips` for resizing images if it is installed on your system.
 
-                            The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/v2.0.0/LICENSE.md) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
+                            The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/main/LICENSE.md) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
                 .md:w-1/2.flex.flex-center.flex-col
                     icon.h-48 : open-source
                     p `b open` source
