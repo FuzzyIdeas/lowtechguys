@@ -8,6 +8,7 @@ doctype html
 html lang="en"
     head
         - call title="Clop - Image, video and clipboard optimizer" domain="lowtechguys.com" description="Image, video and clipboard optimizer. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
@@ -31,7 +32,7 @@ html lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.0.2`
+                            span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.0.3`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -87,6 +88,12 @@ html lang="en"
                         -md
                             * `-` downscales incrementally from 90% until 10% of the original resolution
                             * `1..9` are for downscaling to specific sizes
+
+                            For best performance and quality, install [libvips](https://www.libvips.org/):
+
+                            ```sh
+                            brew install vips
+                            ```
                 -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
             #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.md:rounded-xl
                 -stylus
@@ -196,7 +203,7 @@ html lang="en"
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
                             tr
                                 td
-                                    p.text-black  Optimise screenshot files
+                                    p.text-black Optimise screenshot files
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for image files and optimise them as they get created
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
@@ -204,7 +211,7 @@ html lang="en"
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
                             tr
                                 td
-                                    a.text-black href="#ondemand" On-demand optimisation
+                                    a.text-black href="#power-user" On-demand optimisation
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any image, video, URL etc. from the clipboard
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
@@ -212,12 +219,21 @@ html lang="en"
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
                             tr
                                 td
-                                    a.text-black href="#shortcuts" Shortcuts support
+                                    a.text-black href="#power-user" Shortcuts support
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use native macOS Shortcuts to integrate optimised files in your workflows
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+
+                    a.btn.mt-6.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Try for free
+                            span.text-[0.7rem].text-stone-300.font-mono 14-day trial of `b.text-white Pro` features
+                    p.text-xs.mt-1.text-stone-500
+                        | No credit card required
+                    p.text-xs.mt-1.text-red-400.font-medium
+                        | Refunds accepted within 14 days of purchase, no questions asked
 
 
             hr.w-2/4.border
@@ -254,7 +270,8 @@ html lang="en"
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
             .links.w-full.md:w-auto
-                / a.text-red-hot.ml-4 href="/contact" Contact
+                a.text-red-hot.ml-4 href="/clop/terms" Terms & Condition
+                a.text-red-hot.ml-4 href="/clop/eula" EULA
         -coffee
             url = new URL(location)
             coupon = url.searchParams.get('coupon')
@@ -284,6 +301,8 @@ html lang="en"
                 background-color alpha(blue, 0.25)
                 color var(--color-gray-700)
                 padding 0 .5rem
+            .codehilite
+                background-color alpha(blue, 0.15)
 
             h2
                 padding 0.1rem 0.5rem
