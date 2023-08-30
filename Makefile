@@ -42,9 +42,8 @@ dev: export PYTHONWARNINGS=ignore
 dev:
 	touch DEVMODE
 	mp 'cd public/ && npx -y livereloadx --static' \
-	   'caddy run --watch' \
 	   'make watch-css' \
-	   "open http://localhost:3998; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j html css js'"
+	   "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j html css js'"
 
 
 watch: export NODE_ENV=production

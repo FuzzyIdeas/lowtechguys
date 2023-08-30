@@ -55,29 +55,29 @@
     -coffee
       if location.host != '${domain}'
         domain = (location.host || 'localhost').split(':')[0]
-        document.write "<script src=\"http://#{ '${ domain }' }:35729/livereload.js?snipver=1\"><\/script>"
+        document.write "<script src=\"http://localhost:35729/livereload.js?snipver=1\"><\/script>"
 
 
-- def lazyvideoset(video, cls, webm=True, poster=None)
-    video.${cls} (preload="none" muted loop disablePictureInPicture playsinline controls poster="/static/img/${video}-poster.webp" )
-        source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+- def lazyvideoset(video, cls, webm=False, poster=None, controls=True, prefix='/static/video/')
+    video.${cls} (preload="none" muted loop disablePictureInPicture playsinline ${"controls" if controls else ""} poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
-            source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/${video}-h264.mp4" type="video/mp4"
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
 
-- def videoset(video, cls, webm=True, poster=None)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster.webp" )
-        source src="/static/video/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+- def videoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
-            source src="/static/video/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/${video}-h264.mp4" type="video/mp4"
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
 
-- def smallvideoset(video, cls, webm=True, poster=None)
-    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster="/static/img/${video}-poster.webp" )
-        source src="/static/video/small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+- def smallvideoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
         -if webm
-            source src="/static/video/small/${video}-vp9.webm" type='video/webm; codecs=vp9'
-        source src="/static/video/small/${video}-h264.mp4" type='video/mp4'
+            source src="${prefix}small/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}small/${video}-h264.mp4" type='video/mp4'
 
 -def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
     picture.object-${fit}.${pcls}

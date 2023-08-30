@@ -105,7 +105,7 @@ html lang="en"
                 .text-center
                     h1.text-3xl.text-center.lg:text-4xl.mb-4 Stage Manager ready
                     h5.text-gray-300.text-center.mb-4 Navigate stages in `b.text-orange-200 macOS Ventura` using the keyboard
-                -call video="rcmd-stage-manager" webm=False cls="md:w-2/3 rounded-xl object-cover" defs:lazyvideoset
+                -call video="rcmd-stage-manager" webm=False cls="md:w-2/3 rounded-xl object-cover" poster="/static/img/rcmd-stage-manager-poster.webp" defs:lazyvideoset
 
             h1.text-center FAQ
             #faq.py-12.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4

@@ -53,6 +53,10 @@ html lang="en"
 
                   button.btn.btn-yellow-lunar.hover:bg-white.hover:text-black.!py-1 type="submit" Send
 
+            a href="https://discord.gg/99vACD8D5u" target="_blank"
+                img.rounded.md:rounded-lg src="/static/svg/discord.svg" alt="Discord community for The low-tech guys" style="width: 300px" width="300"
+
+
             -if not DEV
                 script async="true" src="https://unpkg.com/@botpoison/browser"
 
