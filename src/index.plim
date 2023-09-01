@@ -124,15 +124,6 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
-                    a.${CLS.appcontainer} href="/zoomhider/"
-                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
-                        h2.text-mauve-gray ZoomHider
-                        p.text-sm.leading-3.text-gray-black.font-medium
-                            Keep Zoom screen sharing controls
-                        p.text-sm.leading-3.text-gray-black.font-medium
-                            | hidden even when pressing Esc
-
-                .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot/"
                         .${CLS.appcontainer}.blur-sm.hover:blur-none.transition.z-0.hover:z-20
                             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
@@ -144,6 +135,28 @@ html lang="en"
                         .text-center.pointer-events-none
                             h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Basically
                             h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Useless
+
+                    a.${CLS.appcontainer} href="/zoomhider/"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
+                        h2.text-mauve-gray ZoomHider
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Keep Zoom screen sharing controls
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | hidden even when pressing Esc
+
+        hr.opacity-20
+        section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90
+            .flex-col.flex-center.mt-2
+                h1.font-sans.font-black.text-5xl.4xl:text-6xl.mb-4.text-mauve-gray.text-opacity-80 Web extensions
+                .flex.flex-col.md:flex-row.flex-center.flex-wrap
+                    a.${CLS.appcontainer} href="https://github.com/alin23/sidehn"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="https://files.lowtechguys.com/sidehn.svg"
+                        h2.text-mauve-gray SideHN
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            The web, with a side of Hacker News
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | View HN comments in a sidebar
+
 
 
         footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
