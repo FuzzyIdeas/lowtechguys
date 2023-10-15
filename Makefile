@@ -41,9 +41,10 @@ dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
 	touch DEVMODE
-	mp 'cd public/ && npx -y livereloadx --static' \
-	   'make watch-css' \
-	   "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j html css js'"
+	mp --auto-collapse \
+	    'cd public/ && npx -y livereloadx --static' \
+	    'make watch-css' \
+	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j html css js'"
 
 
 watch: export NODE_ENV=production

@@ -57,6 +57,10 @@ module.exports = {
         mono: ['ui-monospace', ...fontFamily.mono],
       },
       keyframes: {
+        slowscroll: {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(-1150px)' },
+        },
         top450: {
           '0%, 30%, 100%': { top: '0', opacity: '0' },
           '40%, 90%': { top: '450px', opacity: '1' },
@@ -105,6 +109,7 @@ module.exports = {
         },
       },
       animation: {
+        slowscroll: 'slowscroll 60s linear 0s infinite alternate',
         top450: 'top450 8s ease-out 3s infinite',
         showat50: 'showat50 8s ease-in-out 3s infinite',
         showat75: 'showat75 8s ease-in-out 3s infinite',

@@ -24,7 +24,7 @@ html lang="en"
             h5.text-gray-800 Keep them hidden even when pressing Esc
 
             .flex.flex-center.mt-8
-                a.mr-4.btn.text-white.bg-blue-500.hover:text-black.hover:bg-blue-300.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/ZoomHider.zip"
+                a.mr-4.btn.text-white.bg-blue-500.hover:text-black.hover:bg-blue-300.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/releases/ZoomHider.dmg"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
                 a.btn.text-white.bg-gray-900.hover:text-black.hover:bg-gray-300.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/ZoomHider"
@@ -40,7 +40,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-600
                         The `b.text-orange-400 menubar icon` allows you to `b.text-blue-400 Pause` hiding, `b.text-red-500 Quit` the app, and `b.text-green-500 Hide` the menubar icon itself.
                     .text-base.lg:text-lg.text-gray-600
-                        There's a `span.bg-black.text-white.rounded.py-1.px-2 ⌥ Right Option` + `span.bg-black.text-white.rounded.py-1.px-2 Z` hotkey to bring back the floating controls when you need them.
+                        To bring back the floating controls when you need them, simply press `span.bg-black.text-white.rounded.py-1.px-2 Esc 3x`. You can then hide the controls again with the same hotkey.
                     h4.text-blue-400 How it works?
                     .text-sm.lg:text-base.text-gray-500
                         ZoomHider works by searching for the floating controls window on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the controls hidden at all times.

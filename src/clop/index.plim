@@ -2,18 +2,18 @@
 ---!
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
-        section = "pt-2 flex md:space-x-10 w-screen max-w-[576px] md:w-full md:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
+        section = "pt-2 flex md:space-x-10 w-[96vw] max-w-[96vw] md:max-w-[96vw] md:w-full lg:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
 
 doctype html
-html lang="en"
+html.overflow-x-hidden lang="en"
     head
-        - call title="Clop - Image, video and clipboard optimiser" domain="lowtechguys.com" description="Image, video and clipboard optimiser. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
+        - call title="Clop - Image, video, PDF and clipboard optimiser" domain="lowtechguys.com" description="Image, video, PDF and clipboard optimiser. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
-    body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+    body.bg-stone-100.text-center.max-w-[100%].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
             .links
@@ -21,24 +21,24 @@ html lang="en"
                 a.text-sm.md:text-base.ml-4 href="/clop/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+        section#hero.min-w-[96vw].flex-center.flex-col.relative.pb-20
             img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
             h1.mb-6.text-4xl.text-zinc-600 Clop
-            h5.text-gray-500.m-0.p-0 Image, video and clipboard optimiser
+            h5.text-gray-500.m-0.p-0 Image, video, PDF and clipboard optimiser
             h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
 
-            .flex.flex-center.mt-8.mb-2
+            .flex.flex-center.mt-8.mb-2.px-2
                 .flex.flex-col.justify-center.items.center
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono Latest version `span.text-yellow-400 v2.1.3`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.2.4`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
-                .flex.flex-col.justify-center.items.center.ml-4
+                .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Buy Clop Pro
-                            span.text-[0.7rem].opacity-70.font-mono Lifetime license costs `span.text-amber-300 $8`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 $15`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="#pro" Why Clop Pro?
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
@@ -62,7 +62,8 @@ html lang="en"
                         As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimise` it to the `b smallest possible size`.
                     .text-base.lg:text-lg.text-gray-600.mt-2
                         The optimised image will have minimal to zero loss in quality, and will be `b ready to paste` in any app.
-                -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimised images as floating results in the bottom right corner of the screen" defs:image
+                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/screenshot-clipboard.webp" src="/static/video/screenshot-copy-optimise-paste-in-email.mp4")
+                / -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimised images as floating results in the bottom right corner of the screen" defs:image
 
             #video.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
                 .md:w-1/2.text-left.max-w-64
@@ -88,13 +89,12 @@ html lang="en"
                         -md
                             * `-` downscales incrementally from 90% until 10% of the original resolution
                             * `1..9` are for downscaling to specific sizes
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Click on the resolution text to crop the image or video to any specific size or aspect ratio.
 
-                            For best performance and quality, install [libvips](https://www.libvips.org/):
+                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/downscale-images.webp" src="/static/video/screenshot-downscale-in-email.mp4")
 
-                            ```sh
-                            brew install vips
-                            ```
-                -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
+                / -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
 
             #dropzone.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
                 .md:w-1/2.text-left.max-w-64
@@ -112,7 +112,7 @@ html lang="en"
                             - pressing `Option` once will *dismiss* the drop zone UI
                 -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
 
-            #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.md:rounded-xl
+            #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.rounded-xl
                 -stylus
                     #power-user
                         code
@@ -133,9 +133,9 @@ html lang="en"
                             -md
                                 Press `Ctrl`-`Shift`-`C` to manually optimise the current clipboard.
 
-                                The action works on *images*, *video* files, *paths*, *URLs*, even base64 encoded images.
+                                In **Finder**, you can select images, videos and PDFs and press `Ctrl`-`O` to optimise them.
 
-                                For more aggressive optimisation, `Ctrl`-`Shift`-`A` is also available.
+                                If hotkeys are not your thing, you can also find an **Optimise with Clop** button in the Finder preview pane.
                     .md:w-1/3.text-left
                         h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
                             Compatible formats
@@ -157,7 +157,80 @@ html lang="en"
                                 - Download optimised images directly into your slideshow
                                 - ..and so on
 
-            #pro.flex.flex-col.flex-center
+            h1#testimonials.text-3xl.text-center.lg:text-4xl.mb-8.text-black.overflow-hidden
+                How people like to use Clop
+            .h-[600px].overflow-hidden.relative.max-w-[100vw]
+                -def card(user, link, text)
+                    .flex-col.text-xs.text-left.bg-white.shadow-xl.rounded-xl.w-64.overflow-auto.h-min
+                        .flex.items-center.bg-blue-100.px-3.py-2.rounded-t-xl.w-full.justify-between
+                            a.text-black.font-bold href="https://old.reddit.com/r/macapps/comments/15zas8f/clop_license_giveaway_tell_me_about_your_workflow/${link}/" /u/${user}
+                            img width=16 height=16 src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png"
+                        .px-4.py-2.text-stone-700
+                            -for paragraph in text.split('\n')
+                                p ${paragraph}
+
+                .flex.space-x-2.animate-slowscroll.dynamic-animation
+                    .flex.flex-col.space-y-6.w-full.px-5
+                        -call user="1Wrongdoer" link="jxgkiwg" text="Email/blog:\n\nI type tutorial guides for others and often include screenshots with arrows to make it easier for less-technical audiences to follow.\nSometimes, emails grow unwieldy in size because I tend to take screenshots that capture most of the screen and this makes it difficult to send depending on the number of images.\nI currently use Shottr to take screenshots because of the scrolling screenshot and currently, Clop monitors my folders and automatically compresses them." self:card
+                        -call user="JothamLEC" link="jxh58sm" text="Team communication:\nI’m working as a marketing manager, and I frequently use Cleanshot to highlight and annotate design elements to request for adjustments via Microsoft Teams and Notion.\nThe company’s expanding rapidly, and frankly, our internet and wifi stability is struggling to keep up.\nHaving Clop helps with the upload speed." self:card
+                        -call user="Qwaint" link="jxiuoy2" text="I study online, via Zoom, so my workflow is as follows:\n The Zoom presentation window on my main screen. As the lecture starts I use Shottr to set an area to capture on repeat via key bind.\n ...screenshot goes into the clipboard where Clop does its magic, allowing it a split second later to be pasted into Craft where I can take additional notes.\n Since I discovered Clop I've shrunk the size of the notes by A LOT!\n It's highly addictive to see the Clop notification with how much the size has shrunk." self:card
+                        -call user="freeshare2280" link="jxkx7lc" text="I regularly need to post images on a few personal sites, and I needed to reduce the weight of the images to avoid long loading times.\n I mainly copy images for the mac-utils.com website, which lists software for Mac\n The second site I manage is for a company of archery... where I occasionally need to illustrate my articles." self:card
+                        -call user="jspr_crz" link="jxi3ruc" text="With Clop, my emails with screenshots don't take up as much space, and my chat messages gets sent faster since it uploads an optimized image with smaller file size. Clop has been a staple for my work ever since I stumbled upon it.\n I work in graphic/UI/UX design and take a LOT of screenshots for client approvals daily, and with the screen that I'm using, my screenshots take up space quickly in our chat and email storage.\nWith Clop, my emails with screenshots don't take up as much space, and my chat messages gets sent faster since it uploads an optimized image with smaller file size." self:card
+                        -call user="Baram31337" link="jxinga3" text="I often use screen recording and screenshots using MarginNote and Notability for YouTube lecture production.\nIt's one of my favorite apps, and when I'm making YouTube videos, Margin Notes and Notability [files] are automatically optimized when I take screen recordings and screenshots\nI'm satisfied with the good quality and reduced work." self:card
+                    .flex.flex-col.space-y-6.w-full.px-5
+                        -call user="PerfectFine" link="jxhlmls" text="...when I insert an inline image in mail, it takes up the entire screen and makes the email text unreadable.\n... with Clop, I just need to click - again. Clop is the most convenient app I've used for this simple task.\nI also use it for videos. Many websites have a size limit, but uploading a GIF may result in a less smooth playback.\nThe quality is still amazing, btw." self:card
+                        -call user="raaamyaraaavan" link="jxhslsz" text="I write extensive technical documents with screenshots... I feel that with compressed images the documents are getting snappier.\nI also sometimes have to share the screenshots to the team ... a compressed picture helps as the recipients are not always on laptop and may have to access the media on phone.\n[Clop] is an excellent little utility which does its job without coming in the way of the work." self:card
+                        -call user="LavaCreeperBOSSB" link="jxgbcsu" text="I usually use Clop to optimize screenshots I send in beeper.\nI have gigabit fiber but for some reason it always takes a while. I dont need full resolution for most things so it saves a lot of storage and time." self:card
+                        -call user="JothamLEC" link="jxh58sm" text="Media manipulation:\nWorking in marketing, we frequently receive media from a boatload of different sources, namely difficult image formats like HEIC and WEBP.\nI used to right click and select convert image from the context menu — but Clop is a productivity boost." self:card
+                        -call user="iamthekiller" link="jxgctiu" text="My job requires that I use Salesforce Servicecloud to respond to tickets for help.\nUnfortunately, Salesforce Servicecloud limits the inline screenshot size to a measly 1MB.\nClop allows me to speed through ticket responses, not having to worry about the size of my screenshot. It’s also right there in my clipboard, ready to paste." self:card
+                        -call user="MichaelTheGeek" link="jxi80px" text="One of my blogging workflows was more complex than it needed to be. What Clop has done is remove the pain of having to use several apps to resize a photo or screenshot to post online.\nI simply take the screenshot using the built in tools or Capto, send it to the clipboard and save the resized image where I need it to be.\nClop has saved me many time consuming steps in this workflow process." self:card
+                        -call user="EttVenter" link="jxj2x9g" text="I'm a photographer by profession, so I work with large quantities of images every day.\nI used to use JpegMini and ImageOptim for this stuff, and the pain in the ass it was to open one of these up, change export locations, yada yada, to get to an adjusted image.\nNow it's just a matter of export, copy, paste, and all the optimization is happening in the background before I even get to my cloud folder to paste\nAnd the added controls to keep changing the image are great too.\nClop hits the spot, dude." self:card
+                    .flex.flex-col.space-y-6.w-full.px-5
+                        -call user="tanerilyazov" link="jxgflhf" text="Best usecase for me is: scaling down images/GIFs of memes or screenshots to use as Slack custom emojis.\nI add a lot of screenshots to my PKM which is synced via iCloud. So going overboard can be pricy and it’s nice to have an auto resize for everything that goes in there.\nAlso sharing screencasts is a hassle due to big filesizes not being allowed through many platforms." self:card
+                        -call user="areyouredditenough" link="jxgh0u3" text="I previously had a workflow where I take a screenshot for an eBay auction or social media, save it to the Desktop and then I'd open ImageOptim to compress the image and remove the EXIF data (just to be safe).\nWith GIF or screen recording it was even more cumbersome. I use Cleanshot for this, then used Handbreak to reduce the size. Oftentimes I'd have to re-encode as it was still not small enough.\nWith Clop I could skip the second step completely and just paste the image in the app. Especially with GIF & video it's a time saver." self:card
+                        -call user="1Wrongdoer" link="jxgkiwg" text="Personal Knowledge Management:\n\nI like to take notes with Obsidian on things I've read and include images of flow diagrams, etc. for review down the line so I don't lose context.\nKeeping the file size small is great since I don't want my database to grow too large and slow down the program." self:card
+                        -call user="snoop1823" link="jxh24yb" text="I use Clop each day dozens dozens of times.\nClop is now my must have app :)\nI discovered v1 last winter, Clop helped me a lot during of blackouts (yes I’m Ukrainian), when we had no electricity I worked a lot on my battery and overloaded cell internet connection, so each MB was a piece of gold." self:card
+                        -call user="JothamLEC" link="jxh58sm" text="Company wikipage:\nThe company [I work on] sells software tools, and use Notion publishing for public documentation.\nShowing is better than telling, so we use videos, JPEGs and GIFs a lot.\nIf I'm not mistaken, Notion uploads media to AWS without compression, so Clop helps with uploading and retrieval." self:card
+                        -call user="ysm" link="jxiww0s" text="A 2.7MB image is a pain to upload and to download for team members. It's nice to be able to compress them right in Clop.\nAlso, the app I use to write my reports struggles with large size photos.\nSo I always compress the images before embedding them in the document.\nI used to use the app ImageOptim to compress large photos.\n However, I don't always decide all the photos I want to include in a report at first, I tend to pick and choose as I'm writing.\nThis is where the Clop app comes in handy, as it compresses photos on demand." self:card
+                .h-24.w-full.absolute.top-0.left-0.bg-gradient-to-b.from-stone-100.to-transparent
+                .h-24.w-full.absolute.bottom-0.left-0.bg-gradient-to-t.from-stone-100.to-transparent
+
+
+            h1#pdf.text-3xl.text-center.lg:text-4xl.mb-8.text-black
+                It even works on PDFs
+
+            #pdf-optimisation.${CLS.section}
+                .md:w-1/2.text-left.max-w-48
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
+                        Attach PDFs as large as books, literally
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Heavy `b.text-red-500 PDFs` like `em scans` and `em illustrations` usually don't fit in emails, and they take a long time to upload and download.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop can make those PDF files small enough to fit below the `b.text-blue-400 25MB` limit of email attachments.
+                -call video="clop-pdf" cls="md:w-1/2 rounded md:rounded-2xl object-cover" controls=false defs:lazyvideoset
+            #pdf-cropping.${CLS.section}
+                .md:w-1/2.text-left.max-w-48
+                    -stylus
+                        #pdf-cropping .codehilite
+                            background-color var(--color-mauve-gray)
+                            code
+                                color white
+                                font-weight 500
+                                font-size 0.95rem
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
+                        Crop PDFs to fill the iPad screen
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Some PDF files have large margins on an iPad, which can make them distracting while trying to focus on reading.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop's `code crop-pdf` CLI command can crop PDFs to fill the screen of any specific device.
+                    -md
+                        ```swift
+                        clop crop-pdf --for-device "iPad Air" Calculus.pdf
+                        ```
+                -call img="clop-crop-pdf" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="w-full" alt="two iPads side by side showing a page of the same book, the left one has black borders at the top and bottom, the right iPad's screen is completely filled by the page" defs:image
+
+
+            #pro.flex.flex-col.flex-center.max-w-[96vw]
                 -stylus
                     @import "stylus/base"
 
@@ -190,7 +263,7 @@ html lang="en"
                 h1.text-stone-800.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-blue-400 Free` `span.text-stone-400.text-xl.font-medium vs` `span.font-bold.text-red-hot Pro`
                 h6.text-sm.text-stone-400.-mt-1 Free version features are free `b forever`
                 h6.text-sm.text-stone-400.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
-                div.flex.flex-col.flex-center.w-screen.mt-8
+                div.flex.flex-col.flex-center.w-[96vw].mt-8
                     table.w-[95vw].xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
                         thead
                             tr
@@ -200,64 +273,76 @@ html lang="en"
                         tbody
                             tr
                                 td
-                                    a.font-normal.text-black href="#clipboard" Clipboard optimisation
+                                    a.font-normal.text-black href="#clipboard" Automatic `b Clipboard` optimisation
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Automatically optimise any image that gets copied to clipboard
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                             tr
                                 td
-                                    a.font-normal.text-black href="#downscale" Downscale images
+                                    a.font-normal.text-black href="#downscale" `b Downscale` and crop images
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to scale images down to smaller resolutions
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                             tr
                                 td
-                                    a.text-black href="#video" Optimise screen recordings
+                                    a.text-black href="#video" Optimise `b video` files
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for video files and optimise them as they get created
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
-                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
                             tr
                                 td
-                                    p.text-black Optimise screenshot files
+                                    a.text-black href="#dropzone" Optimise image `b files`
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for image files and optimise them as they get created
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
-                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
                             tr
                                 td
-                                    a.text-black href="#power-user" On-demand optimisation
-                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any image, video, URL etc. from the clipboard
+                                    a.text-black href="#pdf-optimisation" Optimise `b PDF documents`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for PDF documents and optimise them as they get created
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
-                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
                             tr
                                 td
-                                    a.text-black href="#power-user" Shortcuts support
+                                    a.text-black href="#power-user" On-demand optimisation and `b automation`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any file, run scripts and Shortcuts on optimised files
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
+                            tr
+                                td
+                                    a.text-black href="#power-user" macOS `b Shortcuts` support
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use native macOS Shortcuts to integrate optimised files in your workflows
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
-                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 2 per session
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
 
                     a.btn.mt-6.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Try for free
                             span.text-[0.7rem].text-stone-300.font-mono 14-day trial of `b.text-white Pro` features
                     p.text-xs.mt-1.text-stone-500
-                        | No credit card required
+                        | No credit card required, keep using for free after the trial
                     p.text-xs.mt-1.text-red-400.font-medium
                         | Refunds accepted within 14 days of purchase, no questions asked
 
 
             hr.w-2/4.border
-            #technicalities.${CLS.section}.items-center.md:flex-row-reverse.md:space-x-reverse
+            #technicalities.${CLS.section}.items-center.md:flex-row-reverse.md:space-x-reverse.bg-stone-800.pb-8.pt-6.rounded-2xl
                 .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Technical details
-                    .text-base.lg:text-lg.text-gray-600
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-white Technical details
+                    .text-base.lg:text-lg.text-gray-300
+                        -stylus
+                            #technicalities code
+                                background-color alpha(white, 0.15) !important
+                                color var(--color-orange-200) !important
                         -md
                             Clop uses the following open source tools for optimising files, images and videos:
 
@@ -265,13 +350,14 @@ html lang="en"
                             * `jpegoptim` for JPEG
                             * `gifsicle` for GIF
                             * `ffmpeg` for videos
-
-                            It may also use `libvips` for resizing images if it is installed on your system.
+                            * `libvips` for resizing images
+                            * `gifski` for converting videos to GIFs
+                            * `ghostscript` for optimising PDFs
 
                             The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/main/LICENSE.md) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
                 .md:w-1/2.flex.flex-center.flex-col
                     icon.h-48 : open-source
-                    p `b open` source
+                    p.text-white `b open` source
 
             #traditions.${CLS.section}
                 .md:w-1/2.text-left
@@ -281,13 +367,13 @@ html lang="en"
                             *Clop* is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn more as an adorment in days of celebration.
 
                             We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll off the tongue as easily. We're <b class="text-red-hot">Rom</b><b class="text-amber-500">an</b><b class="text-blue-500">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
-                -call img="clop-hat" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-none shadow-none w-2/4 mx-auto" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
+                -call img="clop-hat" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2 brightness-[1.15]" icls="rounded-none shadow-none w-2/4 mx-auto" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
 
-        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
             .links.w-full.md:w-auto
-                a.text-red-hot.ml-4 href="/clop/terms" Terms & Condition
+                a.text-red-hot.ml-4 href="/clop/terms" Terms & Conditions
                 a.text-red-hot.ml-4 href="/clop/eula" EULA
         -coffee
             url = new URL(location)
@@ -304,6 +390,7 @@ html lang="en"
 
             paddleObserver = setInterval setupPaddle, 100
 
+            # stop videos when they're not visible
             videoObserver = new IntersectionObserver(
                 (entries) ->
                     entries.forEach (entry) ->
@@ -321,10 +408,27 @@ html lang="en"
                 if rect? and rect.top + rect.height < 200
                     video.pause()
 
+            # stop animations when they're not visible
+            cssAnimObserver = new IntersectionObserver(
+                (entries) ->
+                    entries.forEach (entry) ->
+                        if entry.isIntersecting
+                            entry.target.style.setProperty('--animps', 'running')
+                        else
+                            entry.target.style.setProperty('--animps', 'paused')
+                , {threshold: [0.15, 0.45]}
+            )
+            document
+                .querySelectorAll('.dynamic-animation')
+                .forEach (animation) -> cssAnimObserver.observe(animation)
+
 
 
         -stylus
             @import "stylus/base"
+
+            .dynamic-animation
+                animation-play-state: var(--animps, paused)
 
             em
                 color var(--color-orange-800)
