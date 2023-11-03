@@ -75,3 +75,8 @@ public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.j
 	@npx -y stylus -u rupture -c -m -o .css/ $<
 	@npx -y tailwindcss --postcss --jit -i .css/$*.css -o $@
 
+
+rebuild:
+	pkill -9 -f -l 'livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss' || true
+	rm DEVMODE || true
+	echo '' >> ./src/clop/defs.plim

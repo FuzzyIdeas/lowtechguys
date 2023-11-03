@@ -11,6 +11,7 @@ module.exports = {
     './public/gammadimmer/*.html',
     './public/clop/*.html',
     './public/grila/*.html',
+    './public/musicdecoy/*.html',
   ],
   mode: 'jit',
   theme: {

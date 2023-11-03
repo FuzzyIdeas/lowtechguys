@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.2.5`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.2.7`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -185,6 +185,10 @@ html.overflow-x-hidden lang="en"
                 .h-24.w-full.absolute.top-0.left-0.bg-gradient-to-b.from-stone-100.to-transparent
                 .h-24.w-full.absolute.bottom-0.left-0.bg-gradient-to-t.from-stone-100.to-transparent
 
+            #afadingthought
+                h3.text-stone-600.mb-0.pb-0.font-normal Featured on `a.text-stone-700 href="https://www.youtube.com/@afadingthought" "A Fading Thought"`
+                p.text-stone-500.font-normal.font-mono.text-sm.mt-0 by `em Robert J. P. Oberg`
+                iframe.shadow-xl.rounded-2xl.mt-4.max-w-[96vw] width="560" height="315" src="https://www.youtube-nocookie.com/embed/DRsDwodJHxs?si=7lBEDw4qBytp5BsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""
 
             h1#pdf.text-3xl.text-center.lg:text-4xl.mb-8.text-black
                 It even works on PDFs
@@ -405,7 +409,7 @@ html.overflow-x-hidden lang="en"
 
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2022
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
             .links.w-full.md:w-auto
                 a.text-red-hot.ml-4 href="/clop/terms" Terms & Conditions
                 a.text-red-hot.ml-4 href="/clop/eula" EULA

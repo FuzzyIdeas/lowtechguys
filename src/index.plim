@@ -124,6 +124,24 @@ html lang="en"
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
+                    a.${CLS.appcontainer} href="/musicdecoy/"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/musicdecoy-icon.webp"
+                        h2.text-mauve-gray Music Decoy
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Stop launching the Music app
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | whenever you press `b ▶ Play`
+
+
+                    a.${CLS.appcontainer} href="/zoomhider/"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
+                        h2.text-mauve-gray ZoomHider
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Keep Zoom screen sharing controls
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | hidden even when pressing Esc
+
+                .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot/"
                         .${CLS.appcontainer}.blur-sm.hover:blur-none.transition.z-0.hover:z-20
                             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
@@ -135,14 +153,6 @@ html lang="en"
                         .text-center.pointer-events-none
                             h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Basically
                             h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Useless
-
-                    a.${CLS.appcontainer} href="/zoomhider/"
-                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
-                        h2.text-mauve-gray ZoomHider
-                        p.text-sm.leading-3.text-gray-black.font-medium
-                            Keep Zoom screen sharing controls
-                        p.text-sm.leading-3.text-gray-black.font-medium
-                            | hidden even when pressing Esc
 
         hr.opacity-20
         section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90
@@ -160,7 +170,7 @@ html lang="en"
 
 
         footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2022
-            h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2022
+            / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2023
+            h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2023
             / .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
