@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.2.7`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.3.0`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -71,9 +71,16 @@ html.overflow-x-hidden lang="en"
                         Screen recordings as small as screenshots
                     .text-base.lg:text-lg.text-gray-600.mt-2
                         Sending screen recordings becomes 10x faster with Clop. The app will optimise the video as soon as you stop recording.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The video will be available as a `b floating thumbnail`, ready for you to `b drag and drop` in any app.
-                    .text-base.lg:text-lg.text-gray-600.mt-6.italic
+                    .text-sm.text-gray-500.mt-2.font-medium
+                        -md
+                            The app also adds a number of actions you can do on a video:
+
+                            - `crop` the video to any specific size or aspect ratio
+                            - `convert` the video to `GIF`
+                            - `speed up` or `slow down` the video
+                            - `mute` or remove audio from the video
+                            - `encode` the video to compatible formats like `mp4`
+                    .text-sm.text-gray-600.mt-6.italic
                         Clop can use Apple Silicon's dedicated `b Media Engine chip` for battery-efficient video encoding without using the CPU.
                 -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimised videos as floating results in the bottom right corner of the screen" defs:image
 
@@ -111,6 +118,17 @@ html.overflow-x-hidden lang="en"
                             - holding `Command` while dropping will use more **aggressive** optimisation
                             - pressing `Option` once will *dismiss* the drop zone UI
                 -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
+
+            #upload.${CLS.section}
+                .md:w-1/2.text-left.max-w-64
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Upload with `img height="32" width="32" style="display: inline; margin-top: -4px; margin-right: -5px" src="/static/img/dropshare-icon.webp"` `a style="color: #11271f; font-weight: bold" href="https://dropshare.app/" Dropshare`
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop integrates directly with the `b Dropshare` app, to enable uploading optimised images, videos and PDFs to any of the supported services.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Uploading can be done instantly with a hotkey or from the right click menu. It's also possible to upload multiple files at once or automate the uploading based on the file location.
+                -call img="dropshare-services" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="services that the dropshare app can upload to" defs:image
+
 
             #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.rounded-xl.dark-section
                 h1.text-3xl.text-center.lg:text-4xl.mb-1.mt-3.text-white
