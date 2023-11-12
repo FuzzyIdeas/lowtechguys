@@ -45,7 +45,7 @@ html.overflow-x-hidden lang="en"
                     background: var(--color-neutral-600) !important
                     box-shadow: var(--shadows-xl) !important
 
-            a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/alin23/Clop"
+            a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/FuzzyIdeas/Clop"
                 icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
                 .flex.flex-col.items-start
                     span.text-sm.md:text-base Source code

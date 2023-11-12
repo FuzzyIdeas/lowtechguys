@@ -1,6 +1,6 @@
-## Does it work on `macOS 12.2+`?
+## How can I hide the dot completely on `macOS 12.2` and newer?
 
-Since macOS 12.2, the dot is no longer a simple window that can be moved away.
+YellowDot only colors the dot black or white, which might not be ideal for some situations.
 
 Removing the dot in 12.2 and later requires altering system files, which YellowDot doesn't do.
 

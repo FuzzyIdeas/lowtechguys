@@ -142,17 +142,13 @@ html lang="en"
                             | hidden even when pressing Esc
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.zstack.no-underline.hover:no-underline.focus:no-underline href="/yellowdot/"
-                        .${CLS.appcontainer}.blur-sm.hover:blur-none.transition.z-0.hover:z-20
-                            icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
-                            h2.text-mauve-gray YellowDot
-                            p.text-sm.leading-3.text-gray-black.font-medium
-                                Hide that pesky yellow dot
-                            p.text-sm.leading-3.text-gray-black.font-medium
-                                | in the corner of your screen
-                        .text-center.pointer-events-none
-                            h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Basically
-                            h1.headline.m-0.p-0.text-red-hot.z-10.text-6xl.opacity-90 Useless
+                    a.${CLS.appcontainer} href="/yellowdot/"
+                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
+                        h2.text-mauve-gray YellowDot
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            Hide that pesky yellow dot
+                        p.text-sm.leading-3.text-gray-black.font-medium
+                            | in the corner of your screen
 
         hr.opacity-20
         section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90

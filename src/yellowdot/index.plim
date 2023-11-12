@@ -22,37 +22,54 @@ html lang="en"
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl : yellowdot
             h1.mt-20.text-4xl.text-orange-dot.monospaced YellowDot
             h5.text-white Hide the macOS yellow recording dot
-            h6.text-xs.text-orange-200.opacity-70 For macOS 12.2+ try `a href="https://github.com/cormiertyshawn895/RecordingIndicatorUtility" RecordingIndicatorUtility`
 
             .flex.flex-center.mt-8
-                a.mr-4.btn.btn-orange-dot.rounded-lg.flex.justify-center.items-center href="https://files.lowtechguys.com/YellowDot.zip"
-                    icon.h-4.w-4.md:h-7.md:w-7 : package
-                    span.ml-2.text-sm.md:text-base Download
-                a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center href="https://github.com/FuzzyIdeas/YellowDot"
-                    icon.h-4.w-4.md:h-7.md:w-7 : github
-                    span.ml-2.text-sm.md:text-base View Source
+                .flex.flex-col.justify-center.items.center
+                    a.opacity-70.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot.zip"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Download `b.opacity-50.text-sm v1`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for old macOS `span.text-yellow-400 < 12.2`
+                .flex.flex-col.justify-center.items.center.ml-1.md:ml4
+                    a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.0.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Download `b.text-orange-300.text-sm v2`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for new macOS `span.text-yellow-400 > 12.2`
+
+            a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/FuzzyIdeas/YellowDot"
+                icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
+                .flex.flex-col.items-start
+                    span.text-sm.md:text-base Source code
+                    span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-pink-600 GPLv3`
+                a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/YellowDot/releases" Changelog
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1 Hide that pesky yellow dot
                     .text-base.lg:text-lg.text-gray-white
-                        As long as the YellowDot app is running, the corner dot will always be hidden.
+                        As long as the YellowDot app is running, the corner dot will always blend in with the current menubar icon colors instead of being a colorful distraction.
                     .text-base.lg:text-lg.text-gray-white
-                        The `b.text-orange-400 menubar icon` allows you to `b.text-orange-400 Pause` hiding, `b.text-red-500 Quit` the app, and even `b.text-blue-200 Hide` the menubar icon itself.
-                    h4.text-orange-300 How it works?
-                    .text-sm.lg:text-base.text-gray-400
-                        YellowDot works by searching for the dot on the screen, and then moving it off screen where it's not visible anymore. This action is done every second to keep the dot hidden at all times.
-                    h4.text-orange-300 But why?
-                    .text-sm.lg:text-base.text-gray-400
-                        The yellow dot is useful in letting you know if an app is using the microphone without your permission, or if you forgot an app open that's still recording.
-                    .text-sm.lg:text-base.text-gray-400
-                        But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
+                        The `b.text-orange-400 menubar icon settings` allows you to `b.text-rose-400 color` the dot in black or white. The menubar icon can also be `b.text-blue-200 hidden` for a cleaner look.
 
                 -call img="yellow-dot-arrow" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
 
+        section#explanation.pb-20.flex.space-x-0.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+            .md:w-1/2.text-left
+                h4.text-orange-300 How it works?
+                .text-sm.lg:text-base.text-gray-400
+                    YellowDot works by searching for the dot on the screen, and then making it full black or white to make it blend in with the menubar icon colors. This action is done every second to keep the dot hidden at all times.
+                .text-sm.lg:text-base.text-gray-400.mt-2
+                    In fullscreen spaces on MacBooks with a notch, this makes the dot disappear completely.
+            .md:w-1/2.text-left
+                h4.text-orange-300 But why?
+                .text-sm.lg:text-base.text-gray-400
+                    The yellow dot is useful in letting you know if an app is using the microphone without your permission, or if you forgot an app open that's still recording.
+                .text-sm.lg:text-base.text-gray-400.mt-2
+                    But when you're already familiar with all the apps that use the microphone, it turns into an annoyance.
+
+        section#faq.flex-center.flex-col.pb-20.space-y-24
             h1.text-center FAQ
-            #faq.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+            .text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
                 md : faq-yellowdot
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
