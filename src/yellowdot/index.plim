@@ -6,7 +6,7 @@
 doctype html
 html lang="en"
     head
-        - call title="YellowDot - Hide the macOS yellow recording dot" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellowdot-screenshot" color="rgb(254, 149, 0)" canonical="/yellowdot/" defs:head
+        - call title="YellowDot - Hide the macOS yellow recording dot" domain="lowtechguys.com" description="Hide the macOS yellow recording dot in the corner of your screen" favicon="/yellowdot/favicon.ico" icon="yellowdot-icon" icon_size="1280" screenshot="yellow-dot-arrow" color="rgb(254, 149, 0)" canonical="/yellowdot/" defs:head
         / script async="true" defer="true" src="/static/js/anime.min.js"
 
     body.bg-mauve-blue.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
@@ -33,7 +33,7 @@ html lang="en"
                     a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.0.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download `b.text-orange-300.text-sm v2`
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for new macOS `span.text-yellow-400 > 12.2`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for new macOS `span.text-yellow-400 > 13.0`
 
             a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/FuzzyIdeas/YellowDot"
                 icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github

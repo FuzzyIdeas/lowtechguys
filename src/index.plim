@@ -116,13 +116,13 @@ html lang="en"
                             | instantly available on a hotkey
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys"
-                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/subsol-icon.webp"
-                        h2.text-mauve-gray Sub Sol
+                    a.${CLS.appcontainer} href="/yellowdot/"
+                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
+                        h2.text-mauve-gray YellowDot
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            Find underground parties
+                            Hide that pesky yellow dot
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+                            | in the corner of your screen
 
                     a.${CLS.appcontainer} href="/musicdecoy/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/musicdecoy-icon.webp"
@@ -131,7 +131,6 @@ html lang="en"
                             Stop launching the Music app
                         p.text-sm.leading-3.text-gray-black.font-medium
                             | whenever you press `b ▶ Play`
-
 
                     a.${CLS.appcontainer} href="/zoomhider/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
@@ -142,13 +141,13 @@ html lang="en"
                             | hidden even when pressing Esc
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
-                    a.${CLS.appcontainer} href="/yellowdot/"
-                        icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
-                        h2.text-mauve-gray YellowDot
+                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/subsol-icon.webp"
+                        h2.text-mauve-gray Sub Sol
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            Hide that pesky yellow dot
+                            Find underground parties
                         p.text-sm.leading-3.text-gray-black.font-medium
-                            | in the corner of your screen
+                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
         hr.opacity-20
         section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90
