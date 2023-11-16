@@ -30,7 +30,7 @@ html lang="en"
                             span.text-lg.!leading-4.mt-1 Download `b.opacity-50.text-sm v1`
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for old macOS `span.text-yellow-400 < 12.2`
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml4
-                    a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.0.dmg"
+                    a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-white.hover:bg-stone-700.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.1.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download `b.text-orange-300.text-sm v2`
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for new macOS `span.text-yellow-400 > 13.0`
@@ -47,11 +47,13 @@ html lang="en"
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1 Hide that pesky yellow dot
                     .text-base.lg:text-lg.text-gray-white
-                        As long as the YellowDot app is running, the corner dot will always blend in with the current menubar icon colors instead of being a colorful distraction.
-                    .text-base.lg:text-lg.text-gray-white
-                        The `b.text-orange-400 menubar icon settings` allows you to `b.text-rose-400 color` the dot in black or white. The menubar icon can also be `b.text-blue-200 hidden` for a cleaner look.
+                        As long as the YellowDot app is running, the `b.text-orange-400 recording dot`, `b.text-blue-400 location icon` and `b.text-purple-400 screencapture indicator` will always blend in with the current menubar icon colors instead of being a colorful distraction.
+                    .flex-grow
+                    .zstack
+                        -call img="menubar-orange-purple-indicators" icls="rounded-xl shadow-2xl" defs:image
+                        -call img="menubar-orange-purple-indicators-dim" icls="rounded-xl shadow-2xl dynamic-animation animate-fadeinoutfast opacity-0" defs:image
 
-                -call img="yellow-dot-arrow" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-lg shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
+                -call img="yellow-dot-arrow" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-xl shadow-2xl w-full" alt="screenshot of yellow dot in the corner of the screen with an arrow pointing at it" defs:image
 
         section#explanation.pb-20.flex.space-x-0.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
             .md:w-1/2.text-left

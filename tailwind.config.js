@@ -117,7 +117,7 @@ module.exports = {
         fadeinout: 'fadeinout 10s ease-in-out 3s infinite',
         fadeinoutfirst: 'fadeinoutfirst 10s ease-in-out 3s infinite',
         fadeinoutsecond: 'fadeinoutsecond 10s ease-in-out 3s infinite',
-        fadeinoutfast: 'fadeinoutfast 10s ease-in-out 3s infinite',
+        fadeinoutfast: 'fadeinoutfast 6s ease-in-out 1s infinite',
         scaleinout: 'scaleinout 8s ease-out 3s infinite',
         fadeinoutstep: 'fadeinoutstep 10s ease-in-out 3s infinite',
         darkinout: 'darkinout 5s ease-in-out infinite',
