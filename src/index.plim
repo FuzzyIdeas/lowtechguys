@@ -6,7 +6,7 @@
         return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
 
     class CLS:
-        appcontainer = "no-underline hover:no-underline focus:no-underline flex flex-col flex-center bg-white bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition m-4 md:m-8"
+        appcontainer = "no-underline hover:no-underline focus:no-underline flex flex-col flex-center bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition m-4 md:m-8"
         feature = "flex flex-initial flex-col justify-center items-start"
         description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
 
@@ -17,20 +17,20 @@
             return f"rounded-full px-3 py-1 text-{size} font-semibold bg-{color} text-{text_color} ml-3"
 
 doctype html
-html lang="en"
+html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
     head
         - call title="The low-tech guys" domain="lowtechguys.com" description="No-buzzwords driven development. We create those apps that you never thought you need but now you can't stop using them." canonical="/" defs:head
         a style="display: none" rel="me" href="https://fosstodon.org/@alinpanaitiu" Mastodon
         / script src="https://cdn.paddle.com/paddle/paddle.js"
         / script Paddle.Setup({vendor: 122873})
 
-    body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+    body.paper.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         div
             header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
                 a.flex.flex-center.hover:transform.hover:scale-110 href="/"
-                    icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
+                    icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black.dark:text-stone-300 : lowtech
                 .links
-                    a.text-sm.md:text-base.text-black.ml-4 href="/contact" Contact
+                    a.text-sm.md:text-base.text-black.ml-4.dark:invert href="/contact" Contact
 
 
             section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10.4xl:pb-20
@@ -43,15 +43,15 @@ html lang="en"
                         h1.headline.text-6xl.md:text-7xl.4xl:text-8xl.-mt-8.mb-3.text-white.font-normal.text-right.glow-text-gray
                             | guys
 
-                h5#subtitle.max-w-100vw.whitespace-nowrap.transition-opacity.mt-0.strike.text-sm.md:text-lg.font-bold.md:font-medium.text-mauve-gray
+                h5#subtitle.max-w-100vw.whitespace-nowrap.transition-opacity.mt-0.strike.text-sm.md:text-lg.font-bold.md:font-medium.text-mauve-gray.dark:text-stone-200
                     No-buzzwords driven development.
 
                 .flex.flex-center.mt-10
                     .flex-center.flex-col.mr-0.md:mr-12
-                        icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60 : alin
+                        icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60.dark:brightness-50 : alin
                         code.text-white.mt-2.bg-zinc-800.border-0.px-2.py-1 guy #1
                     .flex-center.flex-col
-                        icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60 : ovidiu
+                        icon.w-28.h-28.md:w-48.md:h-48.4xl:w-60.4xl:h-60.dark:brightness-50 : ovidiu
                         code.text-white.mt-2.bg-zinc-800.border-0.px-2.py-1 guy #2
 
                 a.text-sm.flex.flex-col.items-start.px-4.py-3.bg-mauve-darkgray.bg-opacity-50.!text-gray-200.no-underline.hover:text-white.scale-90.hover:scale-100.hover:no-underline.shadow-lg.hover:shadow-2xl.rounded-xl.mt-10 href="/business"
@@ -59,40 +59,40 @@ html lang="en"
 
         section#apps.min-w-[100vw].flex-center.flex-col.relative.pb-10
             .flex-col.flex-center.mt-2
-                h1.font-sans.font-black.text-6xl.4xl:text-7xl.mb-12.4xl:mb-20.text-mauve-blackish Our apps
+                h1.font-sans.font-black.text-6xl.4xl:text-7xl.mb-12.4xl:mb-20.text-mauve-blackish.dark:text-white Our apps
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="/rcmd/"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-3xl : rcmd
-                        h2.text-mauve-gray rcmd
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-white rcmd
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Re-imagined `b Command-Tab`
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | switch apps with a single key
 
                     a.${CLS.appcontainer} href="/clop/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-3xl src="/static/img/clop-icon.webp"
-                        h2.text-mauve-gray Clop
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-white Clop
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Image, video and `b clipboard optimizer`
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | copy large, paste small, send fast
 
                     a.${CLS.appcontainer} target="_blank" href="https://lunar.fyi?source=lowtechguys"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-3xl src="/static/img/lunar-icon.webp"
-                        h2.text-mauve-gray Lunar
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-white Lunar
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Intelligent `b adaptive brightness`
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | for your external displays
 
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="/gammadimmer/"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : gammadimmer
-                        h2.text-mauve-gray Gamma Dimmer
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-300 Gamma Dimmer
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Dim screen brightness
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | without losing color accuracy
 
                     a.${CLS.appcontainer} href="/volum/"
@@ -101,71 +101,78 @@ html lang="en"
                             #volum-knob.w-[2.8rem].h-[2.8rem].md:w-[3.92rem].md:h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
                                 #volum-knob-indicator.z-10
                                 #volum-knob-border.z-10
-                        h2.text-mauve-gray Volum
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 Volum
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Home lights and sounds
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | at your fingertips
 
                     a.${CLS.appcontainer} href="/grila/"
                         img.h-20.md:h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07] src="/static/img/grila-icon.webp"
-                        h2.text-mauve-gray Grila
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 Grila
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Calendar for keyboard addicts
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | instantly available on a hotkey
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="/yellowdot/"
                         icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-lg : yellowdot
-                        h2.text-mauve-gray YellowDot
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 YellowDot
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Hide that pesky yellow dot
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | in the corner of your screen
 
                     a.${CLS.appcontainer} href="/musicdecoy/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/musicdecoy-icon.webp"
-                        h2.text-mauve-gray Music Decoy
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 Music Decoy
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Stop launching the Music app
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | whenever you press `b ▶ Play`
 
                     a.${CLS.appcontainer} href="/zoomhider/"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/zoomhider-icon.webp"
-                        h2.text-mauve-gray ZoomHider
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 ZoomHider
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Keep Zoom screen sharing controls
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | hidden even when pressing Esc
 
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/subsol-icon.webp"
-                        h2.text-mauve-gray Sub Sol
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-stone-200 Sub Sol
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Find underground parties
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+                    a.${CLS.appcontainer} href="/studioicc/"
+                        img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/studioicc-icon.webp"
+                        h2.text-mauve-gray.dark:text-stone-200 StudioICC
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Apply and persist `b.font-mono.text-yellow-nice icc` color profiles
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | on Studio Display and Pro Display XDR
 
         hr.opacity-20
         section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90
             .flex-col.flex-center.mt-2
-                h1.font-sans.font-black.text-5xl.4xl:text-6xl.mb-4.text-mauve-gray.text-opacity-80 Web extensions
+                h1.font-sans.font-black.text-5xl.4xl:text-6xl.mb-4.text-mauve-gray.text-opacity-80.dark:text-stone-300 Web extensions
                 .flex.flex-col.md:flex-row.flex-center.flex-wrap
                     a.${CLS.appcontainer} href="https://github.com/alin23/sidehn"
                         img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="https://files.lowtechguys.com/sidehn.svg"
-                        h2.text-mauve-gray SideHN
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        h2.text-mauve-gray.dark:text-white SideHN
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             The web, with a side of Hacker News
-                        p.text-sm.leading-3.text-gray-black.font-medium
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | View HN comments in a sidebar
 
 
 
         footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2023
-            h4.font-extralight.text-mauve-blackish.whitespace-nowrap The low-tech guys © 2023
+            h4.font-extralight.text-mauve-blackish.dark:text-stone-300.whitespace-nowrap The low-tech guys © 2023
             / .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact

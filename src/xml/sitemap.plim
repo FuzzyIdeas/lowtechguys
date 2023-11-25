@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+---!
+    import os
+    from glob import glob
+    from datetime import datetime
+    from utils import DEPLOY_URL
+
+    def pages():
+        for page in glob("public/*.html") + glob("public/**/*.html"):
+            last_modified_time = os.path.getmtime(page)
+            iso_formatted_time = datetime.fromtimestamp(last_modified_time).isoformat()
+            path = page.replace(".html", "").replace("/index", "/")[7:]
+
+            yield (f"{DEPLOY_URL}/{path}", iso_formatted_time)
+
+urlset (
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+)
+    -for page, lastmod in pages():
+        url
+            loc ${page}
+            lastmod ${lastmod}

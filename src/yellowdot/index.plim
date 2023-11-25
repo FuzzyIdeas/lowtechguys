@@ -30,7 +30,7 @@ html lang="en"
                             span.text-lg.!leading-4.mt-1 Download `b.opacity-50.text-sm v1`
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for old macOS `span.text-yellow-400 < 12.2`
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml4
-                    a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-white.hover:bg-stone-700.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.1.dmg"
+                    a.btn.text-white.bg-neutral-800.!min-h-[50px].!h-[50px].hover:text-white.hover:bg-stone-700.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/YellowDot-2.2.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download `b.text-orange-300.text-sm v2`
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for new macOS `span.text-yellow-400 > 13.0`

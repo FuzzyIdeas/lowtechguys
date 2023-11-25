@@ -2,47 +2,47 @@
 
 ---!
     class CLS:
-        mode_heading = "text-2xl md:text-xl lg:text-2xl xl:text-3xl font-sans font-extrabold text-black"
-        section = " p-6 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[1200px] text-gray-900 bg-white rounded-lg text-left"
+        mode_heading = "text-2xl md:text-xl lg:text-2xl xl:text-3xl font-sans font-extrabold text-white"
+        section = " p-6 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[1200px] text-gray-100 bg-black bg-opacity-70 rounded-lg text-left"
 
 doctype html
 html lang="en"
     head
-        - call title="Clop - Privacy Policy" domain="lowtechguys.com" description="Clipboard optimizer for images. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(212, 212, 216)" canonical="/clop/privacy" defs:head
+        - call title="StudioICC - Privacy Policy" domain="lowtechguys.com" description="Apply and persist .icc color profiles on Studio Display and Pro Display XDR" favicon="/studioicc/favicon.ico" icon="studioicc-icon" icon_size="1280" screenshot="studioicc-screenshot" color="rgb(245 245 244)" canonical="/studioicc/privacy" defs:head
 
     body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
-                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-rose-950 : lowtech
             .links
-                a.text-sm.md:text-base.ml-4 href="/clop/" Clop
-                a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
+                a.text-sm.md:text-base.ml-4 href="/studioicc/" StudioICC
+                a.text-sm.md:text-base.ml-4 href="/contact?app=studioicc" Contact
 
         section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
-            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
-            h1.mb-6.text-4xl.text-zinc-600 Clop
-            h5.text-stone-600.m-0.p-0 Clipboard optimizer for images
-            h5.text-stone-600.m-0.p-0.-mt-1 Copy large, paste small, send fast
-            h3.text-zinc-800 Clop does not collect any personal information.
+            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/studioicc-icon.png"
+            h1.mt-10.text-4xl.text-rose-950.mb-2 StudioICC
+            h5.text-gray-800 Apply and persist `b.font-mono.text-rose-700 icc` color profiles
+            h5.text-gray-800 on Studio Display and Pro Display XDR
+            h3.text-black StudioICC does not collect any personal information.
 
             section.${CLS.section}
                 h1.${CLS.mode_heading} User Data
                 -md
-                    Clop does not collect, store or sell any user identifiable data.
+                    StudioICC does not collect, store or sell any user identifiable data.
 
                     We don't care who you are.
 
             section.${CLS.section}
                 h1.${CLS.mode_heading}.font-sans.font-extrabold Behavioral Data
                 -md
-                    Clop does not collect, store or sell any behavioral data.
+                    StudioICC does not collect, store or sell any behavioral data.
 
                     We don't care how you use the app as long as it works for you.
 
             section.${CLS.section}
                 h1.${CLS.mode_heading}.font-sans.font-extrabold Error Reporting
                 -md
-                    Clop uses [Sentry](https://sentry.io/) for collecting crash data.
+                    StudioICC uses [Sentry](https://sentry.io/) for collecting crash data.
 
                     The data may contain:
 
@@ -53,16 +53,17 @@ html lang="en"
 
                     ![Paddle email consent](/static/img/paddle-consent.webp)
 
-                    The data is only used for fixing Clop errors.
+                    The data is only used for fixing StudioICC errors.
 
             section.${CLS.section}
                 h1.${CLS.mode_heading}.font-sans.font-extrabold Licensing
                 -md
-                    Clop uses [Paddle](https://paddle.com/) for checkout and licensing.
+                    StudioICC uses [Paddle](https://paddle.com/) for checkout and licensing.
 
                     Please check their privacy policy for data they collect: [Paddle Privacy Policy](https://www.paddle.com/legal/privacy)
 
-                    **Clop doesn't handle any payment info.**
+                    **StudioICC doesn't handle any payment info.**
+
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
@@ -73,17 +74,17 @@ html lang="en"
 
             .links
                 a
-                    background-color alpha(black, 0.1)
-                    color black
+                    background-color alpha(black, 0.7)
+                    color white
 
             section
                 img
                     max-width 50%
                     margin 2rem auto
                     border-radius 1.5rem
-                    box-shadow 0 1px 18px 0 rgb(200 200 200), 0 1px 2px -1px rgb(200 200 200)
+                    box-shadow 0 1px 28px 0 rgba(0 0 0, 0.2), 0 1px 2px -1px rgba(0 0 0, 0.2)
                 em
                     font-style italic
-                    color alpha(black, 0.5)
+                    color alpha(white, 0.6)
                 strong, a
-                    color var(--color-blue-400)
+                    color var(--color-rose-300)

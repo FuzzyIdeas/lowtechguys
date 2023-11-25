@@ -1,0 +1,103 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="StudioICC - Apply color profiles to Studio Display and Pro Display XDR" domain="lowtechguys.com" description="Apply and persist .icc color profiles on Studio Display and Pro Display XDR" favicon="/studioicc/favicon.ico" icon="studioicc-icon" icon_size="1280" screenshot="studioicc-screenshot" color="rgb(245 245 244))" canonical="/studioicc/" defs:head
+        -if not DEV
+            script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
+
+    body.bg-stone-100.dark:bg-stone-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-rose-950.dark:text-rose-100 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/studioicc/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=StudioICC" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/studioicc-icon.png"
+            h1.mt-10.text-4xl.text-rose-950.dark:text-rose-100.mb-2 StudioICC
+            h5.text-gray-800.dark:text-gray-200 Apply and persist `b.font-mono.text-rose-700.dark:text-rose-400 icc` color profiles
+            h5.text-gray-800.dark:text-gray-200 on `b Studio Display` and `b Pro Display XDR`
+
+            .flex.flex-center.mt-8.mb-2.px-2
+                .flex.flex-col.justify-center.items.center
+                    a.btn.text-white.dark:text-black.bg-rose-950.dark:bg-rose-100.!min-h-[50px].!h-[50px].hover:text-white.hover:dark:text-black.hover:bg-rose-900.hover:dark:bg-white.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/StudioICC.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Download
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400.dark:text-gray-700 v1.0`
+                    / a.text-xs.mt-1.text-stone-500.dark:text-stone-300.decoration-dotted href="#pro" Free 14-day trial
+                    p.text-xs.mt-1.text-stone-500.dark:text-stone-300.underline.decoration-1.decoration-dotted Free 14-day trial
+                .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
+                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="862604"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Buy a license
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 $40`
+                    a.text-xs.mt-1.text-stone-500.dark:text-stone-300.decoration-dotted href="https://files.lowtechguys.com/ReleaseNotes/CHANGELOG.html" Changelog
+            -stylus
+                a#btn-paddle-hero.btn-paddle.paddle_button
+                    background: var(--color-stone-700) !important
+                    box-shadow: var(--shadows-xl) !important
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            -call img="studioicc-main-ui" ext="jpeg" factor=${0.9} mobile_factor=${0.9} pcls="w-[900px] max-w-[90vw]" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the Activity Monitor showing how the app uses zero resources" defs:image
+
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            .links.w-full.md:w-auto
+                a.text-red-hot.ml-4 href="/studioicc/terms" Terms & Conditions
+                a.text-red-hot.ml-4 href="/studioicc/eula" EULA
+        -coffee
+            url = new URL(location)
+            coupon = url.searchParams.get('coupon')
+
+            if coupon
+                document.getElementById('btn-paddle-hero')?.setAttribute('data-coupon', coupon)
+                document.getElementById('btn-paddle-footer')?.setAttribute('data-coupon', coupon)
+
+            setupPaddle = () ->
+                return unless Paddle?
+                clearInterval paddleObserver
+                Paddle.Setup({vendor: 122873})
+
+            paddleObserver = setInterval setupPaddle, 100
+
+        -stylus
+            @import "stylus/base"
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-rose-600)
+            h1, h2
+                color black
+            a
+                color var(--color-rose-400)
+            code
+                color var(--color-rose-500)
+                background var(--color-rose-100)
+            .links
+                a
+                    background-color alpha(black, 0.7)
+                    color white

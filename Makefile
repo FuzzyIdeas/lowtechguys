@@ -20,11 +20,28 @@ app.css: stylus/*.styl
 css: export PYTHONWARNINGS=ignore
 css: public/static/css/app.css
 
-htmlfiles := $(filter-out %/defs.html,$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out %/defs.html,$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
+nothtml=%/defs.html %/sitemap.html
+htmlfiles := $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
 html: export PYTHONWARNINGS=ignore
 html: $(htmlfiles)
 
-all: html css
+# XML
+public/%.xml: export PYTHONWARNINGS=ignore
+public/%.xml: export DEPLOY_URL=https://lowtechguys.com
+public/%.xml: src/xml/%.plim $(htmlfiles)
+	@echo Compiling $< to $@
+	@mkdir -p $$(dirname $@)
+ifeq ($(DEBUG),1)
+	@pudb $$(which plimc) -H -p extensions:preprocessor -o $@ $<
+else
+	@plimc -H -p extensions:preprocessor -o $@ $<
+endif
+
+xmlfiles := $(subst src/xml,public,$(patsubst %.plim,%.xml,$(wildcard src/xml/*/*.plim))) $(subst src/xml,public,$(patsubst %.plim,%.xml,$(wildcard src/xml/*.plim)))
+xml: $(xmlfiles)
+
+
+all: html xml css
 
 build: export NODE_ENV=production
 build: export TAILWIND_MODE=build
@@ -61,6 +78,8 @@ stylus: .css/app.css
 clean:
 	rm public/*.html || true
 	rm public/**/*.html || true
+	rm public/*.xml 2>/dev/null || true
+	rm public/**/*.xml 2>/dev/null || true
 	rm public/static/css/* || true
 
 python-deps:

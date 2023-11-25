@@ -3,37 +3,36 @@
     import os
 
     class CLS:
-        section = "p-4 md:p-8 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[600px] text-mauve-blackish bg-white backdrop-blur rounded-2xl text-left bg-opacity-40 shadow-lg"
+        section = "p-4 md:p-8 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[600px] text-mauve-blackish dark:text-stone-200 bg-white dark:bg-black backdrop-blur rounded-2xl text-left bg-opacity-40 dark:bg-opacity-30 shadow-lg"
 
 doctype html
 html lang="en"
     head
         - call title="Contact us" domain="lowtechguys.com" description="" canonical="/contact" defs:head
 
-    body.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
+    body.paper.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
-                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black : lowtech
-            .links
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black.dark:text-stone-300 : lowtech
+            .links.dark:invert
                 a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
 
         div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
             h1.text-white.text-5xl.mt-[4vh].mb-10 Contact us
 
-            h6.w-11/12.md:w-[500px].text-stone-600 If `a href="/rcmd" rcmd` is showing `b.text-red-500 Trial Expired` on a purchased app, try checking for updates or `b.text-mauve-gray delete` the app and reinstall it from App Store.
             section#contact.${CLS.section}
                 form.flex.flex-col.items-center.justify-center action="https://submit-form.com/avoNYywI" data-botpoison-public-key="pk_66b4914d-198e-42d4-92fc-d8c2ef33089c"
                   label.self-start.font-bold.ml-1 for="name" Name
                   input#from hidden="true" name="_email.from" type="text"
-                  input#name.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="name" placeholder="John Doe" required="" type="text"
+                  input#name.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="name" placeholder="John Doe" required="" type="text"
 
                   label.self-start.font-bold.ml-1 for="email" Email
                   input#userid hidden="true" name="userid" type="text"
                   input#license hidden="true" name="license" type="text"
-                  input#email.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="email" placeholder="john@doe.com" required="" type="email"
+                  input#email.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="email" placeholder="john@doe.com" required="" type="email"
 
                   label.self-start.font-bold.ml-1 for="app" App
-                  select#app.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="app" placeholder="One of our apps" required=""
+                  select#app.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="app" placeholder="One of our apps" required=""
                     option value="rcmd" rcmd
                     option value="Lunar" Lunar
                     option value="YellowDot" YellowDot
@@ -43,14 +42,15 @@ html lang="en"
                     option value="Clop" Clop
                     option value="Grila" Grila
                     option value="MusicDecoy" Music Decoy
+                    option value="StudioICC" Studio ICC
                     option value="" Not about a specific app
 
                   label.self-start.font-bold.ml-1 for="subject" Subject
                   input#email-subject hidden="true" name="_email.subject" type="text"
-                  input#subject.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="subject" placeholder="What's this message about?" required="" type="text"
+                  input#subject.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="subject" placeholder="What's this message about?" required="" type="text"
 
                   label.self-start.font-bold.ml-1 for="message" Message
-                  textarea#message.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.w-full name="message" placeholder="Something about our apps perhaps" required="" type="text" rows="6"
+                  textarea#message.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="message" placeholder="Something about our apps perhaps" required="" type="text" rows="6"
 
                   button.btn.btn-yellow-lunar.hover:bg-white.hover:text-black.!py-1 type="submit" Send
 

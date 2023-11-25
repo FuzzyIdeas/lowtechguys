@@ -1,0 +1,152 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        mode_heading = "text-2xl md:text-xl lg:text-2xl xl:text-3xl"
+        section = " p-6 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[1200px] text-black bg-zinc-200 rounded-lg text-left"
+
+doctype html
+html lang="en"
+    head
+        - call title="StudioICC EULA" domain="lowtechguys.com" description="End User License Agreement for the StudioICC Mac App" canonical="/studioicc/eula" defs:head
+
+    body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/studioicc" StudioICC
+                a.text-sm.md:text-base.ml-4 href="/studioicc/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=StudioICC" Contact
+
+        div#content.w-[100vw].max-w-[100vw]
+            h1.text-stone-600.lg:mt-[10vh].mb-10 End User License Agreement
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Terms
+                -md
+                    #### Please read this End User License Agreement (“EULA”) before You purchase a License Key for the StudioICC Mac App and subsequently download and use the StudioICC Mac App.
+
+                    By purchasing a License Key and/or downloading and using the StudioICC Mac App, You agree, without reservation to be bound by the terms of this EULA. If You do not agree with the terms of this EULA, please do not purchase a License Key and/or download and use the StudioICC Mac App.
+
+                    If You accept the terms and conditions in this EULA on behalf of a company or other legal entity, You warrant that You have full legal authority to accept the terms and conditions in this EULA on behalf of such company or other legal entity, and to legally bind such company or other legal entity.
+
+                    You may not accept this EULA if You are not of legal age to form a binding contract with The Low-Tech Guys.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Definitions
+                -md
+                    In this EULA the expressions below shall have the meaning assigned to them in this clause, unless the context requires otherwise:
+
+                    - **“Documentation”** the detailed information about the StudioICC Mac App, its features and the system requirements as made available on the website of The Low-Tech Guys, as amended from time to time;
+                    - **“StudioICC Mac License”** the license for the StudioICC Mac App for the term specified on the webpage of the store where You purchase the license, or in any applicable agreement concerning the purchase of the license (as stand-alone product or as part of a subscription) to Use the StudioICC Mac App;
+                    - **“License Key”** a unique code provided by The Low-Tech Guys, which enables You to activate the StudioICC Mac App and to subsequently use the StudioICC Mac App during the applicable license term;
+                    - **“Open Source Software”** any software that requires as a condition of use, copying, modification and/or distribution of such software that such software or other software incorporated into, derived from or distributed with such software (a) be disclosed or distributed in source code form, and (b) be licensed for the purpose of making and/or distributing derivative works, and (c) be redistributable at no charge;
+                    - **“The Low-Tech Guys”** Panaitiu Alin Valentin PFA, Sat Matca, Comuna Matca, nr. 2715, judet Galati with chamber of commerce registration number 36606793 on F17/505/06/10/2016, ID ZL412182 and CUI 1941023171691;
+                    - **“StudioICC Mac App”** any software application and/or all of the contents of the files and/or other media, including software setup files, licensed to You by The Low-Tech Guys, including any Updates;
+                    - **“Updates”** any modified versions and updates of, and additions to the StudioICC Mac App (excluding upgrades of the StudioICC Mac App);
+                    - **“Use”** the access, download, install, copy or get benefit from using the StudioICC Mac App in accordance with the documentation;
+                    - **“You”** you, the final and ultimate user of the StudioICC Mac App or the authorized representative of a company or other legal entity that will be the final and ultimate user of the StudioICC Mac App, and the company or other legal entity that will be the final and ultimate user of the StudioICC Mac App, if applicable.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black General
+                -md
+                    1. This EULA applies to any licenses granted to You by The Low-Tech Guys for the use of the StudioICC Mac App.
+                    2. By purchasing a License Key for the StudioICC Mac App and/or downloading and using the StudioICC Mac App, You enter into this EULA with The Low-Tech Guys.
+                    3. This EULA may be modified from time to time. The Low-Tech Guys will notify you of such modifications on its website or otherwise, e.g. by using the email address used for the provision of the License Key. Any modifications to this EULA shall only apply upon acceptance by You.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black License
+                -md
+                    1. The Low-Tech Guys grants You a non-exclusive, non-transferable, non-sublicensable, limited, revocable license to Use the StudioICC Mac App in accordance with this EULA. The Low-Tech Guys reserves all rights not expressly granted to You.
+                    2. The Low-Tech Guys is and remains the owner of any intellectual property rights with respect to the StudioICC Mac App. You shall not acquire any ownership to the StudioICC Mac App as result of Your purchase of the License Key or Your Use of the StudioICC Mac App.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Permitted use and restrictions
+                -md
+                    1. In order to be able to install the StudioICC Mac App and receive Updates and upgrades, Your computer shall have access to the Internet and shall meet the system requirements described in the text that can be found on the webpage: [https://lowtechguys.com/studioicc](https://lowtechguys.com/studioicc).
+                    2. You shall Use the StudioICC Mac App on 5 (five) personal computers only, unless You have purchased a volume license. In the event You have purchased a volume license, the number of computers You may Use the StudioICC Mac App on shall not exceed the number of StudioICC Mac Licenses purchased. If You exceed the limit, The Low-Tech Guys may block the License Key.
+                    3. You shall Use the StudioICC Mac App in accordance with applicable laws and shall not:
+                        1. rent, lease, lend, sell, redistribute, sublicense or otherwise commercially exploit the License Key;
+                        2. assign the License Key or the StudioICC Mac License without prior written approval of The Low-Tech Guys;
+                        3. Use the StudioICC Mac App for any unlawful or illegal activity, or to facilitate an unlawful or illegal activity;
+                        4. delete or alter any disclaimers, warnings, copyright or other proprietary notices accompanying the StudioICC Mac App; or
+                        5. copy (except as otherwise provided in this EULA), adapt, translate, decompile, reverse engineer, disassemble, attempt to derive the source code of, modify or create derivative works of the StudioICC Mac App and the License Key or any parts thereof, except to the extent permitted by applicable law.
+                    4. The Low-Tech Guys may modify the StudioICC Mac App at any time at its sole discretion and without notice to You, for example to comply with applicable law or a court order, to avoid a third party infringement claim or to provide Updates and upgrades.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Maintenance and support
+                -md
+                    1. The Low-Tech Guys will notify You of any available Updates and upgrades.
+                    2. You will be entitled to receive Updates free of charge indefinitely.
+                    3. You may need to pay an additional fee in order to be able to download a major upgrade.
+                    4. You can download available Updates and upgrades from the website of The Low-Tech Guys.
+                    5. Any maintenance and support provided by The Low-Tech Guys, including the provision of Updates and upgrades, will be provided in an adequate way on an “as is” basis without any warranty, as soon as reasonably practicable, subject to availability of personnel.
+                    6. The terms of this EULA will govern any Updates.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Use of data
+                -md
+                    1. The Low-Tech Guys and its subsidiaries may periodically collect and use technical and related data concerning the StudioICC Mac App You have licensed, including about the version number of the StudioICC Mac App You have installed and about the system You have installed the StudioICC Mac App on. The Low-Tech Guys will use such data to facilitate maintenance and support with respect to the StudioICC Mac App, to improve its products and to provide further services or technologies to You.
+                    2. The Low-Tech Guys may process personal data with respect to You, if and to the extent necessary to provide the License Key, to provide maintenance and support to You with respect to the StudioICC Mac App and to comply with its obligations under this EULA. To the extent The Low-Tech Guys will process personal data, it will comply with its obligations under applicable data protection law.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Disclaimer
+                -md
+                    1. You Use the StudioICC Mac App at Your own risk and the entire risk as to satisfactory quality, performance and accuracy is with You.
+                    2. The StudioICC Mac App and accompanying documentation are provided on an “as is” and “as available” basis without warranty - express or implied - of any kind, and The Low-Tech Guys specifically disclaims the warranty of fitness for a particular purpose. No oral or written advice given by The Low-Tech Guys, its dealers, distributors, agents or employees shall create a warranty or in any way increase the scope of this warranty and You may not rely upon such information or advice.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Liability limitation
+                -md
+                    1. The liability of The Low-Tech Guys and any third party that has been involved in the creation, production, or delivery of the StudioICC Mac App for all damages arising out of or in any way relating to the StudioICC Mac License, the License Key, the StudioICC Mac App and/or this EULA shall in no event exceed the total amount(s) paid by You to The Low-Tech Guys in the preceding 12 (twelve) months.
+                    2. The Low-Tech Guys and any third party that has been involved in the creation, production, or delivery of the StudioICC Mac App are under no circumstances liable for consequential or indirect damages (including damage for loss of profit, business interruption, loss of data, and the like arising out of the use or inability to use the StudioICC Mac App).
+                    3. The limitations of liability referred to in clause 9.1 and 9.2 shall not apply in the event that: (i) any negligence on the part of The Low-Tech Guys leads to death or physical injury or (ii) damages arise from the intent, willful misconduct or gross negligence of The Low-Tech Guys or the management of The Low-Tech Guys.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Termination
+                -md
+                    1. This EULA will continue to be in force until the expiry or termination of the StudioICC Mac License.
+                    2. The License Key will terminate automatically at the end of the StudioICC Mac License, unless renewed or activated prior to the end of the applicable license term.
+                    3. The Low-Tech Guys is entitled to terminate the StudioICC Mac License by blocking the License Key during the license term with immediate effect and without prior notice in the event You fail to comply with the terms in this EULA, in the event You fail to pay Your fee for the License Key within the applicable payment term, or in the event The Low-Tech Guys is required to do so by law or an order of an applicable court.
+                    4. Upon termination of the StudioICC Mac License, You shall cease all use of the StudioICC Mac App.
+                    5. You acknowledge that the provisions of this EULA, which by their nature are intended to survive termination, will remain in effect after termination of this EULA.
+
+            section.${CLS.section}
+                h1.${CLS.mode_heading}.font-sans.font-extrabold.text-black Governing law and disputes
+                -md
+                    1. This EULA shall be governed by and construed in accordance with the laws of Romania, excluding its conflicts of law rules.
+                    2. Any dispute between The Low-Tech Guys and You shall exclusively be submitted to the competent court in Galati, Romania.
+    -stylus
+        @import "stylus/base"
+
+        em
+            color var(--color-orange-800)
+        strong
+            color var(--color-blue-500)
+        li
+            margin-bottom 4px
+
+        code
+            background-color alpha(blue, 0.25)
+            color var(--color-gray-700)
+            padding 0 .5rem
+        .codehilite
+            background-color alpha(blue, 0.15)
+
+        h4
+            color var(--color-zinc-500)
+        h2
+            padding 0.1rem 0.5rem
+            border-radius 0.5rem
+
+        hr
+            border-color alpha(blue, 0.1)
+        li
+            line-height 1.8
+
+        a
+            color var(--color-blue-400)
+        .links
+            a
+                background-color alpha(black, 0.1)
+                color black

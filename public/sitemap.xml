@@ -1,88 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-    <url>
-        <loc>https://lowtechguys.com/</loc>
-        <lastmod>2023-08-13T14:37:49+03:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/rcmd/</loc>
-        <lastmod>2023-08-13T14:37:43+03:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/rcmd/privacy</loc>
-        <lastmod>2021-11-18T14:17:58+02:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/volum/</loc>
-        <lastmod>2022-01-21T21:55:41+02:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/volum/privacy</loc>
-        <lastmod>2022-01-21T21:55:41+02:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/gammadimmer/</loc>
-        <lastmod>2022-07-29T14:34:23+03:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/gammadimmer/privacy</loc>
-        <lastmod>2022-07-29T14:34:23+03:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/clop/</loc>
-        <lastmod>2023-08-13T14:37:30+03:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/clop/privacy</loc>
-        <lastmod>2023-08-13T14:37:34+03:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/grila/</loc>
-        <lastmod>2022-11-15T20:12:49+02:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/grila/privacy</loc>
-        <lastmod>2022-11-15T20:12:49+02:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/zoomhider/</loc>
-        <lastmod>2022-07-29T14:35:01+03:00</lastmod>
-        <priority>1.00</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/zoomhider/privacy</loc>
-        <lastmod>2022-07-29T14:35:01+03:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/yellowdot/</loc>
-        <lastmod>2021-12-27T14:03:42+02:00</lastmod>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/yellowdot/privacy</loc>
-        <lastmod>2021-12-27T14:03:42+02:00</lastmod>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/contact</loc>
-        <lastmod>2021-11-18T14:17:58+02:00</lastmod>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://lowtechguys.com/business</loc>
-        <lastmod>2023-01-17T12:57:20+02:00</lastmod>
-        <priority>0.8</priority>
-    </url>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url><loc>https://lowtechguys.com/</loc><lastmod>2023-11-25T18:46:36.328206</lastmod></url>
+<url><loc>https://lowtechguys.com/contact</loc><lastmod>2023-11-25T18:46:36.008289</lastmod></url>
+<url><loc>https://lowtechguys.com/business</loc><lastmod>2023-11-25T18:46:35.632209</lastmod></url>
+<url><loc>https://lowtechguys.com/volum/</loc><lastmod>2023-11-25T18:46:33.192273</lastmod></url>
+<url><loc>https://lowtechguys.com/volum/privacy</loc><lastmod>2023-11-25T18:46:33.611163</lastmod></url>
+<url><loc>https://lowtechguys.com/studioicc/eula</loc><lastmod>2023-11-25T18:46:31.327411</lastmod></url>
+<url><loc>https://lowtechguys.com/studioicc/</loc><lastmod>2023-11-25T18:46:31.897569</lastmod></url>
+<url><loc>https://lowtechguys.com/studioicc/terms</loc><lastmod>2023-11-25T18:46:32.761635</lastmod></url>
+<url><loc>https://lowtechguys.com/studioicc/privacy</loc><lastmod>2023-11-25T18:46:32.322751</lastmod></url>
+<url><loc>https://lowtechguys.com/rcmd/</loc><lastmod>2023-11-25T18:46:30.474162</lastmod></url>
+<url><loc>https://lowtechguys.com/rcmd/privacy</loc><lastmod>2023-11-25T18:46:30.892880</lastmod></url>
+<url><loc>https://lowtechguys.com/yellowdot/</loc><lastmod>2023-11-25T18:46:34.049802</lastmod></url>
+<url><loc>https://lowtechguys.com/yellowdot/privacy</loc><lastmod>2023-11-25T18:46:34.472372</lastmod></url>
+<url><loc>https://lowtechguys.com/musicdecoy/</loc><lastmod>2023-11-25T18:46:29.486180</lastmod></url>
+<url><loc>https://lowtechguys.com/musicdecoy/privacy</loc><lastmod>2023-11-25T18:46:29.905240</lastmod></url>
+<url><loc>https://lowtechguys.com/grila/</loc><lastmod>2023-11-25T18:46:28.616055</lastmod></url>
+<url><loc>https://lowtechguys.com/grila/privacy</loc><lastmod>2023-11-25T18:46:29.044005</lastmod></url>
+<url><loc>https://lowtechguys.com/clop/eula</loc><lastmod>2023-11-25T18:46:25.429906</lastmod></url>
+<url><loc>https://lowtechguys.com/clop/</loc><lastmod>2023-11-25T18:46:26.361928</lastmod></url>
+<url><loc>https://lowtechguys.com/clop/terms</loc><lastmod>2023-11-25T18:46:27.237659</lastmod></url>
+<url><loc>https://lowtechguys.com/clop/privacy</loc><lastmod>2023-11-25T18:46:26.798336</lastmod></url>
+<url><loc>https://lowtechguys.com/gammadimmer/</loc><lastmod>2023-11-25T18:46:27.759709</lastmod></url>
+<url><loc>https://lowtechguys.com/gammadimmer/privacy</loc><lastmod>2023-11-25T18:46:28.183781</lastmod></url>
+<url><loc>https://lowtechguys.com/zoomhider/</loc><lastmod>2023-11-25T18:46:34.899189</lastmod></url>
+<url><loc>https://lowtechguys.com/zoomhider/privacy</loc><lastmod>2023-11-25T18:46:35.315848</lastmod></url>
 </urlset>

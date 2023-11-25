@@ -12,6 +12,7 @@ module.exports = {
     './public/clop/*.html',
     './public/grila/*.html',
     './public/musicdecoy/*.html',
+    './public/studioicc/*.html',
   ],
   mode: 'jit',
   theme: {
