@@ -7,8 +7,9 @@
 
     def pages():
         for page in glob("public/*.html") + glob("public/**/*.html"):
-            last_modified_time = os.path.getmtime(page)
-            iso_formatted_time = datetime.fromtimestamp(last_modified_time).isoformat()
+            srcpage = page.replace("public", "src").replace(".html", ".plim")
+            last_modified_time = os.path.getmtime(srcpage)
+            iso_formatted_time = datetime.fromtimestamp(last_modified_time).strftime("%Y-%m-%dT%H:%M:%S+02:00")
             path = page.replace(".html", "").replace("/index", "/")[7:]
 
             yield (f"{DEPLOY_URL}/{path}", iso_formatted_time)
