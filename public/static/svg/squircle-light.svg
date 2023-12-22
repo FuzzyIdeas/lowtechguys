@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="270" height="256" viewBox="0 0 270 256" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+        <path id="shape" fill-rule="evenodd" stroke="none" d="M 0 201.756256 C 0 221.721161 0 231.703613 4.191694 239.188416 C 7.154148 244.478271 11.521734 248.845856 16.811577 251.808304 C 24.296385 256 34.278839 256 54.243752 256 L 215.756256 256 C 235.721161 256 245.703629 256 253.188431 251.808304 C 258.478271 248.845856 262.845856 244.478271 265.808319 239.188416 C 270 231.703613 270 221.721161 270 201.756256 L 270 54.243744 C 270 34.278839 270 24.296371 265.808319 16.811569 C 262.845856 11.521729 258.478271 7.154144 253.188431 4.191681 C 245.703629 0 235.721161 0 215.756256 0 L 54.243752 0 C 34.278843 0 24.296387 0 16.811579 4.191696 C 11.521736 7.154144 7.15415 11.521744 4.191696 16.811584 C 2e-06 24.296387 2e-06 34.278854 2e-06 54.243759 Z"/>
+		<filter id="noise">
+			<feTurbulence
+				type="fractalNoise"
+				baseFrequency="19.5"
+				numOctaves="10"
+				result="turbulence"
+			/>
+			<feComposite operator="in" in="turbulence" in2="SourceAlpha" result="composite"/>
+			<feColorMatrix in="composite" type="luminanceToAlpha" />
+			<feBlend in="SourceGraphic" in2="composite" mode="color-dodge" />
+		</filter>
+		<mask id="gradient">
+			<linearGradient id="fade" gradientTransform="rotate(90)">
+				<stop offset="0%" stop-color="white" stop-opacity="0.5" />
+				<stop offset="65%" stop-color="white" stop-opacity="0.8" />
+				<stop offset="75%" stop-color="white" stop-opacity="0.9" />
+			</linearGradient>
+			<use href="#shape" fill="url('#fade')" />
+		</mask>
+	</defs>
+	<use href="#shape" fill="hsla(27, 80%, 90%, 0.6)" mask="url(#gradient)" filter="url('#noise')" />
+</svg>
