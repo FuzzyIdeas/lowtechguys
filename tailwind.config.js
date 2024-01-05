@@ -13,6 +13,7 @@ module.exports = {
     './public/grila/*.html',
     './public/musicdecoy/*.html',
     './public/studioicc/*.html',
+    './public/istherenet/*.html',
   ],
   mode: 'jit',
   theme: {
@@ -80,6 +81,32 @@ module.exports = {
           '0%, 5%, 65%, 100%': { transform: 'scale(1) translateY(0)' },
           '10%, 60%': { transform: 'scale(2.3) translateY(40px)' },
         },
+        "fadeinout-connected": {
+          '0%, 100%': { opacity: '0' },
+          '5%, 10%': { opacity: '1' },
+          '12%, 50%': { opacity: '0.6', filter: 'blur(3px)' },
+        },
+        "fadeinout-disconnected": {
+          '0%, 10%': { opacity: '0' },
+          '15%, 25%': { opacity: '1' },
+          '60%, 100%': { opacity: '0.6', filter: 'blur(3px)' },
+        },
+        "wifi": {
+          '0%, 100%': { transform: 'rotateY(90deg)' },
+          '14%, 95%': { transform: 'rotateY(180deg)' },
+          '6%': { transform: 'rotateY(230deg)' },
+          '8%': { transform: 'rotateY(170deg)' },
+          '10%': { transform: 'rotateY(210deg)' },
+          '13%': { transform: 'rotateY(175deg)' },
+        },
+        "wifi-off": {
+          '0%': { transform: 'rotateY(90deg)' },
+          '32%, 100%': { transform: 'rotateY(180deg)' },
+          '10%': { transform: 'rotateY(230deg)' },
+          '20%': { transform: 'rotateY(170deg)' },
+          '25%': { transform: 'rotateY(200deg)' },
+          '30%': { transform: 'rotateY(177deg)' },
+        },
         fadeinoutfirst: {
           '0%, 50%': { opacity: '0' },
           '25%, 45%': { opacity: '1' },
@@ -122,6 +149,10 @@ module.exports = {
         scaleinout: 'scaleinout 8s ease-out 3s infinite',
         fadeinoutstep: 'fadeinoutstep 10s ease-in-out 3s infinite',
         darkinout: 'darkinout 5s ease-in-out infinite',
+        "fadeinout-connected": 'fadeinout-connected 8s ease-out 1s forwards',
+        "fadeinout-disconnected": 'fadeinout-disconnected 4s ease-out 7s forwards',
+        "wifi": 'wifi 6s ease 1s forwards',
+        "wifi-off": 'wifi-off 2s ease 7s forwards',
       },
       colors: {
         gray: {

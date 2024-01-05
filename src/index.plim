@@ -152,6 +152,14 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Apply and persist `b.font-mono.text-yellow-nice icc` color profiles
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | on Studio Display and Pro Display XDR
+                    a.${CLS.appcontainer} href="/istherenet/" title="IsThereNet"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 IsThereNet
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/istherenet-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Your internet connection status
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | at a glance
+
 
         hr.opacity-20
         section#extensions.min-w-[100vw].flex-center.flex-col.relative.pb-10.scale-90

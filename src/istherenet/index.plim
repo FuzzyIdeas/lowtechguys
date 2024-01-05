@@ -1,0 +1,151 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="IsThereNet - Your internet connection status at a glance" domain="lowtechguys.com" description="Your internet connection status at a glance. See a colored status line at the top of your screen when your internet disconnects or reconnects." favicon="/istherenet/favicon.ico" icon="istherenet-icon" icon_size="1280" screenshot="istherenet-screenshot" color="rgb(242, 219, 174)" canonical="/istherenet/" defs:head
+
+    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        #line-container.absolute.top-4.left-0.h-8.w-full.overflow-hidden
+            #menubar.bg-white.bg-opacity-60.filter.backdrop-blur-lg.w-screen.shadow-xl.h-8.absolute.top-0.-left-4.flex.items-center.justify-end.px-6.py-2.space-x-3
+                #wifi-icon-container.relative.h-5.w-5
+                    icon.wifi-icon.h-5.w-5.filter.drop-shadow.text-black.absolute.top-0.left-0.animate-wifi : wifi
+                    icon.wifi-icon.h-5.w-5.filter.drop-shadow.text-black.absolute.top-0.left-0.animate-wifi-off : wifi.slash
+                #clock.text-black.text-base.font-medium 10:09
+            #connected-line.w-full.bg-green-500.shadow-md.shadow-green-400.h-2.absolute.-top-1.5.left-0.overflow-clip.blur-[1px].animate-fadeinout-connected.opacity-0
+            #disconnected-line.w-full.bg-rose-500.shadow-md.shadow-rose-400.h-2.absolute.-top-1.5.left-0.overflow-clip.blur-[1px].animate-fadeinout-disconnected.opacity-0
+
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-6
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-stone-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/istherenet/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=IsThereNet" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/istherenet-icon.png"
+            h1.mt-10.text-4xl.text-rose-400.mb-2 IsThereNet
+            h5.text-stone-600 Your internet connection status
+            h5.text-stone-600 at a glance
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.text-black.bg-amber-500.bg-opacity-60.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-stone-600.border-2 href="https://files.lowtechguys.com/IsThereNet.zip"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/IsThereNet"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.md:text-base View Source
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.md:w-1/2.text-left.opacity-60
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Useful details and some technicalities
+                    .text-base.lg:text-lg.text-gray-600
+                        -md
+                            The app has no Dock icon and no menubar icon so to quit it you'd need to do *one of the following*:
+
+                            - Launch **Activity Monitor**, find **IsThereNet** and press the ❌ button at the top
+                            - Run the following command in the Terminal: `killall 'IsThereNet'`
+
+                            #### Why 1.1.1.1?
+
+                            That IP was chosen for multiple reasons:
+
+                            - it should connect to a server that's close to you
+                            - it is a well-known IP that's unlikely to change
+                            - it's unlikely to be blocked by firewalls
+                            - it should not sell your data to advertisers like Google's `8.8.8.8` does
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 See when your internet disconnects.. and reconnects
+                    .text-base.lg:text-lg.text-gray-600
+                        IsThereNet watches for internet connection status changes and draws a colored line at the top of the screen to indicate the status.
+                    .text-base.lg:text-lg.text-gray-600
+                        Colors:
+
+                        ul
+                            li `b.text-green-500 Green`: connected (`em.text-sm fades out after 5 seconds`)
+                            li `b.text-red-400 Red`: disconnected (`em.text-sm stays on screen until connection is restored`)
+                            li `b.text-yellow-500 Yellow`: might need a second check (`em.text-sm fades out after 5 seconds`)
+                    .text-sm.lg:text-base.text-gray-500
+                        The top status line does not appear in screenshots and does not interfere with clicking on the menu bar.
+                    h4.text-rose-400 How it works?
+                    .text-sm.lg:text-base.text-gray-500
+                        IsThereNet uses the native `a href="https://developer.apple.com/documentation/network/nwpathmonitor" NWPathMonitor` API to efficiently check if a connection can be established to Cloudflare's DNS IP `1.1.1.1`.
+        .flex.flex-col.space-y-2.md:w-1/2.text-left.bg-orange-100.bg-opacity-30.p-4.rounded-2xl.shadow-lg.max-w-[576px]
+            h1.text-2xl.text-center.mb-1.text-gray-600 Why would I need this?
+            .text-sm.lg:text-base.text-gray-500
+                Well, you might not.
+            .text-sm.lg:text-base.text-gray-500
+                The app covers a very specific need that appeared after one of our laptops started taking a long time to reconnect to the internet after changing the Wi-Fi network.
+            .text-sm.lg:text-base.text-gray-500
+                So instead of constantly checking if the internet is back using `code ping` or the browser, we decided to make an app that would do that more efficiently for us.
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            a.ml-auto.text-xs.text-stone-400 href="https://unsplash.com/photos/yellow-and-white-abstract-painting-rFCE3SFmem0" background by "Kseniya Lapteva"
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        #notch.bg-black.rounded-lg.md:rounded-xl.lg:rounded-2xl.shadow-2xl.h-12.md:h-16.lg:h-20.absolute.-top-4
+
+        -stylus
+            @import "stylus/base"
+
+            .bg
+                z-index -1
+            #notch
+                width 20vw
+                max-width 18rem
+                left calc(50% - minmax(18rem, 20vw) / 2)
+
+            .wifi-icon
+                transform: rotateY(90deg)
+
+            html
+                background #000
+            body
+                background url("/static/img/istherenet-bg.jpeg") no-repeat center center fixed
+                background-attachment: local
+                background-size: cover
+                margin-top 1rem
+            body, #line-container
+                border-radius 2rem 2rem 0 0
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-rose-600)
+            h1, h2
+                color black
+            h4
+                color var(--color-zinc-600)
+            a
+                color var(--color-rose-400)
+            em
+                color var(--color-rose-800)
+            code
+                color var(--color-rose-500)
+                background var(--color-rose-100)
+            .links
+                a
+                    background-color alpha(white, 0.6)
+                    backdrop-filter blur(2px)
+                    color black

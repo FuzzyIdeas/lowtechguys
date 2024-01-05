@@ -1,0 +1,33 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="IsThereNet - Privacy Policy" domain="lowtechguys.com" description="Your internet connection status at a glance" favicon="/istherenet/favicon.ico" icon="istherenet-icon" icon_size="1280" screenshot="istherenet-screenshot" color="rgb(242, 219, 174)" canonical="/istherenet/privacy" defs:head
+
+    body.bg-amber-50.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-stone-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/istherenet/" IsThereNet
+                a.text-sm.md:text-base.ml-4 href="/contact?app=istherenet" Contact
+
+        section#hero.min-w-[100vw].min-h-[90vh].flex-center.flex-col.relative.pb-20
+            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-2xl src="/static/img/istherenet-icon.png"
+            h1.mt-10.text-4xl.text-rose-400.mb-2 IsThereNet
+            h5.text-gray-800 Your internet connection status
+            h5.text-gray-800 at a glance
+            h3.text-stone-700 IsThereNet does not collect any personal information.
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

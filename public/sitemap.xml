@@ -2,8 +2,10 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url><loc>https://lowtechguys.com/business</loc><lastmod>2023-11-24T19:50:26+02:00</lastmod></url>
-<url><loc>https://lowtechguys.com/</loc><lastmod>2023-12-09T18:28:00+02:00</lastmod></url>
-<url><loc>https://lowtechguys.com/contact</loc><lastmod>2023-11-24T19:49:11+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/</loc><lastmod>2024-01-03T15:38:18+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/contact</loc><lastmod>2024-01-03T18:27:41+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/istherenet/</loc><lastmod>2024-01-04T16:57:53+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/istherenet/privacy</loc><lastmod>2024-01-04T16:47:24+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/zoomhider/</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/zoomhider/privacy</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/grila/</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
@@ -22,7 +24,7 @@
 <url><loc>https://lowtechguys.com/musicdecoy/privacy</loc><lastmod>2023-11-02T16:27:15+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/yellowdot/</loc><lastmod>2023-11-28T19:30:30+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/yellowdot/privacy</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
-<url><loc>https://lowtechguys.com/clop/</loc><lastmod>2023-12-20T17:45:49+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/clop/</loc><lastmod>2024-01-02T20:10:32+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/clop/terms</loc><lastmod>2023-12-22T13:34:41+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/clop/eula</loc><lastmod>2023-12-22T13:35:07+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/clop/privacy</loc><lastmod>2023-11-24T20:05:30+02:00</lastmod></url>
