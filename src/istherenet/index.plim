@@ -59,6 +59,7 @@ html lang="en"
                             - it is a well-known IP that's unlikely to change
                             - it's unlikely to be blocked by firewalls
                             - it should not sell your data to advertisers like Google's `8.8.8.8` does
+
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 See when your internet disconnects.. and reconnects
                     .text-base.lg:text-lg.text-gray-600
@@ -69,20 +70,30 @@ html lang="en"
                         ul
                             li `b.text-green-500 Green`: connected (`em.text-sm fades out after 5 seconds`)
                             li `b.text-red-400 Red`: disconnected (`em.text-sm stays on screen until connection is restored`)
-                            li `b.text-yellow-500 Yellow`: might need a second check (`em.text-sm fades out after 5 seconds`)
+                            li `b.text-yellow-500 Yellow`: slow internet (`em.text-sm fades out after 10 seconds`)
                     .text-sm.lg:text-base.text-gray-500
                         The top status line does not appear in screenshots and does not interfere with clicking on the menu bar.
                     h4.text-rose-400 How it works?
                     .text-sm.lg:text-base.text-gray-500
                         IsThereNet uses the native `a href="https://developer.apple.com/documentation/network/nwpathmonitor" NWPathMonitor` API to efficiently check if a connection can be established to Cloudflare's DNS IP `1.1.1.1`.
-        .flex.flex-col.space-y-2.md:w-1/2.text-left.bg-orange-100.bg-opacity-30.p-4.rounded-2xl.shadow-lg.max-w-[576px]
-            h1.text-2xl.text-center.mb-1.text-gray-600 Why would I need this?
+                    .text-sm.lg:text-base.text-gray-500
+                        It also uses `a href="https://fping.org/" fping` to check when internet appears connected but destinations are not reachable, or if the connection is slow.
+        .flex.flex-col.space-y-2.text-left.bg-orange-100.bg-opacity-30.p-4.rounded-2xl.shadow-lg.w-[95vw].md:w-[640px]
+            h2.text-2xl.text-center.mb-1.text-gray-600 Why would I need this?
             .text-sm.lg:text-base.text-gray-500
                 Well, you might not.
             .text-sm.lg:text-base.text-gray-500
                 The app covers a very specific need that appeared after one of our laptops started taking a long time to reconnect to the internet after changing the Wi-Fi network.
             .text-sm.lg:text-base.text-gray-500
                 So instead of constantly checking if the internet is back using `code ping` or the browser, we decided to make an app that would do that more efficiently for us.
+
+            h3.text-xl.text-center.mb-1.text-gray-500.pt-4 Logging
+            .text-sm.lg:text-base.text-gray-500
+                You can see a history of the connection status changes in the Console app or by checking the following file:
+            pre.overflow-x-auto.w-full
+                code.text-xs
+                    | ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Caches/IsThereNet.log
+
 
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
