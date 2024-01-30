@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.5.3`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.5.4`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -364,7 +364,7 @@ html.overflow-x-hidden lang="en"
                                 * `gifski` for converting videos to GIFs
                                 * `ghostscript` for optimising PDFs
 
-                                The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/main/LICENSE.md) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
+                                The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/main/LICENSE) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
                     .md:w-1/2.flex.flex-center.flex-col
                         icon.h-48 : open-source
                         p.text-white `b open` source
