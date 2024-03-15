@@ -34,7 +34,7 @@ html lang="en"
             h1.text-white.text-5xl.mt-[4vh].mb-10 Contact us
 
             section#contact.${CLS.section}
-                form.flex.flex-col.items-center.justify-center action="https://api.lowtechguys.com/avoNYywI"
+                form.flex.flex-col.items-center.justify-center action="https://api.lowtechguys.com/contact/avoNYywI"
                   / data-botpoison-public-key="pk_66b4914d-198e-42d4-92fc-d8c2ef33089c"
                   label.self-start.font-bold.ml-1 for="name" Name
                   input#name.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="name" placeholder="John Doe" required="" type="text"
