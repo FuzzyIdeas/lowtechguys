@@ -1,0 +1,24 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="The low-tech guys - Contact message sent" domain="lowtechguys.com" canonical="/contact-success" defs:head
+
+
+    body.paper.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black.dark:text-stone-300 : lowtech
+            .links.dark:invert
+                a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
+
+        main.flex-grow
+            section.flex.flex-col.items-center.justify-center.min-h-[calc(100vh-8rem)].px-4
+                h2.text-3xl.font-bold.text-stone-500
+                    | Thank you for your message!
+                h3.text-lg.text-stone-800.mt-2
+                    | We will get back to you within a week.
+
+                hr.w-64.border-red-950/50.my-8
+                p.text-sm.text-red-950/50 For urgent matters, try contacting the developer directly on the `a.font-bold.underline.text-red-950/70 href="https://discord.gg/99vACD8D5u" Discord server`

@@ -34,9 +34,9 @@ html lang="en"
             h1.text-white.text-5xl.mt-[4vh].mb-10 Contact us
 
             section#contact.${CLS.section}
-                form.flex.flex-col.items-center.justify-center action="https://submit-form.com/avoNYywI" data-botpoison-public-key="pk_66b4914d-198e-42d4-92fc-d8c2ef33089c"
+                form.flex.flex-col.items-center.justify-center action="https://api.lowtechguys.com/avoNYywI"
+                  / data-botpoison-public-key="pk_66b4914d-198e-42d4-92fc-d8c2ef33089c"
                   label.self-start.font-bold.ml-1 for="name" Name
-                  input#from hidden="true" name="_email.from" type="text"
                   input#name.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="name" placeholder="John Doe" required="" type="text"
 
                   label.self-start.font-bold.ml-1 for="email" Email
@@ -60,20 +60,29 @@ html lang="en"
                     option value="" Not about a specific app
 
                   label.self-start.font-bold.ml-1 for="subject" Subject
-                  input#email-subject hidden="true" name="_email.subject" type="text"
                   input#subject.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="subject" placeholder="What's this message about?" required="" type="text"
 
                   label.self-start.font-bold.ml-1 for="message" Message
                   textarea#message.placeholder-gray-900.placeholder-opacity-60.px-4.py-3.rounded-lg.shadow-xl.mb-4.bg-white.bg-opacity-70.dark:bg-opacity-20.dark:placeholder-gray-400.w-full name="message" placeholder="Something about our apps perhaps" required="" type="text" rows="6"
 
-                  button.btn.btn-yellow-lunar.hover:bg-white.hover:text-black.!py-1 type="submit" Send
+                  .flex.justify-between.items-center.w-full
+                      div class="cf-turnstile" data-sitekey="0x4AAAAAAAUzgCFl9mVsEtLl"
+                      button.btn.btn-yellow-lunar.hover:bg-white.hover:text-black.text-lg type="submit" Send
 
             a href="https://discord.gg/99vACD8D5u" target="_blank"
                 img.rounded.md:rounded-lg src="/static/svg/discord.svg" alt="Discord community for The low-tech guys" style="width: 300px" width="300"
 
 
             -if not DEV
-                script async="true" src="https://unpkg.com/@botpoison/browser"
+                script (src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer)
+
+    -stylus
+        .cf-turnstile
+            border-radius: 1rem
+            overflow: clip
+            outline: 3px solid white
+            outline-offset: -2px
+
 
     -coffee
         url = new URL(window.location.href)
@@ -95,9 +104,9 @@ html lang="en"
         codeInput.value = code
 
         nameInput = document.getElementById("name")
-        fromInput = document.getElementById("from")
-        nameInput.addEventListener 'input', (event) -> fromInput.value = event.target.value
+        # fromInput = document.getElementById("from")
+        # nameInput.addEventListener 'input', (event) -> fromInput.value = event.target.value
 
         subjectInput = document.getElementById("subject")
-        emailSubjectInput = document.getElementById("email-subject")
-        subjectInput.addEventListener 'input', (event) -> emailSubjectInput.value = event.target.value
+        # emailSubjectInput = document.getElementById("email-subject")
+        # subjectInput.addEventListener 'input', (event) -> emailSubjectInput.value = event.target.value

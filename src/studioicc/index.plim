@@ -30,7 +30,7 @@ html lang="en"
                     a.btn.text-white.dark:text-black.bg-rose-950.dark:bg-rose-100.!min-h-[50px].!h-[50px].hover:text-white.hover:dark:text-black.hover:bg-rose-900.hover:dark:bg-white.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/StudioICC.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400.dark:text-gray-700 v1.0`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400.dark:text-gray-700 v1.2`
                     / a.text-xs.mt-1.text-stone-500.dark:text-stone-300.decoration-dotted href="#pro" Free 14-day trial
                     p.text-xs.mt-1.text-stone-500.dark:text-stone-300.underline.decoration-1.decoration-dotted Free 14-day trial
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
