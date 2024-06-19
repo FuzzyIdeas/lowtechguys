@@ -196,7 +196,7 @@ html lang="en"
             .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
 
-        -call defs:anchors
+        -call position="after" defs:anchors
 
         -stylus
             @import "stylus/base"

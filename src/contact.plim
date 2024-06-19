@@ -17,7 +17,7 @@ html lang="en"
             .links.dark:invert
                 a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
 
-        div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
+        div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center.pb-10
             / h1.text-black.dark:text-white.mt-[4vh].mb-0 Support will resume
             / h2.text-black.dark:text-white.mb-4 after the holidays
 

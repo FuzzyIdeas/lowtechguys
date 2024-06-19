@@ -70,6 +70,12 @@ watch: export PYTHONWARNINGS=ignore
 watch:
 	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'test -f DEVMODE || make -j build'
 
+watch-dev: export NODE_ENV=production
+watch-dev: export TAILWIND_MODE=build
+watch-dev: export PYTHONWARNINGS=ignore
+watch-dev:
+	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j build'
+
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@
 	@npx -y stylus -u rupture -c -m -o .css/ $<

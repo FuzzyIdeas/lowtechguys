@@ -1,0 +1,164 @@
+- namespace name="defs" defs.plim
+---!
+    import os
+
+    class CLS:
+        section = "p-4 md:p-8 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[800px] text-mauve-blackish dark:text-stone-200 bg-white dark:bg-black backdrop-blur rounded-2xl text-left bg-opacity-40 dark:bg-opacity-30 shadow-lg"
+
+doctype html
+html lang="en"
+    head
+        - call title="App Blog - The low-tech guys" domain="lowtechguys.com" description="A place where we share tidbits about our apps, short tutorials and updates" canonical="/blog" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
+
+    body.paper.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            .flex.flex-center.rounded-xl.pl-1.pr-3.py-1..border-black.dark:border-white.border-2
+                a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                    icon.w-8.h-8.md:w-14.md:h-14.filter.drop-shadow-lg.text-black.dark:text-stone-300 : lowtech
+                h1.text-black.dark:text-white.text-xl.md:text-5xl.m-0.p-0.font-black.monospaced.ml-2.md:ml-4 blog
+            .links.dark:invert
+                a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
+                a.text-sm.md:text-base.text-red-hot.ml-4 href="/contact" Contact
+
+        div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
+            .${CLS.section}
+                -md
+                    # rcmd `v2.5.1`
+
+                    A new version for rcmd is out and here is what was done:
+
+                    In this update focusing apps was fixed for the new **macOS Sequoia (Developer Beta 1)**. *Since this build is in beta, bugs are expected with updates but we'll try to keep everything up to date as well.*
+
+                    Also a new feature was added to rcmd:
+
+                    ![all or main window setting](https://files.lowtechguys.com/rcmd-all-main-window-setting.jpeg)
+
+                    This allows users to choose if focusing an app will bring up all of its windows or just the main one.
+
+                    The idea is that you might have an app with a lot of windows positioned all over the place *(like a code editor)* but you want to bring up only that last used window so that whatever app you were using before stays visible to the side *(like a browser or terminal)*.
+
+                    <figure class="video-container">
+                            <video playsinline disablepictureinpicture controls>
+                                    <source src="https://files.lowtechguys.com/rcmd-all-main-window-setting-h265.mp4" type="video/mp4; codecs=hvc1">
+                                    <source src="https://files.lowtechguys.com/rcmd-all-main-window-setting-h264.mp4" type="video/mp4">
+                            </video>
+                            <figcaption>Focusing VSCode windows while keeping the browser visible</figcaption>
+                    </figure>
+
+            .${CLS.section}
+                -md
+                    # Lunar `v6.7.13`
+
+                    [view update](https://github.com/alin23/Lunar/releases/tag/v6.7.13)
+
+                    A new Lunar update is out and in this release we've been able to come up with fixes, improvements on existing features and also a brand new feature.
+
+                    First, we addressed an issue regarding the **Auto Blackout** and **DDC** functions which could fail because some monitors would appear as *"Unknown Display"* after wake. *We noticed this started to happen with the macOS 14.5 update.* Now Lunar will filter out this unknown display to get Auto Blackout and DDC working again.
+
+                    The dimming function was also improved: we noticed that for some users who use the integrated macOS function *"Invert Colours"*, the dimming seems to act the opposite way it's supposed to, meaning, instead of actually dimming the display is slowly turning white.
+
+                    Lunar does Software Dimming in one of two ways:
+
+                    - **Gamma dimming**, which changes the calculation formulas for the colours to make them darker or "dimmer"
+                    - **Overlay dimming**, which creates a black translucent layer over the entire screen to make the colours look darker
+
+                    It seems that the Gamma formulas cannot be inverted in this case, so instead, if Invert Colours is used, the black overlay is changed to a white overlay which will dim the screen as expected.
+
+                    And last but not least a new feature was added to Lunar allowing HDR monitors to use the superior **Apple Native** brightness control instead of **DDC** on macOS Sequoia (Developer Beta 1).
+
+                    We noticed that in macOS Sequoia, the Control Center brightness slider for non-Apple HDR monitors is now functional. That slider used to be locked for all non-Apple monitors before.
+
+                    ![control center brightness slider](https://files.lowtechguys.com/control-center-brightness-slider.png)
+
+                    We reverse engineered what macOS does when you use that slider, and added the same functionality to Lunar's brightness slider for HDR monitors.
+
+            .${CLS.section}
+                -md
+                    # IsThereNet `v1.4`
+
+                    [view update](https://github.com/FuzzyIdeas/IsThereNet/releases/tag/v1.4)
+
+                    Last month a user came up with a proposal for a configurable IP address instead of the standard `1.1.1.1`, since he came from a region where that specific IP and maybe more are usually blocked or too noisy.
+
+                    This problem most probably will and has occurred to multiple users from regions where the radio or internet traffic is controlled in a way or another, so to fix this issue, a configuration file called `config.json` was added.
+
+                    The config can be found at:
+                    ```sh
+                    ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Application Support/config.json
+                    ```
+
+                    The app checks for file changes and hot reloads instantly after every change in the config file.
+                    *If the values in the config file can't be read or decoded properly then it will be shown in the log.*
+
+                    The log can be found at:
+
+                    ```sh
+                    ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Caches/IsThereNet.log
+                    ```
+
+                    In the future, this should allow implementing other configuration which users have asked for in the past, like:
+
+                    - [making the status indicators stay visible for longer](https://github.com/FuzzyIdeas/IsThereNet/issues/6)
+                    - [changing what "slow internet" means](https://github.com/FuzzyIdeas/IsThereNet/issues/1)
+
+        -call  position="before" defs:anchors
+        -stylus
+            @import "stylus/base"
+
+            .anchor-headings
+                color var(--color-orange-800) !important
+                @media (prefers-color-scheme: dark)
+                    color var(--color-orange-100) !important
+
+            figcaption
+                font-size 0.8rem
+                color var(--color-mauve-black)
+                text-align center
+
+                @media (prefers-color-scheme: dark)
+                    color var(--color-orange-100)
+
+            img
+                max-width 700px
+                max-height 300px
+                transition: all .15s ease-out
+                border-radius 8px
+                margin 0 auto
+
+                +mobile()
+                    max-height 60vh
+                    max-width 80vw
+
+                &:hover
+                    max-width 1000px
+                    max-height 600px
+                    transition: all .1s ease-out
+
+            em
+                color var(--color-orange-800)
+                @media (prefers-color-scheme: dark)
+                    color var(--color-orange-300)
+
+            h1, h2, h3, h4, h5, h6
+                color black
+                @media (prefers-color-scheme: dark)
+                    color white
+
+            code
+                background-color alpha(mauve, 0.65)
+                color var(--color-orange-100)
+                padding 0 .3rem
+
+                @media (prefers-color-scheme: dark)
+                    background-color alpha(white, 0.45)
+                    color var(--color-mauve-black)
+
+            .codehilite
+                background-color alpha(mauve, 0.65)
+                font-size 0.7rem
+
+                @media (prefers-color-scheme: dark)
+                    background-color alpha(white, 0.45)
+
+

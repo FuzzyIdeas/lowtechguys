@@ -30,6 +30,7 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                 a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                     icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-black.dark:text-stone-300 : lowtech
                 .links
+                    a.text-sm.md:text-base.text-black.ml-4.dark:invert href="/blog" App Blog
                     a.text-sm.md:text-base.text-black.ml-4.dark:invert href="/contact" Contact
 
 

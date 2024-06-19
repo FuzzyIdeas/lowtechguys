@@ -99,7 +99,7 @@
     source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)} media="(max-width: 767px)"
     source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"
 
-- def anchors()
+- def anchors(position)
     -coffee
         tagNames = [
           'h1:not(.no-anchor)'
@@ -137,7 +137,12 @@
             continue
 
           anchor = createAnchor(href)
-          element.appendChild anchor
+          position = '${position}'
+          if position == 'before'
+            element.insertBefore anchor, element.firstChild
+          else
+            element.appendChild anchor
+
 
 
 
