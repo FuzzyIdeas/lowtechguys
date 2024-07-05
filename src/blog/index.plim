@@ -24,6 +24,125 @@ html lang="en"
         div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center
             .${CLS.section}
                 -md
+                    # IsThereNet `v1.5`
+
+                    In the past month multiple users asked for configurability for the status indicator due to different reasons like eyesight issues or OCD.
+
+                    After seeing that this is a recurring problem and it probably is a problem for more users which haven't said anything yet, we decided to do something about it.
+
+                    ## Configurable fade out time
+
+                    In this update we added configurable fade out time for the status indicator.
+
+                    Now it can be set to stay at 100% all the time for more visibility, or make it disappear faster if needed.
+                    This might help some users who are constantly working with networks and do a lot of troubleshooting.
+
+                    This can now be configured using the following new setting:
+
+                    ```json
+                    "fadeSeconds" : {
+                        "connected" : 5,
+                        "disconnected" : 0,
+                        "slow" : 10
+                    }
+                    ```
+
+                    A setting can be set to `0` to keep the indicator visible at all times.
+
+                    ## Custom colours
+
+                    Also now you can use custom colours instead of the default red, green and yellow for the status indicator bar.
+                    This will help users with varied forms of colour blindness or just poor eye-sight. It might also be helpful for Dark Mode or for specific wallpapers.
+
+                    Colours can now be configured using the following setting:
+
+                    ```json
+                    "colors" : {
+                        "slow" : "systemYellow",
+                        "connected" : "systemGreen",
+                        "disconnected" : "systemRed"
+                    }
+                    ```
+
+                    The default values are the red, green and yellow colours that the system adjusts dynamically based on things like Dark Mode or based on accessibility settings like colour blindness filters.
+
+                    The config file accepts any CSS color string like:
+
+                    ```css
+                    #ffffff
+                    #ffffffff
+                    #fff
+                    rgb(255,255,255)
+                    rgba(255,255,255,1)
+                    hsl(0,0%,100%)
+                    hsla(0,0%,100%,1)
+                    White
+                    ```
+
+                    ## Sound notifications
+
+                    And the last thing, we added customisable sounds for notifications.
+                    Now you can choose if you would like the app to play a sound whenever it notifies you of changes in network connection.
+
+                    Because the app is sandboxed, we only have access to system sounds which can be found in **System Settings -> Sound -> Sound Effects** and **Alert sound** dropdown.
+                    The new setting looks like this:
+
+                    ```json
+                    "sounds" : {
+                        "volume" : 0.7,
+                        "connected" : "",
+                        "disconnected" : "",
+                        "slow" : ""
+                    }
+                    ```
+
+                    The list of sounds can be found in **System Settings -> Sound -> Sound Effects** in the **Alert sound** dropdown.
+
+                    Here's the list for reference:
+
+                    * Boop
+                    * Breeze
+                    * Bubble
+                    * Crystal
+                    * Funky
+                    * Heroine
+                    * Jump
+                    * Mezzo
+                    * Pebble
+                    * Pluck
+                    * Pong
+                    * Sonar
+                    * Sonumi
+                    * Submerge
+
+                    The volume value is between `0.0` and `1.0` and is relative to the current system volume. So if the system volume is `50%` for example, a value of `0.5` would play the IsThereNet sound at half of `50%` which is `25%`.
+
+                    The app will detect Do Not Disturb and other Focus states so that we don't play the sound when the user is in a meeting for example.
+
+            .${CLS.section}
+                -md
+                    # rcmd `v2.5.2`
+
+                    A user interested in buying the app recently reached out to ask
+                    about an issue with video game related applications (e.g. *Steam Client*, *League of Legends*).
+
+                    The problem was that these apps did not show up in the dynamic key section.
+
+                    We found out that some apps which are mostly used on Microsoft Windows systems
+                    and do not have good support for macOS, used non-standard paths and rcmd could not find them.
+
+                    > For example Steam runs from `~/Library/Application Support/Steam/Steam.AppBundle` and its bundle identifier changes after focus which never happens for other apps.
+                    >
+                    > Riot Client is installed in `/Users/Shared/Riot Games/Riot Client.app` which is a path I have never seen used so far.
+
+                    An exception was added to rcmd to fix this issue.
+                    *It is possible that there are more apps like this, so if you encountered this issue [contact us](/contact).*
+
+                    Also experimental window switching was fixed.
+                    There was a typo in the last update that could cause windows not to focus. We apologise for the incovenience.
+
+            .${CLS.section}
+                -md
                     # rcmd `v2.5.1`
 
                     A new version for rcmd is out and here is what was done:
@@ -106,7 +225,11 @@ html lang="en"
         -stylus
             @import "stylus/base"
 
+            h2
+                margin-top 1rem
+
             .anchor-headings
+                margin-left: -1rem
                 color var(--color-orange-800) !important
                 @media (prefers-color-scheme: dark)
                     color var(--color-orange-100) !important
@@ -149,16 +272,42 @@ html lang="en"
                 background-color alpha(mauve, 0.65)
                 color var(--color-orange-100)
                 padding 0 .3rem
+                font-size smaller
 
                 @media (prefers-color-scheme: dark)
                     background-color alpha(white, 0.45)
                     color var(--color-mauve-black)
 
             .codehilite
-                background-color alpha(mauve, 0.65)
-                font-size 0.7rem
+                background-color alpha(blackMauve, 0.65)
+                font-size 0.8rem
 
                 @media (prefers-color-scheme: dark)
                     background-color alpha(white, 0.45)
+
+            blockquote
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                background-color alpha(black, 0.1)
+                color alpha(black, 0.9)
+
+                @media (prefers-color-scheme: dark)
+                    background-color alpha(white, 0.1)
+                    color alpha(white, 0.9)
+
+
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-rose-600)
 
 

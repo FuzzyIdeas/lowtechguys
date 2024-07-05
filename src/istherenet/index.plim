@@ -78,7 +78,7 @@ html lang="en"
                         IsThereNet uses the native `a href="https://developer.apple.com/documentation/network/nwpathmonitor" NWPathMonitor` API to efficiently check if a connection can be established to Cloudflare's DNS IP `1.1.1.1`.
                     .text-sm.lg:text-base.text-gray-500
                         It also uses `a href="https://fping.org/" fping` to check when internet appears connected but destinations are not reachable, or if the connection is slow.
-        .flex.flex-col.space-y-2.text-left.bg-orange-100.bg-opacity-30.p-4.rounded-2xl.shadow-lg.w-[95vw].md:w-[640px]
+        .flex.flex-col.space-y-2.text-left.bg-orange-100.bg-opacity-30.p-4.rounded-2xl.shadow-lg.w-[95vw].md:w-[680px]
             h2.text-2xl.text-center.mb-1.text-gray-600 Why would I need this?
             .text-sm.lg:text-base.text-gray-500
                 Well, you might not.
@@ -93,6 +93,13 @@ html lang="en"
             pre.overflow-x-auto.w-full
                 code.text-xs
                     | ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Caches/IsThereNet.log
+
+            h3.text-xl.text-center.mb-1.text-gray-500.pt-4 Config
+            .text-sm.lg:text-base.text-gray-500
+                To keep the no-UI approach, the app can be configured through editing a JSON file. The file is located at:
+            pre.overflow-x-auto.w-full
+                code.text-xs
+                    | ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Application Support/config.json
 
 
 
