@@ -33,7 +33,7 @@ html lang="en"
             h5.text-stone-600 at a glance
 
             .flex.flex-center.mt-8
-                a.mr-4.btn.text-black.bg-amber-500.bg-opacity-60.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-stone-600.border-2 href="https://files.lowtechguys.com/IsThereNet.zip"
+                a.mr-4.btn.text-black.bg-amber-500.bg-opacity-60.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-stone-600.border-2 href="https://files.lowtechguys.com/releases/IsThereNet.dmg"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
                 a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/IsThereNet"
@@ -92,14 +92,14 @@ html lang="en"
                 You can see a history of the connection status changes in the Console app or by checking the following file:
             pre.overflow-x-auto.w-full
                 code.text-xs
-                    | ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Caches/IsThereNet.log
+                    | ~/.logs/istherenet.log
 
             h3.text-xl.text-center.mb-1.text-gray-500.pt-4 Config
             .text-sm.lg:text-base.text-gray-500
                 To keep the no-UI approach, the app can be configured through editing a JSON file. The file is located at:
             pre.overflow-x-auto.w-full
                 code.text-xs
-                    | ~/Library/Containers/com.lowtechguys.IsThereNet/Data/Library/Application Support/config.json
+                    | ~/.config/istherenet/config.json
 
 
 

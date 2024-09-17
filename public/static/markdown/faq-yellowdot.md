@@ -1,4 +1,12 @@
-## How can I hide the dot completely on `macOS 12.2` and newer?
+## How can I hide the dot completely on `macOS 14.4` and newer?
+
+Since macOS Sonoma `14.4`, Apple provided a way to hide the recording indicator on *external displays* **without using an app**:
+
+[Hide privacy indicators on external displays in macOS](https://support.apple.com/en-us/118449)
+
+---
+
+## How can I hide the dot completely on `macOS 12.2` until `macOS 14.4`?
 
 YellowDot only colors the dot black or white, which might not be ideal for some situations.
 
