@@ -142,3 +142,4 @@
             element.insertBefore anchor, element.firstChild
           else
             element.appendChild anchor
+

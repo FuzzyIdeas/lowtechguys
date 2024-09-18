@@ -6,6 +6,16 @@ Delete any `rcmd.app` you can find, even those in the `Downloads` folder, then t
 
 ----
 
+## App doesn't work after upgrading to macOS Sequoia.
+
+If you have previously changed the trigger key from *Right Command* to **Option**, rcmd will appear as not working in macOS Sequoia.
+
+It appears that in macOS 15, Apple has forbidden hotkeys that have only `Option` or `Option+Shift` as the modifiers. [Multiple developers are having the same problem.](https://github.com/sindresorhus/KeyboardShortcuts/issues/176). The latest rcmd version shows an error when the set of trigger keys only contain Option and Shift.
+
+*The solution to this is to choose a set of trigger keys that has at least one `Control` or `Command` key.* The window switching key has also been changed from *Right Option* to **Left Control + Right Option** as a workaround until the situation improves.
+
+----
+
 ## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
 
 Best way to handle this is to assign a custom key for the second app.
@@ -128,7 +138,7 @@ Especially on Apple Silicon. Read more about it in this article: [CPU percentage
 
 ### Why do I see CPU usage spikes?
 
-rcmd has to listen on window change events and keep track of how often an app is switched to. 
+rcmd has to listen on window change events and keep track of how often an app is switched to.
 
 This is used in the scoring algorithm for choosing which apps get priority in the dynamic first letter assignment.
 
@@ -144,7 +154,7 @@ Even with the **Very often (1 sec)** setting, the **% CPU** metric is still not 
 
 ---
 
-In the following case, from the time **rcmd** started running **(3 days ago)** until now, it only consumed about **20 minutes** of CPU time. 
+In the following case, from the time **rcmd** started running **(3 days ago)** until now, it only consumed about **20 minutes** of CPU time.
 
 That's an incredibly small amount of CPU power used for an app that I use 20 times a minute. My finger basically rests on the Right Command key.
 

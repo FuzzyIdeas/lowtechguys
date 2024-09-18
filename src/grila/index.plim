@@ -28,7 +28,7 @@ html lang="en"
 
             a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2.leading-[0.6] href="https://files.lowtechguys.com/Grila.zip"
                 span.font-sans.text-lg.font-medium Try for free
-                span.text-[0.6rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold > 14.0`
+                span.text-[0.6rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 14.0`
             .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
             .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 

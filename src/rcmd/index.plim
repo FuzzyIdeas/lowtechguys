@@ -36,7 +36,14 @@ html lang="en"
             a.md:flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
-            a.btn.btn-yellow-peach.mt-10.md:flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/rcmd.zip" Try for free
+            .flex.flex-center.space-x-2
+                a.flex.flex-col.flex-center.btn.btn-yellow-peach.-hue-rotate-30.opacity-50.mt-3.flex-grow.text-left.mb-2.leading-[0.6] href="https://files.lowtechguys.com/rcmd-macos11.zip"
+                    span.font-sans.text-lg.font-medium Older version
+                    span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 11.0`
+                a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2.leading-[0.6] href="https://files.lowtechguys.com/rcmd.zip"
+                    span.font-sans.text-lg.font-medium Try for free
+                    span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 13.0`
+
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
             .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
