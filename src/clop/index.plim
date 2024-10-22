@@ -55,7 +55,7 @@ html.overflow-x-hidden lang="en"
 
         section#details.flex-center.flex-col.pb-20.space-y-16.px-8
             #clipboard.${CLS.section}
-                .md:w-1/2.text-left.max-w-64
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Optimise images as soon as you copy them
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -66,7 +66,7 @@ html.overflow-x-hidden lang="en"
                 / -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimised images as floating results in the bottom right corner of the screen" defs:image
 
             #video.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left.max-w-64
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Screen recordings as small as screenshots
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -85,7 +85,7 @@ html.overflow-x-hidden lang="en"
                 -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimised videos as floating results in the bottom right corner of the screen" defs:image
 
             #downscale.${CLS.section}
-                .md:w-1/2.text-left.max-w-64
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Downscale in a pinch
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -104,7 +104,7 @@ html.overflow-x-hidden lang="en"
                 / -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
 
             #dropzone.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left.max-w-64
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Drag and drop to optimise
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -120,7 +120,7 @@ html.overflow-x-hidden lang="en"
                 -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
 
             #upload.${CLS.section}
-                .md:w-1/2.text-left.max-w-64
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Upload with `img height="32" width="32" style="display: inline; margin-top: -4px; margin-right: -5px" src="/static/img/dropshare-icon.webp"` `a style="color: #11271f; font-weight: bold" href="https://dropshare.app/" Dropshare`
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -216,7 +216,7 @@ html.overflow-x-hidden lang="en"
                 It even works on PDFs
 
             #pdf-optimisation.${CLS.section}
-                .md:w-1/2.text-left.max-w-48
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
                         Attach PDFs as large as books, literally
                     .text-base.lg:text-lg.text-gray-600.mt-2
@@ -225,7 +225,7 @@ html.overflow-x-hidden lang="en"
                         Clop can make those PDF files small enough to fit below the `b.text-blue-400 25MB` limit of email attachments.
                 -call video="clop-pdf" cls="md:w-1/2 rounded md:rounded-2xl object-cover" controls=false defs:lazyvideoset
             #pdf-cropping.${CLS.section}.dark-section
-                .md:w-1/2.text-left.max-w-48
+                .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
                         Crop PDFs to fill the iPad screen
                     .text-base.lg:text-lg.text-gray-600.mt-2

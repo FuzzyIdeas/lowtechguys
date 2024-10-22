@@ -12,7 +12,7 @@
     "rupture": "^0.7.1",
     "stylus": "^0.63.0",
     "tailwind-css-variables": "^3.0.1",
-    "tailwindcss": "^3.4.12"
+    "tailwindcss": "^3.4.13"
   },
   "browserslist": [
     "defaults",
