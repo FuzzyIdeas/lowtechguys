@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.6.3`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.6.5`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -145,7 +145,7 @@ html.overflow-x-hidden lang="en"
                             -md
                                 Press `Ctrl`-`Shift`-`C` to manually optimise the current clipboard.
 
-                                In **Finder**, you can select images, videos and PDFs and press `Ctrl`-`O` to optimise them.
+                                In **Finder**, you can select images and videos and press `Ctrl`-`O` to optimise them.
 
                                 If hotkeys are not your thing, you can also find an **Optimise with Clop** button in the Finder preview pane.
                     .md:w-1/3.text-left
@@ -419,6 +419,10 @@ html.overflow-x-hidden lang="en"
                             [clop optimiseWithPath:@"AppData/img.png" error:nil];
                             ```
 
+            h1.text-center.text-stone-900 FAQ
+            #faq.py-12.text-left.text-stone-900.self-center.md:self-start.max-w-[90vw].w-[1000px].mx-auto.md:px-4
+                md : faq-clop
+
             #traditions.${CLS.section}
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 What's up with the hat?
@@ -487,6 +491,58 @@ html.overflow-x-hidden lang="en"
         -stylus
             @import "stylus/base"
 
+            #faq
+                .codehilite
+                    background-color alpha(blue, 0.15)
+                pre
+                    color var(--color-stone-700)
+                    font-size 0.9rem
+
+                code
+                    background-color alpha(blue, 0.25)
+                    color var(--color-stone-700)
+                    padding 0 .5rem
+                    font-weight bold
+
+                pre code
+                    background-color transparent
+                    color revert
+                    font-weight 500
+                    padding 0
+                    border-radius 0
+
+
+                h2, h3, h4
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+                    color var(--color-stone-800)
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-stone-700)
+
+                hr
+                    border-color alpha(black, 0.1)
+                    margin 2rem 0
+                li
+                    line-height 1.8
+
+                img
+                    max-width 700px
+                    max-height 300px
+                    transition: all .15s ease-out
+                    border-radius 8px
+
+                    +mobile()
+                        max-height 60vh
+                        max-width 80vw
+
+                    &:hover
+                        max-width 1000px
+                        max-height 600px
+                        transition: all .1s ease-out
+
+
             .dynamic-animation
                 animation-play-state: var(--animps, paused)
 
@@ -499,7 +555,7 @@ html.overflow-x-hidden lang="en"
 
             code
                 background-color alpha(blue, 0.25)
-                color var(--color-gray-700)
+                color var(--color-stone-700)
                 padding 0 .5rem
             .codehilite
                 background-color alpha(blue, 0.15)
