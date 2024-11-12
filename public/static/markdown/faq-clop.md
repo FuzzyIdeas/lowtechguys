@@ -28,7 +28,7 @@ log stream --level debug --style compact --predicate 'subsystem BEGINSWITH "com.
 <div class="flex flex-center my-8">
     <img src="https://files.lowtechguys.com/console-subsystem-clop.png" alt="filtering console logs by subsystem" class="mr-1" />
     <img src="https://files.lunar.fyi/console-info-debug.webp" alt="showing console info debug messages" class="ml-1" />
-</div
+</div>
 
 ---
 
