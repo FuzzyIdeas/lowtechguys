@@ -6,7 +6,8 @@ vpath %.plim src
 	mkdir -p .css
 
 svgfiles := $(wildcard public/*/*.svg)
-public/%.html: src/%.plim src/defs.plim $(svgfiles)
+mdfiles := $(wildcard public/static/markdown/*.md)
+public/%.html: src/%.plim src/defs.plim $(svgfiles) $(mdfiles)
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
@@ -61,20 +62,20 @@ dev:
 	mp --auto-collapse \
 	    'cd public/ && npx -y livereloadx --static' \
 	    'make watch-css' \
-	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j html css js'"
+	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j html css js'"
 
 
 watch: export NODE_ENV=production
 watch: export TAILWIND_MODE=build
 watch: export PYTHONWARNINGS=ignore
 watch:
-	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'test -f DEVMODE || make -j build'
+	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'test -f DEVMODE || make -j build'
 
 watch-dev: export NODE_ENV=production
 watch-dev: export TAILWIND_MODE=build
 watch-dev: export PYTHONWARNINGS=ignore
 watch-dev:
-	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg | entr -s 'make -j build'
+	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j build'
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@

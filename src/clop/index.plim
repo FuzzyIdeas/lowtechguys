@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.6.5`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.7.1`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -119,7 +119,22 @@ html.overflow-x-hidden lang="en"
                             - pressing `Option` once will *dismiss* the drop zone UI
                 -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
 
-            #upload.${CLS.section}
+            hr.w-3/4.border
+
+            #webp.${CLS.section}
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Convert to `code webp` automatically
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop's support for `b.text-purple-950 Shortcuts` and `b.text-amber-600 Automations` allows you to convert images to various formats automatically.
+                    p.mt-4
+                        em.text-base.text-red-800
+                            The images will be dropped in the `b same folder` as the original image by default. The image can be `b automatically renamed` with a template parameter.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The flexibility of `b.text-purple-950 Shortcuts` allows you to expand the automation to include other actions like `b cropping`, `b downscaling`, `b watermarking` and even `b uploading` or `b emailing` the images directly.
+                -call img="clop-automation-webp" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="the automation tab of Clop's settings showing Convert to WEBP" defs:image
+
+            #upload.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
                 .md:w-1/2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
                         Upload with `img height="32" width="32" style="display: inline; margin-top: -4px; margin-right: -5px" src="/static/img/dropshare-icon.webp"` `a style="color: #11271f; font-weight: bold" href="https://dropshare.app/" Dropshare`
@@ -128,6 +143,33 @@ html.overflow-x-hidden lang="en"
                     .text-base.lg:text-lg.text-gray-600.mt-2
                         Uploading can be done instantly with a hotkey or from the right click menu. It's also possible to upload multiple files at once or automate the uploading based on the file location.
                 -call img="dropshare-services" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="services that the dropshare app can upload to" defs:image
+            #integration.${CLS.section}
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Integrate with File Shelves
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop integrates with `b file shelf` apps like `a href="https://eternalstorms.at/yoink/mac/" Yoink` and `a href="https://hachipoo.com/dockside-app" Dockside` so you can add optimised files in their shelves for later usage.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Shelving can be done instantly with a hotkey or from the right click menu. It's also possible to shelf multiple files at once or automate the shelving using Apple Shortcuts.
+                    .flex.flex-center.mt-8.space-x-8
+                        a.flex.flex-col.items-center.decoration-dotted href="https://eternalstorms.at/yoink/mac/"
+                            img width=128 height=128 src="/static/img/yoink.png" alt="Yoink app icon"
+                            b Yoink
+                        a.flex.flex-col.items-center.decoration-dotted href="https://hachipoo.com/dockside-app"
+                            img width=128 height=128 src="/static/img/dockside.png" alt="Dockside app icon"
+                            b Dockside
+
+                -call img="clop-integrations-file-shelf" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="file shelf apps that Clop integrates with, showing Yoink and Dockside" defs:image
+
+            #ondevice.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Everything happens on your device
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        Clop `b doesn't use any cloud services` and doesn't send any file data to the internet.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The encoders used by Clop are open-source and battle-tested over decades, so that the resulting files are fast to decode, compatible with most devices and have minimal to zero loss in quality.
+                -call img="clop-activity-monitor" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl w-full" alt="screenshot of Activity Monitor showing Clop's zero network usage" defs:image
 
 
 
