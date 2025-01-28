@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.7.1`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.8.7`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -120,6 +120,26 @@ html.overflow-x-hidden lang="en"
                 -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
 
             hr.w-3/4.border
+
+            #presets.${CLS.section}
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
+                        Drop to `b Preset Zones`
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The drop zone can have `b preset zones` for specific actions like `b converting to webp`, `b downscaling to 50%`, `b watermarking` and more.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        The presets work by running a `b.text-purple-950 Shortcut` on the dropped file, which can be customised to include any number of actions.
+                    .text-base.lg:text-lg.text-gray-600.mt-2
+                        -md
+                            **Examples:**
+
+                            - Downscale to 50% and convert to `webp`
+                            - Upload with Dropshare and copy the URL as a markdown link
+                            - Watermark with a custom logo, text or monogram
+                            - Crop to 16:9 and add to last edited note
+                            - *... anything you can think of really*
+
+                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/clop-presets-poster.jpeg" src="/static/video/clop-presets.mp4")
 
             #webp.${CLS.section}
                 .md:w-1/2.text-left
@@ -529,11 +549,15 @@ html.overflow-x-hidden lang="en"
                 .forEach (animation) -> cssAnimObserver.observe(animation)
 
 
+        -call position="after" defs:anchors
 
         -stylus
             @import "stylus/base"
 
             #faq
+                .anchor-headings
+                    color var(--color-blue-300)
+
                 .codehilite
                     background-color alpha(blue, 0.15)
                 pre

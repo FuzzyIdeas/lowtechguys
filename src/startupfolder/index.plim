@@ -1,0 +1,101 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="Startup Folder - Run anything at startup by simply placing it in a special folder" domain="lowtechguys.com" description="Run anything at startup by simply placing it in a special folder" favicon="/startupfolder/favicon.ico" icon="startupfolder-icon" icon_size="1280" screenshot="startupfolder-screenshot" color="rgb(255, 255, 255)" canonical="/startupfolder/" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
+
+    body.bg-blue-50.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/startupfolder/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=StartupFolder" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-20
+            img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/startupfolder-icon.png"
+            h1.mt-10.text-4xl.text-amber-400.mb-2.drop-shadow-xl Startup Folder
+            h5.text-gray-800 Run anything at startup
+            h5.text-gray-800.m-0.p-0.-mt-1 by simply placing it in a special folder
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.text-black.bg-amber-400.hover:text-black.hover:bg-amber-500.rounded-lg.flex.justify-center.items-center.border-amber-400.border-2 href="https://files.lowtechguys.com/releases/StartupFolder.dmg"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/StartupFolder"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.md:text-base View Source
+
+        -call img="startupfolder-ui" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1400px]" icls="rounded-none shadow-none w-full" alt="The app UI on the left with the Startup folder on the right" defs:image
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Run anything at startup
+                    .text-base.lg:text-lg.text-gray-600
+                        The app creates a `code Startup` folder in your home directory. Anything you place in this folder will run at startup automatically.
+                    .text-base.lg:text-lg.text-gray-600
+                        You can place `b.text-emerald-500 apps`, `b.text-rose-400 scripts`, `b.text-mauve Shortcuts`, `b.text-sky-500 links`, and really anything you want in the folder.
+                    h4.text-rose-400 How it works?
+                    .text-sm.lg:text-base.text-gray-500
+                        The app is designed to be as simple as possible. It runs a background agent that launches and keeps track of startup items.
+                    .text-sm.lg:text-base.text-gray-500
+                        The agent uses zero resources and has no impact on your system's performance.
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Drag and drop
+                    .text-base.lg:text-lg.text-gray-600
+                        | `b.text-emerald-500 Apps` can be dragged with `code Command-Option` to create an `b alias`. `b.text-sky-500 Links` can be dragged directly from the browser address bar.
+                    .text-base.lg:text-lg.text-gray-600
+                        | `b.text-mauve Shortcuts` simply need an empty file named `code Shortcut Name.shortcut` and `b.text-rose-400 scripts` can be written directly inside the folder.
+                    .text-base.lg:text-lg.text-gray-600
+                        The app also provides a convenient interface that helps you `em choose apps`, `em pick Shortcuts`, `em create scripts` and manage the startup items.
+
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-amber-800)
+            em
+                color var(--color-amber-800)
+            h1, h2
+                color black
+            a
+                color var(--color-rose-400)
+            code
+                font-size smaller
+                color var(--color-amber-600)
+                background var(--color-amber-100)
+            .codehilite
+                background-color alpha(black, 0.05)
+                font-size 0.8rem
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

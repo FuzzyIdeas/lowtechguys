@@ -55,6 +55,7 @@ html lang="en"
                     option value="Clop" Clop
                     option value="Grila" Grila
                     option value="MusicDecoy" Music Decoy
+                    option value="StartupFolder" Startup Folder
                     option value="IsThereNet" IsThereNet
                     option value="StudioICC" Studio ICC
                     option value="" Not about a specific app

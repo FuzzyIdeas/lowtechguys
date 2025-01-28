@@ -7,6 +7,7 @@ doctype html
 html lang="en"
     head
         - call title="Music Decoy - Stop launching the Music app whenever you press ▶ Play" domain="lowtechguys.com" description="Stop launching the Music app whenever you press ▶ Play" favicon="/musicdecoy/favicon.ico" icon="musicdecoy-icon" icon_size="1280" screenshot="musicdecoy-screenshot" color="rgb(255, 255, 255)" canonical="/musicdecoy/" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
 
     body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
@@ -24,7 +25,7 @@ html lang="en"
             h5.text-stone-600 whenever you press `b ▶ Play`
 
             .flex.flex-center.mt-8
-                a.mr-4.btn.text-white.bg-rose-500.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-rose-500.border-2 href="https://files.lowtechguys.com/MusicDecoy-1.0.zip"
+                a.mr-4.btn.text-white.bg-rose-500.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-rose-500.border-2 href="https://files.lowtechguys.com/MusicDecoy.zip"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
                 a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/MusicDecoy"
@@ -49,6 +50,22 @@ html lang="en"
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .text-left.text-stone-800.w-full.md:w-1/2
                     -md
+                        ## Configuration
+
+                        Since [v1.1](https://github.com/FuzzyIdeas/MusicDecoy/releases/tag/v1.1) you can configure Music Decoy to launch another app when the **▷ Play** button is pressed.
+
+                        To do that, run the following command in the Terminal *(example for Spotify)*:
+
+                        ```ruby
+                        defaults write com.apple.MusicDecoy mediaAppPath /Applications/Spotify.app
+                        ```
+
+                        To reset the configuration, run:
+
+                        ```ruby
+                        defaults delete com.apple.MusicDecoy mediaAppPath
+                        ```
+
                         ## When does Music launch itself?
 
                         - When you press the ▶ Play key on your keyboard and there is no other app playing audio
@@ -119,6 +136,9 @@ html lang="en"
             code
                 color var(--color-rose-500)
                 background var(--color-rose-100)
+            .codehilite
+                background-color alpha(black, 0.05)
+                font-size 0.8rem
             .links
                 a
                     background-color alpha(black, 0.1)

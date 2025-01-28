@@ -139,13 +139,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | hidden even when pressing Esc
 
-                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Find underground parties
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
                     a.${CLS.appcontainer} href="/studioicc/" title="StudioICC"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 StudioICC
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/studioicc-icon.webp"
@@ -153,6 +146,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Apply and persist `b.font-mono.text-yellow-nice icc` color profiles
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | on Studio Display and Pro Display XDR
+                    a.${CLS.appcontainer} href="/startupfolder/" title="Startup Folder"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Startup Folder
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/startupfolder-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Run anything at startup
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | by simply placing it in a special folder
                     a.${CLS.appcontainer} href="/istherenet/" title="IsThereNet"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 IsThereNet
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/istherenet-icon.webp"
@@ -160,6 +160,14 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Your internet connection status
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | at a glance
+
+                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Find underground parties
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
 
         hr.opacity-20

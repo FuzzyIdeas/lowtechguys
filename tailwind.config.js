@@ -14,6 +14,7 @@ module.exports = {
     './public/musicdecoy/*.html',
     './public/studioicc/*.html',
     './public/istherenet/*.html',
+    './public/startupfolder/*.html',
     './public/blog/*.html',
   ],
   mode: 'jit',
