@@ -1,0 +1,154 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="Cling - Instant fuzzy find any file, act on it in the same instant" domain="lowtechguys.com" description="Instant fuzzy find any file, act on it in the same instant" favicon="/cling/favicon.ico" icon="cling-icon" icon_size="1280" screenshot="cling-screenshot" color="rgb(255, 255, 255)" canonical="/cling/" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
+
+    body.bg-orange-50.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/cling/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Cling" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-0
+            img#app-icon.w-28.h-28.md:w-32.md:h-32 src="/static/img/cling-icon.png"
+            h1.mt-10.text-4xl.text-orange-400.mb-2.drop-shadow-xl Cling
+            h5.text-gray-800 Instant fuzzy find any file
+            h5.text-gray-800.m-0.p-0.-mt-1 Act on it in the same instant
+
+            .flex.flex-center.mt-8
+                a.mr-4.btn.text-black.bg-orange-400.hover:text-black.hover:bg-orange-500.rounded-lg.flex.justify-center.items-center.border-orange-400.border-2 href="https://files.lowtechguys.com/releases/Cling.dmg"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/Cling"
+                    icon.h-4.w-4.md:h-7.md:w-7 : github
+                    span.ml-2.text-sm.md:text-base View Source
+            .text-orange-950.text-xxs.mt-1.font-medium.opacity-50
+                | compatible with macOS `b 14.0+` (Sonoma and later)
+
+
+        -call img="cling-ui" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="The Cling app interface showing fuzzy search results" defs:image
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Find any file instantly
+                    .text-base.lg:text-lg.text-gray-600
+                        Cling leverages the power of `a.code href="https://github.com/sharkdp/fd" fd` and `a.code href="https://github.com/junegunn/fzf" fzf` to provide lightning-fast fuzzy searching of your entire filesystem.
+                    .text-base.lg:text-lg.text-gray-600
+                        Unlike Spotlight, Raycast, or Alfred, Cling can find `b.text-emerald-800 system files`, `b.text-rose-800 hidden files`, `b.text-mauve dotfiles`, `b.text-sky-800 app data`, and more files that the Spotlight index doesn't include.
+                    h4.text-rose-400 How it works?
+                    .text-sm.lg:text-base.text-gray-500
+                        Cling maintains an efficient live index of your entire disk, watching for changes and only re-indexing when necessary.
+                    .text-sm.lg:text-base.text-gray-500
+                        The powerful fuzzy search algorithm lets you find files with just a few keystrokes, even with partial or misspelled queries.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Act on selected files
+                    .text-base.lg:text-lg.text-gray-600
+                        | With Cling's `b.text-emerald-800 keyboard-centric` approach, perform any action on files with quick hotkeys - no mouse required.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Use `b.text-sky-800 Quick Filters` to narrow down results without typing common queries, and apply `b.text-mauve predefined actions` like `b Open with…`, copy paths, batch rename, or `b QuickLook`.
+                    .text-base.lg:text-lg.text-gray-600
+                        Create your own `b.text-rose-400 custom actions` with `em scripts` in any programming language you prefer. `em Each script gets a pre-assigned hotkey so you can execute them instantly on your search results.`
+
+        section#features.flex-center.flex-col.pb-20.space-y-24
+            .flex.flex-col.space-y-2.px-8.md:w-1/2.text-left
+                h1.text-3xl.text-center.lg:text-4xl.mb-1.text-gray-800 `a.text-orange-500.font-bold href="https://www.voidtools.com/support/everything/" Everything` for Mac
+                .text-base.lg:text-lg.text-gray-600
+                    Cling strives to be similar to the popular `b.text-rose-400 Everything` app from Windows, with macOS native integration and a focus on power users.
+                .text-base.lg:text-lg.text-gray-600
+                    The UI is designed to be minimalistic and distraction-free, with a focus on keyboard shortcuts and fast rendering instead of pretty animations.
+
+        section#performance.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-full.text-left
+                    -md
+                        ## Performance considerations
+
+                        ### Memory usage
+
+                        To provide instant search results, Cling maintains an in-memory index of your filesystem.
+                        This can consume a significant amount of memory, ranging from `300MB` to `2GB` depending on the size of your filesystem and the number of files indexed.
+
+                        Whenever Cling is in background *(the window is not visible)*, the index will be marked as **swappable to disk**.
+                        This allows macOS to move the index to disk and free up RAM when memory pressure is high. Cling will reload the index from disk when you open its window again.
+
+                        ### CPU usage
+
+                        The most CPU-intensive operations are:
+
+                        - **Indexing**: when Cling is indexing your filesystem for the first time, it will consume a significant amount of CPU for about 1 to 5 minutes
+                        - **Re-indexing**: periodically, about once every 3 days, Cling will re-index the filesystem to keep the index up-to-date
+                        - **Fuzzy search**: When you type in the search bar, Cling will perform a fuzzy search on the index to find matching files
+
+                        Searching will consume a lot of CPU but in short bursts, so every time you stop typing, you'll see high CPU usage for 1-5 seconds then it will drop to 0%.
+
+                        When Cling is in background, it will pause searching and it will consume very little CPU to index file changes.
+
+                        ### Battery usage
+
+                        The impact on battery is proportional to how many searches you do and how many file changes will happen in the background.
+
+                        Even though a search will look like it's consuming 100% CPU of multiple cores, it's a very fast operation and the battery energy used isn't that high in the long term.
+
+                        Processing and indexing file changes is very efficient and will not impact battery life significantly.
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(130, 50, 0, 0.4)) drop-shadow(0 9px 17px rgba(125, 65, 22, 0.4))
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-amber-800)
+            em
+                color var(--color-amber-800)
+            h1, h2
+                color black
+            h3
+                color var(--color-amber-900)
+            a
+                color var(--color-rose-400)
+            code
+                font-size smaller
+            code, .code
+                font-family monoSpace
+                font-weight 600
+                color var(--color-amber-600)
+                background var(--color-amber-100)
+            .codehilite
+                background-color alpha(black, 0.05)
+                font-size 0.8rem
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black

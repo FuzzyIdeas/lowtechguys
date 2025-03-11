@@ -85,14 +85,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             | for your external displays
 
 
-                    a.${CLS.appcontainer} href="/gammadimmer/" title="Gamma Dimmer"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-300 Gamma Dimmer
-                        icon.w-28.h-28.filter.drop-shadow-lg.order-first : gammadimmer
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Dim screen brightness
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | without losing color accuracy
-
                     a.${CLS.appcontainer} href="/volum/" title="Volum"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
                         .zstack.order-first
@@ -104,7 +96,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Home lights and sounds
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | at your fingertips
-
+                    a.${CLS.appcontainer} href="/cling/" title="Cling"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Cling
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/cling-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Instant fuzzy find any file
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | act on it in the same instant
                     a.${CLS.appcontainer} href="/grila/" title="Grila"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Grila
                         img.h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07].order-first src="/static/img/grila-icon.webp"
@@ -120,7 +118,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Hide that pesky yellow dot
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | in the corner of your screen
-
                     a.${CLS.appcontainer} href="/musicdecoy/" title="Music Decoy"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Music Decoy
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/musicdecoy-icon.webp"
@@ -128,7 +125,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Stop launching the Music app
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | whenever you press `b ▶ Play`
-
                     a.${CLS.appcontainer} href="/zoomhider/" title="ZoomHider"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 ZoomHider
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/zoomhider-icon.webp"
@@ -166,6 +162,14 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Find underground parties
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+                    a.${CLS.appcontainer} href="/gammadimmer/" title="Gamma Dimmer"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-300 Gamma Dimmer
+                        icon.w-28.h-28.filter.drop-shadow-lg.order-first : gammadimmer
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Dim screen brightness
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | without losing color accuracy
+
 
 
         hr.opacity-20

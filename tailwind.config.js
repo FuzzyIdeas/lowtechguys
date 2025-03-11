@@ -15,6 +15,7 @@ module.exports = {
     './public/studioicc/*.html',
     './public/istherenet/*.html',
     './public/startupfolder/*.html',
+    './public/cling/*.html',
   ],
   mode: 'jit',
   theme: {

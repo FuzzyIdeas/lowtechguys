@@ -3,7 +3,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <url><loc>https://lowtechguys.com/contact-success</loc><lastmod>2024-03-15T10:16:13+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/business</loc><lastmod>2023-11-24T19:50:26+02:00</lastmod></url>
-<url><loc>https://lowtechguys.com/</loc><lastmod>2025-02-05T21:31:55+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/</loc><lastmod>2025-03-11T21:55:31+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/contact</loc><lastmod>2025-01-28T19:03:05+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/istherenet/</loc><lastmod>2024-07-18T22:50:13+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/istherenet/privacy</loc><lastmod>2024-01-04T16:47:24+02:00</lastmod></url>
@@ -13,6 +13,8 @@
 <url><loc>https://lowtechguys.com/grila/privacy</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/startupfolder/</loc><lastmod>2025-01-29T16:09:28+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/startupfolder/privacy</loc><lastmod>2025-01-28T19:13:53+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/cling/</loc><lastmod>2025-03-11T21:50:41+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/cling/privacy</loc><lastmod>2025-03-11T21:20:48+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/rcmd/</loc><lastmod>2024-09-23T12:41:04+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/rcmd/privacy</loc><lastmod>2023-11-02T13:49:59+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/studioicc/</loc><lastmod>2024-02-28T14:58:40+02:00</lastmod></url>
@@ -31,4 +33,5 @@
 <url><loc>https://lowtechguys.com/clop/terms</loc><lastmod>2023-12-22T13:34:41+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/clop/eula</loc><lastmod>2023-12-22T13:35:07+02:00</lastmod></url>
 <url><loc>https://lowtechguys.com/clop/privacy</loc><lastmod>2023-11-24T20:05:30+02:00</lastmod></url>
+<url><loc>https://lowtechguys.com/blog/</loc><lastmod>2024-07-05T16:16:42+02:00</lastmod></url>
 </urlset>
