@@ -39,7 +39,7 @@ html lang="en"
                     .text-base.lg:text-lg.text-stone-500.mb-4
                         A calendar that's always one hotkey away.
                     .text-base.lg:text-lg.text-stone-500.mb-4
-                        | `span.keyb ⌥ right option` + `span.keyb.font-bold ＼` `em |(backslash)` will show and hide the app instantly, and the hotkey can be configured to any other combination.
+                        | `span.keyb ⌘ right command` + `span.keyb.font-bold ;` `em |(semicolon)` will show and hide the app instantly, and the hotkey can be configured to any other combination.
 
                     h2.text-xl.text-left.lg:text-2xl.mb-4.text-stone-500 Navigate by typing
                     ul.text-base.lg:text-lg.text-stone-500.mb-4.font-medium.pl-2.md:pl-4
