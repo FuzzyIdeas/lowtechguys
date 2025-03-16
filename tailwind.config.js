@@ -140,6 +140,7 @@ module.exports = {
         },
       },
       animation: {
+        slowpulse: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         slowscroll: 'slowscroll 60s linear 0s infinite alternate',
         top450: 'top450 8s ease-out 3s infinite',
         showat50: 'showat50 8s ease-in-out 3s infinite',

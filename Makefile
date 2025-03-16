@@ -105,4 +105,6 @@ public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.j
 rebuild:
 	pkill -9 -f -l 'livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss' || true
 	rm DEVMODE || true
+	sleep 5
 	echo '' >> ./src/clop/defs.plim
+	cfcli -d lowtechguys.com purge
