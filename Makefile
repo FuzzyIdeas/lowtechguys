@@ -11,9 +11,9 @@ public/%.html: src/%.plim src/defs.plim $(svgfiles) $(mdfiles)
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
-	@pudb3 $$(which plimc) -H -p extensions:preprocessor -o $@ $<
+	@uv run pudb3 $$(which plimc) -H -p extensions:preprocessor -o $@ $<
 else
-	@plimc -H -p extensions:preprocessor -o $@ $<
+	@uv run plimc -H -p extensions:preprocessor -o $@ $<
 endif
 
 app.css: stylus/*.styl
@@ -33,9 +33,9 @@ public/%.xml: src/xml/%.plim $(htmlfiles)
 	@echo Compiling $< to $@
 	@mkdir -p $$(dirname $@)
 ifeq ($(DEBUG),1)
-	@pudb $$(which plimc) -H -p extensions:preprocessor -o $@ $<
+	@uv run pudb $$(which plimc) -H -p extensions:preprocessor -o $@ $<
 else
-	@plimc -H -p extensions:preprocessor -o $@ $<
+	@uv run plimc -H -p extensions:preprocessor -o $@ $<
 endif
 
 xmlfiles := $(subst src/xml,public,$(patsubst %.plim,%.xml,$(wildcard src/xml/*/*.plim))) $(subst src/xml,public,$(patsubst %.plim,%.xml,$(wildcard src/xml/*.plim)))
@@ -59,7 +59,7 @@ dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
 	touch DEVMODE
-	mp --auto-collapse \
+	uv run mp --auto-collapse \
 	    'cd public/ && npx -y livereloadx --static' \
 	    'make watch-css' \
 	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j html css js'"
@@ -90,7 +90,7 @@ clean:
 	rm public/static/css/* || true
 
 python-deps:
-	pip install -r requirements.txt
+	uv sync
 node-deps:
 	npm i --save postcss-cli@latest tailwindcss@latest postcss@latest autoprefixer@latest stylus@latest coffeescript@latest livereloadx@latest postcss-easings@latest postcss-easing-gradients@latest
 deps: python-deps node-deps

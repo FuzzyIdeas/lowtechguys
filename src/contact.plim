@@ -18,11 +18,13 @@ html lang="en"
                 a.text-sm.md:text-base.text-red-hot.ml-4 href="/" Apps
 
         div#content.w-[100vw].max-w-[100vw].flex.flex-col.flex-center.pb-10
-            / h1.text-black.dark:text-white.mt-[4vh].mb-0 Support will resume
-            / h2.text-black.dark:text-white.mb-4 after the holidays
+            / h1.text-black.dark:text-white.mt-[4vh].mb-0.py-0 Support will resume
+            / / h2.text-black.dark:text-white.mb-4 after the holidays
+            / h2.text-black.dark:text-white.mb-4.py-0.-mt-2 after the Easter holidays
 
             / p.text-gray-700.dark:text-gray-200.mt-0.mb-0
-            /     | We're currently on a break and will be back in the second half of January.
+            /     / | We're currently on a break and will be back in the second half of January.
+            /     | We're currently on a break and will be back in May.
             / p.text-gray-700.dark:text-gray-200.mt-0.mb-4
             /     If you have any questions, feel free to join the `a.font-bold.underline href="https://discord.gg/99vACD8D5u" Discord server` and ask there.
 
