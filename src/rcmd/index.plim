@@ -40,12 +40,12 @@ html lang="en"
             /     a.flex.flex-col.flex-center.btn.btn-yellow-peach.-hue-rotate-30.opacity-50.mt-3.flex-grow.text-left.mb-2 href="https://files.lowtechguys.com/rcmd-macos11.zip"
             /         span.leading-none.font-sans.text-lg.font-medium Older version
             /         span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 11.0`
-            a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2 href="https://files.lowtechguys.com/rcmd.zip"
-                span.leading-none.font-sans.text-lg.font-medium Try for free
-                span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 13.0`
+            / a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2 href="https://files.lowtechguys.com/rcmd.zip"
+            /     span.leading-none.font-sans.text-lg.font-medium Try for free
+            /     span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 13.0`
 
-            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
-            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+            / .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            / .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
             h6#scroll-hint.no-anchor.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 

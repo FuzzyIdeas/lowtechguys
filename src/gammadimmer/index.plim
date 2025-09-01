@@ -24,9 +24,9 @@ html lang="en"
             a.mt-10.flex-grow href="https://apps.apple.com/us/app/gamma-dimmer/id1635180752"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
-            a.btn.btn-yellow-peach.mt-4.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/GammaDimmer.zip" Try for free
-            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
-            .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+            / a.btn.btn-yellow-peach.mt-4.flex-grow.text-left.mb-2.font-mono href="https://files.lowtechguys.com/GammaDimmer.zip" Try for free
+            / .text-red-300.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            / .text-red-300.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
 
         section#details.flex-center.flex-col.pb-20.space-y-24.mt-20
@@ -102,11 +102,11 @@ html lang="en"
                                 td:
                                     a.font-normal.text-black href="https://lunar.fyi/#subzero" Dim brightness below zero
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use software dimming to go below the screen 0% brightness limit
-                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-yellow-lunar.mx-auto : checkmark
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 Needs manual lowering
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 of real monitor brightness
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                             tr
                                 td
                                     .font-medium : Control multiple monitors
@@ -177,7 +177,7 @@ html lang="en"
 
                             tr
                                 td.font-bold.text-lg.text-stone-600 Pricing
-                                td.font-bold.text-stone-500.text-lg $5
+                                td.font-bold.text-green-500.text-lg Free
                                 td.font-bold.text-stone-400.text-lg
                                     p.my-0.text-green-muted Free
                                     p.my-0.text-xxs.md:text-xs.font-medium for manual adjustments

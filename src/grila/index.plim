@@ -26,11 +26,11 @@ html lang="en"
             a.mt-10.flex-grow href="https://apps.apple.com/us/app/grila-calendar-for-typers/id6444335028"
                 img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
 
-            a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2.leading-[0.6] href="https://files.lowtechguys.com/Grila.zip"
-                span.font-sans.text-lg.font-medium Try for free
-                span.text-[0.6rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 14.0`
-            .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
-            .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
+            / a.flex.flex-col.flex-center.btn.btn-yellow-peach.mt-3.flex-grow.text-left.mb-2.leading-[0.6] href="https://files.lowtechguys.com/Grila.zip"
+            /     span.font-sans.text-lg.font-medium Try for free
+            /     span.text-[0.6rem].opacity-70.font-mono.whitespace-nowrap for macOS `span.text-mauve-black.font-semibold ≥ 14.0`
+            / .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Trial stops working after a few hours
+            / .text-stone-500.font-medium.text-xxs.p-0.opacity-50 Restarting the app resets the trial
 
         section#details.flex-center.flex-col.pb-20.space-y-24.mt-20
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1300px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
