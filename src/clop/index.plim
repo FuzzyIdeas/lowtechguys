@@ -32,7 +32,7 @@ html.overflow-x-hidden lang="en"
                     a.btn.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.10.3`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400 v2.10.7`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
@@ -193,8 +193,8 @@ html.overflow-x-hidden lang="en"
 
 
 
-            setapp-custom-banner.w-[96vw].max-w-[96vw].md:max-w-[96vw].md:w-full.lg:max-w-[1200px] iconUrl="https://store.setapp.com/app/612/9236/icon-1700588543-655cebff2c152.png" appName="Clop" appId="612" vendorId="390"
-            script type="text/javascript" src="https://developer.setapp.com/setapp-banner/index.js" async="true"
+            / setapp-custom-banner.w-[96vw].max-w-[96vw].md:max-w-[96vw].md:w-full.lg:max-w-[1200px] iconUrl="https://store.setapp.com/app/612/9236/icon-1700588543-655cebff2c152.png" appName="Clop" appId="612" vendorId="390"
+            / script type="text/javascript" src="https://developer.setapp.com/setapp-banner/index.js" async="true"
 
             #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.rounded-xl.md:rounded-3xl.dark-section
                 h1.text-3xl.text-center.lg:text-4xl.mb-1.mt-5.text-white

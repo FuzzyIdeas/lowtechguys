@@ -22,6 +22,7 @@ html lang="en"
             icon.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl : yellowdot
             h1.mt-20.text-4xl.text-orange-dot.monospaced YellowDot
             h5.text-white Hide the macOS yellow recording dot
+            h4.text-black.bg-red-500.px-2 No longer working since macOS Tahoe 26
 
             .flex.flex-center.mt-8
                 .flex.flex-col.justify-center.items.center
