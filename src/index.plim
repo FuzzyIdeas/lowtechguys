@@ -6,7 +6,7 @@
         return ','.join(f'/static/img/{image}/{width}_{image}.{ext} {int(round(width * factor))}w' for width in WIDTHS if width <= maxwidth)
 
     class CLS:
-        appcontainer = "no-underline hover:no-underline focus:no-underline flex flex-col flex-center bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-3xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+        appcontainer = "no-underline hover:no-underline focus:no-underline flex flex-col flex-center bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-3xl shadow-lg min-w-[270px] hover:shadow-2xl transition"
         feature = "flex flex-initial flex-col justify-center items-start"
         description = "description text-white text-left w-[420px] lg:w-[480px] max-w-[90vw] md:max-w-[45vw] min-w-64 text-base md:text-sm lg:text-base"
 
@@ -59,6 +59,7 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
         section#apps.min-w-[100vw].flex-center.flex-col.relative.pb-10
             .flex-col.flex-center.mt-2
                 h2.font-sans.font-black.text-6xl.4xl:text-7xl.mb-12.4xl:mb-20.text-mauve-blackish.dark:text-white Our apps
+                h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Paid apps
                 .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
                     a.${CLS.appcontainer} href="/rcmd/" title="rcmd"
                         h3.text-2xl.text-mauve-gray.dark:text-white rcmd
@@ -85,6 +86,33 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             | for your external displays
 
 
+                h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 In collaboration with `b.font-mono subsol¹`
+                .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
+                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Find underground parties
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+                    a.${CLS.appcontainer} href="/pipiri/" title="Pipiri"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Pipiri
+                        img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/pipiri-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Picture-in-Picture for any window
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | keep an eye on progress
+                    / a.${CLS.appcontainer} href="/crank/" title="Crank"
+                    /     h3.text-2xl.text-mauve-gray.dark:text-stone-200 Crank
+                    /     img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/crank-icon.webp"
+                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                    /         React to macOS events
+                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                    /         | automate your frustrations away
+
+
+                h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Free apps
+                .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
                     a.${CLS.appcontainer} href="/volum/" title="Volum"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
                         .zstack.order-first
@@ -155,13 +183,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | at a glance
 
-                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Find underground parties
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
                     a.${CLS.appcontainer} href="/gammadimmer/" title="Gamma Dimmer"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-300 Gamma Dimmer
                         icon.w-28.h-28.filter.drop-shadow-lg.order-first : gammadimmer

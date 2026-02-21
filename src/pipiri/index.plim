@@ -1,0 +1,209 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+doctype html
+html lang="en"
+    head
+        - call title="Pipiri - Picture-in-Picture for any macOS window" domain="lowtechguys.com" description="Keep an eye on progress. PiP any window, capture regions, zoom in, set per-app frame rates." favicon="/pipiri/favicon.ico" icon="pipiri-icon" icon_size="1280" screenshot="pipiri-screenshot" color="rgb(245, 240, 255)" canonical="/pipiri/" defs:head
+
+    body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/pipiri/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Pipiri" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-2
+            img#app-icon.w-28.h-28.md:w-32.md:h-32 src="/static/img/pipiri-icon.png"
+            h1.mt-10.text-4xl.text-mauve-gray.mb-2.drop-shadow-xl Pipiri
+            h5.text-gray-800 Picture-in-Picture for any macOS window
+            h5.text-gray-800.m-0.p-0.-mt-1 Keep an eye on progress
+
+            .flex.flex-center.gap-4.mt-8
+                a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="https://files.lowtechguys.com/releases/Pipiri.dmg"
+                    icon.h-4.w-4.md:h-7.md:w-7 : package
+                    span.ml-2.text-sm.md:text-base Download
+                a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="https://pipiri.subsol.one" target="_blank" rel="noopener noreferrer"
+                    icon.h-4.w-4.md:h-7.md:w-7 : credit-card
+                    span.ml-2.text-sm.md:text-base Buy license
+            .text-violet-950.text-xxs.mt-1.font-medium.opacity-50
+                | compatible with macOS `b 14.0+` (Sonoma and later)
+
+        div#video-container.zstack.md:w-full.max-w-[1000px].cursor-pointer onclick="playVideo()"
+            -call img="pipiri-ui" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full scale-110" alt="The Pipiri app interface showing a PiP window" defs:image
+            div#play-btn.w-20.h-20.bg-black.bg-opacity-50.rounded-full.flex.items-center.justify-center.scale-110.hover:bg-opacity-70.transition
+                svg.w-10.h-10.text-white.ml-1 viewBox="0 0 24 24" fill="currentColor"
+                    path d="M8 5v14l11-7z"
+            video#pipiri-video.w-full.rounded-2xl.shadow-xl.hidden disablePictureInPicture muted loop playsinline preload="none"
+                source src="/static/video/pipiri.mp4" type="video/mp4"
+
+        h5.text-mauve-gray.font-bold.mb-16.mt-2.motion-safe:animate-slowpulse Press `code fn` + `code P` to turn any window into Picture-in-Picture
+
+        section#details.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 PiP any window
+                    .text-base.lg:text-lg.text-gray-600
+                        | Press `code fn` + `code P` to turn the focused window into a floating panel that stays on top across all Spaces.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Double-click a PiP window to focus the original window..
+                    h4.text-mauve-gray Region capture
+                    .text-sm.lg:text-base.text-gray-500
+                        | Press `code fn` + `code Shift` + `code P` to open a selection overlay on the focused window. Drag to capture a `b specific region` instead of the full window.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Flexible zoom
+                    .text-base.lg:text-lg.text-gray-600
+                        | Hold `code Cmd` and drag on the PiP window to `b.text-rose-700 zoom into a region`. Use `code &equals;` / `code -` to zoom in and out while hovering the PiP window.
+                    .text-base.lg:text-lg.text-gray-600
+                        | `code Cmd` + `b Double-click` resets zoom back to the full view.
+                    h4.text-mauve-gray Adaptive resizing
+                    .text-sm.lg:text-base.text-gray-500
+                        | Freely resizable with aspect ratio locked. The stream restarts at the new resolution after resizing to keep things sharp. Preferred width is persisted.
+
+        section#features.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Per-app frame rate
+                    .text-base.lg:text-lg.text-gray-600
+                        | Set the frame rate per application to prioritize `b.text-rose-700 efficiency` or `b.text-rose-700 responsiveness`.
+                    .text-base.lg:text-lg.text-gray-600
+                        | For example `b.text-emerald-800 1 fps` is enough for watching a terminal and helps lower CPU usage to almost 0%. For a video, `b.text-rose-800 30 or 60 fps` might be needed.
+                    .text-sm.lg:text-base.text-gray-500
+                        | The setting is saved per app and restored automatically. Change it by pressing the `code F` key while hovering or through the overlay menu.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Click-through mode
+                    .text-base.lg:text-lg.text-gray-600
+                        | When `b.text-rose-700 Auto-hide` is enabled, the PiP window `b.text-rose-700 fades out` when the cursor moves over it so you can interact with content behind it. The stream pauses while hidden.
+                    h4.text-mauve-gray Quick show & hide
+                    .text-sm.lg:text-base.text-gray-500
+                        | Tap `code fn` while hovering to hide the PiP window completely. Tap again to show it. Hidden PiP windows auto-close after 60 seconds. `code Backspace` closes immediately.
+
+        section#more.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Configurable hotkeys
+                    .text-base.lg:text-lg.text-gray-600
+                        | The trigger hotkey is by default set to `code fn - p` and fully configurable in Settings.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Region capture simply requires adding `code Shift` to the configured hotkey (e.g. `code fn - shift - p`).
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 How it works
+                    .text-base.lg:text-lg.text-gray-600
+                        | Pipiri uses Apple's `a.code href="https://developer.apple.com/documentation/screencapturekit" ScreenCaptureKit` to capture individual windows directly, without recording the entire screen.
+                    .text-base.lg:text-lg.text-gray-600
+                        | This is the same framework macOS uses for its own screen sharing and keeps `b.text-emerald-800 CPU and memory usage low`, especially at lower frame rates.
+
+        section#advanced.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Multi-window mode
+                    .text-base.lg:text-lg.text-gray-600
+                        | Enable `b.text-rose-700 Multi-window Mode` in Settings to capture multiple different windows at the same time. Each window gets its own floating PiP panel.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Enhance contrast
+                    .text-base.lg:text-lg.text-gray-600
+                        | Boost `b.text-rose-600 contrast` and `b.text-amber-600 sharpness` of the captured content to enhance visibility for windows with very small text or low-contrast UI that becomes hard to read at PiP size.
+
+        section#use-cases.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-full.text-left
+                    -md
+                        ## Use cases
+
+                        - **Watching a long-running terminal command** while working in another app
+                        - **Keeping logs visible** while debugging software
+                        - **Keeping an eye on AI agent progress** (Claude Code, Cursor, Copilot, etc.) while browsing
+                        - **Streaming a video** that doesn't support native PiP (Twitter/X, Reddit, Twitch, etc.)
+                        - **Monitoring a dashboard or CI pipeline** without switching windows
+                        - **Watching a community chat** (Discord, Twitch) while coding or reading
+
+                        ---
+
+                        ## Pricing
+
+                        Pipiri starts with a **14-day free trial** automatically, no payment details needed.
+
+                        After the trial, the app continues to work in **Free mode** where PiP windows get paused after 30 minutes of streaming.
+
+                        A license costs **€8**, one-time purchase, for life. It can be activated on up to **5 personal Mac devices**.
+
+                        *Activating a 6th Mac automatically deactivates the oldest one, so the license can be used indefinitely as you change machines.*
+
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -coffee
+            if window.location.hash.includes('buy')
+                window.location.href = 'https://pipiri.subsol.one'
+
+            window.playVideo = ->
+                container = document.getElementById('video-container')
+                video = document.getElementById('pipiri-video')
+                playBtn = document.getElementById('play-btn')
+                poster = container.querySelector('picture')
+
+                poster.style.display = 'none'
+                playBtn.style.display = 'none'
+                video.classList.remove('hidden')
+                video.controls = false
+                video.loop = true
+                video.muted = true
+                video.playsInline = true
+                video.disablePictureInPicture = true
+                video.play()
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(77, 62, 86, 0.4)) drop-shadow(0 9px 17px rgba(77, 62, 86, 0.4))
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-violet-800)
+            em, strong
+                color var(--color-amber-800)
+            h1, h2
+                color black
+            h3
+                color var(--color-violet-900)
+            a
+                color var(--color-mauve-gray)
+            code
+                font-size smaller
+            code, .code
+                font-family monoSpace
+                font-weight 600
+                color var(--color-violet-900)
+                background var(--color-violet-50)
+            .codehilite
+                background-color alpha(black, 0.05)
+                font-size 0.8rem
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
