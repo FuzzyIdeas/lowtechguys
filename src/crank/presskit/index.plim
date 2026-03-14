@@ -1,0 +1,127 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Crank - Press Kit" domain="lowtechguys.com" description="Press kit for Crank, event-based automation for macOS" favicon="/crank/favicon.ico" icon="crank-icon" icon_size="1280" screenshot="crank-screenshot" color="rgb(255, 251, 235)" canonical="/crank/presskit" defs:head
+
+    body.bg-orange-linen.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/crank/" Crank
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Crank" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/crank-icon.png"
+            h1.mt-10.text-4xl.text-orange-bark.mb-2.drop-shadow-xl Crank
+            h5.text-gray-800 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-black.bg-orange-300.hover:text-black.hover:bg-orange-400.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/crank/presskit/crank-presskit.zip" download="crank-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, demo video, and copy
+
+        section#press-content.flex-center.flex-col.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 About Crank
+                p.text-base.text-gray-600
+                    | Crank is an event-based automation app for macOS.
+                p.text-base.text-gray-600
+                    | Set scripts, apps, and Shortcuts to run automatically, triggered by system events. The concept is simple: add a trigger, set an action, and it just happens. No complex workflows, no manual required.
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-white.bg-opacity-40.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-800 The low-tech guys
+                    .flex.flex-col.bg-white.bg-opacity-40.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-800 macOS 14.0+ (Sonoma and later)
+                    .flex.flex-col.bg-white.bg-opacity-40.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-800 Free for up to 3 rules, 14-day free trial for Pro
+                    .flex.flex-col.bg-white.bg-opacity-40.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-orange-bark href="https://lowtechguys.com/crank" lowtechguys.com/crank
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li 30+ system event triggers (Bluetooth, Wi-Fi, USB, Power, Displays, Calendar, and more)
+                    li Actions: Shell Scripts, AppleScript, Shortcuts, Notifications, Launch App, Open URL, Open File
+                    li Write actions in plain English using Gemini or ChatGPT
+                    li Time window scheduling and rate limiting
+                    li Event log and action history for debugging
+                    li Text fields can reference event data like device name, file path, battery level
+                    li Rule sharing via unique URLs
+                    li Everything runs locally, no data sent to servers unless you opt into AI features
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 App Icon
+                .flex.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/crank-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/crank-icon.png" alt="Crank app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/crank-screenshot.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/crank-screenshot.png" alt="Crank screenshot"
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/crank-ui.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/crank-ui.png" alt="Crank UI"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Videos
+                .space-y-4
+                    .space-y-2
+                        h3.text-lg.text-gray-700 SD card photo sync
+                        p.text-sm.text-gray-500 Creating a rule that syncs photos to the internal SSD and launches Lightroom when an SD card is inserted
+                        video.w-full.rounded-lg.shadow-lg ( controls muted loop playsinline preload="metadata" )
+                            source src="/static/video/crank.mp4" type="video/mp4"
+                    .space-y-2
+                        h3.text-lg.text-gray-700 Focus Mode rule
+                        p.text-sm.text-gray-500 When Reading Focus is enabled, open Books and play piano on Spotify
+                        video.w-full.rounded-lg.shadow-lg ( controls muted loop playsinline preload="metadata" )
+                            source src="/static/video/crank-focus-reading.mp4" type="video/mp4"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-black.bg-orange-200.hover:text-black.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2 href="/static/img/crank-icon.png" download="crank-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-black.bg-orange-200.hover:text-black.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2 href="/static/img/crank-screenshot.png" download="crank-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Screenshot (PNG)
+                    a.btn.text-black.bg-orange-200.hover:text-black.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2 href="/static/img/crank-ui.png" download="crank-ui.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm UI Screenshot (PNG)
+                    a.btn.text-black.bg-orange-200.hover:text-black.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2 href="/static/video/crank.mp4" download="crank-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Demo Video (MP4)
+                    a.btn.text-black.bg-orange-200.hover:text-black.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-stone.border-2 href="/static/video/crank-focus-reading.mp4" download="crank-focus-reading.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Focus Mode Video (MP4)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2026
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(120, 80, 10, 0.4)) drop-shadow(0 9px 17px rgba(120, 80, 10, 0.4))
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            img, a, video
+                box-shadow: none !important

@@ -18,6 +18,8 @@ module.exports = {
     './public/cling/*.html',
     './public/pipiri/*.html',
     './public/crank/*.html',
+    './public/crank/presskit/*.html',
+    './public/pipiri/presskit/*.html',
   ],
   mode: 'jit',
   theme: {

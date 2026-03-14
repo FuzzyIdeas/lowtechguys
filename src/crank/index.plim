@@ -14,6 +14,7 @@ html lang="en"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4 href="/crank/presskit" Press Kit
                 a.text-sm.md:text-base.ml-4 href="/crank/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Crank" Contact
 

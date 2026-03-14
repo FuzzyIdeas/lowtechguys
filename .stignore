@@ -3,3 +3,4 @@ public/**/*.html
 public/*.html
 .git/
 __pycache__
+.venv/

@@ -1,0 +1,131 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Pipiri - Press Kit" domain="lowtechguys.com" description="Press kit for Pipiri, Picture-in-Picture for any macOS window" favicon="/pipiri/favicon.ico" icon="pipiri-icon" icon_size="1280" screenshot="pipiri-screenshot" color="rgb(245, 240, 255)" canonical="/pipiri/presskit" defs:head
+
+    body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/pipiri/" Pipiri
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Pipiri" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/pipiri-icon.png"
+            h1.mt-10.text-4xl.text-mauve-gray.mb-2.drop-shadow-xl Pipiri
+            h5.text-gray-800 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-black.bg-violet-200.hover:text-black.hover:bg-violet-300.rounded-lg.flex.justify-center.items-center.border-violet-200.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/pipiri/presskit/pipiri-presskit.zip" download="pipiri-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, demo video, and copy
+
+        section#press-content.flex-center.flex-col.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 About Pipiri
+                p.text-base.text-gray-600
+                    | Pipiri is a Picture-in-Picture app for macOS. Press a hotkey and the focused window becomes a floating panel that stays on top across all Spaces. It works with any window, not just video players.
+                p.text-base.text-gray-600
+                    | Useful for keeping an eye on terminals, logs, dashboards, AI agents, or video streams without switching windows.
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-800 The low-tech guys
+                    .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-800 macOS 14.0+ (Sonoma and later)
+                    .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-800 14-day free trial, then Free mode (PiP pauses after 30 min). One-time €8 for Pro
+                    .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-mauve-gray href="https://lowtechguys.com/pipiri" lowtechguys.com/pipiri
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li PiP any window with a single hotkey (fn + P by default)
+                    li Region capture: drag to select a specific area of a window
+                    li Quick region capture: double-click while holding fn to zoom into an area around the cursor
+                    li Flexible zoom with scroll-to-pan when zoomed in
+                    li Per-app frame rate (1 fps for terminals, 30-60 fps for video)
+                    li Click-through mode with auto-hide when the cursor moves over the PiP
+                    li Multi-window mode for capturing several windows at once
+                    li Contrast and sharpness boost for small or low-contrast content
+                    li Idle detection when captured content stops changing
+                    li Command-line control for scripting and automation
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Use Cases
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Watching a long-running terminal command while working in another app
+                    li Keeping logs visible while debugging
+                    li Monitoring AI agent progress (Claude Code, Cursor, Copilot) while browsing
+                    li Streaming video from apps that don't support native PiP (Twitter/X, Reddit, Twitch)
+                    li Watching a dashboard or CI pipeline without switching windows
+                    li Keeping a community chat (Discord, Twitch) visible while coding
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 App Icon
+                .flex.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/pipiri-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/pipiri-icon.png" alt="Pipiri app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/pipiri-screenshot.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/pipiri-screenshot.png" alt="Pipiri screenshot"
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/pipiri-ui.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/pipiri-ui.png" alt="Pipiri UI"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Videos
+                .space-y-4
+                    .space-y-2
+                        h3.text-lg.text-gray-700 App demo
+                        p.text-sm.text-gray-500 PiP a terminal window, zoom into a region, adjust frame rate
+                        video.w-full.rounded-lg.shadow-lg ( controls muted loop playsinline preload="metadata" )
+                            source src="/static/video/pipiri.mp4" type="video/mp4"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="/static/img/pipiri-icon.png" download="pipiri-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="/static/img/pipiri-screenshot.png" download="pipiri-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Screenshot (PNG)
+                    a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="/static/img/pipiri-ui.png" download="pipiri-ui.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm UI Screenshot (PNG)
+                    a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="/static/video/pipiri.mp4" download="pipiri-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Demo Video (MP4)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2026
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(77, 62, 86, 0.4)) drop-shadow(0 9px 17px rgba(77, 62, 86, 0.4))
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            img, a
+                box-shadow: none !important

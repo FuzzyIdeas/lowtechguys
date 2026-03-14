@@ -22,7 +22,7 @@ css: export PYTHONWARNINGS=ignore
 css: public/static/css/app.css
 
 nothtml=%/defs.html %/sitemap.html
-htmlfiles := $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
+htmlfiles := $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
 html: export PYTHONWARNINGS=ignore
 html: $(htmlfiles)
 
@@ -42,7 +42,36 @@ xmlfiles := $(subst src/xml,public,$(patsubst %.plim,%.xml,$(wildcard src/xml/*/
 xml: $(xmlfiles)
 
 
-all: html xml css
+crank-presskit-zip: public/crank/presskit/crank-presskit.zip
+public/crank/presskit/crank-presskit.zip: src/crank/presskit/crank-presskit.md public/static/img/crank-icon.png public/static/img/crank-screenshot.png public/static/img/crank-ui.png public/static/video/crank.mp4 public/static/video/crank-focus-reading.mp4
+	@echo Building Crank press kit zip
+	@mkdir -p public/crank/presskit
+	@rm -f $@
+	@tmp=$$(mktemp -d) && \
+	 cp src/crank/presskit/crank-presskit.md "$$tmp/" && \
+	 cp public/static/img/crank-icon.png "$$tmp/" && \
+	 cp public/static/img/crank-screenshot.png "$$tmp/" && \
+	 cp public/static/img/crank-ui.png "$$tmp/" && \
+	 cp public/static/video/crank.mp4 "$$tmp/crank-demo.mp4" && \
+	 cp public/static/video/crank-focus-reading.mp4 "$$tmp/" && \
+	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
+	 rm -rf "$$tmp"
+
+pipiri-presskit-zip: public/pipiri/presskit/pipiri-presskit.zip
+public/pipiri/presskit/pipiri-presskit.zip: src/pipiri/presskit/pipiri-presskit.md public/static/img/pipiri-icon.png public/static/img/pipiri-screenshot.png public/static/img/pipiri-ui.png public/static/video/pipiri.mp4
+	@echo Building Pipiri press kit zip
+	@mkdir -p public/pipiri/presskit
+	@rm -f $@
+	@tmp=$$(mktemp -d) && \
+	 cp src/pipiri/presskit/pipiri-presskit.md "$$tmp/" && \
+	 cp public/static/img/pipiri-icon.png "$$tmp/" && \
+	 cp public/static/img/pipiri-screenshot.png "$$tmp/" && \
+	 cp public/static/img/pipiri-ui.png "$$tmp/" && \
+	 cp public/static/video/pipiri.mp4 "$$tmp/pipiri-demo.mp4" && \
+	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
+	 rm -rf "$$tmp"
+
+all: html xml css crank-presskit-zip pipiri-presskit-zip
 
 build: export NODE_ENV=production
 build: export TAILWIND_MODE=build
@@ -108,3 +137,5 @@ rebuild:
 	sleep 5
 	echo '' >> ./src/clop/defs.plim
 	cfcli -d lowtechguys.com purge
+
+release: rebuild
