@@ -102,13 +102,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Picture-in-Picture for any window
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | keep an eye on progress
-                    / a.${CLS.appcontainer} href="/crank/" title="Crank"
-                    /     h3.text-2xl.text-mauve-gray.dark:text-stone-200 Crank
-                    /     img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/crank-icon.webp"
-                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                    /         React to macOS events
-                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                    /         | automate your frustrations away
+                    a.${CLS.appcontainer} href="/crank/" title="Crank"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Crank
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/crank-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | Effortless macOS automation
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | no manual required
 
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Free apps

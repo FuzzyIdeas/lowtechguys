@@ -17,6 +17,7 @@ module.exports = {
     './public/startupfolder/*.html',
     './public/cling/*.html',
     './public/pipiri/*.html',
+    './public/crank/*.html',
   ],
   mode: 'jit',
   theme: {
@@ -180,6 +181,9 @@ module.exports = {
           bright: '#F96332',
           peach: '#FBAB7E',
           bmac: '#FF813F',
+          linen: '#f8efe9',
+          stone: '#efe5db',
+          bark: '#312924',
         },
         red: {
           ...colors.red,
@@ -207,6 +211,7 @@ module.exports = {
           blackish: '#120d13',
           black: '#201D22',
           blue: '#161122',
+          pink: '#985c5c',
         },
         green: {
           ...colors.green,

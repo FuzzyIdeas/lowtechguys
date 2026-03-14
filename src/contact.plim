@@ -59,6 +59,7 @@ html lang="en"
                     option value="StartupFolder" Startup Folder
                     option value="Cling" Cling
                     option value="Pipiri" Pipiri
+                    option value="Crank" Crank
                     option value="IsThereNet" IsThereNet
                     option value="StudioICC" Studio ICC
                     option value="" Not about a specific app

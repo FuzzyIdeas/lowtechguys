@@ -6,6 +6,7 @@
     title ${title}
     link href="${favicon}" rel="shortcut icon"
     link href="/static/css/app.css" rel="stylesheet"
+    link href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" rel="stylesheet"
     -if canonical
         link rel="canonical" href="https://${domain}${canonical}"
     meta rel="canonical" href="https://${domain}"
@@ -142,4 +143,8 @@
             element.insertBefore anchor, element.firstChild
           else
             element.appendChild anchor
+
+
+
+
 
