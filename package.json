@@ -11,13 +11,15 @@
     "postcss-easings": "^4.0.0",
     "rupture": "^0.7.1",
     "stylus": "^0.64.0",
-    "tailwind-css-variables": "^3.0.1",
-    "tailwindcss": "^4.2.1"
+    "tailwind-css-variables": "^3.0.1"
   },
   "browserslist": [
     "defaults",
     "not IE 11",
     "not IE_Mob 11",
     "maintained node versions"
-  ]
+  ],
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
 }

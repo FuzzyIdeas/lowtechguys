@@ -139,13 +139,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | instantly available on a hotkey
 
-                    a.${CLS.appcontainer} href="/yellowdot/" title="YellowDot"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 YellowDot
-                        icon.w-28.h-28.filter.drop-shadow-lg.order-first : yellowdot
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Hide that pesky yellow dot
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | in the corner of your screen
                     a.${CLS.appcontainer} href="/musicdecoy/" title="Music Decoy"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Music Decoy
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/musicdecoy-icon.webp"
@@ -153,6 +146,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Stop launching the Music app
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | whenever you press `b ▶ Play`
+                    a.${CLS.appcontainer} href="/keylume/" title="Keylume"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Keylume
+                        img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/keylume-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Stylish on-screen keyboard
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | for screen recordings and live demos
                     a.${CLS.appcontainer} href="/zoomhider/" title="ZoomHider"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 ZoomHider
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/zoomhider-icon.webp"
@@ -190,6 +190,14 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Dim screen brightness
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | without losing color accuracy
+
+                    a.${CLS.appcontainer} href="/yellowdot/" title="YellowDot"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 YellowDot
+                        icon.w-28.h-28.filter.drop-shadow-lg.order-first : yellowdot
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Hide that pesky yellow dot
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | in the corner of your screen
 
 
 
