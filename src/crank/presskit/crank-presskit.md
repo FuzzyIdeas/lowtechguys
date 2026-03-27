@@ -89,6 +89,7 @@ Each rule runs one action when it fires:
 ## Included Assets
 
 - `crank-icon.png` -- App icon (1280x1280)
+- `crank-icon-shadow.png` -- App icon with shadow
 - `crank-screenshot.png` -- App screenshot
 - `crank-ui.png` -- UI screenshot
 - `crank-demo.mp4` -- Demo video

@@ -88,13 +88,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 In collaboration with `b.font-mono subsol¹`
                 .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
-                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
+                    a.${CLS.appcontainer} href="/keylume/" title="Keylume"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Keylume
+                        img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/keylume-icon.webp"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Find underground parties
+                            Stylish on-screen keyboard
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
+                            | for screen recordings and live demos
                     a.${CLS.appcontainer} href="/pipiri/" title="Pipiri"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Pipiri
                         img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/pipiri-icon.webp"
@@ -109,6 +109,14 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             | Effortless macOS automation
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | no manual required
+
+                    a.${CLS.appcontainer} target="_blank" href="https://subsol.one?source=lowtechguys" title="Sub Sol"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Sub Sol
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/subsol-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Find underground parties
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | and festivals in `span.text-red-hot.font-semibold Ro`_`span.text-yellow-bright.font-semibold man`_`span.text-blue-500.font-semibold ia`
 
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Free apps
@@ -146,13 +154,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Stop launching the Music app
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | whenever you press `b ▶ Play`
-                    a.${CLS.appcontainer} href="/keylume/" title="Keylume"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Keylume
-                        img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/keylume-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Stylish on-screen keyboard
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | for screen recordings and live demos
                     a.${CLS.appcontainer} href="/zoomhider/" title="ZoomHider"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 ZoomHider
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/zoomhider-icon.webp"

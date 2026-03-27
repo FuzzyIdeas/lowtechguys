@@ -1,0 +1,118 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Keylume - Press Kit" domain="lowtechguys.com" description="Press kit for Keylume, stylish on-screen keyboard for macOS" favicon="/keylume/favicon.ico" icon="keylume-icon" icon_size="1024" screenshot="keylume-screenshot" color="rgb(237, 233, 245)" canonical="/keylume/presskit" defs:head
+
+    body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/keylume/" Keylume
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Keylume" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/keylume-icon.png"
+            h1.mt-10.text-4xl.text-mauve-gray.mb-2.drop-shadow-xl Keylume
+            h5.text-gray-800 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-black.bg-rose-100.hover:text-black.hover:bg-rose-200.rounded-lg.flex.justify-center.items-center.border-rose-200.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/keylume/presskit/keylume-presskit.zip" download="keylume-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, and copy
+
+        section#press-content.flex-center.flex-col.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 About Keylume
+                p.text-base.text-gray-600
+                    | Keylume is an on-screen keyboard for macOS that lights up keys as you press them. Made for app demos, screencasts, and tutorials.
+                p.text-base.text-gray-600
+                    | Most keystroke visualizers only show modifier combos or skip function keys. Keylume shows the whole keyboard, matching the look of a real Apple keyboard.
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-rose-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-800 The low-tech guys
+                    .flex.flex-col.bg-rose-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-800 macOS 14.0+ (Sonoma and later)
+                    .flex.flex-col.bg-rose-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-800 14-day free trial, then Free mode. One-time €8 for Pro
+                    .flex.flex-col.bg-rose-50.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-mauve-gray href="https://lowtechguys.com/keylume" lowtechguys.com/keylume
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Full MacBook layout with every key, including media keys, arrows, and modifiers
+                    li Many built-in themes, plus an intuitive theme editor to create your own
+                    li Save themes, share them with others, import themes other people made
+                    li Appears automatically when screen recording starts
+                    li Triple-tap fn to toggle manually
+                    li Auto-hide on hover: fades out and lets clicks through
+                    li Drag to reposition, resize freely, remembers position
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Pro Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Click to type: click keys on the on-screen keyboard to send actual keystrokes
+                    li Keyboard layout adaptation: reads your system layout and updates key labels to match
+                    li Key layers: hold a modifier and the labels update to show what each key will produce
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 App Icon
+                .flex.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/keylume-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/keylume-icon.png" alt="Keylume app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-screenshot.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/keylume-screenshot.png" alt="Keylume screenshot"
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-ui.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/keylume-ui.png" alt="Keylume UI"
+                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-themes.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/keylume-themes.png" alt="Keylume themes"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-icon.png" download="keylume-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-screenshot.png" download="keylume-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Screenshot (PNG)
+                    a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-ui.png" download="keylume-ui.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm UI Screenshot (PNG)
+                    a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-themes.png" download="keylume-themes.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Themes Screenshot (PNG)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2026
+            .links.w-full.md:w-auto
+                / a.text-red-hot.ml-4 href="/contact" Contact
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(77, 62, 86, 0.4)) drop-shadow(0 9px 17px rgba(77, 62, 86, 0.4))
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            img, a
+                box-shadow: none !important

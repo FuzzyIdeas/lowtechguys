@@ -1,0 +1,147 @@
+---!
+    import os
+    from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
+
+- def head(title, domain, description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
+    title ${title}
+    link href="${favicon}" rel="shortcut icon"
+    link href="/static/css/app.css" rel="stylesheet"
+    link href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" rel="stylesheet"
+    -if canonical
+        link rel="canonical" href="https://${domain}${canonical}"
+    meta rel="canonical" href="https://${domain}"
+    meta charset="utf-8"
+    meta name="viewport" content=(
+      "width=device-width, "
+      "initial-scale=1.0, " +
+      "maximum-scale=6.0, " +
+      "shrink-to-fit=no")
+    meta itemprop="description" content="${description}"
+    meta itemprop="name" content="${title}"
+    meta name="apple-mobile-web-app-status-bar-style" content="black"
+    meta name="description" content="${description}"
+
+    -if gif
+        meta itemprop="image" content="${gif}"
+        meta name="image" content="${gif}"
+        meta property="og:image" content="${gif}"
+        meta property="og:image:type" content="image/gif"
+    -elif webp
+        meta itemprop="image" content="${webp}"
+        meta name="image" content="${webp}"
+        meta property="og:image" content="${webp}"
+        meta property="og:image:type" content="image/webp"
+    -else
+        meta itemprop="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta name="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta property="og:image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+
+    meta name="mobile-web-app-capable" content="no"
+    meta name="msapplication-TileColor" content="${color}"
+    meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}.png"
+    meta name="theme-color" content="${color}"
+    meta property="og:description" content="${description}"
+    meta property="og:site_name" content="${title}"
+    meta property="og:title" content="${title}"
+    meta property="og:type" content="website"
+    meta property="og:url" content="https://${domain}"
+    meta name="twitter:site" content="@lowtechguys"
+    meta name="twitter:title" content="${title}"
+    meta name="twitter:description" content="${description}"
+    meta name="twitter:card" content="summary_large_image"
+    meta property="twitter:image" content="${imgurl(screenshot, 1200, convert_to='webp')}"
+
+    -if not DEV
+        script async="true" defer="true" data-domain="${domain}" file-types="dmg,pkg,zip,pdf" src="https://plausible.alinpanaitiu.com/js/plausible.hash.file-downloads.outbound-links.js"
+    -coffee
+      if location.host != '${domain}'
+        domain = (location.host || 'localhost').split(':')[0]
+        document.write "<script src=\"http://localhost:35729/livereload.js?snipver=1\"><\/script>"
+
+
+- def lazyvideoset(video, cls, webm=False, poster=None, controls=True, prefix='/static/video/')
+    video.${cls} (preload="none" muted loop disablePictureInPicture playsinline ${"controls" if controls else ""} poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
+
+- def videoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
+
+- def smallvideoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}small/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}small/${video}-h264.mp4" type='video/mp4'
+
+-def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
+    picture.object-${fit}.${pcls}
+        -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} self:sources
+        img.object-${fit}.${icls} alt=${alt} srcset=${srcset(img, ext, width, factor)} title=${os.path.split(img)[-1]}
+
+-def images(folder, ext='png', width=1920, factor=0.4, mobile_factor=1, acls='', pcls='', icls='')
+    -for img in images(folder, ext)
+        a.${acls} href="/static/img/${urllib.parse.quote(img)}.${ext}"
+            -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} pcls=${pcls} icls=${icls} self:image
+
+-def sources(img, ext='png', width=1920, factor=0.4, mobile_factor=1)
+    -if not DEV
+        source type="image/avif" srcset=${srcset(img, ext, width, mobile_factor, convert_to="avif")} media="(max-width: 767px)"
+        source type="image/avif" srcset=${srcset(img, ext, width, factor, convert_to="avif")} media="(min-width: 768px)"
+
+        source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")} media="(max-width: 767px)"
+        source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
+    source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)} media="(max-width: 767px)"
+    source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"
+
+- def anchors(position)
+    -coffee
+        tagNames = [
+          'h1:not(.no-anchor)'
+          'h2:not(.no-anchor)'
+          'h3:not(.no-anchor)'
+          'h4:not(.no-anchor)'
+          'h5:not(.no-anchor)'
+          'h6:not(.no-anchor)'
+        ]
+        tagSelector = tagNames.join()
+        elements = document.querySelectorAll(tagSelector)
+
+        createAnchor = (href) ->
+          link = document.createElement('a')
+          link.className = 'anchor-headings'
+          link.href = href
+          link.appendChild document.createTextNode('#')
+          link
+
+        for element in elements
+          id = element.id
+          if not id
+            # Check if heading has any nested elements with id
+            innerElement = element.querySelector('[id]')
+            if innerElement
+              id = innerElement.id
+
+          if not id
+            continue
+
+          href = '#' + id
+          existingAnchor = element.querySelector('[href]')
+
+          if existingAnchor
+            continue
+
+          anchor = createAnchor(href)
+          position = '${position}'
+          if position == 'before'
+            element.insertBefore anchor, element.firstChild
+          else
+            element.appendChild anchor
+
+

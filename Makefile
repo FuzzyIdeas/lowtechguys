@@ -43,12 +43,13 @@ xml: $(xmlfiles)
 
 
 crank-presskit-zip: public/crank/presskit/crank-presskit.zip
-public/crank/presskit/crank-presskit.zip: src/crank/presskit/crank-presskit.md public/static/img/crank-icon.png public/static/img/crank-screenshot.png public/static/img/crank-ui.png public/static/video/crank.mp4 public/static/video/crank-focus-reading.mp4
+public/crank/presskit/crank-presskit.zip: src/crank/presskit/crank-presskit.md src/crank/presskit/crank-icon-shadow.png public/static/img/crank-icon.png public/static/img/crank-screenshot.png public/static/img/crank-ui.png public/static/video/crank.mp4 public/static/video/crank-focus-reading.mp4
 	@echo Building Crank press kit zip
 	@mkdir -p public/crank/presskit
 	@rm -f $@
 	@tmp=$$(mktemp -d) && \
 	 cp src/crank/presskit/crank-presskit.md "$$tmp/" && \
+	 cp src/crank/presskit/crank-icon-shadow.png "$$tmp/" && \
 	 cp public/static/img/crank-icon.png "$$tmp/" && \
 	 cp public/static/img/crank-screenshot.png "$$tmp/" && \
 	 cp public/static/img/crank-ui.png "$$tmp/" && \
@@ -58,12 +59,13 @@ public/crank/presskit/crank-presskit.zip: src/crank/presskit/crank-presskit.md p
 	 rm -rf "$$tmp"
 
 pipiri-presskit-zip: public/pipiri/presskit/pipiri-presskit.zip
-public/pipiri/presskit/pipiri-presskit.zip: src/pipiri/presskit/pipiri-presskit.md public/static/img/pipiri-icon.png public/static/img/pipiri-screenshot.png public/static/img/pipiri-ui.png public/static/video/pipiri.mp4
+public/pipiri/presskit/pipiri-presskit.zip: src/pipiri/presskit/pipiri-presskit.md src/pipiri/presskit/pipiri-icon-shadow.png public/static/img/pipiri-icon.png public/static/img/pipiri-screenshot.png public/static/img/pipiri-ui.png public/static/video/pipiri.mp4
 	@echo Building Pipiri press kit zip
 	@mkdir -p public/pipiri/presskit
 	@rm -f $@
 	@tmp=$$(mktemp -d) && \
 	 cp src/pipiri/presskit/pipiri-presskit.md "$$tmp/" && \
+	 cp src/pipiri/presskit/pipiri-icon-shadow.png "$$tmp/" && \
 	 cp public/static/img/pipiri-icon.png "$$tmp/" && \
 	 cp public/static/img/pipiri-screenshot.png "$$tmp/" && \
 	 cp public/static/img/pipiri-ui.png "$$tmp/" && \
@@ -71,7 +73,24 @@ public/pipiri/presskit/pipiri-presskit.zip: src/pipiri/presskit/pipiri-presskit.
 	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
 	 rm -rf "$$tmp"
 
-all: html xml css crank-presskit-zip pipiri-presskit-zip
+keylume-presskit-zip: public/keylume/presskit/keylume-presskit.zip
+public/keylume/presskit/keylume-presskit.zip: src/keylume/presskit/keylume-presskit.md src/keylume/presskit/keylume-icon-shadow.png public/static/img/keylume-icon.png public/static/img/keylume-screenshot.png public/static/img/keylume-ui.png public/static/img/keylume-themes.png
+	@echo Building Keylume press kit zip
+	@mkdir -p public/keylume/presskit
+	@rm -f $@
+	@tmp=$$(mktemp -d) && \
+	 cp src/keylume/presskit/keylume-presskit.md "$$tmp/" && \
+	 cp src/keylume/presskit/keylume-icon-shadow.png "$$tmp/" && \
+	 cp public/static/img/keylume-icon.png "$$tmp/" && \
+	 cp public/static/img/keylume-screenshot.png "$$tmp/" && \
+	 cp public/static/img/keylume-ui.png "$$tmp/" && \
+	 cp public/static/img/keylume-themes.png "$$tmp/" && \
+	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
+	 rm -rf "$$tmp"
+
+presskits: crank-presskit-zip pipiri-presskit-zip keylume-presskit-zip
+
+all: html xml css presskits
 
 build: export NODE_ENV=production
 build: export TAILWIND_MODE=build

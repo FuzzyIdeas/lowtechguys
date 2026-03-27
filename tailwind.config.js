@@ -20,6 +20,7 @@ module.exports = {
     './public/crank/*.html',
     './public/crank/presskit/*.html',
     './public/pipiri/presskit/*.html',
+    './public/keylume/presskit/*.html',
     './public/keylume/*.html',
   ],
   mode: 'jit',
