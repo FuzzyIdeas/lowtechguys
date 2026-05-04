@@ -28,7 +28,7 @@ html lang="en"
                 a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="https://files.lowtechguys.com/releases/Pipiri.dmg"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
-                a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="https://pipiri.subsol.one" target="_blank" rel="noopener noreferrer"
+                a.btn.text-black.bg-violet-100.hover:text-black.hover:bg-violet-200.rounded-lg.flex.justify-center.items-center.border-violet-100.border-2 href="https://pipiri.subsol.one/LIMITED_30" target="_blank" rel="noopener noreferrer"
                     icon.h-4.w-4.md:h-7.md:w-7 : credit-card
                     span.ml-2.text-sm.md:text-base Buy license
             .text-violet-950.text-xxs.mt-1.font-medium.opacity-50
@@ -140,7 +140,7 @@ html lang="en"
 
                         After the trial, the app continues to work in **Free mode** where PiP windows get paused after 30 minutes of streaming.
 
-                        A license costs **€8**, one-time purchase, for life. It can be activated on up to **5 personal Mac devices**.
+                        License is a one-time purchase, for life. It can be activated on up to **5 personal Mac devices**.
 
                         *Activating a 6th Mac automatically deactivates the oldest one, so the license can be used indefinitely as you change machines.*
 
@@ -178,7 +178,7 @@ html lang="en"
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -coffee
             if window.location.hash.includes('buy')
-                window.location.href = 'https://pipiri.subsol.one'
+                window.location.href = 'https://pipiri.subsol.one/LIMITED_30'
 
             window.playVideo = ->
                 container = document.getElementById('video-container')
@@ -186,15 +186,23 @@ html lang="en"
                 playBtn = document.getElementById('play-btn')
                 poster = container.querySelector('picture')
 
-                poster.style.display = 'none'
-                playBtn.style.display = 'none'
-                video.classList.remove('hidden')
-                video.controls = false
-                video.loop = true
-                video.muted = true
-                video.playsInline = true
-                video.disablePictureInPicture = true
-                video.play()
+                if video.classList.contains('hidden')
+                    poster.style.display = 'none'
+                    playBtn.style.display = 'none'
+                    video.classList.remove('hidden')
+                    video.controls = false
+                    video.loop = true
+                    video.muted = true
+                    video.playsInline = true
+                    video.disablePictureInPicture = true
+                    video.play()
+                    container.onclick = null
+                    video.onclick = ->
+                        if video.paused
+                            video.play()
+                        else
+                            video.pause()
+                    return
         -stylus
             @import "stylus/base"
 

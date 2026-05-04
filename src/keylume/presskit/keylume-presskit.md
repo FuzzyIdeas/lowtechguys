@@ -11,7 +11,7 @@ Most keystroke visualizers only show modifier combos or skip function keys. Keyl
 - **Developer:** The low-tech guys
 - **Website:** [lowtechguys.com/keylume](https://lowtechguys.com/keylume)
 - **Platform:** macOS 14.0+ (Sonoma and later)
-- **Price:** 14-day free trial, then Free mode. License is a one-time purchase of EUR 8 for up to 5 Macs
+- **Licensing:** One-time purchase for up to 5 Macs. 14-day free trial, then Free mode
 - **Download:** [lowtechguys.com/keylume](https://lowtechguys.com/keylume)
 - **Buy license:** [keylume.subsol.one](https://keylume.subsol.one)
 

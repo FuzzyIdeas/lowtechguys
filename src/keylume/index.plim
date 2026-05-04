@@ -29,7 +29,7 @@ html lang="en"
                 a.btn.text-black.bg-rose-100.hover:text-black.hover:bg-rose-200.rounded-lg.flex.justify-center.items-center.border-rose-200.border-2 href="https://files.lowtechguys.com/releases/Keylume.dmg"
                     icon.h-4.w-4.md:h-7.md:w-7 : package
                     span.ml-2.text-sm.md:text-base Download
-                a.btn.text-black.bg-rose-100.hover:text-black.hover:bg-rose-200.rounded-lg.flex.justify-center.items-center.border-rose-200.border-2 href="https://keylume.subsol.one" target="_blank" rel="noopener noreferrer"
+                a.btn.text-black.bg-rose-100.hover:text-black.hover:bg-rose-200.rounded-lg.flex.justify-center.items-center.border-rose-200.border-2 href="https://keylume.subsol.one/LIMITED_30" target="_blank" rel="noopener noreferrer"
                     icon.h-4.w-4.md:h-7.md:w-7 : credit-card
                     span.ml-2.text-sm.md:text-base Buy license
             .text-rose-950.text-xxs.mt-1.font-medium.opacity-50.mb-4
@@ -324,4 +324,4 @@ html lang="en"
 
         -coffee
             if window.location.hash.includes('buy')
-                window.location.href = 'https://keylume.subsol.one'
+                window.location.href = 'https://keylume.subsol.one/LIMITED_30'

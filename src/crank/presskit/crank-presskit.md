@@ -9,7 +9,7 @@ Crank is an event-based automation app for macOS. Set scripts, apps, and Shortcu
 - **Developer:** The low-tech guys
 - **Website:** [lowtechguys.com/crank](https://lowtechguys.com/crank)
 - **Platform:** macOS 14.0+ (Sonoma and later)
-- **Price:** Free for up to 3 rules (no time limit), 14-day free trial for Pro
+- **Licensing:** One-time purchase for up to 5 Macs. 14-day free trial, then Free mode (up to 3 rules)
 - **Download:** [lowtechguys.com/crank](https://lowtechguys.com/crank)
 - **Buy license:** [crank.subsol.one](https://crank.subsol.one)
 

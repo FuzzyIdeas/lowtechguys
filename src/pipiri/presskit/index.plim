@@ -43,8 +43,8 @@ html lang="en"
                         span.text-sm.text-gray-500 Platform
                         span.text-base.text-gray-800 macOS 14.0+ (Sonoma and later)
                     .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
-                        span.text-sm.text-gray-500 Price
-                        span.text-base.text-gray-800 14-day free trial, then Free mode (PiP pauses after 30 min). One-time €8 for Pro
+                        span.text-sm.text-gray-500 Licensing
+                        span.text-base.text-gray-800 One-time purchase for up to 5 Macs. 14-day free trial, then Free mode (PiP pauses after 30 min)
                     .flex.flex-col.bg-violet-50.bg-opacity-60.rounded-lg.p-4
                         span.text-sm.text-gray-500 Website
                         a.text-mauve-gray href="https://lowtechguys.com/pipiri" lowtechguys.com/pipiri

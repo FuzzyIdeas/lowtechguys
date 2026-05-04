@@ -11,7 +11,7 @@ Useful for keeping an eye on terminals, logs, dashboards, AI agents, or video st
 - **Developer:** The low-tech guys
 - **Website:** [lowtechguys.com/pipiri](https://lowtechguys.com/pipiri)
 - **Platform:** macOS 14.0+ (Sonoma and later)
-- **Price:** 14-day free trial, then Free mode (PiP pauses after 30 min). License is a one-time €8 purchase for up to 5 Macs
+- **Licensing:** One-time purchase for up to 5 Macs. 14-day free trial, then Free mode (PiP pauses after 30 min)
 - **Download:** [lowtechguys.com/pipiri](https://lowtechguys.com/pipiri)
 - **Buy license:** [pipiri.subsol.one](https://pipiri.subsol.one)
 
