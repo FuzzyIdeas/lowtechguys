@@ -104,7 +104,7 @@ html lang="en"
 
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
-            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
             a.ml-auto.text-xs.text-stone-400 href="https://unsplash.com/photos/yellow-and-white-abstract-painting-rFCE3SFmem0" background by "Kseniya Lapteva"
             .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact

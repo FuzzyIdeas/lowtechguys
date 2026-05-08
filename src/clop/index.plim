@@ -497,7 +497,7 @@ html.overflow-x-hidden lang="en"
 
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
-            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2023
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
                 a.text-red-hot.ml-4 href="/clop/terms" Terms & Conditions
                 a.text-red-hot.ml-4 href="/clop/eula" EULA

@@ -1,6 +1,9 @@
 ---!
     import os
+    from datetime import datetime
     from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
+
+    CURRENT_YEAR = datetime.now().year
 
 - def head(title, domain, description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
     title ${title}
@@ -58,6 +61,9 @@
         domain = (location.host || 'localhost').split(':')[0]
         document.write "<script src=\"http://localhost:35729/livereload.js?snipver=1\"><\/script>"
 
+
+- def copyright_line(cls='text-gray-500 hidden md:block')
+    h4(class="font-extralight ${cls}") The low-tech guys © ${CURRENT_YEAR}
 
 - def lazyvideoset(video, cls, webm=False, poster=None, controls=True, prefix='/static/video/')
     video.${cls} (preload="none" muted loop disablePictureInPicture playsinline ${"controls" if controls else ""} poster=${poster or ""} )
@@ -143,6 +149,7 @@
             element.insertBefore anchor, element.firstChild
           else
             element.appendChild anchor
+
 
 
 

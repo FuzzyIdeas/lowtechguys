@@ -63,7 +63,7 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                 .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
                     a.${CLS.appcontainer} href="/rcmd/" title="rcmd"
                         h3.text-2xl.text-mauve-gray.dark:text-white rcmd
-                        icon.w-28.h-28.filter.drop-shadow-3xl.order-first : rcmd
+                        img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/rcmd-icon.webp"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             Re-imagined `b Command-Tab`
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
@@ -84,6 +84,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Intelligent `b adaptive brightness`
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | for your external displays
+                    a.${CLS.appcontainer} href="/cling/" title="Cling"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Cling
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/cling-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Instant fuzzy find any file
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | act on it in the same instant
 
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 In collaboration with `b.font-mono subsol¹`
@@ -121,24 +128,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Free apps
                 .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
-                    a.${CLS.appcontainer} href="/volum/" title="Volum"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
-                        .zstack.order-first
-                            icon.w-[7rem].h-[7rem].filter.drop-shadow-lg : volum
-                            #volum-knob.w-[3.92rem].h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
-                                #volum-knob-indicator.z-10
-                                #volum-knob-border.z-10
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Home lights and sounds
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | at your fingertips
-                    a.${CLS.appcontainer} href="/cling/" title="Cling"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Cling
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/cling-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Instant fuzzy find any file
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | act on it in the same instant
                     a.${CLS.appcontainer} href="/grila/" title="Grila"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Grila
                         img.h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07].order-first src="/static/img/grila-icon.webp"
@@ -146,6 +135,20 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Calendar for keyboard addicts
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | instantly available on a hotkey
+                    a.${CLS.appcontainer} href="/startupfolder/" title="Startup Folder"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Startup Folder
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/startupfolder-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Run anything at startup
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | by simply placing it in a special folder
+                    a.${CLS.appcontainer} href="/istherenet/" title="IsThereNet"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 IsThereNet
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/istherenet-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Your internet connection status
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | at a glance
 
                     a.${CLS.appcontainer} href="/musicdecoy/" title="Music Decoy"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Music Decoy
@@ -161,7 +164,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Keep Zoom screen sharing controls
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | hidden even when pressing Esc
-
                     a.${CLS.appcontainer} href="/studioicc/" title="StudioICC"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 StudioICC
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/studioicc-icon.webp"
@@ -169,20 +171,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Apply and persist `b.font-mono.text-yellow-nice icc` color profiles
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | on Studio Display and Pro Display XDR
-                    a.${CLS.appcontainer} href="/startupfolder/" title="Startup Folder"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Startup Folder
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/startupfolder-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Run anything at startup
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | by simply placing it in a special folder
-                    a.${CLS.appcontainer} href="/istherenet/" title="IsThereNet"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 IsThereNet
-                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/istherenet-icon.webp"
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Your internet connection status
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | at a glance
 
                     a.${CLS.appcontainer} href="/gammadimmer/" title="Gamma Dimmer"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-300 Gamma Dimmer
@@ -199,7 +187,17 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Hide that pesky yellow dot
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | in the corner of your screen
-
+                    a.${CLS.appcontainer} href="/volum/" title="Volum"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
+                        .zstack.order-first
+                            icon.w-[7rem].h-[7rem].filter.drop-shadow-lg : volum
+                            #volum-knob.w-[3.92rem].h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
+                                #volum-knob-indicator.z-10
+                                #volum-knob-border.z-10
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Home lights and sounds
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | at your fingertips
 
 
         hr.opacity-20
@@ -219,6 +217,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
 
         footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2023
-            h4.font-extralight.text-mauve-blackish.dark:text-stone-300.whitespace-nowrap The low-tech guys © 2023
+            - call cls="text-mauve-blackish dark:text-stone-300 whitespace-nowrap" defs:copyright_line
             / .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact

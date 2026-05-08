@@ -100,7 +100,7 @@ html lang="en"
                         span.ml-2.text-sm Themes Screenshot (PNG)
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
-            h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2026
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
