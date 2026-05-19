@@ -218,5 +218,6 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
         footer.flex.flex-col.md:flex-row.items-center.justify-center.md:justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             / h4.font-extralight.text-mauve-blackish.hidden.md:block The low-tech guys © 2023
             - call cls="text-mauve-blackish dark:text-stone-300 whitespace-nowrap" defs:copyright_line
+            - call cls="text-mauve-blackish dark:text-stone-300" defs:socials
             / .links.w-full.md:w-auto
                 / a.text-red-hot.ml-4 href="/contact" Contact

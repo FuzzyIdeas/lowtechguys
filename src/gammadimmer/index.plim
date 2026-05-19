@@ -194,6 +194,7 @@ html lang="en"
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             - call cls="text-gray-100 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
+                - call defs:socials
                 / a.text-red-hot.ml-4 href="/contact" Contact
 
         -call position="after" defs:anchors

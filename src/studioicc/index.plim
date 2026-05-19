@@ -51,9 +51,10 @@ html lang="en"
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
             - call cls="text-gray-500 hidden md:block" defs:copyright_line
-            .links.w-full.md:w-auto
-                a.text-red-hot.ml-4 href="/studioicc/terms" Terms & Conditions
-                a.text-red-hot.ml-4 href="/studioicc/eula" EULA
+            .links.w-full.md:w-auto.flex.items-center.gap-3.md:gap-4
+                a.text-red-hot href="/studioicc/terms" Terms & Conditions
+                a.text-red-hot href="/studioicc/eula" EULA
+                - call defs:socials
         -coffee
             url = new URL(location)
             coupon = url.searchParams.get('coupon')
