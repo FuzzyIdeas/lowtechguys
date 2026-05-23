@@ -1,0 +1,551 @@
+- namespace name="defs" defs.plim
+---!
+    class CLS:
+        pass
+
+doctype html
+html lang="en"
+    head
+        - call title="Keylume - Integration & Remote Control" domain="lowtechguys.com" description="Drive Keylume from your own macOS app or scripts. Drop-in Swift integration, CLI, URL scheme, and distributed notifications." favicon="/keylume/favicon.ico" icon="keylume-icon" icon_size="1024" screenshot="keylume-screenshot" color="rgb(237, 233, 245)" canonical="/keylume/integration" defs:head
+        link href="/static/css/code.css" rel="stylesheet"
+
+    body.bg-white.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/keylume/" Keylume
+                a.text-sm.md:text-base.ml-4 href="/keylume/presskit" Press Kit
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Keylume" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-6
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/keylume-icon.png"
+            h1.mt-8.text-4xl.text-mauve-gray.mb-2.drop-shadow-xl Integration & Remote Control
+            h5.text-gray-800 Drive Keylume from your own app or scripts
+
+        section#dropin.flex-center.flex-col.pb-12.w-full.max-w-[1000px].px-4
+            .w-full.bg-gradient-to-br.from-rose-50.to-rose-100.border-2.border-rose-200.rounded-2xl.shadow-lg.p-6.md:p-10.text-left.space-y-6
+                .flex.flex-col.md:flex-row.md:items-center.md:justify-between.gap-3
+                    div
+                        h2.text-2xl.md:text-3xl.text-gray-800.m-0 Drop-in Swift integration
+                        p.text-sm.md:text-base.text-gray-600.mt-2.mb-0
+                            | A single Swift file you can drop into a macOS app target. Handles the headless install/uninstall flow, install and running detection, and posts the show/hide notifications.
+                    a.btn.text-black.bg-rose-200.hover:text-black.hover:bg-rose-300.rounded-lg.flex.justify-center.items-center.border-rose-300.border-2.shrink-0 href="https://gist.github.com/alin23/69c0b52b03ab68e3b238ff4ef0f6fde7" target="_blank" rel="noopener noreferrer"
+                        icon.h-4.w-4.md:h-5.md:w-5 : github
+                        span.ml-2.text-sm.md:text-base KeylumeIntegration.swift
+
+
+                .space-y-3
+                    p.text-sm.md:text-base.text-gray-700.m-0
+                        | Drop `code KeylumeIntegration.swift` into your target, then show a temporary keyboard layer:
+                    -md
+                        ```swift
+                        import SwiftUI
+
+                        struct ContentView: View {
+                            @State private var showing = false
+
+                            var body: some View {
+                                Button(showing ? "Hide keyboard" : "Show keyboard") {
+                                    if showing {
+                                        KeylumeIntegration.shared.hideKeyboard()
+                                    } else {
+                                        KeylumeIntegration.shared.showKeyboard(bindings: [
+                                            "q": .app(bundleID: "com.apple.Safari"),
+                                            "w": .app(bundleID: "com.apple.mail"),
+                                            "f": .symbolText(symbol: "magnifyingglass", text: "Find"),
+                                            "s": .symbolText(symbol: "square.and.arrow.down", text: "Save"),
+                                        ])
+                                    }
+                                    showing.toggle()
+                                }
+                            }
+                        }
+
+                        // Drop a pre-built install/uninstall + fill-mode pane into Settings:
+                        struct SettingsView: View {
+                            var body: some View { KeylumeSettingsForm() }
+                        }
+                        ```
+                    p.text-sm.text-gray-600.m-0
+                        | The `code KeylumeIntegration.installHeadless()` call downloads Keylume.app, configures it for a silent, no-menu-bar setup, and launches it in the background. The user never sees Keylume's own UI.
+
+                hr.opacity-20
+                .sandbox-warning.flex.items-start.gap-3.bg-amber-100.border-2.border-amber-300.rounded-lg.p-4
+                    i.hgi-stroke.hgi-alert-02.text-xl.md:text-2xl.text-amber-700.shrink-0.mt-0.5
+                    .text-left.text-sm.md:text-base.text-amber-900.space-y-2.flex-1
+                        .font-semibold Your app must `strong.text-900 not` be sandboxed
+                        div The App Sandbox blocks most operations the integration relies on:
+                        ul.list-disc.pl-5.space-y-1
+                            li Writing `code Keylume.app` to `code /Applications`
+                            li Posting `code DistributedNotificationCenter` notifications
+                            li Setting `code UserDefaults` on the `code com.lowtechguys.Keylume` suite
+
+                .free-note.flex.items-start.gap-3.bg-sky-100.border-2.border-sky-300.rounded-lg.p-4
+                    i.hgi-stroke.hgi-information-circle.text-xl.md:text-2xl.text-sky-700.shrink-0.mt-0.5
+                    .text-left.text-sm.md:text-base.text-sky-900.space-y-2.flex-1
+                        .font-semibold No license needed for integrations
+                        div
+                            | Anything you drive through a temporary layer works on the `b free tier`, no Pro license required for you or your users. That includes:
+                        ul.list-disc.pl-5.space-y-1
+                            li Custom layers with any number of keys and modifier combos
+                            li Click-to-type (clicking a key on the on-screen keyboard sends the keystroke)
+                            li Keyboard layout language awareness (Dvorak, QWERTZ, AZERTY, etc.)
+                        div
+                            | The only restriction is that you are `b not` allowed to replicate Keylume's core paid feature: `b app cheatsheets`. Unless it's only for showing your own app's shortcuts, that is allowed.
+
+        section#footer-text.flex-center.flex-col.pb-20.space-y-12.w-full.max-w-[800px].px-4.text-left
+            .w-full
+                -md
+                    ## Overview
+
+                    Keylume exposes three equivalent interfaces. The CLI and URL scheme are thin wrappers around the same distributed notifications, so they can do the same operations.
+
+                    - **CLI** (`keylume`). Easiest entry point for shell scripts.
+                    - **URL scheme** (`keylume://...`). Handy from `open`, AppleScript, Shortcuts, or browsers.
+                    - **Distributed notifications** under `com.lowtechguys.Keylume.*`. For in-process control from another Swift or Objective-C app.
+
+                    ---
+
+                    ## Action reference
+
+                    All actions are reachable from every interface. The notification name is the column on the left, prefixed by `com.lowtechguys.Keylume.`; the URL path is `keylume://<verb>`.
+
+                    <table>
+                        <thead>
+                            <tr><th>Notification</th><th>URL verb</th><th>Purpose</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>show</code></td><td><code>show</code></td><td>Show the keyboard, optionally with a temporary layer</td></tr>
+                            <tr><td><code>hide</code></td><td><code>hide</code></td><td>Hide the keyboard</td></tr>
+                            <tr><td><code>toggle</code></td><td><code>toggle</code></td><td>Toggle visibility, optionally with a temporary layer</td></tr>
+                            <tr><td><code>reset</code></td><td><code>reset</code></td><td>Clear the active temporary layer without hiding</td></tr>
+                            <tr><td><code>store</code></td><td><code>store</code></td><td>Persist a custom layer without showing the keyboard</td></tr>
+                            <tr><td><code>edit</code></td><td><code>edit</code></td><td>Update individual keys on a stored layer</td></tr>
+                            <tr><td><code>remove</code></td><td><code>remove</code></td><td>Delete a stored layer</td></tr>
+                        </tbody>
+                    </table>
+
+                    Layers can also be moved to and from JSON files via the URL scheme (`keylume://export`, `keylume://import`) or the CLI (`keylume layers export`, `keylume layers import`).
+
+                    ---
+
+                    ## Parameter reference
+
+                    The `show`, `toggle`, `store`, `edit`, and `remove` actions accept the same key/value mapping. Bindings override key labels while the keyboard is visible; the temporary layer clears when the keyboard hides or when `reset` is called.
+
+                    ### Key names
+
+                    Lowercase QWERTY labels: `a`..`z`, `0`..`9`, `esc`, `tab`, `backspace`, `return`, `f1`..`f12`, `up`, `down`, `left`, `right`, and URL-encoded punctuation keys (`-`, `=`, `[`, `]`, `;`, `'`, `,`, `.`, `/`, `\`).
+
+                    ### Value formats
+
+                    <table>
+                        <thead>
+                            <tr><th>Format</th><th>Example</th><th>Result</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>plaintext</td><td><code>Save</code></td><td>Text label</td></tr>
+                            <tr><td><code>s:name</code></td><td><code>s:arrowtriangle.up</code></td><td>SF Symbol</td></tr>
+                            <tr><td><code>a:bundleID</code></td><td><code>a:com.apple.Safari</code></td><td>App icon</td></tr>
+                            <tr><td><code>symtext:name|text</code></td><td><code>symtext:magnifyingglass|Find</code></td><td>SF Symbol with a caption below it</td></tr>
+                        </tbody>
+                    </table>
+
+                    ### Layer parameters
+
+                    <table>
+                        <thead>
+                            <tr><th>Key</th><th>Value</th><th>Effect</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><code>fill</code></td><td><code>visible</code>, <code>dim</code>, <code>blank</code></td><td>How keys without a binding look: normal, faintly dimmed, or hidden</td></tr>
+                            <tr><td><code>blank</code></td><td><code>1</code></td><td>Hide keys without a binding <em>(legacy alias for <code>fill=blank</code>)</em></td></tr>
+                            <tr><td><code>dimBlankModifierKeys</code></td><td><code>1</code> or <code>0</code></td><td>Also apply <code>fill=dim</code> or <code>fill=blank</code> to non-bindable keys (shift, ctrl, option, cmd, fn). Overrides the user's setting for this layer.</td></tr>
+                            <tr><td><code>x:y</code></td><td><code>X:Y</code></td><td>Exact screen coordinates <em>(takes priority over <code>position</code>)</em></td></tr>
+                            <tr><td><code>width</code></td><td>pixels</td><td>Set keyboard width <em>(minimum: <code>500</code>)</em></td></tr>
+                            <tr><td><code>position</code></td><td>named position</td><td><code>bottom</code>, <code>top</code>, <code>left</code>, <code>right</code>, <code>center</code>, <code>topLeft</code>, <code>topRight</code>, <code>bottomLeft</code>, <code>bottomRight</code></td></tr>
+                            <tr><td><code>offset</code></td><td><code>X:Y</code> or single value</td><td>Offset or padding for the computed <code>position</code></td></tr>
+                            <tr><td><code>screen</code></td><td>ID or name</td><td><code>CGDirectDisplayID</code> (number) or a fuzzy name (e.g. <code>dell</code>, <code>built-in</code>). Defaults to the screen with the cursor.</td></tr>
+                            <tr><td><code>hideAfterMS</code></td><td>milliseconds</td><td>Auto-hide the keyboard after this delay</td></tr>
+                            <tr><td><code>fadeOutMS</code></td><td>milliseconds</td><td>Fade-out duration before hiding (default: 500)</td></tr>
+                            <tr><td><code>theme</code></td><td>name</td><td>Apply a saved theme by name (fuzzy match) while the keyboard is shown; reverts when it hides</td></tr>
+                            <tr><td><code>persist</code></td><td><code>1</code></td><td>Save the layer as a permanent custom layer <em>(requires <code>modifiers</code> or <code>app</code>)</em></td></tr>
+                            <tr><td><code>modifiers</code></td><td>dash-separated</td><td>Modifier combo that activates the persisted layer (e.g. <code>rcmd-rshift</code>). Possible values: <code>fn</code>, <code>lshift</code>, <code>rshift</code>, <code>lctrl</code>, <code>rctrl</code>, <code>lopt</code>, <code>ropt</code>, <code>lcmd</code>, <code>rcmd</code>, <code>hyper</code></td></tr>
+                            <tr><td><code>name</code></td><td>text</td><td>Display name for the persisted layer <em>(defaults to <code>modifiers</code> string)</em></td></tr>
+                            <tr><td><code>app</code></td><td>bundle ID</td><td>Scope the layer to one app. Pair with <code>modifiers</code>, or omit <code>modifiers</code> for the app's base (no-modifier) layer.</td></tr>
+                            <tr><td><code>holdDelay</code></td><td>seconds</td><td>Per-app hold-to-summon delay. Requires <code>app</code>. Stored alongside the app's layers.</td></tr>
+                        </tbody>
+                    </table>
+
+                    ---
+
+                    ## Command-line interface
+
+                    Keylume ships with a `keylume` CLI. Install it from the menu bar menu, which symlinks it to `~/.local/bin/keylume`. Run `keylume --help` or `keylume <command> --help` for the full option list.
+
+                    ### Visibility
+
+                    ```bash
+                    keylume show
+                    keylume hide
+                    keylume toggle
+                    keylume layers reset       # clear any active temporary layer
+                    ```
+
+                    ### Temporary overlays
+
+                    Pass key bindings to `show` or `toggle` to override key labels while the keyboard is visible. The overlay clears when the keyboard hides or on `keylume layers reset`.
+
+                    ```bash
+                    # Bind keys to app icons / symbols / labels
+                    keylume show --app q=Safari --app w=Chrome --symbol e=pencil --text m=Mail --blank
+
+                    # Symbol-with-caption per key (a shortcut cheatsheet)
+                    keylume show --symtext f="magnifyingglass|Find" --symtext s="square.and.arrow.down|Save" --dim
+
+                    # Positioning, width, auto-hide, themed display
+                    keylume show --position bottom --width 800 --hide-after-ms 3000
+                    keylume show --theme "Muted"
+                    ```
+
+                    `--theme NAME` applies a saved theme (fuzzy-matched) while visible and reverts on hide.
+
+                    ### Custom layers
+
+                    `keylume layers` manages persisted custom layers. A layer can be global (triggered by a modifier combo system-wide) or scoped to one app (only active when that app is frontmost).
+
+                    ```bash
+                    # List
+                    keylume layers list                          # one-line summary per layer
+                    keylume layers list "App Switcher"           # full key dump for one layer
+                    keylume layers list --modifiers rcmd
+                    keylume layers list --for-app Pixelmator
+                    keylume layers list --json                   # raw export schema
+
+                    # Store
+                    keylume layers store --modifiers ralt --name "Browsers" \
+                        --app s=Safari --app c=Chrome --app f=Firefox
+
+                    # Edit (creates the layer if it doesn't exist)
+                    keylume layers edit --modifiers rcmd --app e=Notes
+                    keylume layers edit --modifiers rcmd --unset-key e
+
+                    # Remove
+                    keylume layers remove --modifiers rcmd
+                    ```
+
+                    ### App-scoped layers
+
+                    Add `--for-app APP` to scope a layer to one app. Without `--modifiers` it becomes the app's base layer, summoned by long-pressing the `fn` key while the app is frontmost.
+
+                    ```bash
+                    # Modifier-triggered layer that only shows inside Pixelmator
+                    keylume layers store --modifiers cmd --for-app Pixelmator --name "Pixelmator" \
+                        --symtext c="doc.on.doc|Copy"
+
+                    # Base layer (no modifier), summoned by long-pressing `fn` inside the app
+                    keylume layers store --for-app Pixelmator \
+                        --symtext b="paintbrush|Brush" --symtext e="eraser|Erase"
+
+                    # Per-app hold-to-summon delay (seconds)
+                    keylume layers store --modifiers cmd --for-app Pixelmator --hold-delay 1.5 \
+                        --symtext c="doc.on.doc|Copy"
+                    ```
+
+                    ### Themes
+
+                    ```bash
+                    keylume themes list                          # active theme marked with *
+                    keylume themes export                        # all themes to stdout
+                    keylume themes export --name "Nord" -f nord.json
+                    keylume themes import themes.json            # duplicates renamed (e.g. "Nord 2")
+                    ```
+
+                    ### Export and import
+
+                    ```bash
+                    keylume layers export                        # all layers to stdout
+                    keylume layers export --modifiers rcmd -f layer.json
+                    keylume layers import layers.json            # merges into matching layers
+                    keylume layers import layers.json --replace  # overwrites matching layers
+                    ```
+
+                    Layers with new modifier combos are added either way. Importing without `--replace` merges bindings into existing layers with the same modifier combo (conflicts use the imported value); with `--replace`, the existing layer is overwritten entirely.
+
+                    ### Raw key format
+
+                    For values that don't fit `--app` / `--symbol` / `--text` / `--symtext`, use `-k KEY=VALUE` with the same value syntax as the URL scheme:
+
+                    ```bash
+                    keylume layers store --modifiers rcmd \
+                        -k q=app:Safari -k e=symbol:pencil -k m=text:Mail -k f="symtext:magnifyingglass|Find"
+                    ```
+
+                    Extended prefixes: `app:Name`, `symbol:name`, `text:value`, `symtext:symbol|text`.
+
+                    ### Flag reference
+
+                    - **`--app KEY=APP`**
+                        - Bind a key to an app icon.
+                        - `APP` is an app name (`Safari`), a path (`/Applications/Google Chrome.app`), or a bundle ID (`com.apple.Safari`).
+                        - App names are fuzzy-matched against installed apps. Key names are case-insensitive.
+                    - **`--for-app APP`**
+                        - Scope the action to one app, so the layer only shows while that app is frontmost.
+                        - Works with `store`, `edit`, `remove`, and (paired with `--persist`) `show` or `toggle`.
+                        - Without `--modifiers`, creates the app's base layer (no modifier held, summoned by long-pressing the `fn` key).
+                    - **`--hold-delay SECONDS`**
+                        - How long to hold a modifier in that app before the keyboard is summoned.
+                        - Per-app, so it requires `--for-app`.
+                        - Defaults: instant for global layers, 1s for app layers.
+                    - **`--blank` / `--dim`**
+                        - Control how unbound keys appear.
+                        - `--blank` hides them. `--dim` keeps them faintly visible as a reference.
+                        - Without either, unbound keys show their normal labels.
+                    - **`--dim-blank-modifier-keys` / `--no-dim-blank-modifier-keys`**
+                        - Also apply the dim or blank effect to non-bindable keys (shift, ctrl, option, cmd, fn).
+                    - **`-k KEY=VALUE`**
+                        - Raw key binding (see *Raw key format* above).
+
+                    ---
+
+                    ## URL scheme
+
+                    Every URL action is invoked the same way:
+
+                    ```bash
+                    open -g "keylume://<verb>?<params>"
+                    ```
+
+                    The `-g` flag keeps the calling app focused. Parameters are URL-encoded query string keys. The supported verbs are listed in the [Action reference](#action-reference); parameters are listed in the [Parameter reference](#parameter-reference).
+
+                    ```bash
+                    # Minimal show / hide / toggle
+                    open -g keylume://show
+                    open -g keylume://hide
+                    open -g keylume://toggle
+                    open -g keylume://reset
+
+                    # show with a temporary navigation layer
+                    open -g "keylume://show?y=s:arrow.left.to.line&u=s:arrow.up&h=s:arrow.left&j=s:arrow.down&k=s:arrow.right&i=s:arrow.right.to.line&blank=1"
+
+                    # Persist an rcmd app switcher
+                    open -g "keylume://store?q=a:com.apple.Safari&w=a:com.apple.mail&modifiers=rcmd&name=App%20Switcher"
+
+                    # Update or remove one key
+                    open -g "keylume://edit?modifiers=rcmd&e=a:com.apple.Notes"
+                    open -g "keylume://edit?modifiers=rcmd&q=-"
+
+                    # Remove a layer
+                    open -g "keylume://remove?modifiers=rcmd"
+
+                    # Export / import layers
+                    open -g "keylume://export?file=/tmp/layers.json"
+                    open -g "keylume://export?file=/tmp/layers.json&modifiers=rcmd"
+                    open -g "keylume://import?file=/tmp/layers.json"
+                    open -g "keylume://import?file=/tmp/layers.json&replace=1"
+                    ```
+
+                    Set a key's value to `-` (as in the `edit` example above) to remove that binding.
+
+                    ---
+
+                    ## Distributed notifications
+
+                    Post to `DistributedNotificationCenter.default()`. The notification name is `com.lowtechguys.Keylume.<action>`; parameters go in `userInfo` as a `[String: String]` dictionary using the same keys and values as the URL scheme.
+
+                    ```swift
+                    DistributedNotificationCenter.default().post(
+                        name: .init("com.lowtechguys.Keylume.show"),
+                        object: nil,
+                        userInfo: [
+                            "y": "s:arrow.left.to.line",
+                            "u": "s:arrow.up",
+                            "h": "s:arrow.left",
+                            "j": "s:arrow.down",
+                            "k": "s:arrow.right",
+                            "i": "s:arrow.right.to.line",
+                            "blank": "1",
+                        ]
+                    )
+                    ```
+
+                    ### `Notification.Name` extension
+
+                    A convenience extension covering every action:
+
+                    ```swift
+                    extension Notification.Name {
+                        static let keylumeShow    = Notification.Name("com.lowtechguys.Keylume.show")
+                        static let keylumeHide    = Notification.Name("com.lowtechguys.Keylume.hide")
+                        static let keylumeToggle  = Notification.Name("com.lowtechguys.Keylume.toggle")
+                        static let keylumeReset   = Notification.Name("com.lowtechguys.Keylume.reset")
+                        static let keylumeStore   = Notification.Name("com.lowtechguys.Keylume.store")
+                        static let keylumeRemove  = Notification.Name("com.lowtechguys.Keylume.remove")
+                        static let keylumeEdit    = Notification.Name("com.lowtechguys.Keylume.edit")
+                    }
+                    ```
+
+                    ---
+
+                    ## Examples
+
+                    ### Temporary navigation layer
+
+                    A throwaway overlay that relabels six keys as vim-style arrows. The bindings clear when the keyboard hides.
+
+                    ![Navigation layer](https://files.lowtechguys.com/keylume-hyper-navigation-layer.png)
+
+                    ```bash
+                    keylume show --blank \
+                        --symbol y=arrow.left.to.line \
+                        --symbol u=arrow.up \
+                        --symbol h=arrow.left \
+                        --symbol j=arrow.down \
+                        --symbol k=arrow.right \
+                        --symbol i=arrow.right.to.line
+                    ```
+
+                    Equivalent URL:
+
+                    ```bash
+                    open -g "keylume://show?y=s:arrow.left.to.line&u=s:arrow.up&h=s:arrow.left&j=s:arrow.down&k=s:arrow.right&i=s:arrow.right.to.line&blank=1"
+                    ```
+
+                    ### Persisted app switcher
+
+                    A permanent layer triggered by holding right-cmd. Keys show app icons; pressing one switches to that app.
+
+                    ![Persisted rcmd app switcher layer](https://files.lowtechguys.com/keylume-rcmd-app-switcher-layer.png)
+
+                    ```bash
+                    keylume layers store --modifiers rcmd --name "App Switcher" \
+                        --app q=Safari --app w=Mail --app e=Notes
+                    ```
+
+                    Equivalent URL:
+
+                    ```bash
+                    open -g "keylume://store?modifiers=rcmd&name=App%20Switcher&q=a:com.apple.Safari&w=a:com.apple.mail&e=a:com.apple.Notes"
+                    ```
+
+                    ### App-scoped layer
+
+                    A layer that only shows while Pixelmator is frontmost, triggered by holding cmd:
+
+                    ```bash
+                    keylume layers store --modifiers cmd --for-app Pixelmator --name "Pixelmator" \
+                        --symtext c="doc.on.doc|Copy" --symtext v="doc.on.clipboard|Paste"
+                    ```
+
+                    ---
+
+                    ## Layer JSON format
+
+                    Layer exports are a JSON array. Each layer carries the same key value syntax as the URL scheme.
+
+                    ```json
+                    [
+                      {
+                        "name": "App Switcher",
+                        "modifiers": "rcmd",
+                        "enabled": true,
+                        "keys": {
+                          "q": "a:com.apple.Safari",
+                          "w": "s:pencil",
+                          "e": "Mail"
+                        }
+                      }
+                    ]
+                    ```
+
+                    On import, layers with new modifier combos are always added. Layers with a matching modifier combo are merged by default (conflicts use the imported value); pass `replace=1` (URL / notification) or `--replace` (CLI) to overwrite the existing layer entirely.
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(77, 62, 86, 0.4)) drop-shadow(0 9px 17px rgba(77, 62, 86, 0.4))
+
+            h1, h2
+                color var(--color-mauve-lightgray)
+            h3
+                color var(--color-mauve-gray)
+            a
+                color var(--color-mauve-gray)
+            em
+                color var(--color-rose-600)
+            strong
+                color var(--color-rose-900)
+            code
+                font-size smaller
+            code, .code
+                font-family monoSpace
+                font-weight 600
+                color var(--color-rose-900) !important
+                background-color alpha(black, 0.1) !important
+
+            pre
+                margin 1rem 0
+                code
+                    color var(--color-rose-200) !important
+                    font-size 0.8rem
+            .codehilite
+                width 100%
+                background-color var(--color-mauve-black) !important
+                font-size 0.8rem
+                code
+                    background transparent !important
+                    color white
+
+            table
+                width 100%
+                margin 1rem 0
+                border-collapse collapse
+                font-size 0.9rem
+            th, td
+                border 1px solid var(--color-rose-100)
+                padding 0.5rem 0.75rem
+                text-align left
+                vertical-align top
+            th
+                background var(--color-rose-50)
+                color var(--color-mauve-gray)
+                font-weight 600
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+            div
+                code
+                    background-color alpha(black, 0.75)
+                    color var(--color-rose-200)
+                    padding 0.15em 0.3em
+                    border-radius 8px
+                    font-size 0.8em
+
+            .sandbox-warning
+                code, div code
+                    background-color alpha(black, 0.06) !important
+                    color var(--color-amber-900) !important
+                    border 1px solid alpha(black, 0.1)
+                    padding 0.1em 0.35em
+                    border-radius 5px
+                    font-size 0.85em
+                    font-weight 600
+
+            .free-note
+                code, div code
+                    background-color alpha(black, 0.06) !important
+                    color var(--color-sky-900) !important
+                    border 1px solid alpha(black, 0.1)
+                    padding 0.1em 0.35em
+                    border-radius 5px
+                    font-size 0.85em
+                    font-weight 600

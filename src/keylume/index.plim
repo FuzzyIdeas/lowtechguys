@@ -16,6 +16,7 @@ html lang="en"
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/keylume/presskit" Press Kit
+                a.text-sm.md:text-base.ml-4.hidden.lg:inline href="/keylume/integration" Integration
                 a.text-sm.md:text-base.ml-4 href="/keylume/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Keylume" Contact
 
@@ -35,86 +36,80 @@ html lang="en"
             .text-rose-950.text-xxs.mt-1.font-medium.opacity-50.mb-4
                 | compatible with macOS `b 14.0+` (Sonoma and later)
 
-            .md:w-full.max-w-[1000px]
-                -call img="keylume-ui" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="The Keylume app interface showing a full MacBook layout" defs:image
+            .keylume-carousel.relative.md:w-full.max-w-[1000px]
+                .keylume-carousel-slide.keylume-carousel-slide-0
+                    -call img="keylume-ui" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="The Keylume app interface showing a full MacBook layout" defs:image
+                    .keylume-carousel-label Apple keyboard style
+                .keylume-carousel-slide.keylume-carousel-slide-1.absolute.inset-0
+                    -call img="keylume-pixelmator-base-layer" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="Keylume showing the Pixelmator app base layer" defs:image
+                    .keylume-carousel-label Pixelmator Pro cheatsheet
+                .keylume-carousel-slide.keylume-carousel-slide-2.absolute.inset-0
+                    -call img="keylume-finder-cmd-layer" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="Keylume showing a Finder cmd layer" defs:image
+                    .keylume-carousel-label Finder ⌘ cheatsheet
+                .keylume-carousel-slide.keylume-carousel-slide-3.absolute.inset-0
+                    -call img="keylume-rcmd-app-layer" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="Keylume showing an rcmd app launcher layer" defs:image
+                    .keylume-carousel-label ⌘ rcmd app switcher integration
+                .keylume-carousel-slide.keylume-carousel-slide-4.absolute.inset-0
+                    -call img="keylume-qwertz-layout" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="Keylume adapted to a QWERTZ keyboard layout" defs:image
+                    .keylume-carousel-label Adapts to QWERTZ layout
+                .keylume-carousel-slide.keylume-carousel-slide-5.absolute.inset-0
+                    -call img="keylume-alternate-symbols-layer" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-none shadow-none w-full" alt="Keylume showing an alternate symbols layer" defs:image
+                    .keylume-carousel-label Hold Option to view symbols
+
+        section#main-features.flex-center.flex-col.pb-20.mt-16.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 App Cheatsheets
+                    .text-base.lg:text-lg.text-gray-600
+                        | See the `b keyboard shortcuts` of the focused app at a glance when you hold a modifier like `code ⌘ Command`.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Custom cheatsheets can be easily added. Most popular apps already have them hand-crafted by us.
+                    h4.text-mauve-gray Single-key shortcuts
+                    .text-sm.lg:text-base.text-gray-500
+                        | Hold `code fn` to see single-key shortcuts, like those for picking tools in Pixelmator and Photoshop.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Click to type
+                    .text-base.lg:text-lg.text-gray-600
+                        | Click keys on the on-screen keyboard to `b type with your mouse`, remote, trackpad.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Most helpful when `em projecting a screen` and only having access to a pointer device.
+                    h4.text-mauve-gray Key combos and modifiers
+                    .text-sm.lg:text-base.text-gray-500
+                        | Clicking on the `em cheatsheet shortcuts` will send the actual `b key combos` to the focused app.
+
+        section#main-features-2.flex-center.flex-col.pb-20.space-y-24
+            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-gray-600 Language aware
+                    .text-base.lg:text-lg.text-gray-600
+                        | The keyboard will show your `b chosen keyboard layout`, be it `em QWERTZ`, `em AZERTY`, `em Dvorak`, `em Colemak` or `em CJK`.
+                    .text-base.lg:text-lg.text-gray-600
+                        | The `b cheatsheets` are `b aware` of the keyboard layout, showing the keys in their correct positions.
+
+                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-gray-600 Appears when recording
+                    .text-base.lg:text-lg.text-gray-600
+                        | Keylume can pop up automatically when screen recording starts, and `b hides when recording stops`.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Useful if you're doing `b.text-rose-500 screecasts`, `b.text-orange-500 app demos`, or `b.text-blue-400 tutorials` and want to show viewers what keys you're pressing.
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Full Apple Keyboard
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-gray-600 Full Apple Keyboard
                     .text-base.lg:text-lg.text-gray-600
-                        | Every key is there, including media keys, arrows, and modifiers. Matches the look of a real Apple keyboard.
+                        | Every key is there, including `em media keys, arrows, and modifiers`. Matches the look of a real Apple keyboard.
                     .text-base.lg:text-lg.text-gray-600
                         | Most keystroke visualizers only show modifier combos or skip function keys. Keylume shows the `b whole keyboard`.
 
                 .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Stylish and themeable
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-gray-600 Stylish and themeable
                     .text-base.lg:text-lg.text-gray-600
                         | Keylume comes with many built-in themes, and an intuitive theme editor to create your own style.
                     h4.text-mauve-gray Share themes
                     .text-sm.lg:text-base.text-gray-500
                         | Save themes, share them with others, import themes other people made.
-
-        section#style.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Shows up when you need it
-                    .text-base.lg:text-lg.text-gray-600
-                        | Pops up automatically when screen recording starts, and `b hides when recording stops`. Detects recording within a second.
-                    .text-base.lg:text-lg.text-gray-600
-                        | Triple-tap `code fn` to toggle manually.
-
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Stays out of your way
-                    .text-base.lg:text-lg.text-gray-600
-                        | Hover and tap `code fn` to enable `b Auto-hide on hover`. This allows the keyboard to fade out and let clicks through.
-                    .text-base.lg:text-lg.text-gray-600
-                        | Drag to reposition, resize freely. Remembers where you left it.
-
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 App ignore list
-                    .text-base.lg:text-lg.text-gray-600
-                        | Some apps record silently in the background (backup tools, PiP utilities). Add them to the `b ignore list` so the keyboard doesn't pop up every time they run.
-
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Remote control
-                    .text-base.lg:text-lg.text-gray-600
-                        | Show, hide, or toggle the keyboard remotely through a `b URL scheme` or command-line interface. Control it from scripts, shortcuts, or other apps.
-
-        section#pro.bg-gray-800.text-white.w-full.flex-center.flex-col.py-12.space-y-12
-            h2.text-3xl.lg:text-4xl.font-bold.mb-4.text-gray-100 Pro Features
-            p.text-gray-400.!mt-0 Included in the 14-day free trial. After that, a license keeps them unlocked.
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Click to type
-                    .text-base.lg:text-lg.text-gray-300
-                        | Click keys on the on-screen keyboard to `b send actual keystrokes`. Works for typing shortcuts without reaching for the physical keyboard.
-                    .text-base.lg:text-lg.text-gray-300
-                        | Helpful when `em projecting a screen` and only having access to a pointer device.
-
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Input Sources
-                    .text-base.lg:text-lg.text-gray-300
-                        | Reads your `b system keyboard layout` and updates key labels to match.
-                    .text-base.lg:text-lg.text-gray-300
-                        | The keyboard `em switches automatically` when you change languages or layouts like `code Dvorak`.
-
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Key layers
-                    .text-base.lg:text-lg.text-gray-300
-                        | Hold a modifier and the labels update to show `b what each key will produce`.
-                    .text-base.lg:text-lg.text-gray-300
-                        | Hold `code Shift` to see uppercase letters and symbol row characters. Hold `code Option` to see special characters and accented letters.
-
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Custom layer editor
-                    .text-base.lg:text-lg.text-gray-300
-                        | Create `b custom layers` that show up when you hold modifiers. For example, a layer that shows assigned apps or shortcuts when you hold `code cmd`.
-                    .text-base.lg:text-lg.text-gray-300
-                        | Helps with `em remembering shortcuts` and visualizing modifier combos.
-
 
         section#footer-text.flex-center.flex-col.pb-20.space-y-24.mt-12
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
@@ -132,153 +127,103 @@ html lang="en"
 
                         ---
 
-                        ## Remote control
+                        ## Remote control and integration
 
-                        Other apps and scripts can show, hide, or toggle the keyboard remotely.
+                        Show, hide, or toggle the keyboard remotely through a **URL scheme** or the **`keylume` CLI**.
 
-                        **URL scheme:**
+                        Integrate an on-screen keyboard in your app using the drop-in `KeylumeIntegration.swift` file.
 
-                        ```shell
-                        # shell
-                        open -g "keylume://show"
-                        open -g "keylume://hide"
-                        open -g "keylume://toggle"
-                        open -g "keylume://reset"
-                        open -g "keylume://store"
-                        open -g "keylume://remove"
-                        open -g "keylume://edit"
-                        ```
+                        [See the integration and remote control docs](/keylume/integration)
 
-                        **Distributed notifications:**
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
 
-                        ```swift
-                        // Swift
-                        extension Notification.Name {
-                            static let keylumeShow = Notification.Name("com.lowtechguys.Keylume.show")
-                            static let keylumeHide = Notification.Name("com.lowtechguys.Keylume.hide")
-                            static let keylumeToggle = Notification.Name("com.lowtechguys.Keylume.toggle")
-                            static let keylumeReset = Notification.Name("com.lowtechguys.Keylume.reset")
-                            static let keylumeStore = Notification.Name("com.lowtechguys.Keylume.store")
-                            static let keylumeRemove = Notification.Name("com.lowtechguys.Keylume.remove")
-                            static let keylumeEdit = Notification.Name("com.lowtechguys.Keylume.edit")
-                        }
-
-                        let DNC = DistributedNotificationCenter.default()
-                        DNC.post(name: .keylumeShow, object: nil)
-                        DNC.post(name: .keylumeHide, object: nil)
-                        DNC.post(name: .keylumeToggle, object: nil)
-                        // ...
-                        ```
-
-                        ### Temporary layers
-
-                        The `show` and `toggle` commands accept key mappings that override what keys display while the keyboard is visible. The overlay clears when the keyboard is hidden. Pass query parameters where the key name maps to a value.
-
-                        Values can be:
-
-                        - plaintext: *Save*, *Undo*
-                        - SF Symbols: *s:arrowtriangle.up*
-                        - app icons: *a:com.apple.Safari*
-                        - Add *blank=1* to blank out unassigned keys.
-
-                        ![Navigation Layer](https://files.lowtechguys.com/keylume-hyper-navigation-layer.png)
-
-                        ```shell
-                        # Show keyboard with custom keys: Y=home, UHJK=arrows, I=end
-                        open -g "keylume://show?
-                            y=s:arrow.left.to.line&
-                            u=s:arrow.up&
-                            h=s:arrow.left&
-                            j=s:arrow.down&
-                            k=s:arrow.right&
-                            i=s:arrow.right.to.line&
-                            blank=1
-                        "
-                        ```
-
-                        ### Store, edit, and remove layers
-
-                        - `store` saves a custom layer without showing the keyboard
-                        - `edit` updates individual keys on an existing layer
-                        - `remove` deletes a stored layer
-
-                        All three commands require the `modifiers` parameter.
-
-                        ![rcmd app switcher layer](https://files.lowtechguys.com/keylume-rcmd-app-switcher-layer.png)
-
-                        ```shell
-                        # Store an rcmd layer
-                        open -g "keylume://store?
-                            q=a:com.apple.Safari&
-                            w=a:com.apple.mail&
-                            modifiers=rcmd&
-                            name=App Switcher"
-
-                        # Add a key to the rcmd layer
-                        open -g "keylume://edit?
-                            modifiers=rcmd&
-                            e=a:com.apple.Notes"
-
-                        # Remove the rcmd layer
-                        open -g "keylume://remove?modifiers=rcmd"
-                        ```
-
-                        ### Export and import layers
-
-                        Export custom layers to JSON and import them back, either from the settings UI or through the URL scheme.
-
-                        ```shell
-                        # Export all layers to a file
-                        open -g "keylume://export?file=/tmp/layers.json"
-
-                        # Import layers from a file, merging with existing layers (default)
-                        open -g "keylume://import?file=/tmp/layers.json"
-
-                        # Import and fully replace layers with matching modifiers
-                        open -g "keylume://import?file=/tmp/layers.json&replace=1"
-                        ```
-
-                        ---
-
-                        ## Command-line interface
-
-                        Keylume ships with a `keylume` CLI that wraps all of the above into shell commands. Install it from the menu bar menu, which symlinks it to `~/.local/bin/keylume`.
-
-                        ```shell
-                        # Basic controls
-                        keylume show
-                        keylume hide
-                        keylume toggle
-
-                        # Show with a temporary layer
-                        keylume show --app q=Safari --app w=Chrome --symbol e=pencil --blank
-
-                        # Position and auto-hide
-                        keylume show --position bottom --width 800 --hide-after-ms 3000
-
-                        # Store a permanent layer
-                        keylume store --modifiers ralt --app s=Safari --app c=Chrome --name "Browsers"
-
-                        # Export and import
-                        keylume export --modifiers rcmd -f layer.json
-                        keylume import layers.json
-                        ```
-
-                        The `--app` option fuzzy-matches app names against what's installed, so values like *Chrome* or *Notes* just work without looking up the bundle ID.
-
-                        Run `keylume --help` for the full option list.
-
-        -call img="keylume-themes" factor=${1} mobile_factor=${1} pcls="w-full" icls="rounded-none shadow-none w-full" alt="Keylume keyboard themes" defs:image
-
-        / footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
-        /     h4.font-extralight.text-gray-500.hidden.md:block The low-tech guys © 2026
-        /     .links.w-full.md:w-auto
-        /         / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"
 
             #app-icon
                 filter: drop-shadow(0 0px 1px rgba(77, 62, 86, 0.4)) drop-shadow(0 9px 17px rgba(77, 62, 86, 0.4))
+
+            @keyframes keylumeCarouselFade
+                0%
+                    opacity 0
+                2.78%, 16.67%
+                    opacity 1
+                19.44%, 100%
+                    opacity 0
+
+            .keylume-carousel
+                .keylume-carousel-slide
+                    display flex
+                    flex-direction column
+                    align-items center
+                    animation keylumeCarouselFade 18s ease-in-out infinite
+                    will-change opacity
+                .keylume-carousel-label
+                    margin-top 0.75rem
+                    padding 0.35rem 1.1rem
+                    border-radius 9999px
+                    font-size 0.85rem
+                    font-weight 600
+                    line-height 1.2
+                    white-space nowrap
+                    border 1px solid transparent
+                    code
+                        background transparent !important
+                        color inherit !important
+                        font-weight 700
+                        padding 0
+                .keylume-carousel-slide-0 .keylume-carousel-label
+                    background-color var(--color-gray-200)
+                    color black
+                .keylume-carousel-slide-1 .keylume-carousel-label
+                    background-color var(--color-orange-100)
+                    color var(--color-orange-950)
+                .keylume-carousel-slide-2 .keylume-carousel-label
+                    background-color var(--color-blue-100)
+                    color black
+                .keylume-carousel-slide-3 .keylume-carousel-label
+                    background-color var(--color-rose-100)
+                    color var(--color-rose-950)
+                .keylume-carousel-slide-4 .keylume-carousel-label
+                    background-color var(--color-gray-800)
+                    color white
+                .keylume-carousel-slide-5 .keylume-carousel-label
+                    background-color black
+                    color var(--color-yellow-300)
+                @media (min-width: 768px)
+                    .keylume-carousel
+                        .keylume-carousel-label
+                            font-size 1rem
+                            padding 0.4rem 1.25rem
+                .keylume-carousel-slide-0
+                    animation-delay -0.5s
+                .keylume-carousel-slide-1
+                    opacity 0
+                    animation-delay 2.5s
+                .keylume-carousel-slide-2
+                    opacity 0
+                    animation-delay 5.5s
+                .keylume-carousel-slide-3
+                    opacity 0
+                    animation-delay 8.5s
+                .keylume-carousel-slide-4
+                    opacity 0
+                    animation-delay 11.5s
+                .keylume-carousel-slide-5
+                    opacity 0
+                    animation-delay 14.5s
+                &.is-paused
+                    .keylume-carousel-slide
+                        animation-play-state paused
+                @media (prefers-reduced-motion: reduce)
+                    .keylume-carousel-slide
+                        animation none
+                        opacity 0
+                    .keylume-carousel-slide-0
+                        opacity 1
 
             h1, h2
                 color var(--color-mauve-lightgray)
@@ -295,12 +240,12 @@ html lang="en"
             code, .code
                 font-family monoSpace
                 font-weight 600
-                color var(--color-rose-900)
-                background var(--color-rose-50)
+                color var(--color-rose-900) !important
+                background-color alpha(black, 0.1) !important
             pre
                 margin 1rem 0
                 code
-                    color var(--color-rose-100)
+                    color var(--color-rose-100) !important
                     font-size 0.8rem
             .codehilite
                 width 100%
@@ -325,3 +270,17 @@ html lang="en"
         -coffee
             if window.location.hash.includes('buy')
                 window.location.href = 'https://keylume.subsol.one/LIMITED_30'
+
+            carousel = document.querySelector('.keylume-carousel')
+            if carousel? and 'IntersectionObserver' of window
+                observer = new IntersectionObserver(
+                    (entries) ->
+                        for entry in entries
+                            if entry.isIntersecting
+                                entry.target.classList.remove('is-paused')
+                            else
+                                entry.target.classList.add('is-paused')
+                        return
+                    , { threshold: 0 }
+                )
+                observer.observe(carousel)

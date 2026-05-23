@@ -74,7 +74,7 @@ public/pipiri/presskit/pipiri-presskit.zip: src/pipiri/presskit/pipiri-presskit.
 	 rm -rf "$$tmp"
 
 keylume-presskit-zip: public/keylume/presskit/keylume-presskit.zip
-public/keylume/presskit/keylume-presskit.zip: src/keylume/presskit/keylume-presskit.md src/keylume/presskit/keylume-icon-shadow.png public/static/img/keylume-icon.png public/static/img/keylume-screenshot.png public/static/img/keylume-ui.png public/static/img/keylume-themes.png
+public/keylume/presskit/keylume-presskit.zip: src/keylume/presskit/keylume-presskit.md src/keylume/presskit/keylume-icon-shadow.png public/static/img/keylume-icon.png public/static/img/keylume-screenshot.png public/static/img/keylume-ui.png public/static/img/keylume-themes.png public/static/img/keylume-pixelmator-base-layer.png public/static/img/keylume-finder-cmd-layer.png public/static/img/keylume-rcmd-app-layer.png public/static/img/keylume-qwertz-layout.png public/static/img/keylume-alternate-symbols-layer.png
 	@echo Building Keylume press kit zip
 	@mkdir -p public/keylume/presskit
 	@rm -f $@
@@ -85,6 +85,11 @@ public/keylume/presskit/keylume-presskit.zip: src/keylume/presskit/keylume-press
 	 cp public/static/img/keylume-screenshot.png "$$tmp/" && \
 	 cp public/static/img/keylume-ui.png "$$tmp/" && \
 	 cp public/static/img/keylume-themes.png "$$tmp/" && \
+	 cp public/static/img/keylume-pixelmator-base-layer.png "$$tmp/" && \
+	 cp public/static/img/keylume-finder-cmd-layer.png "$$tmp/" && \
+	 cp public/static/img/keylume-rcmd-app-layer.png "$$tmp/" && \
+	 cp public/static/img/keylume-qwertz-layout.png "$$tmp/" && \
+	 cp public/static/img/keylume-alternate-symbols-layer.png "$$tmp/" && \
 	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
 	 rm -rf "$$tmp"
 
