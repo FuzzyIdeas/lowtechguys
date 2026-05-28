@@ -1,185 +1,181 @@
-## App fails to install from App Store after using the trial.
+## What are Stages and how do they work?
 
-This happens when there's another instance of `rcmd.app` on your disk.
+A Stage is a set of apps and windows saved as a workspace and assigned to a letter that can be used to restore those windows later.
 
-Delete any `rcmd.app` you can find, even those in the `Downloads` folder, then try installing again.
+> Note: **not** related to **Stage Manager**, the macOS native functionality. It’s a similar take on the idea but with more flexibility.
 
-----
+The default trigger key for Stages is `capslock` so we’ll use that in the following examples. It can be changed in Settings.
 
-## App doesn't work after upgrading to macOS Sequoia.
+### Saving a Stage
 
-If you have previously changed the trigger key from *Right Command* to **Option**, rcmd will appear as not working in macOS Sequoia.
+Press `capslock`-`equal` and the current set of visible apps will be captured as a Stage.
 
-It appears that in macOS 15, Apple has forbidden hotkeys that have only `Option` or `Option+Shift` as the modifiers. [Multiple developers are having the same problem.](https://github.com/sindresorhus/KeyboardShortcuts/issues/176). The latest rcmd version shows an error when the set of trigger keys only contain Option and Shift.
+A dialog will appear that allows you to:
 
-*The solution to this is to choose a set of trigger keys that has at least one `Control` or `Command` key.* The window switching key has also been changed from *Right Option* to **Left Control + Right Option** as a workaround until the situation improves.
+- assign a letter to this Stage
+- give it a name
+- add or remove windows from the stage
+- configure where the windows should be placed (screen, size, position) like *left half of the builtin screen*
+- configure what file/folder/URL the window opens *(e.g. a project folder in VSCode and Terminal, a specific webpage in Chrome)*
 
-----
+### Restoring a Stage
 
-## What do I do if I have two apps with the same first letter (e.g. Music and Mail)?
+Press `capslock`-`letter` and the apps and windows of that Stage will open with their configured file/folder/URL on the screen and position you saved.
 
-Best way to handle this is to assign a custom key for the second app.
+*In Multi-Space Mode, the Stage will be opened on an empty Space that gets assigned to it.*
 
-For example, if **rcmd** focuses *Mail* on `⌘` + `M` and you want to assign `⌘` + `U` for *Music*:
+### Activating a Stage
 
-* Focus the *Music* app
-* Press `⌘` + `⌥` + `U`
+Whenever you’re on an app that isn’t belonging to the opened Stage, you can again press `capslock`-`letter` to reactivate that Stage, which will bring its windows to the front.
 
-And that's it, from now on you can use `⌘` + `U` to focuse the *Music* app.
+You can switch between Stages this way: press `capslock`-`W` to focus the **Work** Stage, `capslock`-`P` to focus the **Personal** Stage. Apps from both stages stay open, they just get shown or hidden based on what you want to focus on.
 
-----
+### Closing a Stage
 
-## What does Cycle do?
+When you’re done working with a set of windows and you want to close them, press `capslock`-`minus`
 
-If you have multiple apps with the same first letter, pressing that letter multiple times will cycle between those apps.
+This closes only the windows belonging to that stage leaving everything else open. The action can also be configured to minimize the windows instead of closing them.
 
-For example, if you have *Safari*, *Spotify* and *Shortcuts* running:
+### Caveats
 
-* Pressing `⌘` + `S` will focus *Safari*
-* Pressing `⌘` + `S` *again* will cycle and focus *Spotify*
-* Pressing `⌘` + `S` *yet again* will cycle and focus *Shortcuts*
+**Not all apps allow windows to be saved and restored fully.**
 
-----
+Native apps like Pages, Safari, Terminal make it easy to get their current open document or webpage for reopening it later.
 
-## Can I cycle between windows of the same app?
+Other apps suffer from one of two issues:
 
-Unfortunately there's no macOS API that allows us to focus specific windows of an app.
+- no way to capture their current state
+- or no way to restore that saved state
 
-The Accessibility API would allow this in some manner but it is not allowed on the App Store.
+Because of this, some apps may open with an empty window when restored, or with additional unwanted windows.
 
-There is a macOS native way to switch between windows of the same app:
+If possible, we’ll try to implement custom support for those apps, so let us know on [Discord](https://lowtechguys.com/contact#discord-rcmd) about them.
 
-[![keyboard shortcut switch to windows of same app](/static/img/keyboard-shortcut-focus-window.png)](/static/img/keyboard-shortcut-focus-window.png)
+---
 
-----
+## How rcmd integrates with macOS Spaces
 
-## New window is opened when activating an already running app
+rcmd comes with two modes of integration: **Single**-space mode and Multi**-**space mode
 
-To fix this, restart the app you are trying to focus.
+![space management modes](https://files.lowtechguys.com/rcmd-space-management-modes.png)
+### Single-space mode
+Basically no integration, rcmd becomes mostly unaware of macOS Spaces.
 
-[]()
+If you're comfortable with doing things on the same Space, this has several advantages:
 
-#### Why does it happen?
+- numbers can be assigned to apps (e.g. rcmd-1 for 1Password)
+- you don't have to deal with focus annoyances caused by how Spaces are managed by macOS
+- apps and windows focus instantly and predictively
 
-This happens because that app has updated itself in the background while it was running.
+In this mode, Stages work by hiding every non-stage window when activating, but they still open on the same Space.
+### Multi-space mode
+In this mode, rcmd is Space-aware and can control them in a few ways:
 
-Because the app on disk is different than the running app, the system creates another app instance when rcmd tries to focus it.
+- `rcmd`-`1-9` switches to the Space with that number
+- `ralt`-`1-9` moves the active window to that Space
+- Stages open in their own empty Space (or at least do their best)
 
-This usually happens with browser as they update frequently.
+With **Instant Space Switching** rcmd can make Spaces feel as fast as single-space, but with real compartmentalization.
 
-rcmd will try to detect this and fix the problem itself but information about the binary may be missing and the detection doesn't always work.
+This enables a few other ergonomics:
 
-[![rcmd notification of detected changed binary](/static/img/rcmd-detect-changed-binary.png)](/static/img/rcmd-detect-changed-binary.png)
+- Cmd-Tab can cycle through windows of the active space
+- Available and active Space numbers can show in the menubar
+- Creating a new Space is easily done with `rcmd`-`next number` (if you have 3 spaces, press `rcmd`-`4` to create the 4th space)
+- Focusing an app with more than one window, will focus the window on the active space
 
+#### Focus problems
+Because macOS doesn't have an API for Spaces, the system maintains full control over them and how they influence window focus.
 
-----
+So when switching apps, macOS might force switch to another Space than you want. rcmd will try to recover from that in less than a second, but the flicker will happen and will be annoying.
 
-## `Left Command` triggering rcmd?
-## `Right Command`+`letter` not doing anything?
+#### Placement problems
+When opening Stages, rcmd will try to open them or force move them to the correct Space. That doesn't always work.
 
-It's possible that your keyboard is sending the wrong key codes.
+If the app was closed while being on a specific Space, macOS could have memorized that and will force it on the next window open. So some windows might need manual moving from time to time.
 
-### Checking keycodes
+---
 
-You can check what keycodes get sent by downloading this simple app: [KeyCodes.zip](https://files.alinpanaitiu.com/KeyCodes.zip)
+## How can I see app logs?
 
-After launching it, check the **Log key up events and modifier changes** checkbox.
+You can do that either through **Console.app** or through the `log` Terminal command.
 
-Now if you press your `Right Command` key and click on the Info button you should see:
+### Terminal
 
-* **Modifiers: 104884`8` / 0x1001`10`**
-* **NX_DEVICE`RCMD`KEYMASK = `16` / 0x`10`**
-
-For the `Left Command` key you should see:
-
-* **Modifiers: 104884`0` / 0x1001`08`**
-* **NX_DEVICE`LCMD`KEYMASK = `8` / 0x`8`**
-
-[![keycodes app left and right command info](/static/img/keycodes-rcmd.png)](/static/img/keycodes-rcmd.png)
-
-If you don't see those key codes exactly, then it's a problem with your keyboard mapping.
-
-### Possible causes:
-
-* Specific models of external keyboards
-* Changing the **Modifier Keys** settings in **System Preferences**
-
-[![modifier keys setting in macOS](/static/img/modifier-mapping.png)](/static/img/modifier-mapping.png)
-
-
-#### Workaround
-
-Keep in mind that you can always change the trigger key to something else than `Right Command` if that key is not working on your keyboard.
-
-[![rcmd trigger setting](/static/img/rcmd-trigger-setting.png)](/static/img/rcmd-trigger-setting.png)
-
-----
-
-## Can I assign the key L to Launchpad?
-
-Yes, but only through a Terminal command.
-
-Because Launchpad doesn't behave as a normal app, rcmd can't detect it when it's in foreground, and assigning a key using the usual `rcmd` + `ralt` + `letter` won't work.
-
-To assign the key `L` to it, run the following Terminal command:
+**Streaming** logs for viewing:
 
 ```sh
-killall rcmd; plutil -insert appKeyAssignments.0 -string '{"app":{"path":"\\/System\\/Applications\\/Launchpad.app","switchCount":0,"originalName":"Launchpad","url":"file:\\/\\/\\/System\\/Applications\\/Launchpad.app\\/","identifier":"com.apple.launchpad.launcher","useCount":0},"key":"l","whenAlreadyFocusedAction":0,"index":0}' ~/Library/Containers/com.lowtechguys.rcmd/Data/Library/Preferences/com.lowtechguys.rcmd.plist; open /Applications/rcmd.app
+log stream --level debug --source --style compact --predicate 'subsystem BEGINSWITH "com.lowtechguys.rcmd"'
+```
+
+Streaming and **collecting** logs to a file:
+
+```sh
+log stream --level debug --style compact --predicate 'subsystem BEGINSWITH "com.lowtechguys.rcmd"' | tee ~/Desktop/rcmd.txt
 ```
 
 ---
 
-## High CPU Usage?
+### Console.app
 
-Looking at the **% CPU usage** is not a very accurate way of judging the app's efficiency.
+1. Write `com.lowtechguys.rcmd` in the search bar and press `Enter`
+2. Click on `Any` and choose `Subsystem`
+2. Make sure `Info` and `Debug` messages are enabled in the `Action` menu
+3. Start streaming logs
 
-Especially on Apple Silicon. Read more about it in this article: [CPU percentage is misleading on M1 Macs by The Eclectic Light Company](https://eclecticlight.co/2022/02/24/cpu-percentage-is-misleading-on-m1-macs/)
-
-
-### Why do I see CPU usage spikes?
-
-rcmd has to listen on window change events and keep track of how often an app is switched to.
-
-This is used in the scoring algorithm for choosing which apps get priority in the dynamic first letter assignment.
-
-The compute workload is minimal and the spike only lasts a few milliseconds.
-
-### Should I worry about it?
-
-Usually, you shouldn't look at the **% CPU** field, but at the **CPU Time** metric. By default Activity Monitor updates every 5 seconds, so even if the CPU % was at 7% for a few milliseconds, you'll still see it for 5 seconds.
-
-Even with the **Very often (1 sec)** setting, the **% CPU** metric is still not best for judging app efficiency.
-
-[![activity monitor update frequency](/static/img/activity-monitor-update-frequency.png)](/static/img/activity-monitor-update-frequency.png)
+<div class="flex flex-center my-8">
+    <img src="https://files.lowtechguys.com/console-subsystem-clop.png" alt="filtering console logs by subsystem" class="mr-1" />
+    <img src="https://files.lunar.fyi/console-info-debug.webp" alt="showing console info debug messages" class="ml-1" />
+</div>
 
 ---
 
-In the following case, from the time **rcmd** started running **(3 days ago)** until now, it only consumed about **20 minutes** of CPU time.
+#### Saving Console logs
 
-That's an incredibly small amount of CPU power used for an app that I use 20 times a minute. My finger basically rests on the Right Command key.
+In the Console window, select 1 log line, then press `Cmd-A` and `Cmd-C` to copy all log lines to clipboard.
 
-[![rcmd cpu time](/static/img/rcmd-cpu-time.png)](/static/img/rcmd-cpu-time.png)
-
-```sh
-❯ echo "rcmd was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey rcmd | cut -d= -f2)') as time')" ago"
-rcmd was launched 2 days 21 hours 49 min 5 s ago
-
-❯ soulver "(19 min 29 s) is what % of (2 days 21 hours 49 min 5 s)"
-0.465%
-```
+After that you can press `Cmd-V` to paste it in a [Discord chat](https://discord.gg/vXZXqwkvb8), the [Contact form](/contact) or in an editor like TextEdit to save it to a file.
 
 ---
 
-If you compare that to other keyboard utilities like BetterTouchTool for example, you'll see their CPU Time is comparable to rcmd.
+## License doesn't stay activated
 
-For example in the same case, **BetterTouchTool** was just launched **2 hours 16 minutes ago** and it already consumed **2 minutes** of CPU time.
+First thing to try is to delete the license files, restart the app and retry activating.
+
+To delete the files, press `Cmd-Shift-G` in Finder, paste this path and press Enter: `~/Library/Application Support/rcmd/`
+
+Then delete all files inside that folder and restart the app.
+
+Another way is using the Terminal:
 
 ```sh
-❯ echo "BetterTouchTool was launched "(soulver '(now - '(lsappinfo info -only kLSLaunchTimeKey BetterTouchTool | cut -d= -f2)') as time')" ago"
-BetterTouchTool was launched 2 hours 16 min 26 s ago
-
-❯ soulver '(2 min 9 s) is what % of (2 hours 16 min 26 s)'
-1.576%
+rm "$HOME/Library/Application Support/rcmd/"*
+killall rcmd
+open -a rcmd
 ```
 
-[![BetterTouchTool cpu time](/static/img/btt-cpu-time.png)](/static/img/btt-cpu-time.png)
+#### Make sure Paddle can be reached
+
+*Paddle is the licensing provider that rcmd is using.*
+
+If the issue persists, try checking if Paddle's servers are reachable by your Mac. Ensure the following domains are not blocked in your network:
+
+- `paddle.com`
+- `paddleapi.com`
+- `v3.paddleapi.com`
+
+*For example, loading [v3.paddleapi.com/3.2/license/verify](https://v3.paddleapi.com/3.2/license/verify) in a browser (or with `curl`) should show a response like the following:*
+
+```json
+{
+    "success": false,
+    "error": {
+        "code": 102,
+        "message": "Unable to authenticate"
+    }
+}
+```
+
+*If it shows a browser error or if it keeps loading continuously, then the domain is blocked and that's preventing activation and license checking.*
+
+Another thing to check is that you didn't block rcmd's access to the internet with something like Little Snitch or LuLu.

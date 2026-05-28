@@ -36,7 +36,7 @@ log stream --level debug --style compact --predicate 'subsystem BEGINSWITH "com.
 
 In the Console window, select 1 log line, then press `Cmd-A` and `Cmd-C` to copy all log lines to clipboard.
 
-After that you can press `Cmd-V` to paste it in a [Discord chat](https://discord.gg/99vACD8D5u), the [Contact form](/contact) or in an editor like TextEdit to save it to a file.
+After that you can press `Cmd-V` to paste it in a [Discord chat](https://discord.gg/YeTuy6adXk), the [Contact form](/contact) or in an editor like TextEdit to save it to a file.
 
 ---
 

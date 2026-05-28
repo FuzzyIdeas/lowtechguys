@@ -9,6 +9,23 @@ doctype html
 html lang="en"
     head
         - call title="Contact us" domain="lowtechguys.com" description="" canonical="/contact" defs:head
+        -coffee
+            DISCORD_INVITES =
+                general: "https://discord.gg/99vACD8D5u"
+                clop: "https://discord.gg/YeTuy6adXk"
+                rcmd: "https://discord.gg/vXZXqwkvb8"
+                cling: "https://discord.gg/ERxsH9Ek3q"
+                pipiri: "https://discord.gg/XtjGGUAbFx"
+                crank: "https://discord.gg/ptwba3fDaM"
+                keylume: "https://discord.gg/GFcJGdBrXv"
+                lunar: "https://discord.gg/dJPHpWgAhV"
+
+            hash = window.location.hash.replace(/^#/, "")
+            if hash.indexOf("discord-") is 0
+                slug = hash.slice("discord-".length)
+                invite = DISCORD_INVITES[slug]
+                if invite
+                    window.location.replace(invite)
 
     body.paper.paper-bg.text-center.max-w-[100vw].flex.flex-col.min-h-[100vh].overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end

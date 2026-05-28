@@ -6,16 +6,19 @@
 doctype html
 html lang="en"
     head
-        - call title="rcmd - Switch apps instantly using the ⌘ Right Command key" domain="lowtechguys.com" description="Use the Right Command key and the first letter of the app name to switch to that app instantly. Forget about Command Tab Tab Tab... you get the idea." favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
-        script async="true" defer="true" src="/static/js/anime.min.js"
+        - call title="rcmd - Switch apps instantly using the ⌘ Right Command key" domain="lowtechguys.com" description="Reimagined Command-Tab. App switching at the speed of thought" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
 
-        meta property="og:video" content="https://files.lowtechguys.com/rcmd-og.mp4"
-        meta property="og:video:url" content="https://files.lowtechguys.com/rcmd-og.mp4"
-        meta property="og:video:secure_url" content="https://files.lowtechguys.com/rcmd-og.mp4"
+        meta property="og:video" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
+        meta property="og:video:url" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
+        meta property="og:video:secure_url" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
         meta property="og:video:type" content="video/mp4"
         meta property="og:video:width" content="1200"
         meta property="og:video:height" content="630"
+
+        -if not DEV
+            script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
+
 
     body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
@@ -29,92 +32,260 @@ html lang="en"
         section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
             img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/rcmd-icon.webp"
             h1.text-4xl.text-red-hot.monospaced rcmd
-            h5.text-white Reimagined Command-Tab
+            h5.text-white.mt-2 Reimagined Command-Tab
+            h5.text-gray-400 App switching at the speed of thought
 
-            icon.w-[1200px].h-[400px].md:h-[800px].max-w-[100vw] : keyboard
+            .flex.flex-center.mt-12.mb-2.px-2
+                .flex.flex-col.justify-center.items.center
+                    a.btn.text-white.bg-rose-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-rose-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/rcmd.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Download app
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version
+                    a.text-xs.mt-1.text-gray-500.decoration-dotted href="https://files.lowtechguys.com/rcmd/changelog.html" Changelog
+                .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
+                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="914967"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Buy `b rcmd Pro`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap `span.text-rose-700 €15` lifetime license
+                    a.text-xs.mt-1.text-gray-500.decoration-dotted href="#pro" Why rcmd Pro?
+            -stylus
+                a#btn-paddle-hero.btn-paddle.paddle_button
+                    background: var(--color-white) !important
+                    color: var(--color-black) !important
+                    box-shadow: var(--shadows-xl) !important
 
-            a.md:flex-grow href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
-                img.w-60 width="225" height="58" alt="Download on the Mac App Store" src="/static/svg/appstore.svg"
-
-            h6#scroll-hint.no-anchor.text-yellow-lunar.opacity-30.font-black.m-0.p-0.mb-5 Scroll down for details
 
         section#details.flex-center.flex-col.pb-20
-            #switch.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
+            #switch.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1400px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Instant app switching with a rarely used key
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Instant app switching
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        The `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌘ command` key on the `b.text-yellow-nice right side of the space bar` is almost never used, so we found a clever way to take advantage of it!
+                        Hold down `b.key ⌘ Right Command` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        Hold down `span.bg-red-bright.text-black.font-bold.rounded.md:rounded-lg.py-1.px-2 rcmd` and press the `b.text-yellow-nice first letter of the app name` to focus apps instantly.
-                    .text-base.lg:text-lg.text-gray-white
-                        When pressing the key while the app is already focused, you can choose to `b.text-orange-300 hide` the app or `b.text-orange-300 cycle` to the next app with the same first letter.
+                        | Hit `b.key ⌘ rcmd` + `b.key S` for Safari, `b.key ⌘ rcmd` + `b.key M` for Mail, no more Command Tab `span.text-[0.98rem] Tab` `span.text-[0.86rem] Tab` `span.text-[0.76rem] Tab`...
+                    h4.text-gray-500 App launching
+                    p.text-sm.lg:text-base.text-gray-400
+                        | The same key combo will launch the app if it's not already running.
+                    p.text-sm.lg:text-base.text-gray-400
+                        | Cycle with `b.key Tab` to choose a different app for that letter.
 
-                -call img="first-run" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
-            #launch.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
+                video.md:w-1/2.h-max.rounded-xl.object-fit (autoplay loop muted playsinline width="751" height="452" src="/static/video/rcmd-demo-app-switch-assign.mp4")
+
+            .w-screen.max-w-[576px].md:max-w-[1400px].px-16.grid.grid-cols-1.md:grid-cols-3.lg:gap-32.md:gap-20.pb-8.bg-gray-800.my-12.rounded-xl
+                .text-left
+                    h3.text-white.text-2xl.lg:text-3xl.leading-tight.font-semibold.mb-4 Zero configuration
+                    .text-sm.lg:text-base.text-gray-300
+                        Apps get `b.text-yellow-nice dynamically assigned` letters so app switching works out of the box.
+                .text-left
+                    h3.text-white.text-2xl.lg:text-3xl.leading-tight.font-semibold.mb-4 Assign custom keys
+                    .text-sm.lg:text-base.text-gray-300
+                        | Press `b.key ⌘ rcmd` + `b.key ⌥ ralt` + `b.text-yellow-nice any letter` to assign that letter to the focused app.
+                .text-left
+                    h3.text-white.text-2xl.lg:text-3xl.leading-tight.font-semibold.mb-4 No key conflicts
+                    .text-sm.lg:text-base.text-gray-300
+                        | `b.key ⌘ Left Command` remains fully functional for the default macOS shortcuts
+
+            #launch.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1400px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
                 .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Launch apps if they aren't already running
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.md:text-2xl.mb-4 Fuzzy search apps and windows
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        Hold down `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌘ command` + `span.bg-white.text-black.rounded.md:rounded-lg.py-1.px-2 ⌥ option` and press `b.text-yellow-nice any letter` to assign that letter to the currently focused app.
-                    .text-base.lg:text-lg.text-gray-white
-                        When an app is in the `b.small-caps.text-yellow-nice static` list:
-                        ul
-                            li | the assigned key can launch the app when it isn't running
-                            li | the Hide/Cycle setting can be adjusted on a per-app basis.
-
-                -call img="static" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app interface opened from the menu bar, showing custom assigned keys for apps" defs:image
-
-            #ui.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Fast and pretty app switcher interface
+                        Hold `b.key ⌘ rcmd` and `b.text-yellow-nice type to search` directly to launch any app or find any window.
                     .text-base.lg:text-lg.text-gray-white.mb-4
-                        While `b.text-red-400 rcmd` is best used without an UI, you still have the choice of showing an `b.text-zinc-400 App Switcher` if you need it.
-                    .text-base.lg:text-lg.text-gray-white
-                        When holding `span.bg-red-bright.text-black.font-bold.rounded.md:rounded-lg.py-1.px-2 rcmd`, the switcher can appear instantly or with a delay, and there are three beautiful themes to choose from:
-                        ul
-                            li | Clean `em | (no transparency, text-based)`
-                            li | Compact `em | (less transparency, less padding)`
-                            li | Comfortable `em | (vibrancy, more separation)`
+                        Just `b.text-rose-400 hold`, `b.text-orange-300 type`, `b.text-blue-400 release`. No need to `code Cmd-Space`… wait for search bar… type… select… `code Enter`…
+                    h4.text-gray-500 Double tap and hold
+                    p.text-sm.lg:text-base.text-gray-400
+                        | Double tap ⌘ rcmd and keep holding it on the second tap to only search open windows.
+                    p.text-sm.lg:text-base.text-gray-400
+                        | Press Cmd-W, Cmd-Q or Cmd-H while hovering search results to close, quit or hide windows right from the switcher.
 
-                -call img="rcmd-app-switcher-ui" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
+                video.md:w-1/2.h-max.rounded-xl.object-fit (autoplay loop muted playsinline width="751" height="452" src="/static/video/rcmd-demo-fuzzy-search.mp4")
 
-            #windows.py-12.flex.md:space-x-10.md:space-x-reverse.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.px-4
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-4 Focus a specific window
-                    .text-base.lg:text-lg.text-gray-white.mb-4
-                        As opposed to `b.text-orange-200 app switching` which works out of the box, `b.text-stone-300 window switching` is not as straightforward and still `b.text-red-400 experimental`.
-                    .text-sm.lg:text-base.text-gray-white.mb-4.opacity-70
-                        Because of `b.text-blue-500 App Store` and `b.text-red-500 macOS Sandbox limitations`, rcmd needs to use an external app called `a.text-amber-400 target="_blank" href="https://www.hammerspoon.org" Hammerspoon` to achieve window switching capabilities.
-                    .text-base.lg:text-lg.text-gray-white.mb-10
-                        Click on `span.bg-white.bg-opacity-10.text-white.text-base.rounded.md:rounded-lg.py-1.px-2 Switcher` and scroll to the bottom to find the button that enables window switching.
-                    .text-sm.lg:text-base.text-stone-400.mb-4
-                        If you're interested in the technical reasons of why this solution is so convoluted, you can read the following blog post:
-                    a.btn.btn-white.text-left.flex.flex-center.w-max.!px-3.lg:!px-6.!py-2.lg:!py-4.mx-auto.md:m-0.!rounded-lg.lg:!rounded-2xl href="https://alinpanaitiu.com/blog/window-switcher-app-store/" target="_blank"
-                        img.mr-1.lg:mr-3.w-10.h-10.lg:w-12.lg:h-12 width="48" height="48" src="https://alinpanaitiu.com/svg/logo.svg"
-                        span.flex.flex-col.leading-tight.text-sm.lg:text-base
-                            span A window switcher on the Mac App Store?
-                            span.font-bold Is it even possible?
+            #keylume.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.md:space-y-0.px-4
+                h1.text-3xl.text-center.lg:text-4xl.mb-10 On-screen key hints
 
-                -call img="rcmd-window-experimental" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the window switcher UI, showing windows of Sublime Text with their assigned key" defs:image
+                -call img="rcmd-keylume-integration-demo-wallpaper" factor=${0.9} mobile_factor=${0.9} pcls="md:w-full" icls="rounded-2xl shadow-2xl md:w-11/12 w-full" alt="on-screen keyboard showing rcmd app layer" defs:image
 
-            #stages.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.px-4.justify-cetner.items-center
-                .text-center
-                    h1.text-3xl.text-center.lg:text-4xl.mb-4 Stage Manager ready
-                    h5.text-gray-300.text-center.mb-4 Navigate stages in `b.text-orange-200 macOS Ventura` using the keyboard
-                -call video="rcmd-stage-manager" webm=False cls="md:w-2/3 rounded-xl object-cover" poster="/static/img/rcmd-stage-manager-poster.webp" defs:lazyvideoset
+            #ui.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.md:space-y-0.px-4
+                h1.text-3xl.text-center.lg:text-4xl.mb-10 Themes and customization
 
-            h1.text-center FAQ
-            #faq.py-12.text-left.text-white.self-center.md:self-start.max-w-[90vw].md:px-4
+                -call img="rcmd-app-switcher-ui" factor=${0.3} mobile_factor=${0.9} pcls="md:w-full" icls="rounded-2xl shadow-2xl md:w-11/12 w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
+
+            #pro.flex.flex-col.flex-center.max-w-[96vw]
+                -stylus
+                    @import "stylus/base"
+
+                    #pro table
+                        overflow hidden
+                        a
+                            text-decoration none
+
+                    tbody tr td:first-of-type, thead tr th:first-of-type
+                        text-align left
+                        padding-left 3rem
+                        +tablet()
+                            padding-left 2rem
+                        +mobile()
+                            padding-left 1rem
+
+                    tbody tr td(:not(:first-of-type))
+                        padding-left 3rem
+                        padding-right 3rem
+                        +tablet()
+                            padding-left 2rem
+                            padding-right 2rem
+                        +mobile()
+                            padding-left 0.1rem
+                            padding-right 0.1rem
+
+                    tbody tr:nth-child(odd)
+                        background-color hsla(0, 0%, 100%, 0.03)
+
+                    thead tr
+                        border-bottom 1px solid alpha(white, 0.1)
+
+                h1.text-white.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-blue-400 Free` `span.text-gray-400.text-xl.font-medium vs` `span.font-bold.text-red-hot Pro`
+                h6.text-sm.text-gray-400.-mt-1 Free version features are free `b forever`
+                h6.text-sm.text-gray-400.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
+                div.flex.flex-col.flex-center.w-[96vw].mt-8
+                    table.w-[95vw].xl:w-auto.bg-gray-800.shadow-2xl.rounded-xl.text-gray-100.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
+                        thead
+                            tr
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium.text-gray-300 Feature
+                                th.text-sm.md:text-xl.py-5.px-1.font-bold.font-mono.text-white rcmd Pro
+                                th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium.text-gray-400 Free version
+                        tbody
+                            tr
+                                td: a.font-normal.text-gray-100 href="#switch" `b Instant` app switching
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td: a.font-normal.text-gray-100 href="#switch" Dynamic and `b custom key assignments`
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td `b Spaces navigation` by number
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td `b Tab cycling` between recent windows
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td `b Command-Tab` replacement
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td: a.font-normal.text-gray-100 href="#keylume" Companion `b Keylume` on-screen keyboard
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                            tr
+                                td: a.font-normal.text-gray-100 href="#launch" `b Fuzzy search` of apps and windows
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td `b Instant Space Switching` (no animation)
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td `b Stages` (workspace saving and restoring)
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td `b Window jumping` with ⌥+letter
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td `b Move window` to another Space (⌥+digit)
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td `b Mouse follows` focused app
+                                td: icon.w-6.h-6.text-green-400.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+
+                    a.btn.mt-6.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/rcmd.dmg"
+                        .flex.flex-col.items-start
+                            span.text-lg.!leading-4.mt-1 Try for free
+                            span.text-[0.7rem].text-stone-300.font-mono 14-day trial of `b.text-white Pro` features
+                    p.text-xs.mt-1.text-stone-400
+                        | No credit card required, keep using for free after the trial
+                    p.text-xs.mt-1.text-red-400.font-medium
+                        | Refunds accepted within 14 days of purchase, no questions asked
+
+            h1.text-center.mt-24 FAQ
+            #faq.py-12.text-left.text-white.self-center.md:self-start.max-w-[90vw].w-[1000px].mx-auto.md:px-4
                 md : faq-rcmd
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             - call cls="text-gray-100 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
                 - call defs:socials
-                / a.text-red-hot.ml-4 href="/contact" Contact
+
         -call position="after" defs:anchors
+
         -stylus
             @import "stylus/base"
+
+            blockquote
+                background-color alpha(white, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-amber-800)
+
+
+            b.key
+                background-color white
+                color black
+                border-radius 0.25rem
+                padding 0.15rem 0.4rem
+                font-weight 500
+                font-size smaller
+
+                @media (min-width: 768px)
+                    border-radius 0.5rem
+
+            code
+                font-size smaller
+            code, .code
+                font-family monoSpace
+                font-weight 500
+                color var(--color-orange-100) !important
+                background-color alpha(white, 0.1) !important
+            pre
+                margin 1rem 0
+                code
+                    color var(--color-orange-100) !important
+                    font-size 0.8rem
+            .codehilite
+                width 100%
+                background-color var(--color-mauve-black) !important
+                font-size 0.8rem
+                code
+                    background transparent !important
+                    color white
+
+            div
+                code
+                    background-color alpha(black, 0.75)
+                    color var(--color-orange-200)
+                    padding 0.15em 0.3em
+                    border-radius 8px
+                    font-size 0.8em
+
 
             #faq
                 code
@@ -164,217 +335,82 @@ html lang="en"
                     background-color alpha(white, 0.1)
                     color warmWhite
         -coffee
-            document.body.onscroll = () ->
-                return unless anime?
-                console.log "scrolled"
-                anime(
-                    targets: '#scroll-hint'
-                    opacity: 0
-                    duration: 500
-                    easing: 'easeOutExpo'
-                )
-                document.body.onscroll = null
-
             style = getComputedStyle(document.documentElement)
             twcolor = (colorName) -> style.getPropertyValue("--color-#{ '${ colorName }' }")
 
-            highlightQuestion = () ->
-                return unless location.hash
-                hash = location.hash[1..]
+            url = new URL(location)
+            coupon = url.searchParams.get('coupon')
 
-                timelineFAQ = anime.timeline(
-                    easing: 'easeOutCirc'
-                    duration: 1000
-                    delay: 500
-                    loop: false
+            if coupon
+                document.getElementById('btn-paddle-hero')?.setAttribute('data-coupon', coupon)
+                document.getElementById('btn-paddle-footer')?.setAttribute('data-coupon', coupon)
+
+            setupPaddle = () ->
+                return unless Paddle?
+                clearInterval paddleObserver
+                Paddle.Setup({vendor: 122873})
+
+            paddleObserver = setInterval setupPaddle, 100
+
+
+            do ->
+                videos = document.querySelectorAll('video')
+                return unless videos.length
+
+                # Override any `autoplay` so off-screen videos don't start
+                # before the observer has a chance to filter them.
+                v.pause() for v in videos
+
+                visible = new Set()
+                rafPending = false
+
+                pickAndPlay = ->
+                    rafPending = false
+
+                    # Anything not currently in the viewport must be paused.
+                    for v in videos when not visible.has(v)
+                        v.pause() unless v.paused
+
+                    return if visible.size is 0
+
+                    viewportCenter = window.innerHeight / 2
+                    closest = null
+                    closestDist = Infinity
+
+                    visible.forEach (v) ->
+                        rect = v.getBoundingClientRect()
+                        center = rect.top + rect.height / 2
+                        dist = Math.abs(center - viewportCenter)
+                        if dist < closestDist
+                            closestDist = dist
+                            closest = v
+
+                    visible.forEach (v) ->
+                        if v is closest
+                            v.play().catch(->) if v.paused
+                        else
+                            v.pause() unless v.paused
+
+                schedule = ->
+                    return if rafPending
+                    rafPending = true
+                    requestAnimationFrame pickAndPlay
+
+                observer = new IntersectionObserver(
+                    (entries) ->
+                        for entry in entries
+                            if entry.isIntersecting
+                                visible.add(entry.target)
+                            else
+                                visible.delete(entry.target)
+                                # Stop the moment it leaves the viewport,
+                                # don't wait for the next animation frame.
+                                entry.target.pause() unless entry.target.paused
+                        schedule()
+                    threshold: [0, 0.25, 0.5, 0.75, 1]
                 )
-                timelineFAQ.add(
-                    targets: location.hash
-                    backgroundColor: [twcolor('gray-900'), twcolor('red-low')]
-                    scale: 1.02
-                ).add(
-                    targets: location.hash
-                    easing: 'easeInExpo'
-                    backgroundColor: twcolor('gray-900')
-                    scale: 1.0
-                )
 
-            animateKeyboard = () ->
-                return unless anime?
+                observer.observe(v) for v in videos
 
-                clearInterval animeObserver
-                highlightQuestion()
-
-                keyColor = '#242424'
-                timeline = anime.timeline(
-                    easing: 'easeOutCirc'
-                    duration: 300
-                    loop: true
-                )
-                timeline
-                    .add(
-                        targets: '#rcmd-bg'
-                        delay: 1000
-                        fill: twcolor('red-mars')
-                    )
-                    .add(
-                        targets: '#m-bg'
-                        delay: 300
-                        fill: twcolor('red-mars')
-                        translateY: 5
-                        scaleY: 0.8
-                    )
-                    .add(
-                        targets: '#m-bg'
-                        fill: keyColor
-                        translateY: 0
-                        scaleY: 1.0
-                    )
-                    .add(
-                        targets: '#window #promo-title path, #window #promo-title polygon'
-                        duration: 100
-                        opacity: 0
-                        delay: anime.stagger(10)
-                    )
-                    .add(
-                        targets: '#window #elements'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#window #bg, #window #bg path'
-                        fill: "#FFFFFF"
-                    , '-=300')
-                    .add(
-                        targets: '#window #mail'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#p-bg'
-                        delay: 300
-                        fill: twcolor('red-mars')
-                        translateY: 5
-                        scaleY: 0.8
-                    )
-                    .add(
-                        targets: '#p-bg'
-                        fill: keyColor
-                        translateY: 0
-                        scaleY: 1.0
-                    )
-                    .add(
-                        targets: '#window #mail'
-                        opacity: 0
-                    )
-                    .add(
-                        targets: '#window #bg, #window #bg path'
-                        fill: "#0F1417"
-                    , '-=300')
-                    .add(
-                        targets: '#window #photoshop'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#c-bg'
-                        delay: 300
-                        fill: twcolor('red-mars')
-                        translateY: 5
-                        scaleY: 0.8
-                    )
-                    .add(
-                        targets: '#c-bg'
-                        fill: keyColor
-                        translateY: 0
-                        scaleY: 1.0
-                    )
-                    .add(
-                        targets: '#window #photoshop'
-                        opacity: 0
-                    )
-                    .add(
-                        targets: '#window #bg, #window #bg path'
-                        fill: "#FFFFFF"
-                    , '-=300')
-                    .add(
-                        targets: '#window #chrome'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#s-bg'
-                        delay: 300
-                        fill: twcolor('red-mars')
-                        translateY: 5
-                        scaleY: 0.8
-                    )
-                    .add(
-                        targets: '#s-bg'
-                        fill: keyColor
-                        translateY: 0
-                        scaleY: 1.0
-                    )
-                    .add(
-                        targets: '#window #chrome'
-                        opacity: 0
-                    )
-                    .add(
-                        targets: '#window #bg, #window #bg path'
-                        fill: "#000000"
-                    , '-=300')
-                    .add(
-                        targets: '#window #spotify'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#n-bg'
-                        delay: 300
-                        fill: twcolor('red-mars')
-                        translateY: 5
-                        scaleY: 0.8
-                    )
-                    .add(
-                        targets: '#n-bg'
-                        fill: keyColor
-                        translateY: 0
-                        scaleY: 1.0
-                    )
-                    .add(
-                        targets: '#window #spotify'
-                        opacity: 0
-                    )
-                    .add(
-                        targets: '#window #bg, #window #bg path'
-                        fill: "#FFFFFF"
-                    , '-=300')
-                    .add(
-                        targets: '#window #notes'
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#window #notes'
-                        delay: 1000
-                        opacity: 0
-                    )
-                    .add(
-                        targets: '#window #elements'
-                        delay: 500
-                        duration: 500
-                        opacity: 0
-                    , '-=1000')
-                    .add(
-                        targets: '#window #promo-title'
-                        duration: 500
-                        opacity: 1
-                    )
-                    .add(
-                        targets: '#rcmd-bg'
-                        duration: 1000
-                        fill: keyColor
-                    )
-                    .add(
-                        targets: '#window #promo-title path, #window #promo-title polygon'
-                        duration: 100
-                        opacity: 1
-                        delay: anime.stagger(10)
-                    )
-
-
-            animeObserver = setInterval animateKeyboard, 100
+                window.addEventListener 'scroll', schedule, passive: true
+                window.addEventListener 'resize', schedule, passive: true
