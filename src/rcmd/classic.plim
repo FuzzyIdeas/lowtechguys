@@ -1,0 +1,73 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="rcmd classic - Mac App Store edition" domain="lowtechguys.com" description="The classic Mac App Store edition of rcmd" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" canonical="/rcmd/classic" defs:head
+
+    body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4.!text-red-pinkP3.!bg-black/50.border.border-white/30.hover:border-white href="/rcmd/" rcmd Pro
+                a.text-sm.md:text-base.ml-4 href="/rcmd/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pt-12.pb-10
+            img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/rcmd-icon.webp"
+            h1.text-4xl.text-red-hot.monospaced rcmd
+            h2.text-lg.text-orange-700.font-bold.monospaced.-mt-1.tracking-wide | (classic)
+            h5.text-white.mt-4 Reimagined Command-Tab
+            h5.text-gray-400 App switching at the speed of thought
+
+            .flex.flex-center.mt-10.mb-2.px-2
+                a.hover:transform.hover:scale-105.transition href="https://apps.apple.com/us/app/rcmd-app-switcher/id1596283165"
+                    img width="200" src="https://files.lowtechguys.com/macos-app.svg" alt="Download rcmd classic from the Mac App Store"
+
+        section#details.flex-center.flex-col.pb-20.w-full
+            #faq.py-12.text-left.text-white.self-center.md:self-start.max-w-[90vw].w-[1000px].mx-auto.md:px-4
+                md : faq-rcmd-classic
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            - call cls="text-gray-100 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+
+        -call position="after" defs:anchors
+
+        -stylus
+            @import "stylus/base"
+
+            #faq
+                code
+                    background-color alpha(white, 0.1)
+                    color var(--color-yellow-lunar)
+                    font-weight bold
+
+                pre code
+                    background-color transparent
+                    color revert
+                    font-weight 500
+                    padding 0
+                    border-radius 0
+
+                h2, h3, h4
+                    padding 0.1rem 0.5rem
+                    border-radius 0.5rem
+
+                p
+                    padding 0.1rem 0.5rem
+                    color var(--color-gray-white)
+
+                hr
+                    border-color alpha(white, 0.1)
+                    margin 2rem 0
+                li
+                    line-height 1.8
+
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color warmWhite

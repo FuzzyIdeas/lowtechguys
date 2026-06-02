@@ -50,6 +50,10 @@ html.overflow-x-hidden lang="en"
                 .flex.flex-col.items-start
                     span.text-sm.md:text-base Source code
                     span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-pink-600 GPLv3`
+
+            .mt-2.font-mono.text-xs.text-zinc-900.flex.items-center.gap-1.5.select-all.opacity-70.hover:opacity-100.transition.bg-white.border.border-black/10.rounded-lg.px-3.py-1.5
+                span.text-zinc-800.select-none $
+                | brew install clop
             .text-red-700.text-xxs.mt-1.font-medium.opacity-50
                 | compatible with macOS `b 13.0+` (Ventura and later)
 

@@ -195,6 +195,7 @@ module.exports = {
           brightP3: 'color(display-p3 1 0.721 0 / 1)',
           hot: '#FF1536',
           hotP3: 'color(display-p3 1 0.043 0.131 / 1)',
+          pinkP3: 'color(display-p3 1 0.043 0.231 / 1)',
           mars: '#862833',
           dull: '#C75764',
           low: '#4B171D',

@@ -49,10 +49,11 @@ html lang="en"
                 .flex.flex-col.items-start
                     span.text-sm.md:text-base Source code
                     span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-rose-600 GPLv3`
+            .mt-2.font-mono.text-xs.text-zinc-900.flex.items-center.gap-1.5.select-all.opacity-70.hover:opacity-100.transition.bg-white.border.border-black/10.rounded-lg.px-3.py-1.5
+                span.text-zinc-800.select-none $
+                | brew install --cask thelowtechguys-cling
             .text-orange-950.text-xxs.mt-1.font-medium.opacity-70
                 | compatible with macOS `b 14.0+` (Sonoma and later)
-            .text-orange-950.text-xxs.mt-2.font-medium.opacity-70
-                | or install with `a.code href="https://brew.sh/" homebrew`: `code brew install --cask thelowtechguys-cling`
 
 
         div#video-container.zstack.py-10.md:w-full.max-w-[1000px].cursor-pointer onclick="playVideo(this)"

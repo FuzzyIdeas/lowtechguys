@@ -26,10 +26,11 @@ html lang="en"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
+                a.text-sm.md:text-base.ml-4.!text-orange-700.!bg-black/50.border.border-white/30.hover:border-white/60 href="/rcmd/classic" rcmd (classic)
                 a.text-sm.md:text-base.ml-4 href="/rcmd/privacy" Privacy
                 a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
 
-        section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-10
+        section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-20.[@media(min-height:800px)]:pb-[160px].[@media(min-height:950px)]:pb-[240px]
             img.w-28.h-28.filter.drop-shadow-3xl.order-first src="/static/img/rcmd-icon.webp"
             h1.text-4xl.text-red-hot.monospaced rcmd
             h5.text-white.mt-2 Reimagined Command-Tab
@@ -41,13 +42,25 @@ html lang="en"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download app
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version
-                    a.text-xs.mt-1.text-gray-500.decoration-dotted href="https://files.lowtechguys.com/rcmd/changelog.html" Changelog
+                    a.text-xs.mt-1.text-stone-600.decoration-0 href="https://files.lowtechguys.com/rcmd/changelog.html" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="914967"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Buy `b rcmd Pro`
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap `span.text-rose-700 €15` lifetime license
-                    a.text-xs.mt-1.text-gray-500.decoration-dotted href="#pro" Why rcmd Pro?
+                    a.text-xs.mt-1.text-stone-600.decoration-0 href="#pro" Why rcmd Pro?
+
+            .mt-4.font-mono.text-xs.text-gray-600.flex.items-center.gap-1.5.select-all.opacity-70.hover:opacity-100.transition.bg-black/30.border.border-white/5.rounded-lg.px-3.py-1.5
+                span.text-gray-700.select-none $
+                | brew install rcmd
+
+            a.text-xs.mt-4.text-orange-300/50.decoration-0 href="#migrating-from-the-app-store-rcmd" Migrating from the App Store?
+
+            #featured.absolute.bottom-14.flex.flex-col.flex-center.gap-3.[@media(max-height:720px)]:hidden
+                h6.text-gray-500.uppercase.tracking-[0.2em].text-xs.font-medium Featured in
+                a.text-gray-300.hover:text-red-hot.transition href="https://www.cultofmac.com/news/rcmd-v3-new-features" target="_blank" rel="noopener noreferrer" title="rcmd v3 on Cult of Mac"
+                    icon.h-7.md:h-9.w-auto : cultofmac
+
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
                     background: var(--color-white) !important
@@ -109,7 +122,7 @@ html lang="en"
             #ui.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.md:space-y-0.px-4
                 h1.text-3xl.text-center.lg:text-4xl.mb-10 Themes and customization
 
-                -call img="rcmd-app-switcher-ui" factor=${0.3} mobile_factor=${0.9} pcls="md:w-full" icls="rounded-2xl shadow-2xl md:w-11/12 w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
+                -call img="rcmd-themes-and-styling" factor=${0.3} mobile_factor=${0.9} pcls="md:w-full" icls="rounded-2xl shadow-2xl md:w-11/12 w-full" alt="screenshot of the app switcher UI, showing running apps with their assigned key" defs:image
 
             #pro.flex.flex-col.flex-center.max-w-[96vw]
                 -stylus
@@ -257,6 +270,17 @@ html lang="en"
 
                 @media (min-width: 768px)
                     border-radius 0.5rem
+
+            .pro-badge
+                font-weight 900
+                font-size 0.8rem
+                padding 0 0.3rem
+                margin-right -0.15rem
+                color black
+                background-color var(--color-red-hot)
+                background-color var(--color-red-hotP3)
+                border-radius 0.5rem
+                opacity 0.8
 
             code
                 font-size smaller

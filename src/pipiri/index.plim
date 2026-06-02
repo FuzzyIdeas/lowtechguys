@@ -119,6 +119,10 @@ html lang="en"
                     .text-base.lg:text-lg.text-gray-600
                         | Boost `b.text-rose-600 contrast` and `b.text-amber-600 sharpness` of the captured content to enhance visibility for windows with very small text or low-contrast UI that becomes hard to read at PiP size.
 
+        section#macvince.flex-center.flex-col.pb-20
+            h3.text-gray-800.mb-0.pb-0.font-normal.text-xl Featured on `a.text-mauve-gray.font-semibold href="https://www.youtube.com/@MacVince" "MacVince"`
+            iframe.shadow-xl.rounded-2xl.mt-4.max-w-[96vw] width="560" height="315" src="https://www.youtube-nocookie.com/embed/06Zn0NVoG2g?si=mebnHVgcTvsafj8W&amp;start=154" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""
+
         section#footer-text.flex-center.flex-col.pb-20.space-y-24
             .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
                 .flex.flex-col.space-y-2.md:w-full.text-left

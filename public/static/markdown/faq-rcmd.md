@@ -1,3 +1,27 @@
+## Migrating from the App Store rcmd
+
+If you previously installed rcmd from App Store, these are the steps needed to migrate to this version:
+
+- delete `rcmd.app` using Finder *(don't delete using Launchpad or app cleaners, we need to keep settings around)*
+- download **[rcmd.dmg](https://files.lowtechguys.com/releases/rcmd.dmg)** from this page
+- open the DMG and move `rcmd.app` in Applications
+- launch rcmd
+
+What will happen next:
+
+- the old settings will be migrated to the new version *(old settings are kept intact in case you want to go back to the App Store version)*
+- a 14-day trial starts with the Pro features enabled
+- after 14 days, the app keeps working in Free mode
+
+
+### License transfer
+
+There's no license transfer needed because rcmd now has a **free tier** which has the same features that were in the App Store version.
+
+You would only need to pay if you want to use the **newly added** Pro features.
+
+---
+
 ## What are Stages and how do they work?
 
 A Stage is a set of apps and windows saved as a workspace and assigned to a letter that can be used to restore those windows later.

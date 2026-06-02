@@ -31,6 +31,9 @@ html lang="en"
                 a.btn.text-black.bg-white.hover:text-white.hover:bg-black.flex.justify-center.items-center.border-black.border-2 href="https://github.com/FuzzyIdeas/StartupFolder"
                     icon.h-4.w-4.md:h-7.md:w-7 : github
                     span.ml-2.text-sm.md:text-base View Source
+            .mt-3.font-mono.text-xs.text-zinc-900.flex.items-center.gap-1.5.select-all.opacity-70.hover:opacity-100.transition.bg-white.border.border-black/10.rounded-lg.px-3.py-1.5
+                span.text-zinc-800.select-none $
+                | brew install startupfolder
             .text-amber-950.text-xxs.mt-1.font-medium.opacity-50
                 | compatible with macOS `b 14.0+` (Sonoma and later)
 
