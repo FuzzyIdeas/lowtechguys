@@ -1,0 +1,3 @@
+- namespace name="defs" defs.plim
+
+- call app="volum" name="Volum" tag1="Home lights and sounds" tag2="At your fingertips" accent="190, 168, 140" ink="63, 63, 70" bg="#e7e5e1" dark="" size="text-8xl" shot="volum-macbook" flat="1" defs:og

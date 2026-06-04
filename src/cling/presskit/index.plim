@@ -1,0 +1,141 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Cling - Press Kit" domain="lowtechguys.com" description="Press kit for Cling, instant fuzzy file finder for macOS" favicon="/cling/favicon.ico" icon="cling-icon" icon_size="1280" screenshot="cling-screenshot" color="rgb(255, 247, 237)" canonical="/cling/presskit" defs:head
+
+    body.bg-orange-50.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-gray-700 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/cling/" Cling
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Cling" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/cling-icon.png"
+            h1.mt-10.text-4xl.text-orange-400.mb-2.drop-shadow-xl Cling
+            h5.text-gray-800 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-white.bg-gray-700.hover:text-white.hover:bg-gray-600.rounded-lg.flex.justify-center.items-center.border-gray-700.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/cling/presskit/cling-presskit.zip" download="cling-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, demo videos, and copy
+
+        section#press-content.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 About Cling
+                p.text-base.text-gray-600
+                    | Cling is an instant fuzzy file finder for macOS. Find any file in under 100ms and act on it in the same instant. Press `b Right Command` + `b / (slash)` to show or hide it.
+                p.text-base.text-gray-600
+                    | Cling keeps a custom binary index of your whole filesystem, including system files, hidden files, dotfiles and app data that Spotlight ignores. It's "Everything for Mac": keyboard-centric, minimalistic, and built for power users.
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-800 The low-tech guys
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-800 macOS 14.0+ (Sonoma and later)
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-800 €12 one-time purchase
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Licensing
+                        span.text-base.text-gray-800 Up to 5 Macs. 14-day free trial, then Free mode (Home, Library and Applications search stays free, capped at 500 results)
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Source
+                        a.text-orange-700 href="https://github.com/FuzzyIdeas/Cling" Open source, GPLv3
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-orange-700 href="https://lowtechguys.com/cling" lowtechguys.com/cling
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Instant fuzzy search across millions of files in under 100ms
+                    li Finds system files, hidden files, dotfiles and app data that Spotlight misses
+                    li Keyboard-centric actions: Open with…, copy paths, batch rename, QuickLook, drag and drop
+                    li Smart defaults show your most recently changed files on launch
+                    li Search history with arrow-key navigation and tab completion
+                    li Extension-aware queries like ".png icon" or ".pdf invoice"
+                    li Quick Filters: Option + a single key to narrow by file type
+                    li Folder and Volume filters saved as named hotkeys
+                    li Custom scripts in any language, run on selected files with a hotkey
+                    li External volume indexing for USB drives, external disks and network shares, persistent even while unmounted
+                    li Exclude files with a ~/.fsignore file using gitignore patterns
+                    li Raycast extension for searching without leaving Raycast
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Use Cases
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Finding a file by a rough name and opening or copying it instantly
+                    li Locating dotfiles, app data and system files Spotlight won't show
+                    li Sending a found file to a shelf like Yoink or uploading with Dropshare
+                    li Running a custom script on selected files
+                    li Searching external and network volumes, even when unmounted
+                    li Narrowing to a file type with a single Quick Filter key
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 App Icon
+                .flex.justify-center.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/cling-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/cling-icon.png" alt="Cling app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4.items-start
+                    -call img="cling-ui" alt="Cling app interface showing fuzzy search results" cls="md:col-span-2" defs:pk_shot
+                    -call img="cling-screenshot" alt="Cling screenshot" defs:pk_shot
+                    -call img="cling-actions" alt="Cling actions panel" defs:pk_shot
+                    -call img="cling-quick-filters" alt="Cling Quick Filters" defs:pk_shot
+                    -call img="cling-folder-filters" alt="Cling folder and volume filters" defs:pk_shot
+                    -call img="cling-scripts" alt="Cling custom scripts" cls="md:col-span-2" defs:pk_shot
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Videos
+                .space-y-4
+                    -call src="cling-demo.mp4" title="App demo" desc="Fuzzy finding files across the filesystem and acting on them instantly" defs:pk_video
+                    -call src="cling-raycast-screencast.mp4" title="Raycast extension" desc="Searching the whole filesystem with Cling's engine from the Raycast command bar" defs:pk_video
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-orange-900.bg-orange-200.hover:text-orange-900.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-300.border-2 href="/static/img/cling-icon.png" download="cling-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-orange-900.bg-orange-200.hover:text-orange-900.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-300.border-2 href="/static/img/cling-ui.png" download="cling-ui.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm UI Screenshot (PNG)
+                    a.btn.text-orange-900.bg-orange-200.hover:text-orange-900.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-300.border-2 href="/static/img/cling-screenshot.png" download="cling-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Banner (PNG)
+                    a.btn.text-orange-900.bg-orange-200.hover:text-orange-900.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-300.border-2 href="/static/video/cling-demo.mp4" download="cling-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Demo (MP4)
+                    a.btn.text-orange-900.bg-orange-200.hover:text-orange-900.hover:bg-orange-300.rounded-lg.flex.justify-center.items-center.border-orange-300.border-2 href="/static/video/cling-raycast-screencast.mp4" download="cling-raycast.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Raycast (MP4)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(130, 50, 0, 0.4)) drop-shadow(0 9px 17px rgba(125, 65, 22, 0.4))
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            img, a, video
+                box-shadow: none !important

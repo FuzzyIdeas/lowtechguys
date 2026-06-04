@@ -98,29 +98,22 @@ html lang="en"
 
             .space-y-4
                 h2.text-2xl.text-gray-800 App Icon
-                .flex.items-start.gap-6
+                .flex.justify-center.items-start.gap-6
                     a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/keylume-icon.png" target="_blank"
                         img.w-full.h-full.object-cover src="/static/img/keylume-icon.png" alt="Keylume app icon"
 
             .space-y-4
                 h2.text-2xl.text-gray-800 Screenshots
-                .grid.grid-cols-1.md:grid-cols-2.gap-4
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-screenshot.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-screenshot.png" alt="Keylume screenshot"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-ui.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-ui.png" alt="Keylume UI"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-themes.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-themes.png" alt="Keylume themes"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-pixelmator-base-layer.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-pixelmator-base-layer.png" alt="Pixelmator Pro cheatsheet"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-finder-cmd-layer.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-finder-cmd-layer.png" alt="Finder ⌘ cheatsheet"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-rcmd-app-layer.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-rcmd-app-layer.png" alt="rcmd app switcher layer"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-qwertz-layout.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-qwertz-layout.png" alt="Adapts to QWERTZ layout"
-                    a.block.rounded-lg.overflow-hidden.shadow-lg href="/static/img/keylume-alternate-symbols-layer.png" target="_blank"
-                        img.w-full.h-full.object-cover src="/static/img/keylume-alternate-symbols-layer.png" alt="Hold Option to view alternate symbols"
+                .grid.grid-cols-1.md:grid-cols-2.gap-4.items-start
+                    -call img="keylume-screenshot" alt="Keylume screenshot" defs:pk_shot
+                    -call img="keylume-ui" alt="Keylume UI" defs:pk_shot
+                    -call img="keylume-themes" alt="Keylume themes" defs:pk_shot
+                    -call img="keylume-pixelmator-base-layer" alt="Pixelmator Pro cheatsheet" defs:pk_shot
+                    -call img="keylume-cheatsheet-pixelmator" alt="Pixelmator single-key tool shortcuts shown while editing" defs:pk_shot
+                    -call img="keylume-finder-cmd-layer" alt="Finder ⌘ cheatsheet" defs:pk_shot
+                    -call img="keylume-rcmd-app-layer" alt="rcmd app switcher layer" defs:pk_shot
+                    -call img="keylume-qwertz-layout" alt="Adapts to QWERTZ layout" defs:pk_shot
+                    -call img="keylume-alternate-symbols-layer" alt="Hold Option to view alternate symbols" defs:pk_shot
 
             .space-y-4
                 h2.text-2xl.text-gray-800 Download Assets
@@ -130,7 +123,7 @@ html lang="en"
                         span.ml-2.text-sm App Icon (PNG)
                     a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-screenshot.png" download="keylume-screenshot.png"
                         icon.h-4.w-4.md:h-5.md:w-5 : image-01
-                        span.ml-2.text-sm Screenshot (PNG)
+                        span.ml-2.text-sm Banner (PNG)
                     a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-ui.png" download="keylume-ui.png"
                         icon.h-4.w-4.md:h-5.md:w-5 : image-01
                         span.ml-2.text-sm UI Screenshot (PNG)
@@ -140,6 +133,9 @@ html lang="en"
                     a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-pixelmator-base-layer.png" download="keylume-pixelmator-base-layer.png"
                         icon.h-4.w-4.md:h-5.md:w-5 : image-01
                         span.ml-2.text-sm Pixelmator Cheatsheet (PNG)
+                    a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-cheatsheet-pixelmator.png" download="keylume-cheatsheet-pixelmator.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Pixelmator Tools (PNG)
                     a.btn.text-black.bg-rose-50.hover:text-black.hover:bg-rose-100.rounded-lg.flex.justify-center.items-center.border-rose-100.border-2 href="/static/img/keylume-finder-cmd-layer.png" download="keylume-finder-cmd-layer.png"
                         icon.h-4.w-4.md:h-5.md:w-5 : image-01
                         span.ml-2.text-sm Finder Cheatsheet (PNG)

@@ -1,0 +1,72 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html.bg-stone-100.dark:bg-stone-900 lang="en"
+    head
+        - call title="Press Kits - The low-tech guys" domain="lowtechguys.com" description="Press kits for every low-tech guys macOS app: icons, screenshots, demo videos and copy, ready to download." color="rgb(245, 245, 244)" canonical="/presskit" defs:head
+
+    body.paper.paper-bg-gray.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600.dark:text-stone-300 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/" Apps
+                a.text-sm.md:text-base.ml-4 href="/contact" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            icon.w-16.h-16.md:w-20.md:h-20.text-zinc-500.dark:text-stone-400.filter.drop-shadow-lg : package
+            h1.mt-8.text-4xl.text-zinc-800.dark:text-stone-100.mb-2.drop-shadow-xl Press Kits
+            h5.text-gray-600.dark:text-stone-300.max-w-[90vw] Icons, screenshots, demo videos and copy for every app
+            p.text-sm.text-gray-500.dark:text-stone-400.mt-2.max-w-[90vw] Open a kit to browse the assets, or download the full bundle as a .zip
+
+        -def kit(app, name, tagline)
+            div(class="flex items-center justify-between gap-5 w-full max-w-[500px] mx-auto p-6 rounded-2xl shadow-sm hover:shadow-md transition bg-white border border-stone-200 hover:border-stone-300 dark:bg-stone-800 dark:border-stone-700 dark:hover:border-stone-600")
+                a.flex.items-center.gap-4.text-left.min-w-0.no-underline.hover:no-underline href="/${app}/presskit" title="${name} press kit"
+                    img.w-16.h-16.flex-shrink-0.filter.drop-shadow-lg src="/static/img/${app}-icon.png" alt="${name} app icon"
+                    .min-w-0
+                        h2.text-lg.font-semibold.leading-tight.text-zinc-800.dark:text-stone-100 ${name}
+                        p.text-sm.text-gray-500.dark:text-stone-400.leading-snug.mt-1 ${tagline}
+                .flex.flex-col.items-stretch.gap-2.5.flex-shrink-0
+                    a.kit-btn.flex.justify-center.items-center.gap-1.5.rounded-lg.border.px-3.py-1.5.text-xs.font-medium.whitespace-nowrap.no-underline.hover:no-underline.bg-stone-100.border-stone-200.hover:bg-stone-200.hover:border-stone-300.dark:bg-stone-700.dark:border-stone-700.dark:hover:bg-stone-600.dark:hover:border-stone-600 href="/${app}/presskit"
+                        icon.h-4.w-4 : image-01
+                        span View kit
+                    a.kit-btn.flex.justify-center.items-center.gap-1.5.rounded-lg.border.px-3.py-1.5.text-xs.font-medium.whitespace-nowrap.no-underline.hover:no-underline.bg-stone-200.border-stone-300.hover:bg-stone-300.hover:border-stone-400.dark:bg-stone-600.dark:border-stone-600.dark:hover:bg-stone-500.dark:hover:border-stone-500 href="/${app}/presskit/${app}-presskit.zip" download="${app}-presskit.zip"
+                        icon.h-4.w-4 : package
+                        span Download .zip
+
+        section#kits.pb-20.w-full.max-w-[1024px].px-4.mx-auto
+            .grid.grid-cols-1.md:grid-cols-2.gap-5.items-stretch
+                -call app="rcmd" name="rcmd" tagline="Reimagined Command-Tab app switching" self:kit
+                -call app="clop" name="Clop" tagline="Image, video, PDF and clipboard optimiser" self:kit
+                -call app="cling" name="Cling" tagline="Instant fuzzy file finder" self:kit
+                -call app="keylume" name="Keylume" tagline="Stylish on-screen keyboard" self:kit
+                -call app="pipiri" name="Pipiri" tagline="Picture-in-Picture for any window" self:kit
+                -call app="crank" name="Crank" tagline="Event-based macOS automation" self:kit
+
+            p.text-sm.text-gray-500.dark:text-stone-400.mt-10 For anything else, reach out at `a.text-zinc-700.dark:text-stone-300 href="/contact" lowtechguys.com/contact`
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 dark:text-stone-400 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call cls="text-gray-500 dark:text-stone-400" defs:socials
+        -stylus
+            @import "stylus/base"
+
+            a, a:hover
+                text-decoration none !important
+
+            .kit-btn, .kit-btn:hover
+                color #292524 !important
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            @media (prefers-color-scheme: dark)
+                .links a
+                    background-color alpha(white, 0.1)
+                    color white
+
+                .kit-btn, .kit-btn:hover
+                    color #ffffff !important

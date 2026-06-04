@@ -1,0 +1,3 @@
+- namespace name="defs" defs.plim
+
+- call app="pipiri" name="Pipiri" tag1="Picture-in-Picture for any window" tag2="Keep an eye on progress" accent="252, 158, 42" ink="124, 70, 20" bg="#fff0da" dark="" size="text-7xl" tag1size="text-4xl" tag2size="text-2xl" shot="pipiri-ui" flat="1" rotate="1" shotw="-mr-8 w-[740px] max-w-[60vw]" flatSpacing="px-24 gap-0" defs:og

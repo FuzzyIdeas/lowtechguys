@@ -1,0 +1,148 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="rcmd - Press Kit" domain="lowtechguys.com" description="Press kit for rcmd, reimagined Command-Tab app switching for macOS" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" canonical="/rcmd/presskit" defs:head
+
+    body.bg-gray-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/rcmd/" rcmd
+                a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/rcmd-icon.png"
+            h1.mt-10.text-4xl.text-red-hot.monospaced.mb-2.drop-shadow-xl rcmd
+            h5.text-gray-400 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-white.bg-rose-700.hover:text-black.hover:bg-rose-500.rounded-lg.flex.justify-center.items-center.border-rose-700.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/rcmd/presskit/rcmd-presskit.zip" download="rcmd-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, demo videos, and copy
+
+        section#press-content.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 About rcmd
+                p.text-base.text-gray-400
+                    | rcmd is a reimagined app switcher for macOS. Hold the `b ⌘ Right Command` key and press the first letter of an app's name to focus it instantly. App switching at the speed of thought.
+                p.text-base.text-gray-400
+                    | The same key combo launches apps that aren't running, fuzzy-searches apps and windows, and switches Spaces by number with no animation. The Left Command key stays untouched, so the default macOS shortcuts keep working.
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-white.bg-opacity-5.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-200 The low-tech guys
+                    .flex.flex-col.bg-white.bg-opacity-5.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-200 macOS 13.0+ (Ventura and later)
+                    .flex.flex-col.bg-white.bg-opacity-5.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-200 €15 one-time purchase
+                    .flex.flex-col.bg-white.bg-opacity-5.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Licensing
+                        span.text-base.text-gray-200 Up to 5 Macs. 14-day free trial, then Free mode (instant app switching stays free)
+                    .flex.flex-col.bg-white.bg-opacity-5.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-rose-400 href="https://lowtechguys.com/rcmd" lowtechguys.com/rcmd
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Features
+                ul.list-disc.list-inside.text-gray-300.space-y-2
+                    li Instant app switching: hold ⌘ Right Command, press the first letter of an app to focus it
+                    li Launches apps that aren't running with the same key combo
+                    li Dynamic key assignments out of the box, plus custom letter assignments
+                    li Fuzzy search across apps and open windows, just hold, type, release
+                    li Command-Tab replacement that filters out minimized windows and windows on other Spaces
+                    li Instant Space switching by number, with no sliding animation
+                    li Move the focused window to another Space and follow it there
+                    li Stages: save and restore window workspaces
+                    li Window jumping with ⌥ + letter, same-app cycling with Cmd-backtick
+                    li On-screen key hints through the companion Keylume keyboard
+                    li 16 built-in themes and extensive customization
+                    li Mouse follows the focused app
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Use Cases
+                ul.list-disc.list-inside.text-gray-300.space-y-2
+                    li Jumping straight to any app without cycling through Command-Tab
+                    li Finding a specific window across Spaces by typing its name
+                    li Rearranging windows across Spaces entirely from the keyboard
+                    li Saving and restoring window layouts for different tasks with Stages
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 App Icon
+                .flex.justify-center.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/rcmd-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/rcmd-icon.png" alt="rcmd app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4.items-start
+                    -call img="rcmd-screenshot" alt="rcmd screenshot" defs:pk_shot
+                    -call img="rcmd-app-switcher-ui" alt="rcmd app switcher UI" defs:pk_shot
+                    -call img="rcmd-themes-and-styling" alt="rcmd themes and styling" cls="md:col-span-2" defs:pk_shot
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Themes
+                p.text-base.text-gray-400 rcmd ships with 16 built-in themes. A few examples:
+                .grid.grid-cols-1.md:grid-cols-3.gap-4.items-start
+                    -call img="rcmd-theme-warm" alt="rcmd warm theme" defs:pk_shot
+                    -call img="rcmd-theme-round" alt="rcmd round theme" defs:pk_shot
+                    -call img="rcmd-theme-amber-dark" alt="rcmd amber-dark theme" defs:pk_shot
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Videos
+                .space-y-4
+                    -call src="rcmd-demo-app-switch-assign.mp4" title="Instant app switching" desc="Hold ⌘ Right Command and press the first letter of an app to focus it, assign custom keys" titlecls="text-gray-300" defs:pk_video
+                    -call src="rcmd-demo-fuzzy-search.mp4" title="Fuzzy search" desc="Hold, type to search any app or window, release to switch" titlecls="text-gray-300" defs:pk_video
+                    -call src="rcmd-demo-space-switching.mp4" title="Instant Space switching" desc="Hold ⌘ Right Command and press 1 to 9 to jump to any Space with no animation" titlecls="text-gray-300" defs:pk_video
+
+            .space-y-4
+                h2.text-2xl.text-gray-100 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/img/rcmd-icon.png" download="rcmd-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/img/rcmd-screenshot.png" download="rcmd-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Banner (PNG)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/img/rcmd-theme-round.png" download="rcmd-theme-round.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm UI Screenshot (PNG)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/img/rcmd-themes-and-styling.png" download="rcmd-themes-and-styling.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Themes (PNG)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/video/rcmd-demo-app-switch-assign.mp4" download="rcmd-app-switching.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm App Switching (MP4)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/video/rcmd-demo-fuzzy-search.mp4" download="rcmd-fuzzy-search.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Fuzzy Search (MP4)
+                    a.btn.text-gray-100.bg-white/10.hover:bg-white/20.rounded-lg.flex.justify-center.items-center.border-white/20.border-2 href="/static/video/rcmd-demo-space-switching.mp4" download="rcmd-space-switching.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Space Switching (MP4)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(244, 63, 94, 0.4)) drop-shadow(0 9px 17px rgba(0, 0, 0, 0.6))
+
+            .links
+                a
+                    background-color alpha(white, 0.1)
+                    color white
+
+            img, a, video
+                box-shadow: none !important

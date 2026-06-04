@@ -1,0 +1,3 @@
+- namespace name="defs" defs.plim
+
+- call app="studioicc" name="StudioICC" tag1="Color profiles that stick" tag2="Studio Display and Pro Display XDR" accent="168, 130, 220" ink="73, 76, 82" bg="#f4f1ee" dark="" size="text-7xl" shot="studioicc-main-ui" shotext="jpeg" defs:og

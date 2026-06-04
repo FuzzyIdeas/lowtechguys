@@ -62,6 +62,7 @@ There are three ways in: a drop-in Swift file (`KeylumeIntegration.swift`), a `k
 - `keylume-ui.png`: UI overview
 - `keylume-themes.png`: theme gallery
 - `keylume-pixelmator-base-layer.png`: Pixelmator Pro cheatsheet
+- `keylume-cheatsheet-pixelmator.png`: Pixelmator single-key tool shortcuts shown while editing
 - `keylume-finder-cmd-layer.png`: Finder ⌘ cheatsheet
 - `keylume-rcmd-app-layer.png`: rcmd app switcher layer
 - `keylume-qwertz-layout.png`: QWERTZ keyboard layout

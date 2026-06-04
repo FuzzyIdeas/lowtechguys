@@ -19,6 +19,7 @@ html.overflow-x-hidden lang="en"
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/clop/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/clop/presskit" Press Kit
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
 
         section#hero.min-w-[96vw].flex-center.flex-col.relative.pb-20

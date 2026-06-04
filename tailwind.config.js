@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
   content: [
     './public/*.html',
+    './public/presskit/*.html',
     './public/rcmd/*.html',
     './public/yellowdot/*.html',
     './public/zoomhider/*.html',
@@ -22,6 +23,9 @@ module.exports = {
     './public/pipiri/presskit/*.html',
     './public/keylume/presskit/*.html',
     './public/keylume/*.html',
+    './public/rcmd/presskit/*.html',
+    './public/clop/presskit/*.html',
+    './public/cling/presskit/*.html',
   ],
   mode: 'jit',
   theme: {

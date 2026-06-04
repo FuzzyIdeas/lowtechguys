@@ -1,0 +1,174 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Clop - Press Kit" domain="lowtechguys.com" description="Press kit for Clop, image, video, PDF and clipboard optimiser for macOS" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/presskit" defs:head
+
+    body.bg-stone-100.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/clop/" Clop
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Clop" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-10
+            img#app-icon.w-20.h-20.md:w-28.md:h-28 src="/static/img/clop-icon.png"
+            h1.mt-10.text-4xl.text-zinc-800.mb-2.drop-shadow-xl Clop
+            h5.text-gray-800 Press Kit
+
+        section#download-all.flex-center.flex-col.pb-10
+            a.btn.text-white.bg-zinc-700.hover:text-black.hover:bg-zinc-500.rounded-lg.flex.justify-center.items-center.border-zinc-700.border-2.text-base.md:text-lg.px-6.py-3.shadow-md href="/clop/presskit/clop-presskit.zip" download="clop-presskit.zip"
+                icon.h-5.w-5.md:h-6.md:w-6 : package
+                span.ml-2 Download Press Kit (.zip)
+            p.text-sm.text-gray-500.mt-2 Includes icon, screenshots, demo videos, and copy
+
+        section#press-content.pb-20.w-full.max-w-[800px].px-4.text-left.space-y-12
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 About Clop
+                p.text-base.text-gray-600
+                    | Clop is an image, video, PDF and clipboard optimiser for macOS. Copy large, paste small, send fast. While Clop runs, every image you copy is optimised to the smallest possible size with minimal to zero loss in quality, ready to paste in any app.
+                p.text-base.text-gray-600
+                    | It shrinks screen recordings as small as screenshots, downscales and crops images and videos with hotkeys, optimises files by drag and drop or Preset Zones, and compresses PDFs to fit under email limits. Everything happens on-device, with no cloud services.
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Key Facts
+                .grid.grid-cols-1.md:grid-cols-2.gap-4
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Developer
+                        span.text-base.text-gray-800 The low-tech guys
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Platform
+                        span.text-base.text-gray-800 macOS 13.0+ (Ventura and later)
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Price
+                        span.text-base.text-gray-800 €15 one-time purchase
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Licensing
+                        span.text-base.text-gray-800 Up to 5 Macs. 14-day free trial, then Free mode (clipboard optimisation and downscaling stay free, other features limited to 5 per session)
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Source
+                        a.text-zinc-700 href="https://github.com/FuzzyIdeas/Clop" Open source, GPLv3
+                    .flex.flex-col.bg-white.bg-opacity-60.rounded-lg.p-4
+                        span.text-sm.text-gray-500 Website
+                        a.text-zinc-700 href="https://lowtechguys.com/clop" lowtechguys.com/clop
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Features
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Automatic clipboard optimisation: every copied image is shrunk and ready to paste
+                    li Screen recordings optimised as soon as you stop recording
+                    li Downscale and crop images and videos with hotkeys or floating buttons
+                    li Drag and drop onto the drop zone, with Preset Zones for one-drop actions
+                    li Convert to webp, GIF, mp4 and other compatible formats automatically
+                    li macOS Shortcuts and Automations support
+                    li Upload with Dropshare, shelve with Yoink and Dockside
+                    li PDF optimisation to fit under email limits, plus crop-pdf for any device
+                    li Uses Apple Silicon's Media Engine for battery-efficient video encoding
+                    li Everything runs on-device, no cloud services
+                    li Clop SDK for integrating optimisation into your own apps
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Use Cases
+                ul.list-disc.list-inside.text-gray-600.space-y-2
+                    li Emailing screenshots and screen recordings without hitting size limits
+                    li Pasting optimised images straight into chat, docs and notes
+                    li Preparing images for websites and blogs
+                    li Compressing PDF scans and illustrations to attach them
+                    li Converting HEIC, tiff and mov to widely compatible formats
+                    li Cropping PDFs to fill an iPad screen for distraction-free reading
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 App Icon
+                .flex.justify-center.items-start.gap-6
+                    a.block.w-32.h-32.rounded-2xl.overflow-hidden.shadow-lg href="/static/img/clop-icon.png" target="_blank"
+                        img.w-full.h-full.object-cover src="/static/img/clop-icon.png" alt="Clop app icon"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Screenshots
+                .grid.grid-cols-1.md:grid-cols-2.gap-4.items-start
+                    -call img="clop-screenshot" alt="Clop screenshot" defs:pk_shot
+                    -call img="screenshot-clipboard" alt="Optimised images as floating results in the bottom right corner" defs:pk_shot
+                    -call img="screen-recordings" alt="Optimised screen recordings as floating results" defs:pk_shot
+                    -call img="downscale-images" alt="Downscaling an image to 80% and 50%" defs:pk_shot
+                    -call img="clop-integrations-file-shelf" ext="jpeg" alt="File shelf apps Clop integrates with, Yoink and Dockside" defs:pk_shot
+                    -call img="clop-crop-pdf" alt="Clop crop PDF to fill iPad screen" defs:pk_shot
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Videos
+                .space-y-4
+                    -call src="screenshot-copy-optimise-paste-in-email.mp4" title="Clipboard optimisation" desc="Copy an image, Clop optimises it instantly, paste the smaller version straight into an email" poster="/static/img/screenshot-clipboard.png" defs:pk_video
+                    -call src="screenshot-downscale-in-email.mp4" title="Downscaling" desc="Scaling an image down with a hotkey to get an even smaller file size before sending" poster="/static/img/downscale-images.png" defs:pk_video
+                    -call src="clop-presets.mp4" title="Preset Zones" desc="Dropping files into preset zones to convert, downscale and watermark with a Shortcut" poster="/static/img/clop-presets-poster.jpeg" defs:pk_video
+                    -call src="clop-pdf-h264.mp4" title="PDF optimisation" desc="Shrinking a heavy PDF small enough to fit under the email attachment limit" defs:pk_video
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 The name
+                .flex.flex-col.md:flex-row.items-center.gap-6
+                    .md:w-2/3.space-y-3
+                        p.text-base.text-gray-600
+                            | `b Clop` is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn as an adornment on days of celebration.
+                        p.text-base.text-gray-600
+                            | We thought "`b Cl`ipboard `b Op`timizer" sounded a bit too technical and didn't roll off the tongue. We're Romanian ourselves, so we kept a little piece of our traditions alive in the name.
+                    a.block.md:w-1/3.rounded-lg.overflow-hidden href="/static/img/clop-hat.png" target="_blank"
+                        img.w-full.h-full.object-contain src="/static/img/clop-hat.png" alt="A traditional Romanian straw hat called a clop"
+
+            .space-y-4
+                h2.text-2xl.text-gray-800 Download Assets
+                .flex.flex-wrap.gap-3
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/clop-icon.png" download="clop-icon.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm App Icon (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/clop-screenshot.png" download="clop-screenshot.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Banner (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/screenshot-clipboard.png" download="clop-clipboard.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Clipboard (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/screen-recordings.png" download="clop-screen-recordings.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Screen Recordings (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/downscale-images.png" download="clop-downscale.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Downscale (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/clop-integrations-file-shelf.jpeg" download="clop-file-shelf.jpeg"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm File Shelf (JPEG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/clop-crop-pdf.png" download="clop-crop-pdf.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Crop PDF (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/img/clop-hat.png" download="clop-hat.png"
+                        icon.h-4.w-4.md:h-5.md:w-5 : image-01
+                        span.ml-2.text-sm Hat (PNG)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/video/screenshot-copy-optimise-paste-in-email.mp4" download="clop-clipboard-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Clipboard Demo (MP4)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/video/screenshot-downscale-in-email.mp4" download="clop-downscale-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Downscale Demo (MP4)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/video/clop-presets.mp4" download="clop-presets.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm Presets (MP4)
+                    a.btn.text-stone-800.bg-stone-300.hover:text-stone-900.hover:bg-stone-400.rounded-lg.flex.justify-center.items-center.border-stone-400.border-2 href="/static/video/clop-pdf-h264.mp4" download="clop-pdf-demo.mp4"
+                        icon.h-4.w-4.md:h-5.md:w-5 : video-02
+                        span.ml-2.text-sm PDF Demo (MP4)
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
+            - call cls="text-gray-500 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+        -stylus
+            @import "stylus/base"
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(80, 80, 90, 0.4)) drop-shadow(0 9px 17px rgba(80, 80, 90, 0.4))
+
+            .links
+                a
+                    background-color alpha(black, 0.1)
+                    color black
+
+            img, a, video
+                box-shadow: none !important

@@ -147,9 +147,9 @@ log stream --level debug --style compact --predicate 'subsystem BEGINSWITH "com.
 2. Make sure `Info` and `Debug` messages are enabled in the `Action` menu
 3. Start streaming logs
 
-<div class="flex flex-center my-8">
-    <img src="https://files.lowtechguys.com/console-subsystem-clop.png" alt="filtering console logs by subsystem" class="mr-1" />
-    <img src="https://files.lunar.fyi/console-info-debug.webp" alt="showing console info debug messages" class="ml-1" />
+<div class="flex flex-col flex-center my-8">
+    <img src="https://files.lowtechguys.com/console-subsystem-clop.png" alt="filtering console logs by subsystem" class="mb-2" />
+    <img src="https://files.lunar.fyi/console-info-debug.webp" alt="showing console info debug messages" class="mt-2" />
 </div>
 
 ---

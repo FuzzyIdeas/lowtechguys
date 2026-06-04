@@ -172,23 +172,39 @@
           else
             element.appendChild anchor
 
+- def og(app, name, tag1, tag2='', accent='255, 255, 255', ink='', bg='#111827', dark='1', shot='', shotext='png', flat='', rotate='', shotw='', shot2='', shot2ext='png', tag1size='text-4xl', tag2size='text-2xl', font='font-bold', size='text-7xl', screenshot='', spacing='px-16 gap-12', flatSpacing='px-12 gap-8')
+    doctype html
+    html lang="en"
+        head
+            - call title="${name}" domain="lowtechguys.com" description="${tag1} ${tag2}" favicon="/${app}/favicon.ico" icon="${app}-icon" icon_size="1280" screenshot="${screenshot or (app + '-screenshot')}" color="${bg}" canonical="/${app}/og" self:head
 
+        body(class="overflow-hidden" style="background: ${bg}")
+            section(id="og" class="w-screen h-screen relative overflow-hidden flex items-center justify-center ${flatSpacing if (shot and flat) else (spacing if shot else 'px-16')}" style="background: radial-gradient(55% 70% at 32% 42%, rgba(${accent}, 0.22), transparent 70%), ${bg}")
+                div(class="relative z-10 flex flex-col ${('items-start ' + ('max-w-[420px]' if flat else 'max-w-[460px]')) if shot else 'items-center text-center'}")
+                    img#og-icon.w-44.h-44 src="/static/img/${app}-icon.png" alt="${name} app icon" style="filter: drop-shadow(0 0 1px rgba(${accent}, 0.5)) drop-shadow(0 16px 34px rgba(0, 0, 0, ${'0.7' if dark else '0.22'}))"
+                    h1(class="${size} mt-8 drop-shadow-xl leading-none ${font} ${'' if shot else 'whitespace-nowrap'}" style="color: rgb(${ink or accent})") ${name}
+                    h2(class="${tag1size} mt-8 font-medium leading-tight ${'text-white' if dark else 'text-gray-900'} ${'' if shot else 'whitespace-nowrap'}") ${tag1}
+                    -if tag2
+                        h3(class="${tag2size} mt-2 leading-snug ${'text-gray-400' if dark else 'text-gray-600'} ${'' if shot else 'whitespace-nowrap'}") ${tag2}
+                -if shot
+                    div(class="relative z-10 shrink-0 flex flex-col items-center gap-6 ${shotw or ('w-[620px] max-w-[48vw]' if flat else 'w-[560px] max-w-[48vw]')}")
+                        img#og-shot(class="w-full ${'' if flat else ('rounded-2xl ring-1 ' + ('ring-white/10' if dark else 'ring-black/10'))} ${'rotate-2' if (rotate or (not flat and not shot2)) else ''} ${'max-h-[40vh] object-contain' if shot2 else ''}" src="/static/img/${shot}.${shotext}" alt="${name} screenshot" style="filter: drop-shadow(0 30px 60px rgba(0, 0, 0, ${'0.55' if dark else '0.2'}))")
+                        -if shot2
+                            img(class="w-full ${'' if flat else ('rounded-2xl ring-1 ' + ('ring-white/10' if dark else 'ring-black/10'))} max-h-[40vh] object-contain" src="/static/img/${shot2}.${shot2ext}" alt="${name} ${shot2}" style="filter: drop-shadow(0 30px 60px rgba(0, 0, 0, ${'0.55' if dark else '0.2'}))")
 
+# Press kit building blocks. Shared across every /<app>/presskit page so the
+# repeated grid/video markup and image styling live in one place.
 
+# A screenshot grid cell. The image fits (full image shown), it does not fill/crop.
+- def pk_shot(img, alt, ext='png', cls='')
+    a(class="block rounded-lg overflow-hidden shadow-lg ${cls}" href="/static/img/${img}.${ext}" target="_blank")
+        img.w-full src="/static/img/${img}.${ext}" alt="${alt}"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# A captioned demo video. titlecls/desccls let dark presskits (rcmd) override text colors.
+- def pk_video(src, title, desc, poster='', titlecls='text-gray-700', desccls='text-gray-500')
+    .space-y-2
+        h3(class="text-lg ${titlecls}") ${title}
+        p(class="text-sm ${desccls}") ${desc}
+        video.w-full.rounded-lg.shadow-lg (controls muted loop playsinline preload="metadata" poster=${poster})
+            source src="/static/video/${src}" type="video/mp4"
 

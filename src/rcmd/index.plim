@@ -26,8 +26,9 @@ html lang="en"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-red-hot : lowtech
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
-                a.text-sm.md:text-base.ml-4.!text-orange-700.!bg-black/50.border.border-white/30.hover:border-white/60 href="/rcmd/classic" rcmd (classic)
+                a.text-sm.md:text-base.ml-4.hidden.md:inline.!text-orange-700.!bg-black/50.border.border-white/30.hover:border-white/60 href="/rcmd/classic" rcmd (classic)
                 a.text-sm.md:text-base.ml-4 href="/rcmd/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/rcmd/presskit" Press Kit
                 a.text-sm.md:text-base.ml-4 href="/contact?app=rcmd" Contact
 
         section#hero.min-w-[100vw].min-h-[95vh].max-h-[95vh].flex-center.flex-col.relative.pb-20.[@media(min-height:800px)]:pb-[160px].[@media(min-height:950px)]:pb-[240px]
@@ -126,6 +127,19 @@ html lang="en"
                         | Press ⌘ Cmd-backtick to cycle between windows of the same app, even if they’re on different Spaces.
 
                 video.md:w-1/2.h-max.rounded-xl.object-fit (autoplay loop muted playsinline width="751" height="452" src="/static/video/rcmd-demo-tab-cycle-search.mp4")
+
+            #spaces.py-12.flex.w-screen.max-w-[576px].md:w-auto.md:max-w-[1400px].flex-col.md:flex-row-reverse.space-y-10.md:space-y-0.md:space-x-10.md:space-x-reverse.px-4
+                .md:w-1/2.text-left
+                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.md:text-2xl.mb-4 Instant Space Switching
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Hold `b.key ⌘ rcmd` and press `b.key 1…9` to jump to any Space instantly, no sliding animations to slow you down.
+                    .text-base.lg:text-lg.text-gray-white.mb-4
+                        Hold `b.key ⌘ ralt` and press `b.key 1…9` to move the focused window to that Space and switch to it immediately.
+                    h4.text-gray-500 Adjacent Spaces
+                    p.text-sm.lg:text-base.text-gray-400
+                        | Press `b.key ⌘ rcmd` + `b.key &lsqb;`/`b.key &rsqb;` to jump to the adjacent Space on the left or right, which can also switch between fullscreen apps.
+
+                video.md:w-1/2.h-max.rounded-xl.object-fit (autoplay loop muted playsinline width="800" height="487" src="/static/video/rcmd-demo-space-switching.mp4")
 
             #keylume.py-12.flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.space-y-10.md:space-y-0.px-4
                 h1.text-3xl.text-center.lg:text-4xl.mb-10 On-screen key hints
@@ -299,8 +313,8 @@ html lang="en"
                 md : faq-rcmd
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
-            - call cls="text-gray-100 hidden md:block" defs:copyright_line
-            .links.w-full.md:w-auto
+            - call cls="text-gray-100 text-xs md:text-base whitespace-nowrap" defs:copyright_line
+            .links.w-auto
                 - call defs:socials
 
         -call position="after" defs:anchors
@@ -410,17 +424,19 @@ html lang="en"
                 img
                     max-width 700px
                     max-height 300px
-                    transition: all .15s ease-out
+                    transition: transform .15s ease-out
                     border-radius 8px
+                    position relative
+                    z-index 0
 
                     +mobile()
                         max-height 60vh
                         max-width 80vw
 
                     &:hover
-                        max-width 1000px
-                        max-height 600px
-                        transition: all .1s ease-out
+                        transform scale(1.45)
+                        z-index 10
+                        transition: transform .1s ease-out
 
             .links
                 a

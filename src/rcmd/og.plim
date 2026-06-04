@@ -1,0 +1,29 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="rcmd" domain="lowtechguys.com" description="Reimagined Command-Tab. App switching at the speed of thought" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" canonical="/rcmd/og" defs:head
+
+    body.bg-gray-900.overflow-hidden
+        section#og.w-screen.h-screen.relative.overflow-hidden.flex.items-center.justify-center.gap-16.px-20
+            .relative.z-10.flex.flex-col.items-start.shrink-0
+                img#app-icon.w-44.h-44.filter src="/static/img/rcmd-icon.png" alt="rcmd app icon"
+                h1.text-7xl.text-red-hot.monospaced.mt-8.drop-shadow-xl.leading-none rcmd
+                h2.text-4xl.text-white.mt-8.font-medium Reimagined Command-Tab
+                h3.text-2xl.text-gray-400.mt-2 App switching at the speed of thought
+
+            .relative.z-10.shrink-0
+                img#shot.w-[600px].max-w-[50vw].rounded-2xl.shadow-2xl.ring-1.ring-white/10.rotate-2 src="/static/img/rcmd-theme-round.png" alt="rcmd app switcher with the round theme"
+
+        -stylus
+            @import "stylus/base"
+
+            #og
+                background: radial-gradient(55% 70% at 32% 42%, rgba(244, 63, 94, 0.22), transparent 70%), var(--color-gray-900)
+
+            #app-icon
+                filter: drop-shadow(0 0px 1px rgba(244, 63, 94, 0.45)) drop-shadow(0 16px 34px rgba(0, 0, 0, 0.7))
+
+            #shot
+                filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55))

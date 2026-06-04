@@ -18,6 +18,7 @@ html lang="en"
             .links
                 a.text-sm.md:text-base.ml-4.hidden.md:inline href="/" Other apps
                 a.text-sm.md:text-base.ml-4 href="/cling/privacy" Privacy
+                a.text-sm.md:text-base.ml-4 href="/cling/presskit" Press Kit
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Cling" Contact
 
         section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-2

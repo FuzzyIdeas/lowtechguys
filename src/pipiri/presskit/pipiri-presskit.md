@@ -45,11 +45,14 @@ Pipiri uses Apple's ScreenCaptureKit to capture individual windows directly, wit
 
 ## Included assets
 
-- `pipiri-icon.png` -- App icon (1280x1280)
-- `pipiri-icon-shadow.png` -- App icon with shadow
-- `pipiri-screenshot.png` -- App screenshot
-- `pipiri-ui.png` -- UI screenshot
-- `pipiri-demo.mp4` -- Demo video
+- `pipiri-icon.png`: App icon (1280x1280)
+- `pipiri-icon-shadow.png`: App icon with shadow
+- `pipiri-screenshot.png`: App screenshot
+- `pipiri-ui.png`: UI screenshot
+- `pipiri-demo.mp4`: Demo video
+- `pipiri-quick-region-capture.mp4`: Quick region capture demo
+- `pipiri-idle-detection.mp4`: Idle detection demo
+- `pipiri-floating-reference.mp4`: Floating reference demo
 
 ## Contact
 
