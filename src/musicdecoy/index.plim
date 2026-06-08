@@ -96,8 +96,6 @@ html lang="en"
                         [noTunes](https://github.com/tombonez/noTunes) which listens for launched apps and kills Music as soon as it is launched
 
                         > Problem: *it does use a tiny bit of CPU in the background* although checking for launched apps is very little work
-                        >
-                        > Advantage: *it can launch a custom app on Play* which this app can't do
 
                         ## Uh.. how do I quit this app?
 
