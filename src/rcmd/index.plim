@@ -9,13 +9,6 @@ html lang="en"
         - call title="rcmd - Switch apps instantly using the ⌘ Right Command key" domain="lowtechguys.com" description="Reimagined Command-Tab. App switching at the speed of thought" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
 
-        meta property="og:video" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
-        meta property="og:video:url" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
-        meta property="og:video:secure_url" content="https://lowtechguys.com/static/video/rcmd-demo-app-switch-assign.mp4"
-        meta property="og:video:type" content="video/mp4"
-        meta property="og:video:width" content="1200"
-        meta property="og:video:height" content="630"
-
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
