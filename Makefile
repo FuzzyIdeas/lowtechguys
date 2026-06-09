@@ -163,6 +163,11 @@ public/cling/presskit/cling-presskit.zip: src/cling/presskit/cling-presskit.md s
 	 cd "$$tmp" && zip -j $(CURDIR)/$@ * && \
 	 rm -rf "$$tmp"
 
+# Subset the Hugeicons font to only the icons used in src and self-host it, so no
+# page blocks on cdn.hugeicons.com. Outputs are committed; run after adding icons.
+icons:
+	@python3 scripts/build-hugeicons.py
+
 presskits: crank-presskit-zip pipiri-presskit-zip keylume-presskit-zip rcmd-presskit-zip clop-presskit-zip cling-presskit-zip
 
 all: html xml css presskits
