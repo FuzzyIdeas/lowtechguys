@@ -1,10 +1,5 @@
 - namespace name="defs" defs.plim
 
----!
-    class CLS:
-        mode_heading = "text-2xl md:text-xl lg:text-2xl xl:text-3xl font-sans font-extrabold text-white"
-        section = " p-6 my-8 mx-auto w-[95vw] max-w-[95vw] md:w-[1200px] text-gray-100 bg-black bg-opacity-70 rounded-lg text-left"
-
 doctype html
 html lang="en"
     head
@@ -25,46 +20,6 @@ html lang="en"
             h5.text-gray-800 on Studio Display and Pro Display XDR
             h3.text-black StudioICC does not collect any personal information.
 
-            section.${CLS.section}
-                h1.${CLS.mode_heading} User Data
-                -md
-                    StudioICC does not collect, store or sell any user identifiable data.
-
-                    We don't care who you are.
-
-            section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold Behavioral Data
-                -md
-                    StudioICC does not collect, store or sell any behavioral data.
-
-                    We don't care how you use the app as long as it works for you.
-
-            section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold Error Reporting
-                -md
-                    StudioICC uses [Sentry](https://sentry.io/) for collecting crash data.
-
-                    The data may contain:
-
-                    * Device info *(OS version, Mac type)*
-                    * IP Address
-                    * Email
-                        - *(only if you explicitly gave your consent to be contacted by us when you bought a Pro license)*
-
-                    ![Paddle email consent](/static/img/paddle-consent.webp)
-
-                    The data is only used for fixing StudioICC errors.
-
-            section.${CLS.section}
-                h1.${CLS.mode_heading}.font-sans.font-extrabold Licensing
-                -md
-                    StudioICC uses [Paddle](https://paddle.com/) for checkout and licensing.
-
-                    Please check their privacy policy for data they collect: [Paddle Privacy Policy](https://www.paddle.com/legal/privacy)
-
-                    **StudioICC doesn't handle any payment info.**
-
-
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             - call cls="text-gray-500 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
@@ -77,15 +32,3 @@ html lang="en"
                 a
                     background-color alpha(black, 0.7)
                     color white
-
-            section
-                img
-                    max-width 50%
-                    margin 2rem auto
-                    border-radius 1.5rem
-                    box-shadow 0 1px 28px 0 rgba(0 0 0, 0.2), 0 1px 2px -1px rgba(0 0 0, 0.2)
-                em
-                    font-style italic
-                    color alpha(white, 0.6)
-                strong, a
-                    color var(--color-rose-300)

@@ -7,8 +7,6 @@ doctype html
 html lang="en"
     head
         - call title="StudioICC - Apply color profiles to Studio Display and Pro Display XDR" domain="lowtechguys.com" description="Apply and persist .icc color profiles on Studio Display and Pro Display XDR" favicon="/studioicc/favicon.ico" icon="studioicc-icon" icon_size="1280" screenshot="studioicc-screenshot" color="rgb(245 245 244))" canonical="/studioicc/" defs:head
-        -if not DEV
-            script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
     body.bg-stone-100.dark:bg-stone-900.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
@@ -30,19 +28,8 @@ html lang="en"
                     a.btn.text-white.dark:text-black.bg-rose-950.dark:bg-rose-100.!min-h-[50px].!h-[50px].hover:text-white.hover:dark:text-black.hover:bg-rose-900.hover:dark:bg-white.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/StudioICC.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version `span.text-yellow-400.dark:text-gray-700 v1.2`
-                    / a.text-xs.mt-1.text-stone-500.dark:text-stone-300.decoration-dotted href="#pro" Free 14-day trial
-                    p.text-xs.mt-1.text-stone-500.dark:text-stone-300.underline.decoration-1.decoration-dotted Free 14-day trial
-                .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
-                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="862604"
-                        .flex.flex-col.items-start
-                            span.text-lg.!leading-4.mt-1 Buy a license
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 $40`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version
                     a.text-xs.mt-1.text-stone-500.dark:text-stone-300.decoration-dotted href="https://files.lowtechguys.com/ReleaseNotes/CHANGELOG.html" Changelog
-            -stylus
-                a#btn-paddle-hero.btn-paddle.paddle_button
-                    background: var(--color-stone-700) !important
-                    box-shadow: var(--shadows-xl) !important
 
         section#details.flex-center.flex-col.pb-20.space-y-24
             -call img="studioicc-main-ui" ext="jpeg" factor=${0.9} mobile_factor=${0.9} pcls="w-[900px] max-w-[90vw]" icls="rounded-2xl shadow-2xl w-full" alt="screenshot of the Activity Monitor showing how the app uses zero resources" defs:image
@@ -53,23 +40,7 @@ html lang="en"
             - call cls="text-gray-500 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto.flex.items-center.gap-3.md:gap-4
                 a.text-red-hot href="/studioicc/terms" Terms & Conditions
-                a.text-red-hot href="/studioicc/eula" EULA
                 - call defs:socials
-        -coffee
-            url = new URL(location)
-            coupon = url.searchParams.get('coupon')
-
-            if coupon
-                document.getElementById('btn-paddle-hero')?.setAttribute('data-coupon', coupon)
-                document.getElementById('btn-paddle-footer')?.setAttribute('data-coupon', coupon)
-
-            setupPaddle = () ->
-                return unless Paddle?
-                clearInterval paddleObserver
-                Paddle.Setup({vendor: 122873})
-
-            paddleObserver = setInterval setupPaddle, 100
-
         -stylus
             @import "stylus/base"
 
