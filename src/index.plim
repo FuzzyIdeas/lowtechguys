@@ -188,17 +188,17 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                             Hide that pesky yellow dot
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
                             | in the corner of your screen
-                    a.${CLS.appcontainer} href="/volum/" title="Volum"
-                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
-                        .zstack.order-first
-                            icon.w-[7rem].h-[7rem].filter.drop-shadow-lg : volum
-                            #volum-knob.w-[3.92rem].h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
-                                #volum-knob-indicator.z-10
-                                #volum-knob-border.z-10
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Home lights and sounds
-                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | at your fingertips
+                    / a.${CLS.appcontainer} href="/volum/" title="Volum"
+                    /     h3.text-2xl.text-mauve-gray.dark:text-stone-200 Volum
+                    /     .zstack.order-first
+                    /         icon.w-[7rem].h-[7rem].filter.drop-shadow-lg : volum
+                    /         #volum-knob.w-[3.92rem].h-[3.92rem].z-10.shadow-lg.shadow-mauve-black/30
+                    /             #volum-knob-indicator.z-10
+                    /             #volum-knob-border.z-10
+                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                    /         Home lights and sounds
+                    /     p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                    /         | at your fingertips
 
 
         hr.opacity-20

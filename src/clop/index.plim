@@ -9,6 +9,7 @@ html.overflow-x-hidden lang="en"
     head
         - call title="Clop - Image, video, PDF and clipboard optimiser" domain="lowtechguys.com" description="Image, video, PDF and clipboard optimiser. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
+
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
@@ -39,7 +40,7 @@ html.overflow-x-hidden lang="en"
                     a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Buy Clop Pro
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 $15`
+                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 €15`
                     a.text-xs.mt-1.text-stone-500.decoration-dotted href="#pro" Why Clop Pro?
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
@@ -559,6 +560,26 @@ html.overflow-x-hidden lang="en"
 
         -stylus
             @import "stylus/base"
+
+            blockquote
+                background-color alpha(black, 0.05)
+                color black
+                padding 0.5rem
+                border-radius 0.5rem
+                margin 1rem 0
+                font-size 0.85rem
+                font-style italic
+                font-weight 300
+                line-height 1.5
+                > *:first-child
+                    margin-top 0
+                > *:last-child
+                    margin-bottom 0
+                > *:only-child
+                    margin 0
+                em
+                    color var(--color-amber-800)
+
 
             #faq
                 .anchor-headings

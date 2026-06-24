@@ -4,7 +4,7 @@
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
 
 doctype html
-html lang="en"
+html.overflow-x-hidden lang="en"
     head
         - call title="rcmd - Switch apps instantly using the ⌘ Right Command key" domain="lowtechguys.com" description="Reimagined Command-Tab. App switching at the speed of thought" favicon="/rcmd/favicon.ico" icon="rcmd-icon" icon_size="1280" screenshot="rcmd-screenshot" color="rgb(28, 25, 23)" gif="https://files.lowtechguys.com/rcmd-og.gif" canonical="/rcmd/" defs:head
         link href="/static/css/code.css" rel="stylesheet"

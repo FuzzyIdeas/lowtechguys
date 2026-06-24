@@ -164,19 +164,32 @@ After that you can press `Cmd-V` to paste it in a [Discord chat](https://discord
 
 ## License doesn't stay activated
 
-First thing to try is to delete the license files, restart the app and retry activating.
+### Possible causes
 
-To delete the files, press `Cmd-Shift-G` in Finder, paste this path and press Enter: `~/Library/Application Support/rcmd/`
+- Tampered bundle *(usually because of app cleaners deleting files from inside the app)*
+- App can't access internet *(usually because of LuLu or Little Snitch, or VPN/DNS)*
+- Corrupt license files
 
-Then delete all files inside that folder and restart the app.
 
-Another way is using the Terminal:
+#### Resetting app and license files
 
-```sh
-rm "$HOME/Library/Application Support/rcmd/"*
-killall rcmd
-open -a rcmd
-```
+- delete the license files from `~/Library/Application Support/rcmd/`
+- delete the app from `Applications`
+- restart the app and retry activating
+
+> First **quit the app** before doing any of these changes.
+>
+> To delete the license files, press `Cmd-Shift-G` in Finder, paste this path and press Enter:
+>
+> ```shell
+> ~/Library/Application Support/rcmd/
+> ```
+>
+> Delete the files in that folder.
+>
+> Re-download [the app](https://files.lowtechguys.com/releases/rcmd.dmg), open the DMG and move it to `Applications` replacing the existing app.
+>
+> Launch the app and activate.
 
 #### Make sure Paddle can be reached
 
@@ -202,4 +215,6 @@ If the issue persists, try checking if Paddle's servers are reachable by your Ma
 
 *If it shows a browser error or if it keeps loading continuously, then the domain is blocked and that's preventing activation and license checking.*
 
-Another thing to check is that you didn't block rcmd's access to the internet with something like Little Snitch or LuLu.
+#### Firewalls
+
+Try disabling LuLu, Little Snitch or try adding rcmd to the exclusion list of these firewalls.
