@@ -29,16 +29,7 @@ html lang="en"
                 a.btn.text-black.bg-amber-200.hover:bg-amber-100.!rounded-xl.!py-3.shadow-xl href="https://files.lowtechguys.com/releases/Meander-1.0.0.dmg"
                     .flex.flex-col.items-start
                         span.text-lg.!leading-5.mt-1 Download `b.opacity-50.text-sm v1.0.0`
-                        span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 166 MB `span.opacity-60 ·` every sound included
-                .mt-3.font-mono.text-xs.text-gray-500 macOS 14+ `span.opacity-60 ·` Apple silicon `span.opacity-60 ·` free
-
-        section#what.flex-center.flex-col.pb-24.px-4.max-w-[620px].text-left.space-y-4
-            .text-base.text-gray-300
-                Press a number and the trackpad becomes that instrument. How hard you press and how much of a fingertip lands is what the note comes out as, so a chord held flat sounds nothing like one tapped with a nail.
-            .text-base.text-gray-300
-                Press `b.text-amber-200 N` for a muse: a backing groove that writes itself and keeps moving through an arrangement. Play over it, loop a phrase onto `b.text-amber-200 Return`, and when something good happens press `b.text-amber-200 K`. The recording was already running, so the take arrives trimmed to the parts you played, as m4a, wav and MIDI.
-            .text-base.text-gray-500.text-sm
-                Nothing is fetched and nothing has to be installed first. Every sample and the encoder that renders your takes ship inside the app.
+                        span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 166 MB `span.opacity-60 ·` macOS 14+ `span.opacity-60 ·` Apple silicon
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             - call cls="text-gray-100 hidden md:block" defs:copyright_line
