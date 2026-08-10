@@ -247,26 +247,35 @@ dev:
 #
 # `-d` makes entr exit as soon as a file appears in a directory it is watching,
 # which is the documented way to ask for a restart. The loop gives it the fresh
-# list. entr uses status 2 for that exit and something else for Ctrl-C, so the
-# loop ends when a human ends it rather than respawning under their fingers.
+# list.
+#
+# It restarts on ANY exit rather than only on the one entr uses for -d. A file
+# that goes away between `rg --files` and entr opening it is an ordinary exit
+# with an error, and it happens whenever files churn: deleting one killed both
+# watchers here, and a watcher that dies on a deletion is a watcher nobody can
+# trust. The trap is what stops it, so Ctrl-C still ends the loop rather than
+# respawning under the hand that pressed it, and the sleep keeps a permanent
+# failure from spinning.
 WATCH_FILES=rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md
 
 watch: export NODE_ENV=production
 watch: export TAILWIND_MODE=build
 watch: export PYTHONWARNINGS=ignore
 watch:
-	@while true; do \
+	@trap 'exit 0' INT; \
+	while true; do \
 	  $(WATCH_FILES) | entr -d -s 'test -f DEVMODE || make -j build'; \
-	  [ $$? -eq 2 ] || break; \
+	  sleep 1; \
 	done
 
 watch-dev: export NODE_ENV=production
 watch-dev: export TAILWIND_MODE=build
 watch-dev: export PYTHONWARNINGS=ignore
 watch-dev:
-	@while true; do \
+	@trap 'exit 0' INT; \
+	while true; do \
 	  $(WATCH_FILES) | entr -d -s 'make -j build'; \
-	  [ $$? -eq 2 ] || break; \
+	  sleep 1; \
 	done
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
