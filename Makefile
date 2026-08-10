@@ -173,7 +173,7 @@ presskits: crank-presskit-zip pipiri-presskit-zip keylume-presskit-zip rcmd-pres
 all: html xml css presskits
 
 # OG / social-card images (1200x630). Override CHROME/OG_PORT/OG_SCALE as needed.
-OG_APPS := rcmd clop cling crank pipiri keylume volum grila gammadimmer istherenet musicdecoy startupfolder studioicc yellowdot zoomhider
+OG_APPS := rcmd clop cling crank pipiri keylume meander volum grila gammadimmer istherenet musicdecoy startupfolder studioicc yellowdot zoomhider
 OG_HTML := $(foreach a,$(OG_APPS),public/$(a)/og.html)
 CHROME ?= /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
 OG_PORT ?= 8765
@@ -240,17 +240,34 @@ dev:
 	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j html css js'"
 
 
+# entr is handed a file list once and watches those inodes for as long as it
+# runs, so a page added after it started is invisible to it: `src/meander` sat
+# there for an hour with every edit firing nothing, and only `make rebuild`
+# (which touches a file entr already knew about) published it.
+#
+# `-d` makes entr exit as soon as a file appears in a directory it is watching,
+# which is the documented way to ask for a restart. The loop gives it the fresh
+# list. entr uses status 2 for that exit and something else for Ctrl-C, so the
+# loop ends when a human ends it rather than respawning under their fingers.
+WATCH_FILES=rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md
+
 watch: export NODE_ENV=production
 watch: export TAILWIND_MODE=build
 watch: export PYTHONWARNINGS=ignore
 watch:
-	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'test -f DEVMODE || make -j build'
+	@while true; do \
+	  $(WATCH_FILES) | entr -d -s 'test -f DEVMODE || make -j build'; \
+	  [ $$? -eq 2 ] || break; \
+	done
 
 watch-dev: export NODE_ENV=production
 watch-dev: export TAILWIND_MODE=build
 watch-dev: export PYTHONWARNINGS=ignore
 watch-dev:
-	rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j build'
+	@while true; do \
+	  $(WATCH_FILES) | entr -d -s 'make -j build'; \
+	  [ $$? -eq 2 ] || break; \
+	done
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@
