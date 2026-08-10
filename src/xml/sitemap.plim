@@ -5,8 +5,14 @@
     from datetime import datetime
     from utils import DEPLOY_URL
 
+    # Pages that exist but should not be found. Anything under one of these
+    # prefixes is reachable only by someone who was handed the link.
+    UNLISTED = ("meander",)
+
     def pages():
         for page in glob("public/*.html") + glob("public/**/*.html"):
+            if page[len("public/"):].startswith(UNLISTED):
+                continue
             srcpage = page.replace("public", "src").replace(".html", ".plim")
             last_modified_time = os.path.getmtime(srcpage)
             iso_formatted_time = datetime.fromtimestamp(last_modified_time).strftime("%Y-%m-%dT%H:%M:%S+02:00")

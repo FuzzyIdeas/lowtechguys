@@ -19,6 +19,7 @@ module.exports = {
     './public/cling/*.html',
     './public/pipiri/*.html',
     './public/crank/*.html',
+    './public/meander/*.html',
     './public/crank/presskit/*.html',
     './public/pipiri/presskit/*.html',
     './public/keylume/presskit/*.html',

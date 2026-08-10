@@ -1,0 +1,210 @@
+---!
+    import os
+    from datetime import datetime
+    from utils import WIDTHS, DEV, DEPLOY_URL, imgurl, srcset, images
+
+    CURRENT_YEAR = datetime.now().year
+
+- def head(title, domain, description='', favicon='/favicon.ico', icon='icon', icon_size='', screenshot='screenshot', color='rgb(231, 190, 130)', gif='', webp='', canonical='')
+    title ${title}
+    link href="${favicon}" rel="shortcut icon"
+    link href="/static/css/app.css" rel="stylesheet"
+    link href="/static/fonts/hugeicons/hugeicons.css" rel="stylesheet"
+    -if canonical
+        link rel="canonical" href="https://${domain}${canonical}"
+    meta rel="canonical" href="https://${domain}"
+    meta charset="utf-8"
+    meta name="viewport" content=(
+      "width=device-width, "
+      "initial-scale=1.0, " +
+      "maximum-scale=6.0, " +
+      "shrink-to-fit=no")
+    meta itemprop="description" content="${description}"
+    meta itemprop="name" content="${title}"
+    meta name="apple-mobile-web-app-status-bar-style" content="black"
+    meta name="description" content="${description}"
+
+    -if gif
+        meta itemprop="image" content="${gif}"
+        meta name="image" content="${gif}"
+        meta property="og:image" content="${gif}"
+        meta property="og:image:type" content="image/gif"
+    -elif webp
+        meta itemprop="image" content="${webp}"
+        meta name="image" content="${webp}"
+        meta property="og:image" content="${webp}"
+        meta property="og:image:type" content="image/webp"
+    -else
+        meta itemprop="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta name="image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+        meta property="og:image" content="https://img.panaitiu.com/_/1200/plain/${DEPLOY_URL}/static/img/${screenshot}.png"
+
+    meta name="mobile-web-app-capable" content="no"
+    meta name="msapplication-TileColor" content="${color}"
+    meta name="msapplication-TileImage" content="https://${domain}/static/img/${icon}.png"
+    meta name="theme-color" content="${color}"
+    meta property="og:description" content="${description}"
+    meta property="og:site_name" content="${title}"
+    meta property="og:title" content="${title}"
+    meta property="og:type" content="website"
+    meta property="og:url" content="https://${domain}"
+    meta name="twitter:site" content="@lowtechguys"
+    meta name="twitter:title" content="${title}"
+    meta name="twitter:description" content="${description}"
+    meta name="twitter:card" content="summary_large_image"
+    meta property="twitter:image" content="${imgurl(screenshot, 1200, convert_to='webp')}"
+
+    -if not DEV
+        script async="true" defer="true" data-domain="${domain}" file-types="dmg,pkg,zip,pdf" src="https://plausible.alinpanaitiu.com/js/plausible.hash.file-downloads.outbound-links.js"
+    -coffee
+      if location.host != '${domain}'
+        domain = (location.host || 'localhost').split(':')[0]
+        document.write "<script src=\"http://localhost:35729/livereload.js?snipver=1\"><\/script>"
+
+
+- def copyright_line(cls='text-gray-500 hidden md:block')
+    h4(class="font-extralight ${cls}") The low-tech guys © ${CURRENT_YEAR}
+
+- def socials(cls='text-gray-500', size='w-5 h-5')
+    nav(class="flex items-center gap-4 ml-auto ${cls}" aria-label="The low-tech guys on social media")
+        a(class="transition hover:opacity-60" href="https://linktr.ee/thelowtechguys" target="_blank" rel="me noopener" aria-label="Linktree" title="Linktree")
+            svg(class="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+                path d="M12 22V9"
+                path d="M9.00195 18.002C7.3451 18.002 6.00195 16.6234 6.00195 14.9665C4.30581 14.7239 3.00195 13.2652 3.00195 11.502C3.00195 10.0052 3.94147 8.7279 5.26293 8.22759C5.09522 7.85339 5.00195 7.43856 5.00195 7.00195C5.00195 5.3451 6.3451 4.00195 8.00195 4.00195C8.3922 4.00195 8.76505 4.07647 9.10703 4.21204C9.45374 2.93842 10.6185 2.00195 12.002 2.00195C13.3854 2.00195 14.5502 2.93842 14.8969 4.21204C15.2389 4.07647 15.6117 4.00195 16.002 4.00195C17.6588 4.00195 19.002 5.3451 19.002 7.00195C19.002 7.43856 18.9087 7.85339 18.741 8.22759C20.0624 8.7279 21.002 10.0052 21.002 11.502C21.002 13.2653 19.698 14.724 18.0017 14.9665C18.0017 16.6234 16.6588 18.002 15.002 18.002"
+                path d="M12 15L14.5 12.5"
+                path d="M12 13L9.5 10.5"
+                path d="M10 22H14"
+        a(class="transition hover:opacity-60" href="https://mastodon.social/@thelowtechguys" target="_blank" rel="me noopener" aria-label="Mastodon" title="Mastodon")
+            svg(class="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+                path d="M17 13.5V8C17 6.61929 15.8807 5.5 14.5 5.5C13.1193 5.5 12 6.61929 12 8M12 8V11.5M12 8C12 6.61929 10.8807 5.5 9.5 5.5C8.11929 5.5 7 6.61929 7 8V13.5"
+                path d="M13 16.9954C15.0099 16.9954 16.89 16.6876 18.4949 16.1525C20.1275 15.6081 21 13.9512 21 12.2302V7.52349C21 5.34784 19.8297 3.2779 17.7281 2.715C16.0259 2.25905 14.0744 2 12 2C9.9256 2 7.97414 2.25905 6.27189 2.715C4.17033 3.2779 3 5.34785 3 7.52349V14.4961C3 22.4937 11 21.9938 11 21.9938C13.5 21.9938 15 21 15 21V20C15 20 13.5 20.4943 11 20.4943C5.68009 20.4943 7.06011 15.9957 7.06011 15.9957C8.75781 16.627 10.8012 16.9954 13 16.9954Z"
+        a(class="transition hover:opacity-60" href="https://x.com/thelowtechguys" target="_blank" rel="noopener" aria-label="Twitter / X" title="Twitter / X")
+            svg(class="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round")
+                path d="M2 18.5C3.76504 19.521 5.81428 20 8 20C14.4808 20 19.7617 14.8625 19.9922 8.43797L22 4.5L18.6458 5C17.9407 4.37764 17.0144 4 16 4C13.4276 4 11.5007 6.51734 12.1209 8.98003C8.56784 9.20927 5.34867 7.0213 3.48693 4.10523C2.25147 8.30185 3.39629 13.3561 6.5 16.4705C6.5 17.647 3.5 18.3488 2 18.5Z"
+        a(class="transition hover:opacity-60" href="https://www.instagram.com/thelowtechguys" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram")
+            svg(class="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round")
+                path d="M3 12C3 7.75736 3 5.63604 4.31802 4.31802C5.63604 3 7.75736 3 12 3C16.2426 3 18.364 3 19.682 4.31802C21 5.63604 21 7.75736 21 12C21 16.2426 21 18.364 19.682 19.682C18.364 21 16.2426 21 12 21C7.75736 21 5.63604 21 4.31802 19.682C3 18.364 3 16.2426 3 12Z"
+                path d="M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z"
+                path d="M17.3748 6.75024H17.2498M17.4998 6.75024C17.4998 6.88832 17.3878 7.00024 17.2498 7.00024C17.1117 7.00024 16.9998 6.88832 16.9998 6.75024C16.9998 6.61217 17.1117 6.50024 17.2498 6.50024C17.3878 6.50024 17.4998 6.61217 17.4998 6.75024Z"
+
+- def lazyvideoset(video, cls, webm=False, poster=None, controls=True, prefix='/static/video/')
+    video.${cls} (preload="none" muted loop disablePictureInPicture playsinline ${"controls" if controls else ""} poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
+
+- def videoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}${video}-h264.mp4" type="video/mp4"
+
+- def smallvideoset(video, cls, webm=False, poster=None, prefix='/static/video/')
+    video.${cls} (autoplay muted loop disablePictureInPicture playsinline poster=${poster or ""} )
+        source src="${prefix}small/${video}-h265.mp4" type='video/mp4; codecs=hvc1'
+        -if webm
+            source src="${prefix}small/${video}-vp9.webm" type='video/webm; codecs=vp9'
+        source src="${prefix}small/${video}-h264.mp4" type='video/mp4'
+
+-def image(img, ext='png', width=1920, factor=0.4, mobile_factor=1, pcls='', icls='', alt='', fit='cover')
+    picture.object-${fit}.${pcls}
+        -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} self:sources
+        img.object-${fit}.${icls} alt=${alt} srcset=${srcset(img, ext, width, factor)} title=${os.path.split(img)[-1]}
+
+-def images(folder, ext='png', width=1920, factor=0.4, mobile_factor=1, acls='', pcls='', icls='')
+    -for img in images(folder, ext)
+        a.${acls} href="/static/img/${urllib.parse.quote(img)}.${ext}"
+            -call img=${img} ext=${ext} width=${width} factor=${factor} mobile_factor=${mobile_factor} pcls=${pcls} icls=${icls} self:image
+
+-def sources(img, ext='png', width=1920, factor=0.4, mobile_factor=1)
+    -if not DEV
+        source type="image/avif" srcset=${srcset(img, ext, width, mobile_factor, convert_to="avif")} media="(max-width: 767px)"
+        source type="image/avif" srcset=${srcset(img, ext, width, factor, convert_to="avif")} media="(min-width: 768px)"
+
+        source type="image/webp" srcset=${srcset(img, ext, width, mobile_factor, convert_to="webp")} media="(max-width: 767px)"
+        source type="image/webp" srcset=${srcset(img, ext, width, factor, convert_to="webp")} media="(min-width: 768px)"
+    source type="image/${ext}" srcset=${srcset(img, ext, width, mobile_factor)} media="(max-width: 767px)"
+    source type="image/${ext}" srcset=${srcset(img, ext, width, factor)} media="(min-width: 768px)"
+
+- def anchors(position)
+    -coffee
+        tagNames = [
+          'h1:not(.no-anchor)'
+          'h2:not(.no-anchor)'
+          'h3:not(.no-anchor)'
+          'h4:not(.no-anchor)'
+          'h5:not(.no-anchor)'
+          'h6:not(.no-anchor)'
+        ]
+        tagSelector = tagNames.join()
+        elements = document.querySelectorAll(tagSelector)
+
+        createAnchor = (href) ->
+          link = document.createElement('a')
+          link.className = 'anchor-headings'
+          link.href = href
+          link.appendChild document.createTextNode('#')
+          link
+
+        for element in elements
+          id = element.id
+          if not id
+            # Check if heading has any nested elements with id
+            innerElement = element.querySelector('[id]')
+            if innerElement
+              id = innerElement.id
+
+          if not id
+            continue
+
+          href = '#' + id
+          existingAnchor = element.querySelector('[href]')
+
+          if existingAnchor
+            continue
+
+          anchor = createAnchor(href)
+          position = '${position}'
+          if position == 'before'
+            element.insertBefore anchor, element.firstChild
+          else
+            element.appendChild anchor
+
+- def og(app, name, tag1, tag2='', accent='255, 255, 255', ink='', bg='#111827', dark='1', shot='', shotext='png', flat='', rotate='', shotw='', shot2='', shot2ext='png', tag1size='text-4xl', tag2size='text-2xl', font='font-bold', size='text-7xl', screenshot='', spacing='px-16 gap-12', flatSpacing='px-12 gap-8')
+    doctype html
+    html lang="en"
+        head
+            - call title="${name}" domain="lowtechguys.com" description="${tag1} ${tag2}" favicon="/${app}/favicon.ico" icon="${app}-icon" icon_size="1280" screenshot="${screenshot or (app + '-screenshot')}" color="${bg}" canonical="/${app}/og" self:head
+
+        body(class="overflow-hidden" style="background: ${bg}")
+            section(id="og" class="w-screen h-screen relative overflow-hidden flex items-center justify-center ${flatSpacing if (shot and flat) else (spacing if shot else 'px-16')}" style="background: radial-gradient(55% 70% at 32% 42%, rgba(${accent}, 0.22), transparent 70%), ${bg}")
+                div(class="relative z-10 flex flex-col ${('items-start ' + ('max-w-[420px]' if flat else 'max-w-[460px]')) if shot else 'items-center text-center'}")
+                    img#og-icon.w-44.h-44 src="/static/img/${app}-icon.png" alt="${name} app icon" style="filter: drop-shadow(0 0 1px rgba(${accent}, 0.5)) drop-shadow(0 16px 34px rgba(0, 0, 0, ${'0.7' if dark else '0.22'}))"
+                    h1(class="${size} mt-8 drop-shadow-xl leading-none ${font} ${'' if shot else 'whitespace-nowrap'}" style="color: rgb(${ink or accent})") ${name}
+                    h2(class="${tag1size} mt-8 font-medium leading-tight ${'text-white' if dark else 'text-gray-900'} ${'' if shot else 'whitespace-nowrap'}") ${tag1}
+                    -if tag2
+                        h3(class="${tag2size} mt-2 leading-snug ${'text-gray-400' if dark else 'text-gray-600'} ${'' if shot else 'whitespace-nowrap'}") ${tag2}
+                -if shot
+                    div(class="relative z-10 shrink-0 flex flex-col items-center gap-6 ${shotw or ('w-[620px] max-w-[48vw]' if flat else 'w-[560px] max-w-[48vw]')}")
+                        img#og-shot(class="w-full ${'' if flat else ('rounded-2xl ring-1 ' + ('ring-white/10' if dark else 'ring-black/10'))} ${'rotate-2' if (rotate or (not flat and not shot2)) else ''} ${'max-h-[40vh] object-contain' if shot2 else ''}" src="/static/img/${shot}.${shotext}" alt="${name} screenshot" style="filter: drop-shadow(0 30px 60px rgba(0, 0, 0, ${'0.55' if dark else '0.2'}))")
+                        -if shot2
+                            img(class="w-full ${'' if flat else ('rounded-2xl ring-1 ' + ('ring-white/10' if dark else 'ring-black/10'))} max-h-[40vh] object-contain" src="/static/img/${shot2}.${shot2ext}" alt="${name} ${shot2}" style="filter: drop-shadow(0 30px 60px rgba(0, 0, 0, ${'0.55' if dark else '0.2'}))")
+
+# Press kit building blocks. Shared across every /<app>/presskit page so the
+# repeated grid/video markup and image styling live in one place.
+
+# A screenshot grid cell. The image fits (full image shown), it does not fill/crop.
+- def pk_shot(img, alt, ext='png', cls='')
+    a(class="block rounded-lg overflow-hidden shadow-lg ${cls}" href="/static/img/${img}.${ext}" target="_blank")
+        img.w-full src="/static/img/${img}.${ext}" alt="${alt}"
+
+# A captioned demo video. titlecls/desccls let dark presskits (rcmd) override text colors.
+- def pk_video(src, title, desc, poster='', titlecls='text-gray-700', desccls='text-gray-500')
+    .space-y-2
+        h3(class="text-lg ${titlecls}") ${title}
+        p(class="text-sm ${desccls}") ${desc}
+        video.w-full.rounded-lg.shadow-lg (controls muted loop playsinline preload="metadata" poster=${poster})
+            source src="/static/video/${src}" type="video/mp4"
+
