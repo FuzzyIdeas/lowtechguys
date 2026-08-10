@@ -3,7 +3,7 @@
 doctype html
 html lang="en"
     head
-        - call title="Meander - Lo-fi groove improv on the trackpad" domain="lowtechguys.com" description="Eight instruments under your fingers and a muse to play over. Your MacBook trackpad, played like an instrument" favicon="/meander/favicon.ico" icon="meander-icon" icon_size="1024" screenshot="meander-screenshot" color="rgb(14, 12, 15)" canonical="/meander/" defs:head
+        - call title="Meander - Lo-fi groove improv on the trackpad" domain="lowtechguys.com" description="Contact area and pressure per finger, about 5 ms from touch to sound. Eight instruments on the trackpad and a muse to play over" favicon="/meander/favicon.ico" icon="meander-icon" icon_size="1024" screenshot="meander-screenshot" color="rgb(14, 12, 15)" canonical="/meander/" defs:head
         meta name="robots" content="noindex, nofollow"
         script src="/static/js/meander-orb.js" defer="true"
 
@@ -18,7 +18,7 @@ html lang="en"
             img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl src="/static/img/meander-icon.png" alt="Meander icon"
             h1.mt-8.text-4xl.md:text-5xl.text-amber-200.monospaced Meander
             h5.text-white.mt-2 Lo-fi groove improv on the trackpad
-            h5.text-white.opacity-60 Eight instruments under your fingers, a muse to play over
+            h5.text-white.opacity-60 Contact area and pressure per finger, about 5 ms from touch to sound
 
             #room.relative.mt-10.w-full.rounded-2xl.overflow-hidden.shadow-2xl.border.border-white/10
                 canvas#meander-orb.absolute.inset-0.w-full.h-full
