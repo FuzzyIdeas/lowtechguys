@@ -129,6 +129,13 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
 
                 h3.tracking-wider.font-sans.font-medium.text-stone-500.dark:text-stone-300.text-left.w-full.mb-2.opacity-80 Free apps
                 .grid.gap-6.grid-cols-1.md:grid-cols-2.lg:grid-cols-3
+                    a.${CLS.appcontainer} href="/barglider/" title="Barglider"
+                        h3.text-2xl.text-mauve-gray.dark:text-stone-200 Barglider
+                        img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/barglider-icon.webp"
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            Menubar navigation from the trackpad
+                        p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
+                            | drum three fingers, glide with two
                     a.${CLS.appcontainer} href="/grila/" title="Grila"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Grila
                         img.h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07].order-first src="/static/img/grila-icon.webp"
