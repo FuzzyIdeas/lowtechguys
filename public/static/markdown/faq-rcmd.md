@@ -218,3 +218,13 @@ If the issue persists, try checking if Paddle's servers are reachable by your Ma
 #### Firewalls
 
 Try disabling LuLu, Little Snitch or try adding rcmd to the exclusion list of these firewalls.
+
+---
+
+## Why does rcmd need the Screen Recording permission?
+
+rcmd uses it to read the **titles of your open windows**. The window switcher, Stages and the window previews all rely on those titles.
+
+Since macOS Catalina, reading another app's window title is only possible with the Screen Recording permission, so any app that works with windows has to ask for it.
+
+rcmd does **not** record or capture your screen. It only reads window titles so it can list and switch between your windows.
