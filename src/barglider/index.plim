@@ -1,0 +1,74 @@
+- namespace name="defs" defs.plim
+
+doctype html
+html lang="en"
+    head
+        - call title="Barglider - Menubar navigation from the trackpad" domain="lowtechguys.com" description="Drum three fingers to light up the menubar, glide with two to walk it. No reaching for the pointer." favicon="/static/img/barglider-icon.png" icon="barglider-icon" icon_size="1024" screenshot="barglider-icon" color="rgb(12, 8, 6)" canonical="/barglider/" defs:head
+        meta name="robots" content="noindex, nofollow"
+
+    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden style="background: #0C0806"
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            a.flex.flex-center.hover:transform.hover:scale-110 href="/"
+                icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-amber-300 : lowtech
+            .links
+                a.text-sm.md:text-base.ml-4 href="/contact?app=Barglider" Contact
+
+        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-16.px-4
+            img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl src="/static/img/barglider-icon.png" alt="Barglider icon"
+            h1#title.mt-8.text-4xl.md:text-5xl.monospaced Barglider
+            h5#tagline.mt-2 Menubar navigation from the trackpad
+            h5#subtagline.opacity-60 Drum three fingers to light it up, glide with two to walk it
+
+            #stage.relative.mt-10.w-full.rounded-2xl.overflow-hidden.shadow-2xl
+                video#demo.w-full.h-full.object-cover (autoplay muted loop disablePictureInPicture playsinline)
+                    source src="/static/video/barglider-demo-full.mp4" type="video/mp4"
+                #glow.pointer-events-none.absolute.inset-0
+
+            .mt-10.flex.flex-col.items-center
+                a#download.btn.!rounded-xl.!py-3.shadow-xl href="https://files.lowtechguys.com/releases/Barglider-1.0.0.dmg"
+                    .flex.flex-col.items-start
+                        span.text-lg.!leading-5.mt-1 Download `b.opacity-50.text-sm v1.0.0`
+                        span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 4.4 MB `span.opacity-60 ·` macOS 26+ `span.opacity-60 ·` Universal
+
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+            - call cls="text-gray-100 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto
+                - call defs:socials
+
+        -stylus
+            @import "stylus/base"
+
+            // Same palette as the app's onboarding: a near-black mauve room,
+            // cream for text, honey for anything lit.
+            ink = #1B1219
+            inkDeep = #0C0806
+            cream = #EFE1D0
+            honey = #E0A956
+
+            #title
+                color honey
+            #tagline, #subtagline
+                color cream
+
+            #stage
+                width 100%
+                max-width 920px
+                aspect-ratio 1600 / 974
+                background linear-gradient(180deg, ink 0%, inkDeep 100%)
+                border 1px solid alpha(cream, 0.10)
+
+            #glow
+                background radial-gradient(70% 60% at 50% 30%, alpha(honey, 0.10) 0%, transparent 70%)
+
+            #download
+                background-color honey
+                color inkDeep
+                &:hover
+                    background-color lighten(honey, 12%)
+
+            a
+                color honey
+            .links
+                a
+                    background-color alpha(cream, 0.08)
+                    color cream

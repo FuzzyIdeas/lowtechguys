@@ -7,7 +7,7 @@
 
     # Pages that exist but should not be found. Anything under one of these
     # prefixes is reachable only by someone who was handed the link.
-    UNLISTED = ("meander",)
+    UNLISTED = ("meander", "barglider")
 
     def pages():
         for page in glob("public/*.html") + glob("public/**/*.html"):
