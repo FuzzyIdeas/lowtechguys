@@ -133,9 +133,9 @@ html.bg-[#eed4ab].dark:bg-[#645c55] lang="en"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Barglider
                         img.w-28.h-28.filter.drop-shadow-2xl.order-first src="/static/img/barglider-icon.webp"
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            Menubar navigation from the trackpad
+                            Glide, pick, and click icons
                         p.text-sm.leading-3.text-gray-black.dark:text-stone-300.font-medium
-                            | drum three fingers, glide with two
+                            | with gestures
                     a.${CLS.appcontainer} href="/grila/" title="Grila"
                         h3.text-2xl.text-mauve-gray.dark:text-stone-200 Grila
                         img.h-28.filter.drop-shadow-2xl.origin-bottom-left.scale-[1.07].order-first src="/static/img/grila-icon.webp"
