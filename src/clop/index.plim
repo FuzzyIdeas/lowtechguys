@@ -278,7 +278,7 @@ html.overflow-x-hidden lang="en"
             #afadingthought
                 h3.text-stone-600.mb-0.pb-0.font-normal Featured on `a.text-stone-700 href="https://www.youtube.com/@afadingthought" "A Fading Thought"`
                 p.text-stone-500.font-normal.font-mono.text-sm.mt-0 by `em Robert J. P. Oberg`
-                iframe.shadow-xl.rounded-2xl.mt-4.max-w-[96vw] width="560" height="315" src="https://www.youtube-nocookie.com/embed/DRsDwodJHxs?si=7lBEDw4qBytp5BsA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""
+                iframe.shadow-xl.rounded-2xl.mt-4.max-w-[96vw] width="560" height="315" src="https://www.youtube-nocookie.com/embed/bKvZoED7vEo?si=QVwCVbqUS071BKRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""
 
             h1#pdf.text-3xl.text-center.lg:text-4xl.mb-8.text-black
                 It even works on PDFs
