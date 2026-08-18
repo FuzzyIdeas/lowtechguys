@@ -207,4 +207,3 @@
         p(class="text-sm ${desccls}") ${desc}
         video.w-full.rounded-lg.shadow-lg (controls muted loop playsinline preload="metadata" poster=${poster})
             source src="/static/video/${src}" type="video/mp4"
-

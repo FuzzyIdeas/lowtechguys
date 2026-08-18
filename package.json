@@ -1,4 +1,6 @@
 {
+  "name": "lowtechguys",
+  "private": true,
   "dependencies": {
     "autoprefixer": "^10.5.0",
     "coffeescript": "^2.7.0",
