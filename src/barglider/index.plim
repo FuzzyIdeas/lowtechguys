@@ -20,7 +20,7 @@ html lang="en"
             h5#subtagline.opacity-60 Drum three fingers to light it up, glide with two to walk it
 
             #stage.relative.mt-10.w-full.rounded-2xl.overflow-hidden.shadow-2xl
-                video#demo.w-full.h-full.object-cover (autoplay muted loop disablePictureInPicture playsinline)
+                video#demo.w-full.block (autoplay muted loop disablePictureInPicture playsinline)
                     source src="/static/video/barglider-demo-full.mp4" type="video/mp4"
                 #glow.pointer-events-none.absolute.inset-0
 
@@ -50,15 +50,20 @@ html lang="en"
             #tagline, #subtagline
                 color cream
 
+            // The demo is 1600x974, so 800px caps it at exactly 1:1 on retina.
+            // The video carries the aspect ratio itself: on #stage the 1px border
+            // would eat into the ratio box and object-cover would crop the bottom.
             #stage
                 width 100%
-                max-width 920px
-                aspect-ratio 1600 / 974
+                max-width 800px
                 background linear-gradient(180deg, ink 0%, inkDeep 100%)
-                border 1px solid alpha(cream, 0.10)
+
+            #demo
+                aspect-ratio 1600 / 974
 
             #glow
                 background radial-gradient(70% 60% at 50% 30%, alpha(honey, 0.10) 0%, transparent 70%)
+                box-shadow inset 0 0 0 1px alpha(cream, 0.10)
 
             #download
                 background-color honey
