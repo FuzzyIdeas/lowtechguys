@@ -5,7 +5,7 @@ html lang="en"
     head
         - call title="Barglider - Menubar navigation from the trackpad" domain="lowtechguys.com" description="Drum three fingers to pick an icon in the menubar, glide with two fingers to walk to any icon, swipe down to open menus." favicon="/static/img/barglider-icon.png" icon="barglider-icon" icon_size="1024" screenshot="barglider-icon" color="rgb(12, 8, 6)" canonical="/barglider/" defs:head
 
-    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].overflow-x-hidden style="background: #0C0806"
+    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].overflow-x-hidden style="background: #0F0C0B"
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon#logo.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg : lowtech
@@ -41,7 +41,11 @@ html lang="en"
             // Same palette as the app's onboarding: a near-black mauve room,
             // cream for text, amber for anything lit.
             ink = #1B1219
-            inkDeep = #0C0806
+            // #0F0C0B, not #0C0806: the demo clip is recorded on the page
+            // colour, and 8-bit tv-range h264 lands it here no matter what the
+            // recorder paints. Matching the file exactly is what makes the
+            // video sit on the page with no seam.
+            inkDeep = #0F0C0B
             cream = #EFE1D0
             amber = #F68004
 
