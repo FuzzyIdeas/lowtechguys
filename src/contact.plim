@@ -80,6 +80,8 @@ html lang="en"
                     option value="IsThereNet" IsThereNet
                     option value="StudioICC" Studio ICC
                     option value="Keylume" Keylume
+                    option value="Meander" Meander
+                    option value="Barglider" Barglider
                     option value="" Not about a specific app
 
                   label.self-start.font-bold.ml-1 for="subject" Subject
