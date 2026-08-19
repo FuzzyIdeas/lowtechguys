@@ -5,23 +5,22 @@ html lang="en"
     head
         - call title="Barglider - Menubar navigation from the trackpad" domain="lowtechguys.com" description="Drum three fingers to pick an icon in the menubar, glide with two fingers to walk to any icon, swipe down to open menus." favicon="/static/img/barglider-icon.png" icon="barglider-icon" icon_size="1024" screenshot="barglider-icon" color="rgb(12, 8, 6)" canonical="/barglider/" defs:head
 
-    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden style="background: #0C0806"
+    body.text-center.max-w-[100vw].flex.flex-col.items-center.min-h-[100vh].overflow-x-hidden style="background: #0C0806"
         header.flex.items-center.justify-between.px-4.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon#logo.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg : lowtech
             .links
                 a.text-sm.md:text-base.ml-4 href="/contact?app=Barglider" Contact
 
-        section#hero.min-w-[100vw].flex-center.flex-col.relative.pb-16.px-4
+        section#hero.min-w-[100vw].flex-1.flex-center.flex-col.relative.pb-16.px-4
             img.w-20.h-20.md:w-28.md:h-28.filter.drop-shadow-4xl src="/static/img/barglider-icon.png" alt="Barglider icon"
             h1#title.mt-8.text-4xl.md:text-5xl.monospaced Barglider
             h5#tagline.mt-2 Menubar navigation from the trackpad
             h5#subtagline.opacity-60 Glide, pick, and click icons with gestures
 
-            #stage.relative.mt-10.w-full
+            #stage.mt-10.w-full
                 video#demo.w-full.block (autoplay muted loop disablePictureInPicture playsinline)
                     source src="/static/video/barglider-demo-full.mp4" type="video/mp4"
-                #glow.pointer-events-none.absolute.inset-0
 
             .mt-10.flex.flex-col.items-center
                 a#download.btn.!rounded-xl.!py-3.shadow-xl href="https://files.lowtechguys.com/releases/Barglider-1.0.0.dmg"
@@ -29,7 +28,7 @@ html lang="en"
                         span.text-lg.!leading-5.mt-1 Download `b.opacity-50.text-sm v1.0.0`
                         span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 4.4 MB `span.opacity-60 ·` macOS 26+ `span.opacity-60 ·` Universal
 
-        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.mt-auto.shrink-0
             - call cls="text-gray-100 hidden md:block" defs:copyright_line
             // The copyright hides on mobile, so the socials are alone down
             // there: centre them rather than leaving them hanging on the left.
@@ -52,31 +51,17 @@ html lang="en"
                 color cream
 
             // The demo is 1600x974, so 800px caps it at exactly 1:1 on retina.
-            // The video carries the aspect ratio itself: on #stage a border would
-            // eat into the ratio box and object-cover would crop the bottom.
             #stage
                 width 100%
                 max-width 800px
 
-            // The recording's own margins are already the page colour, so masking
-            // the edges melts it into the room instead of ending on a hard rectangle.
-            // Wide left and right (95px of empty frame there), gentle top and bottom
-            // where the menubar and the trackpad run right up to the edge.
+            // The recording already ends on the page colour, so it needs no radius
+            // and no shadow. The global video rule adds both, plus a margin.
             #demo
                 aspect-ratio 1600 / 974
-                // The global video rule adds a margin, a radius and a drop shadow.
-                // A shadow traces the border box, not the mask, so it would draw the
-                // rectangle back around a video meant to dissolve.
                 margin 0
                 border-radius 0
                 box-shadow none
-                -webkit-mask-image linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 2.5%, #000 97.5%, transparent 100%), radial-gradient(115% 125% at 50% 50%, #000 55%, transparent 100%)
-                -webkit-mask-composite source-in, source-in, source-in
-                mask-image linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0%, #000 2.5%, #000 97.5%, transparent 100%), radial-gradient(115% 125% at 50% 50%, #000 55%, transparent 100%)
-                mask-composite intersect
-
-            #glow
-                background radial-gradient(70% 60% at 50% 30%, alpha(amber, 0.10) 0%, transparent 70%)
 
             #download
                 background-color amber
