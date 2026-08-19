@@ -23,10 +23,10 @@ html lang="en"
                     source src="/static/video/barglider-demo-full.mp4" type="video/mp4"
 
             .mt-10.flex.flex-col.items-center
-                a#download.btn.!rounded-xl.!py-3.shadow-xl href="https://files.lowtechguys.com/releases/Barglider-1.0.0.dmg"
+                a#download.btn.!rounded-xl.!py-3.shadow-xl href="https://files.lowtechguys.com/releases/Barglider-1.0.1.dmg"
                     .flex.flex-col.items-start
-                        span.text-lg.!leading-5.mt-1 Download `b.opacity-50.text-sm v1.0.0`
-                        span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 4.4 MB `span.opacity-60 ·` macOS 26+ `span.opacity-60 ·` Universal
+                        span.text-lg.!leading-5.mt-1 Download `b.opacity-50.text-sm v1.0.1`
+                        span.text-[0.7rem].opacity-60.font-mono.whitespace-nowrap 4.7 MB `span.opacity-60 ·` macOS 26+ `span.opacity-60 ·` Universal
 
         #grain.pointer-events-none
 
