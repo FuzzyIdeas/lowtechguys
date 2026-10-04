@@ -233,7 +233,6 @@ dev: export NODE_ENV=development
 dev: export TAILWIND_MODE=watch
 dev: export PYTHONWARNINGS=ignore
 dev:
-	touch DEVMODE
 	uv run mp --auto-collapse \
 	    'cd public/ && npx -y livereloadx --static' \
 	    'make watch-css' \
@@ -307,8 +306,6 @@ rebuild:
 ifeq ($(KILL),1)
 	pkill -9 -f -l 'livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss' || true
 endif
-	rm DEVMODE || true
-	sleep 5
 	@if [ -z "$$(tail -c 2 ./src/clop/defs.plim)" ]; then \
 		c="$$(cat ./src/clop/defs.plim)"; printf '%s\n' "$$c" > ./src/clop/defs.plim; \
 	else \
@@ -317,3 +314,25 @@ endif
 	cfcli -d lowtechguys.com purge
 
 release: rebuild
+# Sandboxes: work on a copy outside Syncthing, so nothing reaches darkwoods (or
+# the live site) until it lands. See scripts/sandbox.sh for the reconcile rules.
+#   make sandbox NAME=cling          copy the site to ~/Temp/.claude-work/lowtechguys-sandbox/cling
+#   make sandbox-serve NAME=cling    build + rebuild on change, serve over Tailscale on PORT (4100)
+#   make sandbox-status NAME=cling   sandbox changes, upstream changes, conflicts
+#   make sandbox-land NAME=cling     copy the sandbox's changes back into this folder
+#   make sandbox-drop NAME=cling     delete it (FORCE=1 with unlanded changes)
+NAME ?= main
+PORT ?= 4100
+sandbox:
+	@scripts/sandbox.sh new $(NAME)
+sandbox-serve:
+	@scripts/sandbox.sh serve $(NAME) $(PORT)
+sandbox-status:
+	@scripts/sandbox.sh status $(NAME)
+sandbox-land:
+	@scripts/sandbox.sh land $(NAME)
+sandbox-drop:
+	@scripts/sandbox.sh drop $(NAME)
+sandboxes:
+	@scripts/sandbox.sh list
+
