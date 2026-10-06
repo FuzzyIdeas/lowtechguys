@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
@@ -28,6 +29,8 @@ module.exports = {
     './public/rcmd/presskit/*.html',
     './public/clop/presskit/*.html',
     './public/cling/presskit/*.html',
+    // Unlisted pages: one glob per gitignored private/<slug>, so none is named here.
+    ...(fs.existsSync('./private') ? fs.readdirSync('./private').map(slug => `./public/${slug}/*.html`) : []),
   ],
   mode: 'jit',
   theme: {
@@ -242,6 +245,26 @@ module.exports = {
         },
         github: '#ffffff',
         reddit: '#FF4500',
+        dropshare: '#11271F',
+        // Clop page: pastel glows behind each section, and the deep inks of the same hues for emphasis
+        // text. Warm grounds reuse orange.linen / orange.stone and yellow.gold / gray.white above.
+        glow: {
+          rose: '#F3CDD7',
+          lavender: '#E4DDF1',
+          sky: '#D9E8F7',
+          mint: '#D8EFE5',
+          gold: '#F9E5B6',
+        },
+        ink: {
+          sky: '#2F5A7A',
+          mauve: '#5E5770',
+          amber: '#7A4E1C',
+          mint: '#2D6650',
+          rose: '#8C3B52',
+        },
+        chip: {
+          text: '#3F3A4D',
+        },
       },
     },
   },
