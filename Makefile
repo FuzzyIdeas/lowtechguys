@@ -18,6 +18,25 @@ else
 	@uv run plimc -H -p extensions:preprocessor -o $@ $<
 endif
 
+# Unlisted pages live in private/<slug>/, which is gitignored, and build to the
+# same public/<slug>/ path a src/ page would. The sitemap lists only pages that
+# have a src/ counterpart, so nothing here needs naming in a committed file.
+# Each folder needs its own defs.plim symlink (../../src/defs.plim), same as src/.
+# Every file under private/ counts as an input: a page may read its scripts in at
+# build time, and an edit to one of those alone has to rebuild it.
+public/%.html: private/%.plim src/defs.plim $(svgfiles) $(mdfiles) $(filter-out %/defs.plim,$(wildcard private/*/*.*))
+	@echo Compiling $< to $@
+	@mkdir -p $$(dirname $@)
+	@uv run plimc -H -p extensions:preprocessor -o $@ $<
+
+# Their images: private/<slug>/img/* is served from /static/img/private/, also
+# gitignored, so `icon="private/<name>"` works with defs:head and utils.imgurl.
+private-img:
+	@for f in private/*/img/*; do \
+	  [ -f "$$f" ] || continue; mkdir -p public/static/img/private; \
+	  cmp -s "$$f" "public/static/img/private/$${f##*/}" || cp -p "$$f" public/static/img/private/; \
+	done
+
 app.css: stylus/*.styl
 
 css: export PYTHONWARNINGS=ignore
@@ -25,8 +44,13 @@ css: public/static/css/app.css
 
 nothtml=%/defs.html %/sitemap.html
 htmlfiles := $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*/*/*.plim)))) $(filter-out $(nothtml),$(subst src,public,$(patsubst %.plim,%.html,$(wildcard src/*.plim))))
+privatehtml := $(filter-out $(nothtml),$(patsubst private/%.plim,public/%.html,$(wildcard private/*/*.plim)))
 html: export PYTHONWARNINGS=ignore
-html: $(htmlfiles)
+html: $(htmlfiles) $(privatehtml)
+# A page that imports a stylus partial in its own stylus block (stylus/motion-pause) compiles it into
+# its HTML, so an edit to the partial alone has to rebuild that page
+stylus_pages := $(patsubst src/%.plim,public/%.html,$(shell rg -l --glob '*.plim' '@import "stylus/' src 2>/dev/null))
+$(stylus_pages): $(wildcard stylus/*.styl)
 
 # XML
 public/%.xml: export PYTHONWARNINGS=ignore
@@ -170,7 +194,7 @@ icons:
 
 presskits: crank-presskit-zip pipiri-presskit-zip keylume-presskit-zip rcmd-presskit-zip clop-presskit-zip cling-presskit-zip
 
-all: html xml css presskits
+all: html xml css presskits private-img
 
 # OG / social-card images (1200x630). Override CHROME/OG_PORT/OG_SCALE as needed.
 OG_APPS := rcmd clop cling crank pipiri keylume meander volum grila gammadimmer istherenet musicdecoy startupfolder studioicc yellowdot zoomhider
@@ -236,46 +260,47 @@ dev:
 	uv run mp --auto-collapse \
 	    'cd public/ && npx -y livereloadx --static' \
 	    'make watch-css' \
-	    "open https://lowtechguys/; rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md | entr -s 'make -j html css js'"
+	    "open https://lowtechguys/; $(WATCH_FILES) | entr -s 'make -j html css js'"
 
 
-# entr is handed a file list once and watches those inodes for as long as it
-# runs, so a page added after it started is invisible to it: `src/meander` sat
-# there for an hour with every edit firing nothing, and only `make rebuild`
-# (which touches a file entr already knew about) published it.
+# Polls instead of using entr. entr watches the inodes it was handed, and Syncthing
+# (which is how every edit reaches darkwoods) lands a file as a hidden temp renamed
+# over the original, so an edit could slip between entr exiting on -d and the next
+# entr starting, and pages published nothing until something else was saved.
 #
-# `-d` makes entr exit as soon as a file appears in a directory it is watching,
-# which is the documented way to ask for a restart. The loop gives it the fresh
-# list.
+# The test is ctime, not mtime: Syncthing copies the mtime from the Mac it came
+# from, which can be older than the last check, while the rename always bumps the
+# ctime here. The stamp is touched before the build so an edit made during a build
+# is picked up by the next pass. private/ is gitignored and listed explicitly so
+# unlisted pages rebuild too; dotfiles are Syncthing temps and editor litter.
 #
-# It restarts on ANY exit rather than only on the one entr uses for -d. A file
-# that goes away between `rg --files` and entr opening it is an ordinary exit
-# with an error, and it happens whenever files churn: deleting one killed both
-# watchers here, and a watcher that dies on a deletion is a watcher nobody can
-# trust. The trap is what stops it, so Ctrl-C still ends the loop rather than
-# respawning under the hand that pressed it, and the sleep keeps a permanent
-# failure from spinning.
-WATCH_FILES=rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md
+# The trap lets Ctrl-C end the loop instead of the build under it.
+WATCH_DIRS=src stylus private
+
+# For entr in `make dev` on the Mac, where saves are in-place writes.
+WATCH_FILES={ rg --files --type-add 'plim:*.plim' -t plim -t stylus -t coffeescript -t svg -t md; test -d private && rg --files --no-ignore private; true; }
+define poll_build
+	@trap 'exit 0' INT; \
+	stamp=$$(mktemp); $(1); \
+	while true; do \
+	  if find $(WATCH_DIRS) -type f ! -name '.*' -cnewer "$$stamp" 2>/dev/null | grep -q .; then \
+	    touch "$$stamp"; sleep 2; $(1); \
+	  fi; \
+	  sleep 2; \
+	done
+endef
 
 watch: export NODE_ENV=production
 watch: export TAILWIND_MODE=build
 watch: export PYTHONWARNINGS=ignore
 watch:
-	@trap 'exit 0' INT; \
-	while true; do \
-	  $(WATCH_FILES) | entr -d -s 'test -f DEVMODE || make -j build'; \
-	  sleep 1; \
-	done
+	$(call poll_build,make -j build)
 
 watch-dev: export NODE_ENV=production
 watch-dev: export TAILWIND_MODE=build
 watch-dev: export PYTHONWARNINGS=ignore
 watch-dev:
-	@trap 'exit 0' INT; \
-	while true; do \
-	  $(WATCH_FILES) | entr -d -s 'make -j build'; \
-	  sleep 1; \
-	done
+	$(call poll_build,make -j build)
 
 .css/%.css: %.styl $(wildcard stylus/*.styl)
 	@echo Compiling $< to $@
@@ -296,24 +321,13 @@ node-deps:
 deps: python-deps node-deps
 
 public/static/css/%.css: export TAILWIND_MODE=build
-public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js # $(wildcard public/*.html) $(wildcard public/**/*.html)
+# Tailwind reads the built pages (tailwind.config.js content), so a page edit alone has to rebuild it
+public/static/css/%.css: %.styl $(wildcard stylus/*.styl) .css tailwind.config.js $(htmlfiles) $(privatehtml)
 	@echo Compiling $< to $@
 	@npx -y stylus -u rupture -c -m -o .css/ $<
 	@npx -y tailwindcss --postcss --jit -i .css/$*.css -o $@
 
 
-rebuild:
-ifeq ($(KILL),1)
-	pkill -9 -f -l 'livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss' || true
-endif
-	@if [ -z "$$(tail -c 2 ./src/clop/defs.plim)" ]; then \
-		c="$$(cat ./src/clop/defs.plim)"; printf '%s\n' "$$c" > ./src/clop/defs.plim; \
-	else \
-		echo '' >> ./src/clop/defs.plim; \
-	fi
-	cfcli -d lowtechguys.com purge
-
-release: rebuild
 # Sandboxes: work on a copy outside Syncthing, so nothing reaches darkwoods (or
 # the live site) until it lands. See scripts/sandbox.sh for the reconcile rules.
 #   make sandbox NAME=cling          copy the site to ~/Temp/.claude-work/lowtechguys-sandbox/cling
@@ -336,3 +350,15 @@ sandbox-drop:
 sandboxes:
 	@scripts/sandbox.sh list
 
+rebuild:
+ifeq ($(KILL),1)
+	pkill -9 -f -l 'livereload|/bin/sh -c livereload|inlets|npm exec tailwindcss' || true
+endif
+	@if [ -z "$$(tail -c 2 ./src/clop/defs.plim)" ]; then \
+		c="$$(cat ./src/clop/defs.plim)"; printf '%s\n' "$$c" > ./src/clop/defs.plim; \
+	else \
+		echo '' >> ./src/clop/defs.plim; \
+	fi
+	cfcli -d lowtechguys.com purge
+
+release: rebuild

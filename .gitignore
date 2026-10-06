@@ -175,3 +175,13 @@ public/static/css
 .ds-sync/
 ds-bundle/
 .design-sync/learnings/
+
+# Unlisted pages. Built and served like the rest, but never committed and never
+# listed: see the `private` rules in the Makefile.
+private/
+public/static/img/private/
+
+# Local tool output and Syncthing leftovers
+.playwright-mcp/
+*.sync-conflict-*
+.syncthing.*

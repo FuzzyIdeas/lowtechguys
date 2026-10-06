@@ -14,6 +14,9 @@
             if page[len("public/"):].startswith(UNLISTED):
                 continue
             srcpage = page.replace("public", "src").replace(".html", ".plim")
+            # Built from private/ rather than src/, so it is unlisted too.
+            if not os.path.exists(srcpage):
+                continue
             last_modified_time = os.path.getmtime(srcpage)
             iso_formatted_time = datetime.fromtimestamp(last_modified_time).strftime("%Y-%m-%dT%H:%M:%S+02:00")
             path = page.replace(".html", "").replace("/index", "/")[7:]
