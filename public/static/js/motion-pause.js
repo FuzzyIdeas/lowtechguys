@@ -16,8 +16,10 @@
 //   subscribe(fn)          fn(paused) now and on every change; returns an unsubscribe function
 //   set(paused)            change it from code (remembered like a press of the button)
 //   clip(video, host?, toggle?)
-//                          play/pause button over a clip, with a faint dim while it is paused and
-//                          both stronger on hover; nothing shows while it plays unhovered. host
+//                          play/pause button over a clip: the play button while it is paused, a
+//                          faint dim too once someone stopped it, both stronger on hover; nothing
+//                          shows while it plays unhovered. Click the returned button to stop or
+//                          start the clip from elsewhere (a label) so it counts as by hand. host
 //                          defaults to the video's parent and needs to be the box the video is centred
 //                          in. toggle() replaces the plain play/pause, so a page's own focus rules
 //                          (which clip may play, a stopped clip staying stopped) apply to the button
@@ -99,10 +101,13 @@
             const playing = !video.paused && !video.ended
             host.classList.toggle('mp-playing', playing)
             btn.setAttribute('aria-label', playing ? CLIP_LABEL.pause : CLIP_LABEL.play)
+            // the dim marks a clip someone stopped; one that simply has not started stays undimmed
+            if (playing) host.classList.remove('mp-stopped')
         }
         btn.addEventListener('click', e => {
             // the host's own click handler would toggle a second time
             e.stopPropagation()
+            if (!video.paused) host.classList.add('mp-stopped')
             if (toggle) return toggle()
             if (video.paused) {
                 // one loop at a time when started by hand

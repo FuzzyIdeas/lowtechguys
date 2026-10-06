@@ -1089,7 +1089,7 @@
         // on a paused one it plays it
         const tap = v => (MP.paused ? toggleByHand(v) : choose(v, !v.paused))
         for (const v of clips) {
-            MP.clip(v, v.closest('.clip-cap') || v.parentElement, () => tap(v))
+            const btn = MP.clip(v, v.closest('.clip-cap') || v.parentElement, () => tap(v))
             const wrap = v.closest('.pair-clip')
             if (!wrap) continue
             // the label dims with the video's own state, whoever started or stopped it
@@ -1097,7 +1097,7 @@
             for (const ev of ['play', 'playing', 'pause', 'ended', 'emptied']) v.addEventListener(ev, sync)
             sync()
             // the label; the clip itself is covered by its MotionPause button
-            wrap.addEventListener('click', () => tap(v))
+            wrap.addEventListener('click', () => btn.click())
         }
     }
 
