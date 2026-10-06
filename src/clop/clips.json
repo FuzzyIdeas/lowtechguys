@@ -1,0 +1,274 @@
+{
+ "clipboard": {
+  "feature": "clipboard",
+  "width": 1280,
+  "height": 768,
+  "k": 3.5556,
+  "duration": 7.0,
+  "hevc": true,
+  "h264": [
+   820619,
+   0.99554
+  ],
+  "h265": [
+   668145,
+   0.99585
+  ]
+ },
+ "screen-recordings": {
+  "feature": "screen-recordings",
+  "width": 1280,
+  "height": 720,
+  "k": 3.3333,
+  "duration": 13.85,
+  "hevc": false,
+  "h264": [
+   1185154,
+   0.98749
+  ],
+  "h265": [
+   623095,
+   0.98199
+  ]
+ },
+ "drop-zone-at-cursor": {
+  "feature": "drop-zone-at-cursor",
+  "width": 1180,
+  "height": 1024,
+  "k": 5.0,
+  "duration": 5.0,
+  "hevc": false,
+  "h264": [
+   986918,
+   0.97454
+  ],
+  "h265": [
+   697684,
+   0.96395
+  ]
+ },
+ "preset-zones": {
+  "feature": "preset-zones",
+  "width": 1280,
+  "height": 834,
+  "k": 3.8647,
+  "duration": 10.7,
+  "hevc": true,
+  "h264": [
+   1212855,
+   0.99487
+  ],
+  "h265": [
+   830975,
+   0.99492
+  ]
+ },
+ "pipelines": {
+  "feature": "pipelines",
+  "width": 1280,
+  "height": 720,
+  "k": 2.0,
+  "duration": 19.622,
+  "hevc": false,
+  "h264": [
+   1904054,
+   0.98364
+  ],
+  "h265": [
+   1479375,
+   0.97597
+  ]
+ },
+ "batch-mode": {
+  "feature": "batch-mode",
+  "width": 1280,
+  "height": 740,
+  "k": 1.0289,
+  "duration": 9.2,
+  "hevc": true,
+  "h264": [
+   1656092,
+   0.99329
+  ],
+  "h265": [
+   1654478,
+   0.99516
+  ]
+ },
+ "format-bar": {
+  "feature": "format-bar",
+  "width": 1248,
+  "height": 1040,
+  "k": 5.0,
+  "duration": 5.901,
+  "hevc": false,
+  "h264": [
+   926668,
+   0.97911
+  ],
+  "h265": [
+   568392,
+   0.97642
+  ]
+ },
+ "fit-under-size": {
+  "feature": "fit-under-size",
+  "width": 1280,
+  "height": 904,
+  "k": 4.336,
+  "duration": 9.167,
+  "hevc": true,
+  "h264": [
+   1068931,
+   0.99348
+  ],
+  "h265": [
+   752617,
+   0.99377
+  ]
+ },
+ "audio-optimisation": {
+  "feature": "audio-optimisation",
+  "width": 1180,
+  "height": 900,
+  "k": 5.0,
+  "duration": 5.0,
+  "hevc": false,
+  "h264": [
+   656282,
+   0.96663
+  ],
+  "h265": [
+   424491,
+   0.95635
+  ]
+ },
+ "pdfs": {
+  "feature": "pdfs",
+  "width": 1280,
+  "height": 606,
+  "k": 3.3333,
+  "duration": 5.35,
+  "hevc": true,
+  "h264": [
+   583872,
+   0.99287
+  ],
+  "h265": [
+   421379,
+   0.99333
+  ]
+ },
+ "pdf-crop-ipad": {
+  "feature": "pdf-crop-ipad",
+  "width": 1280,
+  "height": 778,
+  "k": 0.7207,
+  "duration": 8.483,
+  "hevc": true,
+  "h264": [
+   1110614,
+   0.99276
+  ],
+  "h265": [
+   997768,
+   0.99375
+  ]
+ },
+ "mcp-server": {
+  "feature": "mcp-server",
+  "width": 1280,
+  "height": 640,
+  "k": 1.2133,
+  "duration": 75.45,
+  "hevc": true,
+  "h264": [
+   6777862,
+   0.9947
+  ],
+  "h265": [
+   5530386,
+   0.99507
+  ]
+ },
+ "pipeline-automation": {
+  "feature": "pipeline-automation",
+  "width": 1280,
+  "height": 606,
+  "k": 1.2958,
+  "duration": 17.8,
+  "hevc": true,
+  "h264": [
+   1928147,
+   0.9937
+  ],
+  "h265": [
+   1806133,
+   0.99502
+  ]
+ },
+ "downscale": {
+  "feature": "downscale",
+  "width": 1280,
+  "height": 720,
+  "k": 3.3333,
+  "duration": 14.4,
+  "hevc": false,
+  "h264": [
+   1760209,
+   0.97841
+  ],
+  "h265": [
+   1405751,
+   0.97476
+  ]
+ },
+ "convert-webp": {
+  "feature": "convert-webp",
+  "width": 1280,
+  "height": 720,
+  "k": 1.3333,
+  "duration": 10.4,
+  "hevc": true,
+  "h264": [
+   1358818,
+   0.99527
+  ],
+  "h265": [
+   1273315,
+   0.99608
+  ]
+ },
+ "file-shelves": {
+  "feature": "file-shelves",
+  "width": 1280,
+  "height": 720,
+  "k": 1.6,
+  "duration": 12.717,
+  "hevc": true,
+  "h264": [
+   1179608,
+   0.99504
+  ],
+  "h265": [
+   909870,
+   0.995
+  ]
+ },
+ "mcp-server-2": {
+  "feature": "mcp-server-2",
+  "width": 1280,
+  "height": 640,
+  "k": 1.2133,
+  "duration": 72.65,
+  "hevc": true,
+  "h264": [
+   6395059,
+   0.99446
+  ],
+  "h265": [
+   5162165,
+   0.99483
+  ]
+ }
+}

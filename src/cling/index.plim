@@ -1,13 +1,38 @@
 - namespace name="defs" defs.plim
 ---!
+    import os
+    from utils import DEV
+
+    # Section loops built for the page land as public/static/video/cling-page-<feature>-{h264,h265}.mp4 with a
+    # poster at public/static/img/cling-page-posters/<feature>.jpg; until then the slot stays empty.
+    def has_clip(feature):
+        return os.path.exists(f"public/static/video/cling-page-{feature}-h264.mp4")
+
+    # An HEVC encode ships only where it beat H.264 on both size and SSIM; otherwise there is no -h265 file.
+    def has_hevc(feature):
+        return os.path.exists(f"public/static/video/cling-page-{feature}-h265.mp4")
+
+    def clip_poster(feature):
+        jpg = f"static/img/cling-page-posters/{feature}.jpg"
+        return "/" + jpg if os.path.exists("public/" + jpg) else ""
+
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
+
+-def clip(feature, alt='')
+    -if has_clip(feature)
+        -call video="cling-page-${feature}" cls="page-clip" poster=${clip_poster(feature)} lazy=${True} label=${alt} hevc=${has_hevc(feature)} defs:videoset
+    -else
+        .clip-empty
 
 doctype html
 html lang="en"
     head
         - call title="Cling - Instant fuzzy find any file, act on it in the same instant" domain="lowtechguys.com" description="Instant fuzzy find any file, act on it in the same instant" favicon="/cling/favicon.ico" icon="cling-icon" icon_size="1280" screenshot="cling-screenshot" color="rgb(255, 255, 255)" canonical="/cling/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
+        / no defer: sets .motion-paused on <html> before first paint
+        script src="/static/js/motion-pause.js"
+        script src="/static/js/cling-demos.js" defer="true"
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
@@ -35,15 +60,53 @@ html lang="en"
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version
                     a.text-xs.mt-1.text-gray-600.decoration-dotted href="https://github.com/FuzzyIdeas/Cling/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
-                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="923424"
-                        .flex.flex-col.items-start
-                            span.text-lg.!leading-4.mt-1 Buy Cling Pro
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 €12`
+                    span.relative.inline-flex
+                        a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="923424"
+                            .flex.flex-col.items-start
+                                span.text-lg.!leading-4.mt-1 Buy Cling Pro
+                                span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license `span#cling-costs costs` `span#cling-price.text-amber-300 data-sale="€10" data-sale-until="2026-10-24T00:00:00+03:00" €15`
+                        span#cling-sale.hidden.font-mono aria-label="€15, now €10"
+                            s.was €15
+                            b.now €10
                     a.text-xs.mt-1.text-gray-600.decoration-dotted href="#pro" Why Cling Pro?
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
                     background: var(--color-gray-600) !important
                     box-shadow: var(--shadows-xl) !important
+                // launch discount badge pinned to the buy button's top-right corner
+                #cling-sale
+                    position absolute
+                    top -10px
+                    right -10px
+                    z-index 2
+                    display inline-flex
+                    align-items baseline
+                    gap 0.3rem
+                    padding 0.15rem 0.5rem
+                    border-radius 999px
+                    background var(--color-gray-800)
+                    box-shadow 0 4px 10px -2px alpha(black, 0.35)
+                    font-size 0.72rem
+                    line-height 1.3
+                    pointer-events none
+                    &.hidden
+                        display none
+                    .was
+                        position relative
+                        color var(--color-gray-300)
+                        font-size 0.62rem
+                        text-decoration none
+                        &::after
+                            content ''
+                            position absolute
+                            left -2px
+                            right -2px
+                            top 50%
+                            border-top 1.5px solid var(--color-red-500)
+                            transform rotate(-20deg)
+                    .now
+                        color var(--color-amber-300)
+                        font-weight 700
 
             a.btn.mt-4.text-black.bg-white.border.border-gray-600.hover:text-white.hover:bg-gray-600.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/FuzzyIdeas/Cling"
                 icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
@@ -57,19 +120,85 @@ html lang="en"
                 | compatible with macOS `b 14.0+` (Sonoma and later)
 
 
-        div#video-container.zstack.py-10.md:w-full.max-w-[1000px].cursor-pointer onclick="playVideo(this)"
-            -call img="cling-ui" ext="png" factor=${0.8} mobile_factor=${0.9} pcls="md:w-full !max-w-[1000px]" icls="rounded-2xl shadow-xl w-full" alt="The Cling app interface showing fuzzy search results" defs:image
+        div#video-container.zstack.px-4.pt-10.pb-4.w-full.max-w-[1000px].cursor-pointer onclick="playVideo(this)"
+            img.video-poster.film-frame.w-full.aspect-video src="/static/img/cling-showcase-poster.jpg" alt="Cling searching for an invoice by typing invsep"
             div#play-btn.play-btn.w-20.h-20.bg-black.bg-opacity-50.rounded-full.flex.items-center.justify-center.scale-110.hover:bg-opacity-70.transition
                 svg.w-10.h-10.text-white.ml-1 viewBox="0 0 24 24" fill="currentColor"
                     path d="M8 5v14l11-7z"
-            video#cling-video.w-full.rounded-2xl.shadow-xl.hidden disablePictureInPicture muted loop playsinline preload="none"
-                source src="/static/video/cling-demo.mp4" type="video/mp4"
+            video#cling-video.film-frame.w-full.hidden ( disablePictureInPicture muted loop playsinline preload="none" )
+                -if os.path.exists("public/static/video/cling-showcase-h265.mp4")
+                    source src="/static/video/cling-showcase-h265.mp4" type='video/mp4; codecs=hvc1'
+                source src="/static/video/cling-showcase-h264.mp4" type="video/mp4"
+        / chapters:begin (generated by tools/cling-chapters.py from the film's scenes.json: edit the script, not these lines)
+        nav#chapters aria-label="Chapters"
+            ol.chapter-row
+                li
+                    button.chapter type="button" data-start="0.000" data-end="10.000" aria-label="Instant fuzzy search"
+                        img src="/static/img/cling-chapters/fuzzy.webp?v=93d4df24" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Instant fuzzy search
+                li
+                    button.chapter type="button" data-start="10.000" data-end="15.667" aria-label="Speed and memory"
+                        img src="/static/img/cling-chapters/speed.webp?v=0ffb224f" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Speed and memory
+                li
+                    button.chapter type="button" data-start="15.667" data-end="24.933" aria-label="Drop files with a hotkey"
+                        img src="/static/img/cling-chapters/drop.webp?v=22d69741" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Drop files with a hotkey
+                li
+                    button.chapter type="button" data-start="24.933" data-end="31.767" aria-label="Index external drives"
+                        img src="/static/img/cling-chapters/drives.webp?v=db9df231" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Index external drives
+                li
+                    button.chapter type="button" data-start="31.767" data-end="41.433" aria-label="Instant search disconnected drives"
+                        img src="/static/img/cling-chapters/disconnected.webp?v=4e23f60f" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Instant search disconnected drives
+                li
+                    button.chapter type="button" data-start="41.433" data-end="53.100" aria-label="Find hidden files"
+                        img src="/static/img/cling-chapters/hidden.webp?v=01f13d28" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Find hidden files
+                li
+                    button.chapter type="button" data-start="53.100" data-end="65.100" aria-label="Quick filters"
+                        img src="/static/img/cling-chapters/filters.webp?v=2b06758b" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Quick filters
+                li
+                    button.chapter type="button" data-start="65.100" data-end="78.433" aria-label="Send large files securely"
+                        img src="/static/img/cling-chapters/send.webp?v=6703c240" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Send large files securely
+                li
+                    button.chapter type="button" data-start="78.433" data-end="91.833" aria-label="Search your Mac from your phone"
+                        img src="/static/img/cling-chapters/fileserver.webp?v=40148a21" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Search your Mac from your phone
+                li
+                    button.chapter type="button" data-start="91.833" data-end="103.333" aria-label="Stash files"
+                        img src="/static/img/cling-chapters/stash.webp?v=7ac036aa" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Stash files
+                li
+                    button.chapter type="button" data-start="103.333" data-end="110.433" aria-label="Run scripts on selected files"
+                        img src="/static/img/cling-chapters/scripts.webp?v=fa0e3a12" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Run scripts on selected files
+                li
+                    button.chapter type="button" data-start="110.433" data-end="122.767" aria-label="Exclude unwanted files"
+                        img src="/static/img/cling-chapters/exclude.webp?v=01729d2e" alt="" width="120" height="67" loading="lazy" decoding="async"
+                        span.chapter-title
+                            | Exclude unwanted files
+        / chapters:end
 
-        h5.text-orange-600.font-bold.mb-16.md:-mt-6.motion-safe:animate-slowpulse Press `code Right Command` + `code / (slash)` to show/hide Cling
+        h5.text-orange-600.font-bold.mb-16.motion-safe:animate-slowpulse Press `code Right Command` + `code / (slash)` to show/hide Cling
 
         section#details.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
+            .grid.grid-cols-1.md:grid-cols-2.gap-10.md:gap-14.w-screen.max-w-[1200px].px-4
+                .flex.flex-col.space-y-2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Find any file instantly
                     .text-base.lg:text-lg.text-gray-600
                         Cling uses its own custom search engine with a binary index of your entire filesystem, providing lightning-fast fuzzy searching across millions of files in under 100ms.
@@ -81,36 +210,167 @@ html lang="en"
                     .text-sm.lg:text-base.text-gray-500
                         The fuzzy scoring algorithm lets you find files with just a few keystrokes, even with partial or misspelled queries. Use extension-aware queries like `code .png icon` or `code .pdf invoice` to narrow results.
 
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
+                .flex.flex-col.space-y-2.text-left
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 Act on selected files
                     .text-base.lg:text-lg.text-gray-600
                         | With Cling's `b.text-emerald-800 keyboard-centric` approach, perform any action on files with quick hotkeys: `b Open with…`, copy paths, batch rename, `b QuickLook`, or drag and drop.
                     .text-base.lg:text-lg.text-gray-600
                         | `b.text-sky-800 Smart defaults` show your most recently changed files on launch, and `b.text-violet-700 search history` with arrow key navigation and tab completion makes repeated searches effortless.
-                    -call img="cling-actions" factor=${0.5} mobile_factor=${0.9} pcls="mt-4" icls="rounded-xl shadow-lg w-full" alt="Actions panel showing available file actions" defs:image
 
+        section#performance.feature
+            #stats.flex.flex-wrap.items-center.justify-center.gap-x-8.md:gap-x-14.gap-y-3.px-2.text-2xl.md:text-4xl.font-bold
+                span.stat
+                    svg.ic.text-orange-500 viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        path d="M13.5 2 4 13.6h6.6L9.8 22l9.7-12h-6.7z"
+                    span.v.text-orange-600
+                        | &lt;
+                        span data-count="50" 50
+                        | ms
+                    span.l search
+                span.stat
+                    svg.ic.text-rose-500 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"
+                        rect x="6" y="6" width="12" height="12" rx="2"
+                        rect x="9.5" y="9.5" width="5" height="5" rx="0.5" fill="currentColor" stroke="none"
+                        path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9h3.5M2.5 15h3.5M18 9h3.5M18 15h3.5"
+                    span.v.text-rose-600
+                        | &lt;
+                        span data-count="100" 100
+                        | MB
+                    span.l RAM
+                span.stat
+                    span.live-dot
+                    span.v.text-emerald-600 live
+                    span.l index
 
-        section#features.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 `a.text-orange-600.font-bold href="https://www.voidtools.com/support/everything/" Everything` for Mac
+        section#operators.feature
+            .split.wide
+                .copy
+                    h1.feature-title Search operators
+                    ul.op-list
+                        li.text-base.lg:text-lg.text-gray-600
+                            | <code>.pdf .png</code>: several file types at once
+                        li.text-base.lg:text-lg.text-gray-600
+                            | <code>name/</code>: match a folder
+                        li.text-base.lg:text-lg.text-gray-600
+                            | <code>!word</code>: hide anything containing this
+                        li.text-base.lg:text-lg.text-gray-600
+                            | <code>in:~/path</code>: search only inside a folder
+                        li.text-base.lg:text-lg.text-gray-600
+                            | <code>'text</code>: exact text, not fuzzy
+                    .text-sm.lg:text-base.text-gray-500
+                        | Press `code ⌘/` in the app for the full syntax.
+                .demo
+                    #query-demo.demo-card
+                        .qd-field
+                            span.qd-text
+                            span.qd-placeholder Search
+                        .qd-results
+
+        section#floating-search-bar.feature
+            .split.flip
+                .copy
+                    h1.feature-title Floating search bar
                     .text-base.lg:text-lg.text-gray-600
-                        Cling strives to be similar to the popular `b.text-rose-400 Everything` app from Windows, with macOS native integration and a focus on power users.
+                        | Cling can also show up as a `b.text-emerald-800 floating search bar` instead of the full window. The bar starts as a single search line and grows downwards as results come in.
                     .text-base.lg:text-lg.text-gray-600
-                        The UI is designed to be minimalistic and distraction-free, with a focus on keyboard shortcuts and fast rendering instead of pretty animations.
+                        | `code Control-Tab` switches to the results window when more space is needed.
+                    .text-base.lg:text-lg.text-gray-600
+                        | It can also be pinned to the desktop as a `b.text-emerald-800 small search field`, which expands into the full bar when clicked.
+                .demo
+                    .demo-media
+                        -call feature="floating-search-bar" alt="The floating search bar" self:clip
 
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Index only what you need
+        section#file-preview.feature
+            .split
+                .copy
+                    h1.feature-title File preview
+                    .text-base.lg:text-lg.text-gray-600
+                        | Press `code ⌘⇧P` to show a `b.text-emerald-800 preview` of the selected file next to the results.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Images and PDFs can be `b.text-emerald-800 zoomed and scrolled`, and videos play inside the preview. `b.text-rose-800 Archives` and `b.text-violet-700 disk images` show the list of files they contain.
+                    .text-sm.lg:text-base.text-gray-500
+                        | Code files get syntax highlighting and line numbers.
+                .demo
+                    .demo-media
+                        -call feature="file-preview" alt="The file preview panel" self:clip
+
+        section#act.feature
+            .trio.w-full
+                .cell
+                    h1.feature-title.!text-2xl.lg:!text-3xl Stash
+                    .trio-copy
+                        .text-base.lg:text-lg.text-gray-600
+                            | Press `code ⌘S` to add the selected files to the `b.text-emerald-800 stash`. It stays pinned above the results while you search for other files, and the stashed files can then be `b.text-rose-800 copied or sent` at once.
+                        .text-sm.lg:text-base.text-gray-500
+                            | The stash is kept between restarts.
+                    .trio-clip
+                        -call feature="stash" alt="Files kept in the Stash" self:clip
+                .cell
+                    h1.feature-title.!text-2xl.lg:!text-3xl Send securely
+                    .trio-copy
+                        .text-base.lg:text-lg.text-gray-600
+                            | Press `code ⌘U` to get a `b.text-emerald-800 private link` for the selected files, already copied to the clipboard. Cling doesn't upload the files anywhere, they are sent `b.text-rose-800 directly from your Mac` to whoever opens the link.
+                        .text-sm.lg:text-base.text-gray-500
+                            | Links expire after a set time, anywhere from 1 minute to 3 days.
+                    .trio-clip
+                        -call feature="send-securely" alt="Sending a file over an expiring link" self:clip
+                .cell
+                    h1.feature-title.!text-2xl.lg:!text-3xl Drop to app
+                    .trio-copy
+                        .text-base.lg:text-lg.text-gray-600
+                            | Press `code ⌥⏎` to drop the selected files into the `b.text-emerald-800 focused field` of the app you were using before Cling, like the upload button of a website. It works by `b.text-rose-800 simulating a drag and drop` of the files, so any app that accepts dropped files will work.
+                        .text-sm.lg:text-base.text-gray-500
+                            | `code ⌥⇧⏎` shows a keyboard grid for dropping the files on any spot of the screen.
+                    .trio-clip
+                        -call feature="drop-to-app" alt="Dropping a file into the app behind Cling" self:clip
+
+        section#index-pruning.feature
+            .split.flip
+                .copy
+                    h1.feature-title Index pruning
+                    .text-base.lg:text-lg.text-gray-600
+                        | You can also `b.text-rose-600 disable whole indexes` like System files or Library folders to speed up the search and reduce memory usage.
+                .demo
+                    .demo-media
+                        -call feature="index-pruning" alt="Pruning heavy folders from the index" self:clip
+
+        section#exclude-from-index.feature
+            .split.wide
+                .copy
+                    h1.feature-title Index only what you need
                     .text-base.lg:text-lg.text-gray-600
                         | Cling allows you to `b.text-emerald-800 exclude` files from the index, so you can keep your search results clean and focused.
                     .text-base.lg:text-lg.text-gray-600
                         | The `code ~/.fsignore` file lets you specify `a href="https://git-scm.com/docs/gitignore#_pattern_format" gitignore` patterns for excluding files and folders from the index.
-                    .text-base.lg:text-lg.text-gray-600
-                        | You can also `b.text-rose-600 disable whole indexes` like System files or Library folders to speed up the search and reduce memory usage.
+                .demo
+                    #exclude-demo.demo-card
+                        .ex-results
+                        .ex-side
+                            .ex-options
+                            .ex-rule
 
-        section#raycast.flex-center.flex-col.pb-20
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4.items-start
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
+        section#mcp-server.feature
+            .split.flip
+                .copy
+                    h1.feature-title MCP server
+                    .text-base.lg:text-lg.text-gray-600
+                        | Cling has an `b.text-emerald-800 MCP server` so AI agents like Claude or Codex can search files and change settings in Cling.
+                    .text-base.lg:text-lg.text-gray-600
+                        | Agents can also find which `b.text-emerald-800 ignore rule` or `b.text-rose-800 disabled index` hides a file, and change settings for you. For example:
+                    ul.prompt-list
+                        li.text-base.lg:text-lg.text-gray-600
+                            em &ldquo;why doesn't my ~/.ssh/config show up when I search sshcfg?&rdquo;
+                        li.text-base.lg:text-lg.text-gray-600
+                            em &ldquo;make a quick filter for Figma and Sketch files on Option F&rdquo;
+                        li.text-base.lg:text-lg.text-gray-600
+                            em &ldquo;stop indexing rust target folders but keep the binaries&rdquo;
+                .demo
+                    .demo-media
+                        -call feature="mcp-server" alt="An agent working with Cling through MCP" self:clip
+
+        section#raycast.flex-center.flex-col.pb-24
+            .grid.grid-cols-1.md:grid-cols-2.gap-10.md:gap-14.w-screen.max-w-[1200px].px-4.items-start
+                .flex.flex-col.space-y-2.text-left
                     h1.text-3xl.text-left.lg:text-4xl.mb-1.text-gray-800 Raycast extension
                     .text-base.lg:text-lg.text-gray-600
                         Search your whole filesystem with Cling's engine without leaving Raycast.
@@ -121,54 +381,81 @@ html lang="en"
                             .flex.flex-col.items-start
                                 span.text-lg.!leading-4.mt-1 Get the Raycast extension
                                 span.text-[0.7rem].opacity-80.font-mono.whitespace-nowrap raycast.com/alin/cling
-                div#raycast-video-container.zstack.md:w-1/2.cursor-pointer onclick="playVideo(this)"
+                div#raycast-video-container.zstack.cursor-pointer onclick="playVideo(this)"
                     img.video-poster.w-full.rounded-2xl.shadow-xl src="/static/img/cling-raycast-screencast-poster.png" alt="The Cling Raycast extension showing search results"
                     div.play-btn.w-20.h-20.bg-black.bg-opacity-50.rounded-full.flex.items-center.justify-center.scale-110.hover:bg-opacity-70.transition
                         svg.w-10.h-10.text-white.ml-1 viewBox="0 0 24 24" fill="currentColor"
                             path d="M8 5v14l11-7z"
-                    video.w-full.rounded-2xl.shadow-xl.hidden disablePictureInPicture muted loop playsinline preload="none"
+                    video.w-full.rounded-2xl.shadow-xl.hidden ( disablePictureInPicture muted loop playsinline preload="none" )
                         source src="/static/video/cling-raycast-screencast.mp4" type="video/mp4"
 
-        section#pro.bg-gray-800.text-white.w-full.flex-center.flex-col.py-12.space-y-12
-            h2.text-3xl.lg:text-4xl.font-bold.mb-4.text-gray-100 Pro Features
-            p.text-gray-400.!mt-0 Included in the 14-day free trial. After that, a license keeps them unlocked.
+        section#pro.bg-gray-800.text-white.w-full.flex-center.flex-col.py-20.space-y-16
+            h2.text-3xl.lg:text-4xl.font-bold.mb-0.text-gray-100 Pro Features
+            p.text-gray-400.!mt-2.px-4 Included in the 14-day free trial. After that, a license keeps them unlocked.
 
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Quick Filters
-                    .text-base.lg:text-lg.text-gray-300
+            .w-full.max-w-[1200px].px-4
+                .split
+                    .copy
+                        h1.feature-title.!text-white `a.text-orange-400.font-bold href="https://www.voidtools.com/support/everything/" Everything` for Mac
+                        .text-base.lg:text-lg.text-gray-300
+                            Cling strives to be similar to the popular `b.text-rose-400 Everything` app from Windows, with macOS native integration and a focus on power users.
+                        .text-base.lg:text-lg.text-gray-300
+                            The UI is designed to be minimalistic and distraction-free, with a focus on keyboard shortcuts and fast rendering instead of pretty animations.
+                    .demo
+                        .demo-media
+                            -call feature="everything-index" alt="Searching every file on the local disks" self:clip
+
+            .w-full.max-w-[1200px].px-4
+                .split.flip
+                    .copy
+                        h1.feature-title.!text-white Search external volumes
+                        .text-base.lg:text-lg.text-gray-300
+                            | `b USB drives`, `b external hard drives`, and `b network shares` are indexed and searchable without any latency.
+                        .text-sm.lg:text-base.text-gray-400
+                            | `em Persistent indexes` work even when volumes are unmounted. Reindexing happens periodically in the background.
+                    .demo
+                        .demo-media
+                            -call feature="external-drives" alt="Searching a disconnected drive" self:clip
+
+            .w-full.max-w-[1200px].px-4
+                .split
+                    .copy
+                        h1.feature-title.!text-white File server
+                        .text-base.lg:text-lg.text-gray-300
+                            | Search this Mac and download its files from your `b phone`, a tablet or another computer, over your `b local network` or a VPN like `b Tailscale`.
+                        .text-base.lg:text-lg.text-gray-300
+                            | The same `b instant search` as the Cling app. `b Select` files to download them, preview images, videos, code files, PDFs. Zip them or share a `b Send Securely` link.
+                        .text-sm.lg:text-base.text-gray-400
+                            | `b Add it to the Home Screen` to use it like an app, with downloads kept on the phone. It only listens on private networks.
+                    .demo
+                        .demo-media
+                            -call feature="file-server" alt="Searching a Mac and sending files from a phone" self:clip
+
+            .grid.grid-cols-1.md:grid-cols-3.gap-12.md:gap-8.w-full.max-w-[1200px].px-4
+                .flex.flex-col.space-y-2.text-left
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-white Quick Filters
+                    .text-base.text-gray-300
                         Press `code Option` + a single key to instantly narrow down results with minimal typing.
-                    -call img="cling-quick-filters" factor=${0.5} mobile_factor=${0.9} pcls="mt-4" icls="rounded-xl shadow-lg w-full" alt="Quick Filters panel showing file type filters with hotkeys" defs:image
-                    .text-base.lg:text-lg.text-gray-300
+                    .text-base.text-gray-300
                         Each Quick Filter can combine `b extension matching`, `b pre-filled queries`, and `b folder restrictions` into a single hotkey.
-                    .text-base.lg:text-lg.text-gray-300
+                    .text-base.text-gray-300
                         Press `code Option` + `code Escape` to clear all filters and go back to searching everything.
 
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Folder and Volume Filters
-                    .text-base.lg:text-lg.text-gray-300
+                .flex.flex-col.space-y-2.text-left
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-white Folder and Volume Filters
+                    .text-base.text-gray-300
                         Save `b folder sets` and `b volume scopes` as named filters, each with its own hotkey.
-                    .text-base.lg:text-lg.text-gray-300
+                    .text-base.text-gray-300
                         Press `code Option` + a number key to jump between volumes. All filters `em stack` with your typed query.
-                    -call img="cling-folder-filters" factor=${0.5} mobile_factor=${0.9} pcls="mt-4" icls="rounded-xl shadow-lg w-full" alt="Folder and volume filter picker showing saved folder sets" defs:image
 
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Custom Scripts
-                    .text-base.lg:text-lg.text-gray-300
+                .flex.flex-col.space-y-2.text-left
+                    h1.text-2xl.text-left.lg:text-3xl.mb-1.text-white Custom Scripts
+                    .text-base.text-gray-300
                         Write scripts in `em any language`, assign a hotkey, run them on selected files.
-                    .text-base.lg:text-lg.text-gray-300
+                    .text-base.text-gray-300
                         Scripts receive `b file paths` as arguments. Build workflows like uploading, converting formats, or batch processing.
-                    -call img="cling-scripts" factor=${0.5} mobile_factor=${0.9} pcls="mt-4" icls="rounded-xl shadow-lg w-full" alt="Script row showing custom actions with assigned hotkeys" defs:image
 
-                .flex.flex-col.space-y-2.md:w-1/2.text-left
-                    h1.text-3xl.text-left.lg:text-4xl.mb-1.text-white Search external volumes
-                    .text-base.lg:text-lg.text-gray-300
-                        | `b USB drives`, `b external hard drives`, and `b network shares` are indexed and searchable without any latency.
-                    .text-sm.lg:text-base.text-gray-400
-                        | `em Persistent indexes` work even when volumes are unmounted. Reindexing happens periodically in the background.
-
-        section#pricing.flex-center.flex-col.pb-20.space-y-24.px-8
+        section#pricing.flex-center.flex-col.pt-12.md:pt-8.pb-20.space-y-24.px-3.md:px-8.w-full
             #pro.flex.flex-col.flex-center.max-w-[100vw]
                 -stylus
                     @import "stylus/base"
@@ -202,8 +489,8 @@ html lang="en"
                 h1.text-gray-800.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-blue-400 Free` `span.text-gray-400.text-xl.font-medium vs` `span.font-bold.text-orange-600 Pro`
                 h6.text-sm.text-gray-400.-mt-1 Free version features are free `b forever`
                 h6.text-sm.text-gray-400.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
-                div.flex.flex-col.flex-center.w-[96vw].mt-8
-                    table.w-[95vw].xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
+                div.flex.flex-col.flex-center.w-full.mt-8
+                    table.w-full.xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
                         thead
                             tr
                                 th.text-xs.md:text-lg.py-5.px-1.font-sans.font-medium Feature
@@ -236,14 +523,62 @@ html lang="en"
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                             tr
                                 td
+                                    span.font-normal.text-black `b Search operators`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Narrow by extension, folder, depth, prefix or suffix, or exclude words
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    span.font-normal.text-black `b Floating search bar` and `b File preview`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 A search bar you can pin to the desktop, previews of images, video, PDFs and archives
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    span.font-normal.text-black `b Stash` and `b Drop to app`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Collect files across searches, drop them into the app behind Cling
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    span.font-normal.text-black `b Send securely`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Peer to peer links that expire on their own
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    span.font-normal.text-black `b Index pruning` and `b Exclude from index`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 See which folders fill the index and keep them out
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    span.font-normal.text-black `b MCP server`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 AI agents can search, explain missing files and change settings
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
                                     span.text-black `b System` and `b Root` search scopes
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Search system files, hidden files, dotfiles, and app data
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td: icon.w-6.h-6.text-red-400.mx-auto : xmark
                             tr
                                 td
+                                    span.text-black `b Everything` index
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Every file on the local disks, no ignore rules
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td
                                     span.text-black `b External volume` indexing
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Persistent indexes for USB drives, external hard drives, and network shares
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td
+                                    span.text-black `b File server`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Search and download this Mac's files from a phone or another computer
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td: icon.w-6.h-6.text-red-400.mx-auto : xmark
                             tr
@@ -282,76 +617,50 @@ html lang="en"
                     p.text-xs.mt-1.text-rose-600.font-medium
                         | Refunds accepted within 14 days of purchase, no questions asked
 
-        section#performance.flex-center.flex-col.pb-20.space-y-24
-            .flex.md:space-x-10.w-screen.max-w-[576px].md:w-auto.md:max-w-[1200px].flex-col.md:flex-row.space-y-10.md:space-y-0.px-4
-                .flex.flex-col.space-y-2.md:w-full.text-left
-                    -md
-                        ## Comparison with other apps
+        section#comparison.feature
+            .comparison-block.text-left.prose-cling
+                -md
+                    ## Comparison with other apps
 
-                        ### Spotlight, Alfred, Raycast
+                    ### Spotlight, Alfred, Raycast
 
-                        Cling is similar to these apps in that it provides instant search results, but the key differences are:
+                    Cling is similar to these apps in that it provides instant search results, but the key differences are:
 
-                        - **Fuzzy search**: find files with partial or misspelled queries
-                        - **System files**: search system files, hidden files, dotfiles, and app data that the Spotlight index doesn't include
-                        - **Extension filtering**: quickly narrow results by file type without crafting complex queries
+                    - **Fuzzy search**: find files with partial or misspelled queries
+                    - **System files**: search system files, hidden files, dotfiles, and app data that the Spotlight index doesn't include
+                    - **Extension filtering**: quickly narrow results by file type without crafting complex queries
 
-                        ### ProFind, HoudahSpot, EasyFind, Tembo, Find Any File
+                    ### ProFind, HoudahSpot, EasyFind, Tembo, Find Any File
 
-                        Cling is very much not like these apps.
+                    Cling is very much not like these apps.
 
-                        They are all file search apps that provide advanced search features, allowing you to craft complex queries using metadata and file content to dig deep into your filesystem and find as many files as possible.
+                    They are all file search apps that provide advanced search features, allowing you to craft complex queries using metadata and file content to dig deep into your filesystem and find as many files as possible.
 
-                        Cling is for quickly finding one or more specific files by roughly knowing the name, and then doing something with the file immediately like:
+                    Cling is for quickly finding one or more specific files by roughly knowing the name, and then doing something with the file immediately like:
 
-                        - copying it for sending on chat
-                        - adding to a shelf like Yoink
-                        - opening it in an app like Pixelmator
-                        - uploading it using Dropshare
-                        - executing a script on the file
+                    - copying it for sending on chat
+                    - adding to a shelf like Yoink
+                    - opening it in an app like Pixelmator
+                    - uploading it using Dropshare
+                    - executing a script on the file
 
-                        **Cling is not an app for finding all files that match a complex query.**
-
-                        ---
-
-                        ## Performance considerations
-
-                        ### Memory usage
-
-                        To provide instant search results, Cling maintains an in-memory index of your filesystem split across separate engines for each search scope.
-                        This can consume a significant amount of memory, ranging from `300MB` to `2GB` depending on the size of your filesystem and the number of files indexed.
-
-                        Whenever Cling is in background *(the window is not visible)*, the index will be marked as **swappable to disk**.
-                        This allows macOS to move the index to disk and free up RAM when memory pressure is high. Cling will reload the index from disk when you open its window again.
-
-                        ### CPU usage
-
-                        The most CPU-intensive operations are:
-
-                        - **Indexing**: when Cling is indexing your filesystem for the first time, it will consume a significant amount of CPU for about 1 to 5 minutes
-                        - **Re-indexing**: periodically, about once every 3 days, Cling will re-index the filesystem to keep the index up-to-date
-                        - **Fuzzy search**: when you type in the search bar, Cling performs a parallel fuzzy search across all active engines
-
-                        Searching will consume CPU in short bursts. A typical search across 9+ million files completes in under 100ms. When you stop typing, CPU usage drops to 0%.
-
-                        When Cling is in background, it will pause searching and consume very little CPU for processing file changes.
-
-                        ### Battery usage
-
-                        The impact on battery is proportional to how many searches you do and how many file changes will happen in the background.
-
-                        Even though a search will look like it's consuming 100% CPU of multiple cores, it's a very fast operation and the battery energy used isn't that high in the long term.
-
-                        Processing and indexing file changes is very efficient and will not impact battery life significantly.
-
+                    **Cling is not an app for finding all files that match a complex query.**
 
         footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[100vw].w-[100vw].h-24.text-gray-500.justify-self-end.mt-auto
             - call cls="text-gray-500 hidden md:block" defs:copyright_line
             .links.w-full.md:w-auto
-                - call defs:socials
+                - call cls="text-gray-500 justify-center md:justify-end" defs:socials
                 / a.text-red-hot.ml-4 href="/contact" Contact
         -stylus
             @import "stylus/base"
+            @import "stylus/motion-pause"
+
+            // a theme colour (tailwind.config.js, exposed as --color-*) at a percentage of opacity
+            tok(name, pct = 100)
+                if pct == 100
+                    unquote('var(--color-' + name + ')')
+                else
+                    unquote('color-mix(in srgb, var(--color-' + name + ') ' + pct + '%, transparent)')
 
             #app-icon
                 filter: drop-shadow(0 0px 1px rgba(130, 50, 0, 0.4)) drop-shadow(0 9px 17px rgba(125, 65, 22, 0.4))
@@ -401,12 +710,528 @@ html lang="en"
                 a
                     background-color alpha(black, 0.1)
                     color black
+
+            section.feature
+                display flex
+                flex-direction column
+                align-items center
+                width 100vw
+                max-width 1200px
+                padding 0 1rem 6rem
+            #pro .flex > .flex.flex-col
+                min-width 0
+            .feature-title
+                font-size 1.875rem
+                line-height 1.2
+                margin 0 0 1.5rem
+                text-align center
+                color var(--color-gray-800)
+                @media (min-width: 1024px)
+                    font-size 2.25rem
+            // Every feature row shares one width (the section's 1200px less its padding) and one grid: two equal
+            // columns with the same gap, so copy and demo edges line up from section to section. A demo fills
+            // its column; only a short viewport makes a clip narrower (max-height), and then it centres in it.
+            .split
+                display grid
+                grid-template-columns minmax(0, 1fr)
+                gap 1.5rem
+                width 100%
+                margin 0 auto
+                align-items center
+                > .copy
+                    display flex
+                    flex-direction column
+                    gap 0.5rem
+                    text-align left
+                    min-width 0
+                    .feature-title
+                        text-align left
+                        margin 0 0 0.5rem
+                > .demo
+                    display flex
+                    justify-content center
+                    min-width 0
+                    > *
+                        width 100%
+                @media (min-width: 768px)
+                    gap 3.5rem
+                    grid-template-columns minmax(0, 1fr) minmax(0, 1fr)
+                    &.flip > .copy
+                        order 2
+            .prose-cling
+                h2
+                    font-size 1.875rem
+                    margin 0 0 1rem
+                    text-align center
+                h3
+                    font-size 1.25rem
+                    margin 2rem 0 0.5rem
+                p, li
+                    color var(--color-gray-600)
+                ul
+                    list-style disc
+                    padding-left 1.25rem
+            // ---- comparison: its own paper surface, set apart from the feature flow, on the rows' shared width
+            .comparison-block
+                width 100%
+                padding 2.25rem 1.25rem 1.5rem
+                border-radius 1.75rem
+                background tok('stone-50', 86)
+                border 1px solid tok('stone-800', 8)
+                box-shadow inset 0 1px 0 alpha(white, 0.9), 0 30px 70px -36px tok('orange-900', 30)
+                @media (min-width: 768px)
+                    padding 3rem 3.25rem 2.25rem
+                > *
+                    max-width 760px
+                h2
+                    max-width none
+                    margin 0 0 0.5rem
+                    padding 0 0 1.1rem 0.5rem
+                    border-bottom 1px solid tok('stone-800', 10)
+                    font-size 2.25rem
+                    line-height 1.1
+                    letter-spacing -0.01em
+                    text-align left
+                    color var(--color-stone-800)
+                h3:first-of-type
+                    margin-top 1.5rem
+                // the page's red-500 emphasis reads 3.6:1 on this paper; one shade deeper clears AA
+                strong
+                    color var(--color-red-700)
+            .prompt-list
+                display flex
+                flex-direction column
+                gap 0.3rem
+                margin 0
+                padding-left 1.25rem
+                list-style disc
+                li::marker
+                    color var(--color-gray-400)
+            .op-list
+                display flex
+                flex-direction column
+                gap 0.35rem
+                margin 0 0 0.25rem
+                padding 0
+                list-style none
+            .trio .feature-title
+                text-align left
+                margin-bottom 0.75rem
+            .trio-copy
+                display flex
+                flex-direction column
+                gap 0.5rem
+                margin-bottom 1.25rem
+                text-align left
+            // play/pause button and dim: MotionPause.clip
+            .trio-clip
+                position relative
+                min-width 0
+            .trio
+                display grid
+                grid-template-columns 1fr
+                row-gap 4rem
+                column-gap 2rem
+                width 100%
+                > .cell
+                    display grid
+                    grid-template-rows subgrid
+                    grid-row span 3
+                    min-width 0
+                    row-gap 0
+            .trio
+                @media (min-width: 768px)
+                    grid-template-columns repeat(3, minmax(0, 1fr))
+            .demo-card
+                width 100%
+                text-align left
+                background white
+                border 1px solid alpha(black, 0.06)
+                border-radius 1rem
+                box-shadow 0 10px 30px -12px alpha(#7c2d12, 0.25), 0 2px 6px alpha(black, 0.05)
+                padding 0.75rem
+            .demo-media
+                width 100%
+            // Whole clip always visible: capped by the viewport height, never cropped, centred.
+            video.page-clip
+                display block
+                width auto
+                max-width 100%
+                max-height calc(100svh - 6rem)
+                margin 0 auto
+                border-radius 1rem
+                box-shadow 0 10px 30px -12px alpha(black, 0.35)
+            .clip-empty
+                width 100%
+                aspect-ratio 16 / 10
+                border-radius 1rem
+                background alpha(#7c2d12, 0.05)
+            #pro .clip-empty
+                background alpha(white, 0.05)
+            #cling-video, #video-container .video-poster, #raycast-video-container video, #raycast-video-container .video-poster
+                width auto
+                max-width 100%
+                max-height calc(100svh - 6rem)
+                margin 0 auto
+            // poster and film share one frame, so the swap on play changes nothing but the picture
+            .film-frame
+                border-radius clamp(1.1rem, 3vw, 2rem)
+                box-shadow 0 28px 60px -24px tok('stone-800', 45), 0 6px 16px -8px tok('stone-800', 25)
+
+            // chapter thumbs under the film: generated by tools/cling-chapters.py, driven by cling-demos.js
+            #chapters
+                width 100%
+                max-width 1000px
+                margin-bottom 0.5rem
+            .chapter-row
+                display flex
+                justify-content safe center
+                gap 0.5rem
+                list-style none
+                margin 0
+                // room above for the raised thumb and below for its title, inside the scroller's clip
+                padding 0.6rem 16px 2.6rem
+                overflow-x auto
+                scroll-padding-inline 16px
+                scrollbar-width none
+                &::-webkit-scrollbar
+                    display none
+                li
+                    position relative
+                    flex 1 1 0
+                    min-width 5.5rem
+                    max-width 7.5rem
+                // wide screens fit every section under the film without scrolling
+                @media (min-width: 1024px)
+                    gap 0.4rem
+                    li
+                        min-width 0
+            .chapter
+                display block
+                width 100%
+                padding 0
+                border 0
+                background transparent
+                cursor pointer
+                img
+                    display block
+                    width 100%
+                    height auto
+                    aspect-ratio 16 / 9
+                    object-fit cover
+                    border-radius 0.6rem
+                    background tok('stone-800', 8)
+                    box-shadow 0 2px 6px -3px tok('stone-800', 40)
+                    opacity 0.8
+                    transition transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease, opacity 0.3s ease, filter 0.3s ease
+                &:hover img, &:focus-visible img
+                    opacity 1
+                    transform translateY(-2px)
+                &:focus-visible
+                    outline none
+                    img
+                        outline 2px solid tok('orange-500', 70)
+                        outline-offset 2px
+            .chapter-title
+                position absolute
+                top calc(100% + 0.45rem)
+                left 50%
+                width max-content
+                max-width 9rem
+                transform translate(-50%, -3px)
+                font-size 0.72rem
+                line-height 1.2
+                font-weight 600
+                color tok('stone-700')
+                text-align center
+                opacity 0
+                pointer-events none
+                transition opacity 0.2s ease, transform 0.25s ease
+            .chapter:hover .chapter-title, .chapter:focus-visible .chapter-title
+                opacity 1
+                transform translate(-50%, 0)
+            // the ends keep their title inside the row instead of hanging past it
+            .chapter-row li:first-child .chapter-title
+                left 0
+                text-align left
+                transform translate(0, -3px)
+            .chapter-row li:last-child .chapter-title
+                left auto
+                right 0
+                text-align right
+                transform translate(0, -3px)
+            .chapter-row li:first-child .chapter:hover .chapter-title
+            .chapter-row li:first-child .chapter:focus-visible .chapter-title
+            .chapter-row li:last-child .chapter:hover .chapter-title
+            .chapter-row li:last-child .chapter:focus-visible .chapter-title
+                transform translate(0, 0)
+            // once the film plays, the section on screen is lifted off the row and the rest step back
+            #chapters.is-live .chapter img
+                opacity 0.6
+                filter saturate(0.7)
+            #chapters.is-live .chapter:hover img
+                opacity 0.9
+                filter none
+            .chapter-row li:has(.is-current)
+                z-index 1
+            #chapters .chapter.is-current img
+                opacity 1
+                filter none
+                transform translateY(-6px) scale(1.1)
+                box-shadow 0 14px 22px -10px tok('stone-800', 55), 0 3px 8px -4px tok('stone-800', 30)
+            @media (prefers-reduced-motion: reduce)
+                .chapter img, .chapter-title
+                    transition opacity 0.2s ease
+
+            .qd-field
+                min-height 2.75rem
+                padding 0.55rem 0.8rem
+                border-radius 0.6rem
+                background var(--color-gray-100)
+                border 1px solid var(--color-gray-200)
+                font-family monoSpace
+                font-size 15px
+                line-height 1.6
+                color var(--color-gray-900)
+                overflow-wrap anywhere
+                +mobile()
+                    font-size 13px
+            .qd-placeholder
+                color var(--color-gray-400)
+                font-family -apple-system, BlinkMacSystemFont, sans-serif
+            .qd-caret
+                display inline-block
+                width 2px
+                height 1.15em
+                margin 0 -1px
+                vertical-align text-bottom
+                background #2f6fdb
+                animation qdblink 1s steps(1) infinite
+            .motion-paused .qd-caret
+                animation none
+            @keyframes qdblink
+                50%
+                    opacity 0
+            .qd-sel
+                background #b9d3fb
+            .tk-fuzzy
+                color #2f6fdb
+            .tk-ext
+                color var(--color-orange-600)
+            .tk-not
+                color var(--color-red-600)
+            .tk-anchor
+                color var(--color-violet-600)
+            .tk-dir
+                color var(--color-teal-600)
+            .tk-in
+                color var(--color-emerald-700)
+
+            .qd-results
+                position relative
+                height 46px
+                // leaving rows slide past the bottom while the list shrinks; keep them inside the card
+                overflow clip
+                overflow-clip-margin 6px
+                // room for MAX_ROWS (6) so the card, and the page below it, never jumps while rows come and go
+                min-height calc(6 * 46px)
+                margin-top 0.5rem
+                transition height 0.35s cubic-bezier(0.2, 0.9, 0.25, 1)
+            .qrow, .exrow
+                display flex
+                align-items center
+                gap 0.7rem
+                height 46px
+                padding 0 0.6rem
+                border-radius 0.55rem
+                img
+                    flex none
+                    width 28px
+                    height 28px
+            .qrow
+                position absolute
+                left 0
+                right 0
+                transition top 0.35s cubic-bezier(0.2, 0.9, 0.25, 1), opacity 0.3s, transform 0.3s, background 0.3s
+                &.entering
+                    opacity 0
+                    transform translateY(-8px)
+                &.leaving
+                    opacity 0
+                    transform translateX(14px)
+            .qmain
+                flex 1
+                min-width 0
+            .qname, .qpath
+                white-space nowrap
+                overflow hidden
+                text-overflow ellipsis
+            .qname
+                font-size 14px
+                font-weight 500
+                color var(--color-gray-900)
+            .qpath
+                font-size 12px
+                color var(--color-gray-500)
+            .qkind
+                flex none
+                font-family monoSpace
+                font-size 11px
+                font-weight 700
+                padding 0.1rem 0.45rem
+                border-radius 0.35rem
+                color var(--color-gray-500)
+                background var(--color-gray-100)
+                transition background 0.3s, color 0.3s
+                &.hl-e
+                    color var(--color-orange-700)
+                    background var(--color-orange-100)
+            .demo-card mark
+                display inline-block
+                padding 0
+                border-radius 3px
+                background transparent
+                color inherit
+            mark.hl-f
+                color #2f6fdb
+                font-weight 800
+            mark.hl-a
+                color var(--color-violet-700)
+                background var(--color-violet-100)
+                font-weight 700
+            mark.hl-n
+                color var(--color-red-700)
+                background var(--color-red-100)
+            mark.hl-d
+                color var(--color-teal-800)
+                background var(--color-teal-100)
+                font-weight 600
+            mark.hl-i
+                color var(--color-emerald-800)
+                background var(--color-emerald-100)
+                font-weight 600
+            mark.fresh, .qkind.fresh
+                animation hlpop 0.55s cubic-bezier(0.3, 1.6, 0.5, 1)
+            @keyframes hlpop
+                0%
+                    transform scale(1)
+                    filter brightness(1.4)
+                40%
+                    transform scale(1.22)
+                100%
+                    transform scale(1)
+            .qrow.struck, .exrow.struck
+                background var(--color-red-50)
+                .qname
+                    text-decoration line-through 2px var(--color-red-500)
+
+            #exclude-demo
+                display grid
+                gap 0.75rem
+                @media (min-width: 768px)
+                    grid-template-columns 1fr 300px
+            .exrow
+                overflow hidden
+                transition height 0.35s, opacity 0.3s, background 0.3s, color 0.3s
+                &.sel
+                    background #2f6fdb
+                    .qname
+                        color white
+                    .qpath
+                        color alpha(white, 0.8)
+                &.sel.struck
+                    background var(--color-red-500)
+                &.gone
+                    height 0
+                    opacity 0
+            .ex-results
+                min-height calc(6 * 46px)
+            .ex-side
+                display flex
+                flex-direction column
+                gap 0.5rem
+                padding 0.5rem
+                border-radius 0.75rem
+                background var(--color-gray-50)
+            .exopt
+                display flex
+                align-items center
+                gap 0.55rem
+                padding 0.45rem 0.55rem
+                border-radius 0.45rem
+                font-size 13px
+                color var(--color-gray-800)
+                transition background 0.25s
+                .dot
+                    flex none
+                    width 0.85rem
+                    height 0.85rem
+                    border-radius 50%
+                    border 1.5px solid alpha(black, 0.25)
+                    transition border 0.2s
+                &.on
+                    background alpha(#2f6fdb, 0.1)
+                    .dot
+                        border 4px solid #2f6fdb
+            .ex-rule
+                min-height 1.6rem
+                font-family monoSpace
+                font-size 12px
+                font-weight 600
+                color var(--color-red-800)
+                opacity 0
+                transform scale(0.9)
+                transition opacity 0.25s, transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1)
+                padding 0 0.55rem
+                b
+                    color var(--color-red-600)
+                &.on
+                    opacity 1
+                    transform scale(1)
+
+            #stats
+                .stat
+                    display inline-flex
+                    align-items baseline
+                    gap 0.4rem
+                    white-space nowrap
+                .v
+                    font-feature-settings 'tnum'
+                .l
+                    font-size 0.55em
+                    font-weight 600
+                    color var(--color-gray-500)
+                .ic
+                    align-self center
+                    width 0.8em
+                    height 0.8em
+                    flex none
+                .live-dot
+                    align-self center
+                    width 0.32em
+                    height 0.32em
+                    border-radius 50%
+                    background var(--color-emerald-500)
+                    animation livepulse 1.6s ease-out infinite
+            @keyframes livepulse
+                0%
+                    box-shadow 0 0 0 0 alpha(#10b981, 0.6)
+                100%
+                    box-shadow 0 0 0 0.5em alpha(#10b981, 0)
+
         -coffee
             url = new URL(location)
             coupon = url.searchParams.get('coupon')
 
             if coupon
                 document.getElementById('btn-paddle-hero')?.setAttribute('data-coupon', coupon)
+
+            # the launch discount shows only until data-sale-until (end of 23 October, Romanian time); after that the page falls back to the full price on its own
+            price = document.getElementById('cling-price')
+            if price and Date.now() < Date.parse(price.dataset.saleUntil)
+                price.classList.add('hidden')
+                document.getElementById('cling-costs')?.classList.add('hidden')
+                document.getElementById('cling-sale')?.classList.remove('hidden')
 
             setupPaddle = () ->
                 return unless Paddle?
@@ -438,3 +1263,4 @@ html lang="en"
                         else
                             video.pause()
                     return
+

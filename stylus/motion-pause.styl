@@ -1,0 +1,163 @@
+// Pause all motion (public/static/js/motion-pause.js): the corner toggle, the manual play buttons it
+// adds over loops and demos, and the frozen state. Import from a page's stylus block:
+//     @import "stylus/motion-pause"
+// Colours are Tailwind theme tokens exposed as --color-* (tailwind-css-variables).
+
+mp-tok(name, pct)
+    unquote('color-mix(in srgb, var(--color-' + name + ') ' + pct + '%, transparent)')
+
+// frozen page: CSS animations stop where they are, transitions become instant state changes
+.motion-paused
+    *, *::before, *::after
+        animation-play-state paused !important
+        transition-duration 0s !important
+        transition-delay 0s !important
+
+// ---------------------------------------------------------------- the corner toggle
+.mp-toggle
+    position fixed
+    z-index 60
+    right calc(16px + env(safe-area-inset-right, 0px))
+    bottom calc(16px + env(safe-area-inset-bottom, 0px))
+    width 36px
+    height 36px
+    padding 0
+    border-radius 50%
+    border 1px solid mp-tok('white', 35)
+    background mp-tok('stone-500', 62)
+    -webkit-backdrop-filter blur(10px) saturate(1.4)
+    backdrop-filter blur(10px) saturate(1.4)
+    box-shadow 0 4px 14px -6px mp-tok('stone-900', 45)
+    color var(--color-white)
+    cursor pointer
+    display flex
+    align-items center
+    justify-content center
+    opacity 0.9
+    transition opacity 0.15s ease, background-color 0.15s ease
+    &:hover, &:focus-visible
+        opacity 1
+        background mp-tok('stone-600', 78)
+    &:focus-visible
+        outline 2px solid var(--color-stone-700)
+        outline-offset 2px
+    .mp-glyph
+        display flex
+        width 16px
+        height 16px
+        svg
+            width 100%
+            height 100%
+            fill currentColor
+    // label to the left of the button, on hover and keyboard focus
+    .mp-tip
+        position absolute
+        right calc(100% + 8px)
+        top 50%
+        transform translateY(-50%)
+        white-space nowrap
+        padding 0.3rem 0.6rem
+        border-radius 999px
+        background mp-tok('stone-800', 85)
+        color var(--color-white)
+        font-size 12px
+        font-weight 500
+        line-height 1.2
+        pointer-events none
+        opacity 0
+        transition opacity 0.15s ease
+    &:hover .mp-tip, &:focus-visible .mp-tip
+        opacity 1
+    @media print
+        display none
+
+// ---------------------------------------------------------------- play/pause over a clip
+// Paused: a faint dim and the play button. Playing: nothing, until hovered. Hover makes the dim
+// stronger and shows the button (pause while playing). The dim is a brightness filter on the video,
+// so it follows the video's own box and corners whatever the host's size.
+mp-play = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M22.5 18.5 L46 32 L22.5 45.5 Z' fill='white' stroke='white' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E"
+mp-pause = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='21' y='19' width='8' height='26' rx='2' fill='white'/%3E%3Crect x='35' y='19' width='8' height='26' rx='2' fill='white'/%3E%3C/svg%3E"
+.mp-host
+    position relative
+    video
+        filter brightness(0.92)
+        transition filter 0.2s ease
+    &.mp-playing video
+        filter none
+.mp-clip
+    display block
+    position absolute
+    inset 0
+    width 100%
+    padding 0
+    border 0
+    background transparent
+    cursor pointer
+    // same glyph as the page's other controls: dark translucent circle, white triangle or bars
+    &::after
+        content ''
+        position absolute
+        left 50%
+        top 50%
+        width 3.75rem
+        height 3.75rem
+        transform translate(-50%, -50%)
+        border-radius 50%
+        background mp-tok('stone-900', 55) url(mp-play) center / 100% 100% no-repeat
+        box-shadow 0 6px 18px -6px mp-tok('black', 35)
+        pointer-events none
+        transition opacity 0.2s ease, transform 0.2s ease
+        @media (max-width: 767px)
+            width 3rem
+            height 3rem
+    &:focus-visible::after
+        outline 2px solid var(--color-stone-700)
+        outline-offset 3px
+.mp-host.mp-playing .mp-clip::after
+    background-image url(mp-pause)
+    opacity 0
+    transform translate(-50%, -50%) scale(0.85)
+.mp-host.mp-playing .mp-clip:focus-visible::after
+    opacity 1
+    transform translate(-50%, -50%)
+// pointer, not hover: the rupture plugin rewrites any `hover` value into `rupture-hover`
+@media (pointer: fine)
+    .mp-host:hover
+        video
+            filter brightness(0.8)
+        .mp-clip::after
+            opacity 1
+            transform translate(-50%, -50%)
+    .mp-host.mp-playing:hover video
+        filter brightness(0.86)
+
+// ---------------------------------------------------------------- manual play on a self-running demo
+.mp-demo-host
+    position relative
+.mp-demo
+    display none
+    position absolute
+    z-index 2
+    top -0.75rem
+    right -0.75rem
+    width 2.25rem
+    height 2.25rem
+    padding 0.55rem
+    border-radius 50%
+    border 0
+    background mp-tok('stone-900', 55)
+    color var(--color-white)
+    box-shadow 0 6px 18px -6px mp-tok('black', 35)
+    cursor pointer
+    svg
+        display block
+        width 100%
+        height 100%
+        fill currentColor
+    &:hover
+        background mp-tok('stone-900', 75)
+    &:focus-visible
+        outline 2px solid var(--color-stone-700)
+        outline-offset 2px
+.motion-paused .mp-demo
+    display block

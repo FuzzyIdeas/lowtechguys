@@ -1,20 +1,57 @@
 - namespace name="defs" defs.plim
 ---!
+    import os
+
+    # Section loops built for the page land as public/static/video/clop-page-<feature>-{h264,h265}.mp4 with a
+    # poster at public/static/img/clop-page-posters/<feature>.jpg; until then the slot stays empty, or shows
+    # the section's previous media where it had some.
+    def has_clip(feature):
+        return os.path.exists(f"public/static/video/clop-page-{feature}-h264.mp4")
+
+    # An HEVC encode ships only where it beat H.264 on both size and SSIM; otherwise there is no -h265 file.
+    def has_hevc(feature):
+        return os.path.exists(f"public/static/video/clop-page-{feature}-h265.mp4")
+
+    def clip_poster(feature):
+        jpg = f"static/img/clop-page-posters/{feature}.jpg"
+        return "/" + jpg if os.path.exists("public/" + jpg) else ""
+
+    # the script's mtime as a query, so a browser never pairs a cached script with newer markup and styles
+    def asset_v(path):
+        return int(os.path.getmtime("public" + path))
+
+    def has_showcase():
+        return os.path.exists("public/static/video/clop-showcase-h264.mp4")
+
+    def showcase_hevc():
+        return os.path.exists("public/static/video/clop-showcase-h265.mp4")
+
+    def showcase_poster():
+        jpg = "static/img/clop-showcase-poster.jpg"
+        return "/" + jpg if os.path.exists("public/" + jpg) else ""
+
     class CLS:
         appcontainer = "flex flex-col flex-center bg-yellow-lunar bg-opacity-30 backdrop-blur-sm px-4 py-8 rounded-2xl shadow-lg min-w-[250px] hover:shadow-2xl transition"
-        section = "pt-2 flex md:space-x-10 w-[96vw] max-w-[96vw] md:max-w-[96vw] md:w-full lg:max-w-[1200px] flex-col md:flex-row space-y-10 md:space-y-0 px-4"
+
+-def clip(feature, alt='')
+    -if has_clip(feature)
+        div.clip-cap
+            -call video="clop-page-${feature}" cls="page-clip" poster=${clip_poster(feature)} lazy=${True} label=${alt} hevc=${has_hevc(feature)} defs:videoset
 
 doctype html
-html.overflow-x-hidden lang="en"
+html lang="en"
     head
         - call title="Clop - Image, video, PDF and clipboard optimiser" domain="lowtechguys.com" description="Image, video, PDF and clipboard optimiser. Copy large, paste small, send fast" favicon="/clop/favicon.ico" icon="clop-icon" icon_size="1280" screenshot="clop-screenshot" color="rgb(245, 245, 244)" canonical="/clop/" defs:head
         link href="/static/css/code.css" rel="stylesheet"
+        / no defer: sets .motion-paused on <html> before first paint
+        script src="/static/js/motion-pause.js?v=${asset_v('/static/js/motion-pause.js')}"
+        script src="/static/js/clop-demos.js?v=${asset_v('/static/js/clop-demos.js')}" defer="true"
 
         -if not DEV
             script src="https://cdn.paddle.com/paddle/paddle.js" async="true" defer="true"
 
-    body.bg-stone-100.text-center.max-w-[100%].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
-        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
+    body.page-glow.text-center.max-w-[100%].flex.flex-col.items-center.min-h-[100vh].justify-between.overflow-x-hidden
+        header.flex.items-center.justify-between.px-4.md:px-8.max-w-[96vw].w-[96vw].h-24.text-stone-600.justify-self-end
             a.flex.flex-center.hover:transform.hover:scale-110 href="/"
                 icon.w-16.h-16.md:w-20.md:h-20.filter.drop-shadow-lg.text-zinc-600 : lowtech
             .links
@@ -26,8 +63,8 @@ html.overflow-x-hidden lang="en"
         section#hero.min-w-[96vw].flex-center.flex-col.relative.pb-20
             img.w-28.h-28.md:w-32.md:h-32.filter.drop-shadow-2xl src="/static/img/clop-icon.png"
             h1.mb-6.text-4xl.text-zinc-600 Clop
-            h5.text-gray-500.m-0.p-0 Image, video, PDF and clipboard optimiser
-            h5.text-gray-500.m-0.p-0.-mt-1 Copy large, paste small, send fast
+            h5.text-stone-600.m-0.p-0 Image, video, PDF and clipboard optimiser
+            h5.text-stone-600.m-0.p-0.-mt-1 Copy large, paste small, send fast
 
             .flex.flex-center.mt-8.mb-2.px-2
                 .flex.flex-col.justify-center.items.center
@@ -35,178 +72,455 @@ html.overflow-x-hidden lang="en"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Download app
                             span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Latest version
-                    a.text-xs.mt-1.text-stone-500.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
+                    a.text-xs.mt-1.text-stone-600.decoration-dotted href="https://github.com/FuzzyIdeas/Clop/releases" Changelog
                 .flex.flex-col.justify-center.items.center.ml-1.md:ml-4
-                    a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
-                        .flex.flex-col.items-start
-                            span.text-lg.!leading-4.mt-1 Buy Clop Pro
-                            span.text-[0.7rem].opacity-70.font-mono.whitespace-nowrap Lifetime license costs `span.text-amber-300 €15`
-                    a.text-xs.mt-1.text-stone-500.decoration-dotted href="#pro" Why Clop Pro?
+                    span.relative.inline-flex
+                        a#btn-paddle-hero.btn-paddle.paddle_button.h-7.!min-h-[50px].!h-[50px] href="#!" data-product="841006"
+                            .flex.flex-col.items-start
+                                span.text-lg.!leading-4.mt-1 Buy Clop Pro
+                                span.text-[0.7rem].opacity-90.font-mono.whitespace-nowrap Lifetime license
+                        span.price-badge.font-mono aria-label="€15"
+                            b.now €15
+                    a.text-xs.mt-1.text-stone-600.decoration-dotted href="#pro" Why Clop Pro?
             -stylus
                 a#btn-paddle-hero.btn-paddle.paddle_button
                     background: var(--color-neutral-600) !important
                     box-shadow: var(--shadows-xl) !important
+                // price pinned to the buy button's top-right corner, as on Cling (a discount adds s.was before .now)
+                .price-badge
+                    position absolute
+                    top -10px
+                    right -10px
+                    z-index 2
+                    display inline-flex
+                    align-items baseline
+                    gap 0.3rem
+                    padding 0.15rem 0.5rem
+                    border-radius 999px
+                    background var(--color-neutral-800)
+                    box-shadow 0 4px 10px -2px alpha(black, 0.35)
+                    font-size 0.72rem
+                    line-height 1.3
+                    pointer-events none
+                    .now
+                        color var(--color-glow-gold)
+                        font-weight 700
 
             a.btn.mt-4.text-black.bg-white.border.border-mauve-gray.hover:text-white.hover:bg-mauve-gray.flex.justify-center.items-center.!py-2.scale-90 href="https://github.com/FuzzyIdeas/Clop"
                 icon.h-6.w-6.md:h-7.md:w-7.mr-2 : github
                 .flex.flex-col.items-start
                     span.text-sm.md:text-base Source code
-                    span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-pink-600 GPLv3`
+                    span.text-[0.7rem].opacity-70.font-mono.-mt-1 Licensed under `span.text-ink-rose GPLv3`
 
             .mt-2.font-mono.text-xs.text-zinc-900.flex.items-center.gap-1.5.select-all.opacity-70.hover:opacity-100.transition.bg-white.border.border-black/10.rounded-lg.px-3.py-1.5
                 span.text-zinc-800.select-none $
                 | brew install clop
-            .text-red-700.text-xxs.mt-1.font-medium.opacity-50
-                | compatible with macOS `b 13.0+` (Ventura and later)
+            .text-ink-rose.text-xxs.mt-1.font-medium
+                | compatible with macOS `b 14.0+` (Sonoma and later)
 
-        section#details.flex-center.flex-col.pb-20.space-y-16.px-8
-            #clipboard.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Optimise images as soon as you copy them
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimise` it to the `b smallest possible size`.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The optimised image will have minimal to zero loss in quality, and will be `b ready to paste` in any app.
-                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/screenshot-clipboard.webp" src="/static/video/screenshot-copy-optimise-paste-in-email.mp4")
-                / -call img="screenshot-clipboard" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="screenshot of optimised images as floating results in the bottom right corner of the screen" defs:image
+        -if has_showcase()
+            div#video-container.zstack.px-4.pt-10.pb-4.w-full.max-w-[1000px].cursor-pointer onclick="playVideo(this)"
+                -if showcase_poster()
+                    img.video-poster.film-frame.w-full.aspect-video src=${showcase_poster()} alt="Clop optimising a screenshot as soon as it is copied"
+                div#play-btn.play-btn.w-20.h-20.bg-black.bg-opacity-50.rounded-full.flex.items-center.justify-center.scale-110.hover:bg-opacity-70.transition
+                    svg.w-10.h-10.text-white.ml-1 viewBox="0 0 24 24" fill="currentColor"
+                        path d="M8 5v14l11-7z"
+                video#clop-video.film-frame.w-full.hidden ( disablePictureInPicture muted loop playsinline preload="none" )
+                    -if showcase_hevc()
+                        source src="/static/video/clop-showcase-h265.mp4" type='video/mp4; codecs=hvc1'
+                    source src="/static/video/clop-showcase-h264.mp4" type="video/mp4"
+            / chapters:begin (generated by tools/clop-chapters.py from the film's scenes.json: edit the script, not these lines)
+            nav#chapters aria-label="Chapters"
+                ol.chapter-row
+                    li
+                        button.chapter type="button" data-start="0.000" data-end="9.767" aria-label="Optimise on copy"
+                            img src="/static/img/clop-chapters/copy.webp?v=de420972" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Optimise on copy
+                    li
+                        button.chapter type="button" data-start="9.767" data-end="13.767" aria-label="Savings"
+                            img src="/static/img/clop-chapters/savings.webp?v=40c8baa6" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Savings
+                    li
+                        button.chapter type="button" data-start="13.767" data-end="29.850" aria-label="Auto-optimise screen recordings"
+                            img src="/static/img/clop-chapters/recording.webp?v=b426a6e8" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Auto-optimise screen recordings
+                    li
+                        button.chapter type="button" data-start="29.850" data-end="36.933" aria-label="Drop zone at your cursor"
+                            img src="/static/img/clop-chapters/cursorzone.webp?v=28328141" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Drop zone at your cursor
+                    li
+                        button.chapter type="button" data-start="36.933" data-end="49.750" aria-label="Preset zones"
+                            img src="/static/img/clop-chapters/presets.webp?v=a4542cc4" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Preset zones
+                    li
+                        button.chapter type="button" data-start="49.750" data-end="71.500" aria-label="Pipelines"
+                            img src="/static/img/clop-chapters/pipelines.webp?v=f4cd7e10" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Pipelines
+                    li
+                        button.chapter type="button" data-start="71.500" data-end="82.833" aria-label="Batch optimisation"
+                            img src="/static/img/clop-chapters/batch.webp?v=e7ce959c" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Batch optimisation
+                    li
+                        button.chapter type="button" data-start="82.833" data-end="90.917" aria-label="Convert in one click"
+                            img src="/static/img/clop-chapters/convert.webp?v=c62333bd" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Convert in one click
+                    li
+                        button.chapter type="button" data-start="90.917" data-end="99.600" aria-label="Extreme compression"
+                            img src="/static/img/clop-chapters/extreme.webp?v=2051109d" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Extreme compression
+                    li
+                        button.chapter type="button" data-start="99.600" data-end="111.183" aria-label="Fit under any size"
+                            img src="/static/img/clop-chapters/fitunder.webp?v=137d9c97" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Fit under any size
+                    li
+                        button.chapter type="button" data-start="111.183" data-end="127.767" aria-label="Downscale and crop"
+                            img src="/static/img/clop-chapters/downcrop.webp?v=05179fc8" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Downscale and crop
+                    li
+                        button.chapter type="button" data-start="127.767" data-end="134.933" aria-label="Optimise audio"
+                            img src="/static/img/clop-chapters/audio.webp?v=926aa396" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Optimise audio
+                    li
+                        button.chapter type="button" data-start="134.933" data-end="150.433" aria-label="Optimise PDFs"
+                            img src="/static/img/clop-chapters/pdf.webp?v=c0067fa3" alt="" width="120" height="67" loading="lazy" decoding="async"
+                            span.chapter-title
+                                | Optimise PDFs
+            / chapters:end
 
-            #video.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Screen recordings as small as screenshots
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Sending screen recordings becomes 10x faster with Clop. The app will optimise the video as soon as you stop recording.
-                    .text-sm.text-gray-500.mt-2.font-medium
-                        -md
-                            The app also adds a number of actions you can do on a video:
+        section#details.w-full.flex-center.flex-col.pb-20.space-y-16.px-4.md:px-8
+            section#clipboard.feature
+                .beside
+                    .copy
+                        h1.feature-title Optimise images as soon as you copy them
+                        .text-base.lg:text-lg.text-gray-600
+                            As long as the Clop app is running, every time you copy an image to your `b clipboard`, Clop will `b optimise` it to the `b smallest possible size`.
+                        .text-base.lg:text-lg.text-gray-600
+                            The optimised image will have minimal to zero loss in quality, and will be `b ready to paste` in any app.
+                    .demo
+                        .demo-media
+                            -if has_clip("clipboard")
+                                -call feature="clipboard" alt="A copied screenshot optimised and pasted" self:clip
+                            -else
+                                video.page-clip (muted loop playsinline preload="none" poster="/static/img/screenshot-clipboard.webp" src="/static/video/screenshot-copy-optimise-paste-in-email.mp4")
 
-                            - `crop` the video to any specific size or aspect ratio
-                            - `convert` the video to `GIF`
-                            - `speed up` or `slow down` the video
-                            - `mute` or remove audio from the video
-                            - `encode` the video to compatible formats like `mp4`
-                    .text-sm.text-gray-600.mt-6.italic
-                        Clop can use Apple Silicon's dedicated `b Media Engine chip` for battery-efficient video encoding without using the CPU.
-                -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimised videos as floating results in the bottom right corner of the screen" defs:image
+            section#performance.feature
+                #stats
+                    span.stat
+                        span.sw.bg-glow-sky.text-ink-sky
+                            svg.ic viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                path d="M12 4v15M6 13l6 6 6-6"
+                        span.v.text-ink-sky
+                            | up to −
+                            span data-count="90" 90
+                            | %
+                        span.l image and video size reduction
+                    span.stat
+                        span.sw.bg-glow-rose.text-ink-rose
+                            svg.ic viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                path d="M12 4v15M6 13l6 6 6-6"
+                        span.v.text-ink-rose
+                            | up to −
+                            span data-count="80" 80
+                            | %
+                        span.l PDF size reduction
+                    span.stat
+                        span.sw.bg-glow-mint.text-ink-mint
+                            svg.ic viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"
+                                rect x="6" y="6" width="12" height="12" rx="2"
+                                rect x="9.5" y="9.5" width="5" height="5" rx="0.5" fill="currentColor" stroke="none"
+                                path d="M9 2.5v3.5M15 2.5v3.5M9 18v3.5M15 18v3.5M2.5 9h3.5M2.5 15h3.5M18 9h3.5M18 15h3.5"
+                        span.v.text-ink-mint on-device
+                        span.l processing
+                    span.stat
+                        span.sw.bg-glow-lavender.text-ink-mauve
+                            svg.ic viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                                path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12Z"
+                                circle cx="12" cy="12" r="3"
+                        span.v.text-ink-mauve visually lossless
+                        span.l quality
 
-            #downscale.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Downscale in a pinch
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Get images and videos ready for sharing by scaling them down to any resolution.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Use handy hotkeys or the floating buttons to downscale the image or video and get an even smaller file size.
-                    .text-base.lg:text-lg.text-gray-600
-                        -md
-                            * `-` downscales incrementally from 90% until 10% of the original resolution
-                            * `1..9` are for downscaling to specific sizes
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Click on the resolution text to crop the image or video to any specific size or aspect ratio.
+            section#video.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Screen recordings as small as screenshots
+                        .text-base.lg:text-lg.text-gray-600
+                            Sending screen recordings becomes 10x faster with Clop. The app will optimise the video as soon as you stop recording.
+                        .text-sm.text-stone-600.font-medium
+                            -md
+                                The app also adds a number of actions you can do on a video:
 
-                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/downscale-images.webp" src="/static/video/screenshot-downscale-in-email.mp4")
+                                - `crop` the video to any specific size or aspect ratio
+                                - `convert` the video to `GIF`
+                                - `speed up` or `slow down` the video
+                                - `mute` or remove audio from the video
+                                - `encode` the video to compatible formats like `mp4`
+                        .text-sm.text-gray-600.mt-4.italic
+                            Clop can use Apple Silicon's dedicated `b Media Engine chip` for battery-efficient video encoding without using the CPU.
+                    .demo
+                        .demo-media
+                            -if has_clip("screen-recordings")
+                                -call feature="screen-recordings" alt="A screen recording optimised as soon as it is saved" self:clip
+                            -else
+                                -call img="screen-recordings" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="screenshot of optimised videos as floating results in the bottom right corner of the screen" defs:image
 
-                / -call img="downscale-images" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-slate-400 w-full" alt="demo of downscaled image to 80% and 50%" defs:image
+            section#dropzone.feature
+                .beside
+                    .copy
+                        h1.feature-title Drag and drop to optimise
+                        .text-base.lg:text-lg.text-gray-600
+                            Optimising files manually is as easy as dragging and dropping them on the Clop `b.text-ink-mint drop zone`.
+                        .text-base.lg:text-lg.text-gray-600
+                            The images and videos will be optimised in place, and URLs will be automatically downloaded before optimisation.
+                        .text-base.lg:text-lg.text-gray-600
+                            -md:
+                                The drop zone supports a few useful keys:
 
-            #dropzone.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Drag and drop to optimise
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Optimising files manually is as easy as dragging and dropping them on the Clop `b.text-green-600 drop zone`.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The images and videos will be optimised in place, and URLs will be automatically downloaded before optimisation.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        -md:
-                            The drop zone supports a few useful keys:
+                                - holding `Command` while dropping will use more **aggressive** optimisation
+                                - pressing `Option` once will *show* the drop zone at the cursor
+                    .demo
+                        .demo-media
+                            -if has_clip("drop-zone-at-cursor")
+                                -call feature="drop-zone-at-cursor" alt="The drop zone appearing under the cursor mid-drag" self:clip
+                            -else
+                                -call video="clop-drop-zone-demo" cls="page-clip" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
 
-                            - holding `Command` while dropping will use more **aggressive** optimisation
-                            - pressing `Option` once will *dismiss* the drop zone UI
-                -call video="clop-drop-zone-demo" cls="md:w-1/2 rounded md:rounded-2xl object-cover" prefix="https://files.lowtechguys.com/" poster="https://files.lowtechguys.com/clop-drop-zone-demo.webp" controls=false defs:lazyvideoset
+            section#presets.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Drop to `b Preset Zones`
+                        .text-base.lg:text-lg.text-gray-600
+                            The drop zone can have `b preset zones` for specific actions like `b converting to webp`, `b downscaling to 50%`, `b watermarking` and more.
+                        .text-base.lg:text-lg.text-gray-600
+                            The presets work by running a `b.text-ink-mauve pipeline` on the dropped file, which can be customised to include any number of actions.
+                        .text-base.lg:text-lg.text-gray-600
+                            -md
+                                **Examples:**
 
-            hr.w-3/4.border
+                                - Downscale to 50% and convert to `webp`
+                                - Upload with Dropshare and copy the URL as a markdown link
+                                - Watermark with a custom logo, text or monogram
+                                - Crop to 16:9 and add to last edited note
+                                - *... anything you can think of really*
+                    .demo
+                        .demo-media
+                            -if has_clip("preset-zones")
+                                -call feature="preset-zones" alt="A file dropped onto a preset zone" self:clip
+                            -else
+                                video.page-clip (muted loop playsinline preload="none" poster="/static/img/clop-presets-poster.jpeg" src="/static/video/clop-presets.mp4")
 
-            #presets.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Drop to `b Preset Zones`
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The drop zone can have `b preset zones` for specific actions like `b converting to webp`, `b downscaling to 50%`, `b watermarking` and more.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The presets work by running a `b.text-purple-950 Shortcut` on the dropped file, which can be customised to include any number of actions.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        -md
-                            **Examples:**
+            section#pipelines.feature
+                .beside
+                    .copy
+                        h1.feature-title Pipelines
+                        .text-base.lg:text-lg.text-gray-600
+                            Pipelines run a list of actions on a file, one after the other. For example `code crop(width: 1920) -> convert(to: webp)` turns any image into a 1920px wide `b.text-ink-sky webp`.
+                        .text-base.lg:text-lg.text-gray-600
+                            A pipeline can be pinned to the `b.text-ink-mauve clipboard`, the `b.text-ink-amber drop zone`, a `b.text-ink-mint watched folder` or a `b.text-ink-rose preset zone`, and it will run automatically on every file that ends up there.
+                        .text-sm.lg:text-base.text-stone-600
+                            Clop comes with a few built-in pipelines like `code to WebP` and `code Sort screenshots`. Pipelines are free, and they can also be run from the right click menu or from the command line.
+                    .demo
+                        .demo-media.wide
+                            -call feature="pipelines" alt="A pipeline built in Settings and pinned to the clipboard" self:clip
 
-                            - Downscale to 50% and convert to `webp`
-                            - Upload with Dropshare and copy the URL as a markdown link
-                            - Watermark with a custom logo, text or monogram
-                            - Crop to 16:9 and add to last edited note
-                            - *... anything you can think of really*
+            section#format-bar.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Format bar
+                        .text-base.lg:text-lg.text-gray-600
+                            Each floating result has a bar at the bottom with the formats the file can be converted to, like `code WEBP` and `code AVIF` for images or `code HEVC` and `code AV1` for videos.
+                        .text-base.lg:text-lg.text-gray-600
+                            The converted file is placed in the `b.text-ink-sky same folder` as the original. Converting again replaces the previous conversion, unless you hold `code Option` while clicking.
+                        .text-sm.lg:text-base.text-stone-600
+                            Some websites only accept JPEG, and a PNG photo usually gets a lot smaller as `b.text-ink-mauve AVIF` or `b.text-ink-amber JPEG`.
+                    .demo
+                        .demo-media
+                            -if has_clip("format-bar")
+                                -call feature="format-bar" alt="An image converted to AVIF from the format bar" self:clip
 
-                video.md:w-1/2.rounded-xl.object-cover.shadow-2xl.shadow-slate-400 (autoplay loop muted playsinline poster="/static/img/clop-presets-poster.jpeg" src="/static/video/clop-presets.mp4")
+            section#fit-under-size.feature
+                .beside
+                    .copy
+                        h1.feature-title Fit under size
+                        .text-base.lg:text-lg.text-gray-600
+                            Most chat apps and email providers have a `b.text-ink-sky file size limit`, like the 8MB limit of Discord or the 25MB limit of Gmail attachments.
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop compresses the file harder until it fits under the chosen size, starting from the original every time. `b.text-ink-mauve Downscaling` is used only when compression is not enough.
+                        .text-sm.lg:text-base.text-stone-600
+                            It works for images, videos, PDFs and audio files, but it's most useful for long `b.text-ink-amber screen recordings`.
+                    .demo
+                        .demo-media
+                            -if has_clip("fit-under-size")
+                                -call feature="fit-under-size" alt="An image compressed to fit under 200KB" self:clip
 
-            #webp.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Convert to `code webp` automatically
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop's support for `b.text-purple-950 Shortcuts` and `b.text-amber-600 Automations` allows you to convert images to various formats automatically.
-                    p.mt-4
-                        em.text-base.text-red-800
-                            The images will be dropped in the `b same folder` as the original image by default. The image can be `b automatically renamed` with a template parameter.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The flexibility of `b.text-purple-950 Shortcuts` allows you to expand the automation to include other actions like `b cropping`, `b downscaling`, `b watermarking` and even `b uploading` or `b emailing` the images directly.
-                -call img="clop-automation-webp" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="the automation tab of Clop's settings showing Convert to WEBP" defs:image
+            section#downscale.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Downscale in a pinch
+                        .text-base.lg:text-lg.text-gray-600
+                            Get images and videos ready for sharing by scaling them down to any resolution.
+                        .text-base.lg:text-lg.text-gray-600
+                            Use handy hotkeys or the floating buttons to downscale the image or video and get an even smaller file size.
+                        .text-base.lg:text-lg.text-gray-600
+                            -md
+                                * `-` downscales in steps of 25% down to half, then 10% until 10% of the original resolution
+                                * `1..9` are for downscaling to specific sizes
+                        .text-base.lg:text-lg.text-gray-600
+                            Press the `−` button and drag to pick any size, or click the crop corner to crop the image or video to any specific size or aspect ratio.
+                    .demo
+                        .demo-media
+                            -if has_clip("downscale")
+                                -call feature="downscale" alt="A video downscaled by dragging from the − button, then a photo cropped to 1:1" self:clip
+                            -else
+                                video.page-clip (muted loop playsinline preload="none" poster="/static/img/downscale-images.webp" src="/static/video/screenshot-downscale-in-email.mp4")
 
-            #upload.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Upload with `img height="32" width="32" style="display: inline; margin-top: -4px; margin-right: -5px" src="/static/img/dropshare-icon.webp"` `a style="color: #11271f; font-weight: bold" href="https://dropshare.app/" Dropshare`
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop integrates directly with the `b Dropshare` app, to enable uploading optimised images, videos and PDFs to any of the supported services.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Uploading can be done instantly with a hotkey or from the right click menu. It's also possible to upload multiple files at once or automate the uploading based on the file location.
-                -call img="dropshare-services" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="services that the dropshare app can upload to" defs:image
-            #integration.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Integrate with File Shelves
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop integrates with `b file shelf` apps like `a href="https://eternalstorms.at/yoink/mac/" Yoink` and `a href="https://hachipoo.com/dockside-app" Dockside` so you can add optimised files in their shelves for later usage.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Shelving can be done instantly with a hotkey or from the right click menu. It's also possible to shelf multiple files at once or automate the shelving using Apple Shortcuts.
-                    .flex.flex-center.mt-8.space-x-8
-                        a.flex.flex-col.items-center.decoration-dotted href="https://eternalstorms.at/yoink/mac/"
-                            img width=128 height=128 src="/static/img/yoink.png" alt="Yoink app icon"
-                            b Yoink
-                        a.flex.flex-col.items-center.decoration-dotted href="https://hachipoo.com/dockside-app"
-                            img width=128 height=128 src="/static/img/dockside.png" alt="Dockside app icon"
-                            b Dockside
+            section#batch-mode.feature
+                .beside
+                    .copy
+                        h1.feature-title
+                            | Batch mode
+                            span.pro-pill Pro
+                        .text-base.lg:text-lg.text-gray-600
+                            Dropping more than 30 files opens a `b.text-ink-sky batch window` instead of showing a floating result for each file. Compression, format and resolution can be set separately for images, videos, PDFs and audio.
+                        .text-base.lg:text-lg.text-gray-600
+                            The `b.text-ink-mauve originals are kept` until you delete the backups, so you can change the settings and run the batch again, or restore the files to how they were.
+                        .text-sm.lg:text-base.text-stone-600
+                            Batch mode is a `b.text-ink-amber Pro` feature. The free version can optimise up to 5 dropped files at a time.
+                    .demo
+                        .demo-media.wide
+                            -call feature="batch-mode" alt="A large drop optimised in the batch window" self:clip
 
-                -call img="clop-integrations-file-shelf" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="file shelf apps that Clop integrates with, showing Yoink and Dockside" defs:image
+            section#audio.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Audio optimisation
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop can also optimise `b.text-ink-sky audio files`. By default, `b.text-ink-mauve WAV` files are converted to MP3, while `b.text-ink-amber AIFF` and `b.text-ink-mint FLAC` files are converted to AAC.
+                        .text-base.lg:text-lg.text-gray-600
+                            The `b.text-ink-rose cover art` is downscaled and compressed as well, and the right click menu can normalise the `b.text-ink-sky loudness` to -14 LUFS for streaming or -16 LUFS for Apple Music.
+                        .text-sm.lg:text-base.text-stone-600
+                            A one minute `b.text-ink-mauve WAV` recording takes about 12MB, the MP3 that Clop makes from it takes 1.2MB.
+                    .demo
+                        .demo-media
+                            -call feature="audio-optimisation" alt="An audio file optimised with its cover art" self:clip
 
-            #ondevice.${CLS.section}.md:flex-row-reverse.md:space-x-reverse
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800
-                        Everything happens on your device
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop `b doesn't use any cloud services` and doesn't send any file data to the internet.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        The encoders used by Clop are open-source and battle-tested over decades, so that the resulting files are fast to decode, compatible with most devices and have minimal to zero loss in quality.
-                -call img="clop-activity-monitor" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="rounded-2xl w-full" alt="screenshot of Activity Monitor showing Clop's zero network usage" defs:image
+            section#webp.feature
+                .beside
+                    .copy
+                        h1.feature-title Convert to `code webp` automatically
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop's support for `b.text-ink-mauve pipelines` and `b.text-ink-amber watched folders` allows you to convert images to various formats automatically.
+                        p.my-0
+                            em.text-base.text-ink-rose
+                                The images will be dropped in the `b same folder` as the original image by default. The image can be `b automatically renamed` with a template parameter.
+                        .text-base.lg:text-lg.text-gray-600
+                            The flexibility of `b.text-ink-mauve pipelines` allows you to expand the automation to include other actions like `b cropping`, `b downscaling`, `b watermarking` and even `b uploading` or `b sending` the images directly.
+                    .demo
+                        .demo-media
+                            -if has_clip("convert-webp")
+                                -call feature="convert-webp" alt="Clop's to WebP pipeline added to the Exports folder, then a photo landing there gets a WebP copy" self:clip
+                            -else
+                                -call img="clop-automation-webp" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="the automation tab of Clop's settings showing Convert to WEBP" defs:image
+
+            section#upload.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Upload with `img height="32" width="32" style="display: inline; margin-top: -4px; margin-right: -5px" src="/static/img/dropshare-icon.webp"` `a.text-dropshare.font-bold href="https://dropshare.app/" Dropshare`
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop integrates directly with the `b Dropshare` app, to enable uploading optimised images, videos and PDFs to any of the supported services.
+                        .text-base.lg:text-lg.text-gray-600
+                            Uploading can be done instantly with a hotkey or from the right click menu. It's also possible to upload multiple files at once or automate the uploading based on the file location.
+                    .demo
+                        .demo-media
+                            -if has_clip("upload-dropshare")
+                                -call feature="upload-dropshare" alt="An optimised file uploaded with Dropshare" self:clip
+                            -else
+                                -call img="dropshare-services" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="services that the dropshare app can upload to" defs:image
+
+            section#integration.feature
+                .beside
+                    .copy
+                        h1.feature-title Integrate with File Shelves
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop integrates with `b file shelf` apps like `a href="https://eternalstorms.at/yoink/mac/" Yoink`, `a href="https://hachipoo.com/dockside-app" Dockside`, `a href="https://dropoverapp.com/" Dropover` and `a href="https://github.com/Ebullioscopic/Atoll" Atoll` so you can add optimised files in their shelves for later usage.
+                        .text-base.lg:text-lg.text-gray-600
+                            Shelving can be done instantly with a hotkey or from the right click menu. It's also possible to shelf multiple files at once or automate the shelving with a pipeline.
+                        .grid.grid-cols-2.sm:grid-cols-4.gap-x-6.gap-y-4.justify-items-center.w-max.mx-auto.mt-6
+                            a.flex.flex-col.items-center.decoration-dotted href="https://eternalstorms.at/yoink/mac/"
+                                img width=96 height=96 src="/static/img/yoink.png" alt="Yoink app icon"
+                                b Yoink
+                            a.flex.flex-col.items-center.decoration-dotted href="https://hachipoo.com/dockside-app"
+                                img width=96 height=96 src="/static/img/dockside.png" alt="Dockside app icon"
+                                b Dockside
+                            a.flex.flex-col.items-center.decoration-dotted href="https://dropoverapp.com/"
+                                img width=96 height=96 src="/static/img/dropover.png" alt="Dropover app icon"
+                                b Dropover
+                            a.flex.flex-col.items-center.decoration-dotted href="https://github.com/Ebullioscopic/Atoll"
+                                img width=96 height=96 src="/static/img/atoll.png" alt="Atoll app icon"
+                                b Atoll
+                    .demo
+                        .demo-media
+                            -if has_clip("file-shelves")
+                                -call feature="file-shelves" alt="Optimised photos added to Yoink, Dropover, Atoll and Dockside from Clop's right-click menu" self:clip
+                            -else
+                                -call img="clop-integrations-file-shelf" ext="jpeg" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="rounded-2xl shadow-2xl shadow-stone-400 w-full" alt="file shelf apps that Clop integrates with, showing Yoink and Dockside" defs:image
+
+            section#ondevice.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Everything happens on your device
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop `b doesn't use any cloud services` and doesn't send any file data to the internet.
+                        .text-base.lg:text-lg.text-gray-600
+                            The encoders used by Clop are open-source and battle-tested over decades, so that the resulting files are fast to decode, compatible with most devices and have minimal to zero loss in quality.
+                    .demo
+                        .demo-media
+                            -if has_clip("on-device")
+                                -call feature="on-device" alt="Clop optimising files with no network use" self:clip
+                            -else
+                                -call img="clop-activity-monitor" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="rounded-2xl w-full" alt="screenshot of Activity Monitor showing Clop's zero network usage" defs:image
+
+            section#mcp-server.feature
+                .lead
+                    h1.feature-title
+                        | MCP server
+                        span.pro-pill Pro
+                    .copy
+                        .text-base.lg:text-lg.text-gray-600
+                            AI agents like `b.text-ink-sky Claude Code` or `b.text-ink-mauve Codex` can use Clop through its `b.text-ink-amber MCP server` to optimise, convert and crop files, write pipelines or change settings.
+                        .text-base.lg:text-lg.text-gray-600
+                            Coding agents can use it to optimise the `b.text-ink-mint screenshots` and `b.text-ink-rose images` they add to a project, without a separate script for each format.
+                        .text-sm.lg:text-base.text-stone-600
+                            The MCP server is a `b.text-ink-sky Pro` feature.
+                .pair
+                    figure.pair-clip
+                        figcaption.pair-label Docs, demo videos and invoices
+                        -call feature="mcp-server" alt="An agent setting up Clop pipelines, preset zones and settings through its MCP server" self:clip
+                    figure.pair-clip
+                        figcaption.pair-label Blog images, watermarks and photos
+                        -call feature="mcp-server-2" alt="An agent setting up Clop pipelines on watched folders and a preset zone through its MCP server" self:clip
 
 
 
             / setapp-custom-banner.w-[96vw].max-w-[96vw].md:max-w-[96vw].md:w-full.lg:max-w-[1200px] iconUrl="https://store.setapp.com/app/612/9236/icon-1700588543-655cebff2c152.png" appName="Clop" appId="612" vendorId="390"
             / script type="text/javascript" src="https://developer.setapp.com/setapp-banner/index.js" async="true"
 
-            #power-user.flex.flex-col.flex-center.space-y-6.bg-stone-800.px-8.rounded-xl.md:rounded-3xl.dark-section
+            #power-user.panel.flex.flex-col.flex-center.space-y-6.bg-stone-800.dark-section
                 h1.text-3xl.text-center.lg:text-4xl.mb-1.mt-5.text-white
                     Fit for power users
-                .flex.flex-col.md:flex-row.justify-around.items-start.space-y-8.md:space-y-0.md:space-x-8.w-[90vw].max-w-7xl.shadow-2xl
-                    .md:w-1/3.text-left
+                .power-cols.pb-8
+                    .text-left
                         h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
                             On-demand optimisation
                         .text-base.lg:text-lg.text-gray-300
@@ -216,7 +530,7 @@ html.overflow-x-hidden lang="en"
                                 In **Finder**, you can select images and videos and press `Ctrl`-`O` to optimise them.
 
                                 If hotkeys are not your thing, you can also find an **Optimise with Clop** button in the Finder preview pane.
-                    .md:w-1/3.text-left
+                    .text-left
                         h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
                             Compatible formats
                         .text-base.lg:text-lg.text-gray-300
@@ -226,25 +540,30 @@ html.overflow-x-hidden lang="en"
                                 The conversion is fully configurable from the app settings.
 
                                 Original files are kept in a backup folder which can be accessed from the app menu.
-                    .md:w-1/3.text-left
+                    .text-left
                         h2.text-2xl.text-left.mb-3.px-0.text-stone-200.font-medium
-                            | macOS Shortcuts
+                            | Pipelines
                         .text-base.lg:text-lg.text-gray-300
                             -md
-                                Integrate Clop optimisation in your workflows through **native macOS Shortcuts**.
+                                Integrate Clop optimisation in your workflows through **pipelines**.
 
                                 - Downscale and optimise images that you email weekly
                                 - Download optimised images directly into your slideshow
                                 - ..and so on
+                -if has_clip("pipeline-automation")
+                    .demo-media.wide.!mb-8
+                        -call feature="pipeline-automation" alt="Files landing in three watched folders, each run through a Clop pipeline" self:clip
 
             h1#testimonials.text-3xl.text-center.lg:text-4xl.mb-8.text-black.overflow-hidden
                 How people like to use Clop
-            .h-[600px].overflow-hidden.relative.max-w-[100vw]
+            #testimonial-wall.h-[600px].overflow-hidden.relative.max-w-[100vw]
                 -def card(user, link, text)
                     .flex-col.text-xs.text-left.bg-white.shadow-xl.rounded-xl.w-64.overflow-auto.h-min
                         .flex.items-center.bg-blue-100.px-3.py-2.rounded-t-xl.w-full.justify-between
                             a.text-black.font-bold href="https://old.reddit.com/r/macapps/comments/15zas8f/clop_license_giveaway_tell_me_about_your_workflow/${link}/" /u/${user}
-                            img width=16 height=16 src="https://www.redditstatic.com/desktop2x/img/favicon/favicon-32x32.png"
+                            svg.reddit-mark width=16 height=16 viewBox="0 0 24 24" aria-hidden="true"
+                                circle cx="12" cy="12" r="11" fill="white"
+                                path.fill-reddit d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"
                         .px-4.py-2.text-stone-700
                             -for paragraph in text.split('\n')
                                 p ${paragraph}
@@ -272,39 +591,52 @@ html.overflow-x-hidden lang="en"
                         -call user="snoop1823" link="jxh24yb" text="I use Clop each day dozens dozens of times.\nClop is now my must have app :)\nI discovered v1 last winter, Clop helped me a lot during of blackouts (yes I’m Ukrainian), when we had no electricity I worked a lot on my battery and overloaded cell internet connection, so each MB was a piece of gold." self:card
                         -call user="JothamLEC" link="jxh58sm" text="Company wikipage:\nThe company [I work on] sells software tools, and use Notion publishing for public documentation.\nShowing is better than telling, so we use videos, JPEGs and GIFs a lot.\nIf I'm not mistaken, Notion uploads media to AWS without compression, so Clop helps with uploading and retrieval." self:card
                         -call user="ysm" link="jxiww0s" text="A 2.7MB image is a pain to upload and to download for team members. It's nice to be able to compress them right in Clop.\nAlso, the app I use to write my reports struggles with large size photos.\nSo I always compress the images before embedding them in the document.\nI used to use the app ImageOptim to compress large photos.\n However, I don't always decide all the photos I want to include in a report at first, I tend to pick and choose as I'm writing.\nThis is where the Clop app comes in handy, as it compresses photos on demand." self:card
-                .h-24.w-full.absolute.top-0.left-0.bg-gradient-to-b.from-stone-100.to-transparent
-                .h-24.w-full.absolute.bottom-0.left-0.bg-gradient-to-t.from-stone-100.to-transparent
 
-            #afadingthought
-                h3.text-stone-600.mb-0.pb-0.font-normal Featured on `a.text-stone-700 href="https://www.youtube.com/@afadingthought" "A Fading Thought"`
-                p.text-stone-500.font-normal.font-mono.text-sm.mt-0 by `em Robert J. P. Oberg`
-                iframe.shadow-xl.rounded-2xl.mt-4.max-w-[96vw] width="560" height="315" src="https://www.youtube-nocookie.com/embed/bKvZoED7vEo?si=QVwCVbqUS071BKRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""
+            #featured
+                #afadingthought.featured-video
+                    h3.text-stone-600.mb-0.pb-0.font-normal Featured on `a.text-stone-700 href="https://www.youtube.com/@afadingthought" "A Fading Thought"`
+                    p.text-stone-600.font-normal.font-mono.text-sm.mt-0 by `em Robert J. P. Oberg`
+                    iframe.shadow-xl.rounded-2xl.mt-4 width="560" height="315" loading="lazy" src="https://www.youtube-nocookie.com/embed/bKvZoED7vEo?si=QVwCVbqUS071BKRq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""
+                #snazzylabs.featured-video
+                    h3.text-stone-600.mb-0.pb-0.font-normal Featured on `a.text-stone-700 href="https://www.youtube.com/@snazzy" "Snazzy Labs"`
+                    p.text-stone-600.font-normal.font-mono.text-sm.mt-0 by `em Quinn Nelson`
+                    iframe.shadow-xl.rounded-2xl.mt-4 width="560" height="315" loading="lazy" src="https://www.youtube-nocookie.com/embed/Aea2DUX4fsQ?si=wiqfyghn5jIyCxAU&amp;start=784" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""
 
             h1#pdf.text-3xl.text-center.lg:text-4xl.mb-8.text-black
                 It even works on PDFs
 
-            #pdf-optimisation.${CLS.section}
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
-                        Attach PDFs as large as books, literally
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Heavy `b.text-red-500 PDFs` like `em scans` and `em illustrations` usually don't fit in emails, and they take a long time to upload and download.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop can make those PDF files small enough to fit below the `b.text-blue-400 25MB` limit of email attachments.
-                -call video="clop-pdf" cls="md:w-1/2 rounded md:rounded-2xl object-cover" controls=false defs:lazyvideoset
-            #pdf-cropping.${CLS.section}.dark-section
-                .md:w-1/2.text-left
-                    h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-600
-                        Crop PDFs to fill the iPad screen
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Some PDF files have large margins on an iPad, which can make them distracting while trying to focus on reading.
-                    .text-base.lg:text-lg.text-gray-600.mt-2
-                        Clop's `b crop-pdf` CLI command can crop PDFs to fill the screen of any specific device.
-                    -md
-                        ```swift
-                        clop crop-pdf --for-device "iPad Air" Calculus.pdf
-                        ```
-                -call img="clop-crop-pdf" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2" icls="w-full" alt="two iPads side by side showing a page of the same book, the left one has black borders at the top and bottom, the right iPad's screen is completely filled by the page" defs:image
+            section#pdf-optimisation.feature
+                .beside.flip
+                    .copy
+                        h1.feature-title Attach PDFs as large as books, literally
+                        .text-base.lg:text-lg.text-gray-600
+                            Heavy `b.text-ink-rose PDFs` like `em scans` and `em illustrations` usually don't fit in emails, and they take a long time to upload and download.
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop can make those PDF files small enough to fit below the `b.text-ink-sky 25MB` limit of email attachments.
+                    .demo
+                        .demo-media
+                            -if has_clip("pdfs")
+                                -call feature="pdfs" alt="A heavy PDF optimised to fit an email" self:clip
+                            -else
+                                -call video="clop-pdf" cls="page-clip" controls=false defs:lazyvideoset
+            section#pdf-cropping.feature
+                .beside
+                    .copy.dark-section
+                        h1.feature-title Crop PDFs to fill the iPad screen
+                        .text-base.lg:text-lg.text-gray-600
+                            Some PDF files have large margins on an iPad, which can make them distracting while trying to focus on reading.
+                        .text-base.lg:text-lg.text-gray-600
+                            Clop's `b crop-pdf` CLI command can crop PDFs to fill the screen of any specific device.
+                        -md
+                            ```swift
+                            clop crop-pdf --for-device "iPad Air" Calculus.pdf
+                            ```
+                    .demo
+                        .demo-media
+                            -if has_clip("pdf-crop-ipad")
+                                -call feature="pdf-crop-ipad" alt="A PDF cropped to fill an iPad screen" self:clip
+                            -else
+                                -call img="clop-crop-pdf" factor=${0.3} mobile_factor=${0.9} pcls="block w-full" icls="w-full" alt="two iPads side by side showing a page of the same book, the left one has black borders at the top and bottom, the right iPad's screen is completely filled by the page" defs:image
 
 
             #pro.flex.flex-col.flex-center.max-w-[96vw]
@@ -335,11 +667,11 @@ html.overflow-x-hidden lang="en"
                             padding-right 0.1rem
 
                     tbody tr:nth-child(odd)
-                        background-color hsla(290, 19%, 6%, 0.05)
+                        background-color unquote('color-mix(in srgb, var(--color-mauve-blackish) 5%, transparent)')
 
-                h1.text-stone-800.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-blue-400 Free` `span.text-stone-400.text-xl.font-medium vs` `span.font-bold.text-red-hot Pro`
-                h6.text-sm.text-stone-400.-mt-1 Free version features are free `b forever`
-                h6.text-sm.text-stone-400.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
+                h1.text-stone-800.my-0.md:mt-8.p-0.4xl:text-5xl `span.text-ink-sky Free` `span.text-stone-600.text-xl.font-medium vs` `span.font-bold.text-ink-rose Pro`
+                h6.text-sm.text-stone-600.-mt-1 Free version features are free `b forever`
+                h6.text-sm.text-stone-600.-mt-1 After the `b 14-day trial`, the app will continue to work with the free features
                 div.flex.flex-col.flex-center.w-[96vw].mt-8
                     table.w-[95vw].xl:w-auto.bg-white.shadow-2xl.rounded-xl.text-black.border-collapse.text-xs.md:text-base.overflow-clip cellpadding="12px"
                         thead
@@ -358,6 +690,18 @@ html.overflow-x-hidden lang="en"
                                 td
                                     a.font-normal.text-black href="#downscale" `b Downscale` and crop images
                                     p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to scale images down to smaller resolutions
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.font-normal.text-black href="#pipelines" `b Pipelines`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Chain steps and pin them to the clipboard, drop zone or folders
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                            tr
+                                td
+                                    a.font-normal.text-black href="#format-bar" `b Format bar` and `b Fit under size`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Convert or shrink a result with one click
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                             tr
@@ -386,36 +730,70 @@ html.overflow-x-hidden lang="en"
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
                             tr
                                 td
-                                    a.text-black href="#power-user" On-demand optimisation and `b automation`
-                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any file, run scripts and Shortcuts on optimised files
+                                    a.text-black href="#audio" Optimise `b audio` files
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Watch for audio files and optimise them as they get created
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
                             tr
                                 td
-                                    a.text-black href="#power-user" macOS `b Shortcuts` support
-                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use native macOS Shortcuts to integrate optimised files in your workflows
+                                    a.text-black href="#dropzone" `b Drop zone` and preset zones
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Drag files onto the drop zone to optimise them
                                 td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
                                 td
                                     icon.w-6.h-6.text-amber-500.mx-auto : checkmark
                                     p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
+                            tr
+                                td
+                                    a.text-black href="#power-user" On-demand optimisation and `b automation`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Use hotkeys to optimise any file, run scripts and pipelines on optimised files
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
+                            tr
+                                td
+                                    a.text-black href="#power-user" `b clop` command line
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Optimise, convert and crop from the terminal
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td
+                                    icon.w-6.h-6.text-amber-500.mx-auto : checkmark
+                                    p.my-0.text-xxs.font-medium.hidden.md:block.text-gray-400 5 per session
+                            tr
+                                td
+                                    a.text-black href="#dropzone" Drop `b more than 5 files` at once
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 The free version takes up to 5 files per drop
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td
+                                    a.text-black href="#batch-mode" `b Batch mode`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 Optimise large drops in one window, with backups
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
+                            tr
+                                td
+                                    a.text-black href="#mcp-server" `b MCP server`
+                                    p.my-0.text-xxs.md:text-xs.font-medium.text-gray-400 AI agents can optimise files, write pipelines and change settings
+                                td: icon.w-6.h-6.text-green-muted.mx-auto : checkmark
+                                td: icon.w-6.h-6.text-red-400.mx-auto : xmark
 
                     a.btn.mt-6.text-white.bg-zinc-700.!min-h-[50px].!h-[50px].hover:text-black.hover:bg-zinc-500.!rounded-xl.!py-2.shadow-xl href="https://files.lowtechguys.com/releases/Clop.dmg"
                         .flex.flex-col.items-start
                             span.text-lg.!leading-4.mt-1 Try for free
                             span.text-[0.7rem].text-stone-300.font-mono 14-day trial of `b.text-white Pro` features
-                    p.text-xs.mt-1.text-stone-500
+                    p.text-xs.mt-1.text-stone-600
                         | No credit card required, keep using for free after the trial
-                    p.text-xs.mt-1.text-red-400.font-medium
+                    p.text-xs.mt-1.text-ink-rose.font-medium
                         | Refunds accepted within 14 days of purchase, no questions asked
 
 
             hr.w-2/4.border
-            .flex.flex-col.flex-center.bg-stone-800.pb-8.pt-6.rounded-2xl.dark-section
+            .panel.flex.flex-col.flex-center.bg-stone-800.pb-8.pt-6.dark-section
                 h1.text-3xl.text-center.lg:text-4xl.mb-1.text-white Technical details
-                #technicalities.${CLS.section}.items-center.md:flex-row-reverse.md:space-x-reverse
-                    .md:w-1/2.text-left
+                #technicalities.beside.flip.pt-2
+                    .copy
                         .text-base.lg:text-lg.text-gray-300
                             -stylus
                                 #technicalities code
@@ -433,7 +811,7 @@ html.overflow-x-hidden lang="en"
                                 * `ghostscript` for optimising PDFs
 
                                 The app is licensed under [GPLv3](https://github.com/FuzzyIdeas/Clop/blob/main/LICENSE) and the source code is available on [GitHub](https://github.com/FuzzyIdeas/Clop/).
-                    .md:w-1/2.flex.flex-center.flex-col
+                    .demo.flex-col.items-center
                         icon.h-48 : open-source
                         p.text-white `b open` source
 
@@ -450,7 +828,7 @@ html.overflow-x-hidden lang="en"
                         Clop can be integrated in your own apps through the **Clop SDK**.
                         The SDK is a **Swift** package that can be used to optimise files in your own apps, by sending the file to the running Clop app.
 
-                #sdk-code.flex.text-left.flex-col.lg:flex-row.px-8.mt-4
+                #sdk-code.flex.text-left.flex-col.lg:flex-row.px-2.md:px-8.mt-4.max-w-full
                     -stylus
                         #sdk-code .codehilite
                             margin 0
@@ -487,27 +865,31 @@ html.overflow-x-hidden lang="en"
                             [clop optimiseWithPath:@"AppData/img.png" error:nil];
                             ```
 
-            h1.text-center.text-stone-900 FAQ
-            #faq.py-12.text-left.text-stone-900.self-center.md:self-start.max-w-[90vw].w-[1000px].mx-auto.md:px-4
-                md : faq-clop
+            section#faq-block
+                h1.faq-title FAQ
+                #faq.text-left.text-stone-900
+                    md : faq-clop
 
-            #traditions.${CLS.section}
-                .md:w-1/2.text-left
+            #traditions.beside.pt-2
+                .copy
                     h1.text-3xl.text-center.md:text-left.lg:text-4xl.mb-1.text-gray-800 What's up with the hat?
                     .text-base.lg:text-lg.text-gray-600
                         -md
                             *Clop* is the Romanian word for a traditional straw hat with a high crown and raised conical brim, worn more as an adorment in days of celebration.
 
-                            We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll off the tongue as easily. We're <b class="text-red-hot">Rom</b><b class="text-amber-500">an</b><b class="text-blue-500">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
-                -call img="clop-hat" factor=${0.3} mobile_factor=${0.9} pcls="md:w-1/2 brightness-[1.15]" icls="rounded-none shadow-none w-2/4 mx-auto" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
+                            We thought *"**Cl**ipboard **Op**timizer"* sounds a bit too technical and doesn't roll off the tongue as easily. We're <b class="text-ink-rose">Rom</b><b class="text-ink-amber">an</b><b class="text-ink-sky">ian</b> ourselves and we thought it might be a good idea to keep the memory of our traditions from dying completely, with whatever little we can do.
+                .demo
+                    -call img="clop-hat" factor=${0.3} mobile_factor=${0.9} pcls="block w-full brightness-[1.15]" icls="rounded-none shadow-none w-2/4 mx-auto" alt="screenshot of the app interface opened from the menu bar, showing running apps with their assigned key" defs:image
 
 
-        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[96vw].w-[96vw].h-24.text-gray-500.justify-self-end
-            - call cls="text-gray-500 hidden md:block" defs:copyright_line
-            .links.w-full.md:w-auto.flex.items-center.gap-3.md:gap-4
-                a.text-red-hot href="/clop/terms" Terms & Conditions
-                a.text-red-hot href="/clop/eula" EULA
-                - call defs:socials
+        footer.flex.items-center.justify-between.px-2.md:px-8.max-w-[96vw].w-[96vw].py-6.md:py-0.md:h-24.text-stone-600.justify-self-end
+            - call cls="text-stone-600 hidden md:block" defs:copyright_line
+            .links.w-full.md:w-auto.flex.flex-col.md:flex-row.items-center.gap-4
+                .flex.items-center.justify-center.gap-3.md:gap-4
+                    a.text-ink-rose href="/clop/terms" Terms & Conditions
+                    a.text-ink-rose href="/clop/eula" EULA
+                div.w-full.md:w-auto
+                    - call cls="text-stone-600 justify-center md:justify-end" defs:socials
         -coffee
             url = new URL(location)
             coupon = url.searchParams.get('coupon')
@@ -523,11 +905,25 @@ html.overflow-x-hidden lang="en"
 
             paddleObserver = setInterval setupPaddle, 100
 
+            window.playVideo = (container) ->
+                video = container.querySelector('video')
+                playBtn = container.querySelector('.play-btn')
+                poster = container.querySelector('.video-poster')
+                return unless video.classList.contains('hidden')
+                poster.style.display = 'none' if poster
+                playBtn.style.display = 'none'
+                video.classList.remove('hidden')
+                video.play()
+                container.onclick = null
+                video.onclick = ->
+                    if video.paused then video.play() else video.pause()
+
             # stop videos when they're not visible
             videoObserver = new IntersectionObserver(
                 (entries) ->
                     entries.forEach (entry) ->
                         return unless entry.isIntersecting and entry.target.currentSrc?.length > 1
+                        return if window.MotionPause?.paused
                         if entry.intersectionRatio >= 0.45
                             entry.target.play()
                         else
@@ -535,7 +931,8 @@ html.overflow-x-hidden lang="en"
                 , {threshold: [0.25, 0.45]}
             )
 
-            document.querySelectorAll('video').forEach (video) ->
+            # section clips and the hero video have their own players (clop-demos.js, playVideo)
+            document.querySelectorAll('video:not(.page-clip):not(#clop-video)').forEach (video) ->
                 videoObserver.observe(video)
                 rect = video.getBoundingClientRect()
                 if rect? and rect.top + rect.height < 200
@@ -560,6 +957,14 @@ html.overflow-x-hidden lang="en"
 
         -stylus
             @import "stylus/base"
+            @import "stylus/motion-pause"
+
+            // a theme colour (tailwind.config.js, exposed as --color-*) at a percentage of opacity
+            tok(name, pct = 100)
+                if pct == 100
+                    unquote('var(--color-' + name + ')')
+                else
+                    unquote('color-mix(in srgb, var(--color-' + name + ') ' + pct + '%, transparent)')
 
             blockquote
                 background-color alpha(black, 0.05)
@@ -578,22 +983,22 @@ html.overflow-x-hidden lang="en"
                 > *:only-child
                     margin 0
                 em
-                    color var(--color-amber-800)
+                    color var(--color-ink-amber)
 
 
             #faq
                 .anchor-headings
-                    color var(--color-blue-300)
+                    color tok('ink-mauve', 50)
 
                 .codehilite
-                    background-color alpha(blue, 0.15)
+                    background-color tok('ink-mauve', 9)
                 pre
                     color var(--color-stone-700)
                     font-size 0.9rem
 
                 code
-                    background-color alpha(blue, 0.25)
-                    color var(--color-stone-700)
+                    background-color tok('ink-mauve', 13)
+                    color var(--color-chip-text)
                     padding 0 .5rem
                     font-weight bold
 
@@ -639,35 +1044,248 @@ html.overflow-x-hidden lang="en"
             .dynamic-animation
                 animation-play-state: var(--animps, paused)
 
+            // ---- page backdrop: one page-tall blurry gradient. A faint warm drift on html, plus two
+            // soft glows behind every block (--a on the demo side, --b on the copy side) in pastels
+            // sampled from that block's loop and Clop's palette. The glows overrun their block so
+            // neighbours melt into each other. Static gradients only: no filters, nothing animated.
+            html
+                background-color var(--color-orange-linen)
+            body.page-glow
+                background transparent
+            section.feature, #hero, #video-container, #power-user, #featured, #pro, #faq-block, #traditions
+                position relative
+                --ax: 66%
+                --bx: 30%
+                --ay: 50%
+                --by: 46%
+                --gt: -35%
+                --gb: -35%
+                --a: var(--color-yellow-gold)
+                --b: var(--color-orange-stone)
+                &::before
+                    content ''
+                    position absolute
+                    z-index -1
+                    top var(--gt)
+                    bottom var(--gb)
+                    left 50%
+                    width 150vw
+                    margin-left -75vw
+                    pointer-events none
+                    background unquote('radial-gradient(ellipse 30% 44% at var(--ax) var(--ay), var(--a) 0%, color-mix(in srgb, var(--a) 78%, transparent) 28%, color-mix(in srgb, var(--a) 38%, transparent) 58%, color-mix(in srgb, var(--a) 10%, transparent) 82%, color-mix(in srgb, var(--a) 0%, transparent) 100%), radial-gradient(ellipse 30% 40% at var(--bx) var(--by), color-mix(in srgb, var(--b) 80%, transparent) 0%, color-mix(in srgb, var(--b) 55%, transparent) 30%, color-mix(in srgb, var(--b) 22%, transparent) 62%, color-mix(in srgb, var(--b) 0%, transparent) 100%)')
+            section.feature:has(.flip)
+                --ax: 34%
+                --bx: 70%
+            #hero, #video-container, #power-user, #featured, #pro, #faq-block, #traditions
+                --ax: 50%
+                --bx: 74%
+                --by: 30%
+            // phones and tablets stack copy over demo: the demo's glow sits low, the copy's high
+            @media (max-width: 1023px)
+                section.feature, section.feature:has(.flip)
+                    --ax: 52%
+                    --ay: 68%
+                    --bx: 40%
+                    --by: 26%
+                    &::before
+                        top -15%
+                        bottom -15%
+                        width 260vw
+                        margin-left -130vw
+            // glow tokens (tailwind.config.js): yellow-gold (peach), gray-white (apricot), orange-stone (cream),
+            // glow-rose, glow-lavender (grayMauve), glow-sky (lightBlue), glow-mint (webp green), glow-gold
+            #hero
+                --a: var(--color-gray-white)
+                --b: var(--color-glow-rose)
+                --gt: -20%
+            #video-container
+                --a: var(--color-glow-rose)
+                --b: var(--color-glow-lavender)
+            #clipboard
+                --a: var(--color-yellow-gold)
+                --b: var(--color-gray-white)
+            #performance
+                --a: var(--color-glow-lavender)
+                --b: var(--color-glow-gold)
+                --ax: 50%
+                --bx: 80%
+            #video
+                --a: var(--color-orange-stone)
+                --b: var(--color-glow-lavender)
+            #dropzone
+                --a: var(--color-gray-white)
+                --b: var(--color-glow-rose)
+            #presets
+                --a: var(--color-glow-rose)
+                --b: var(--color-yellow-gold)
+            #pipelines
+                --a: var(--color-glow-lavender)
+                --b: var(--color-orange-stone)
+            #format-bar
+                --a: var(--color-glow-sky)
+                --b: var(--color-gray-white)
+            #fit-under-size
+                --a: var(--color-glow-rose)
+                --b: var(--color-glow-gold)
+            #downscale
+                --a: var(--color-yellow-gold)
+                --b: var(--color-glow-lavender)
+            #batch-mode
+                --a: var(--color-gray-white)
+                --b: var(--color-glow-sky)
+            #audio
+                --a: var(--color-glow-rose)
+                --b: var(--color-glow-lavender)
+            #webp
+                --a: var(--color-glow-mint)
+                --b: var(--color-gray-white)
+            #upload
+                --a: var(--color-glow-sky)
+                --b: var(--color-orange-stone)
+            #integration
+                --a: var(--color-glow-gold)
+                --b: var(--color-glow-rose)
+            #ondevice
+                --a: var(--color-glow-mint)
+                --b: var(--color-glow-lavender)
+            #mcp-server
+                --a: var(--color-yellow-gold)
+                --b: var(--color-glow-sky)
+            #power-user
+                --a: var(--color-glow-lavender)
+                --b: var(--color-glow-sky)
+                --gt: -12%
+                --gb: -60%
+            #featured
+                --a: var(--color-glow-rose)
+                --b: var(--color-glow-gold)
+                --gt: -90%
+            #pdf-optimisation
+                --a: var(--color-yellow-gold)
+                --b: var(--color-glow-rose)
+            #pdf-cropping
+                --a: var(--color-glow-rose)
+                --b: var(--color-glow-lavender)
+            #pro
+                --a: var(--color-orange-stone)
+                --b: var(--color-glow-sky)
+                --gt: -15%
+                --gb: -15%
+            #faq-block
+                --a: var(--color-gray-white)
+                --b: var(--color-glow-sky)
+                --gt: -25%
+                --gb: -25%
+            #traditions
+                --a: var(--color-glow-gold)
+                --b: var(--color-glow-rose)
+
+            // the review wall fades out at its edges whatever sits behind it
+            #testimonial-wall
+                -webkit-mask-image linear-gradient(to bottom, transparent, black 6rem, black calc(100% - 6rem), transparent)
+                mask-image linear-gradient(to bottom, transparent, black 6rem, black calc(100% - 6rem), transparent)
+            .reddit-mark
+                flex none
+                width 16px
+                height 16px
+
+            // ---- featured videos: side by side from 1024px, stacked below
+            #featured
+                display grid
+                grid-template-columns minmax(0, 1fr)
+                gap 3rem
+                width 100%
+                max-width 1200px
+                justify-items center
+                @media (min-width: 1024px)
+                    grid-template-columns minmax(0, 1fr) minmax(0, 1fr)
+            .featured-video
+                width 100%
+                max-width 560px
+                iframe
+                    display block
+                    width 100%
+                    height auto
+                    aspect-ratio 16 / 9
+
+            // ---- FAQ: its own paper surface, set apart from the feature flow
+            #faq-block
+                width 100%
+                max-width 1000px
+                margin-top 6rem !important
+                padding 2.25rem 1.25rem 1.5rem
+                border-radius 1.75rem
+                background tok('stone-50', 86)
+                border 1px solid tok('stone-800', 8)
+                box-shadow inset 0 1px 0 alpha(white, 0.9), 0 30px 70px -36px tok('ink-mauve', 40)
+                text-align left
+                @media (min-width: 768px)
+                    padding 3rem 3.25rem 2.25rem
+                .faq-title
+                    margin 0 0 0.5rem
+                    padding 0 0 1.1rem 0.5rem
+                    border-bottom 1px solid tok('stone-800', 10)
+                    font-size 2.25rem
+                    line-height 1.1
+                    letter-spacing -0.01em
+                    text-align left
+                    color var(--color-stone-800)
+                #faq
+                    min-width 0
+                    pre, .codehilite
+                        max-width 100%
+                        overflow-x auto
+                    h2
+                        margin-top 2.75rem
+                        font-size 1.6rem
+                    article > h2:first-child
+                        margin-top 1.5rem
+
             em
-                color var(--color-orange-800)
+                color var(--color-ink-amber)
             strong
-                color var(--color-red-700)
+                color var(--color-ink-rose)
             li
                 margin-bottom 4px
 
             code
-                background-color alpha(blue, 0.25)
-                color var(--color-stone-700)
+                background-color tok('ink-mauve', 13)
+                color var(--color-chip-text)
                 padding 0 .5rem
             .codehilite
-                background-color alpha(blue, 0.15)
+                background-color tok('ink-mauve', 9)
 
             h2
                 padding 0.1rem 0.5rem
                 border-radius 0.5rem
 
             hr
-                border-color alpha(blue, 0.1)
+                border-color tok('stone-800', 10)
             li
                 line-height 1.8
 
+            // ---- emphasis inks (ink-* in tailwind.config.js): deep tones of the glow pastels, one per
+            // meaning, all AA on the backdrop. The dark panels keep their own lighter colours.
+            //   ink-sky    things and places (webp, same folder, batch window), links, Free
+            //   ink-mauve  pipelines and processes (pipeline, AVIF, originals are kept), keycaps
+            //   ink-amber  inputs and formats (JPEG, screen recordings, AIFF), em asides
+            //   ink-mint   destinations (drop zone, watched folder, screenshots, FLAC)
+            //   ink-rose   warnings and Pro (PDFs, aggressive, Pro, terms), strong
             a
+                color var(--color-ink-sky)
+            :where(.dark-section) a
                 color var(--color-blue-400)
+            // keycaps and inline code are lavender chips on the light page
+            code:not(.dark-section *):not(pre code)
+                box-shadow inset 0 0 0 1px tok('ink-mauve', 12)
+                border-radius 0.35rem
             .links
                 a
                     background-color alpha(black, 0.1)
                     color black
+                // footer Terms and EULA carry their own ink
+                a.text-ink-rose
+                    color var(--color-ink-rose)
 
             .dark-section
                 code
@@ -686,3 +1304,351 @@ html.overflow-x-hidden lang="en"
                         background-color transparent
                         font-weight 500
                         font-size 0.95rem
+
+            // One content width for every row on the page: feature rows, stats and the contents of the
+            // dark panels all start and end at the same x.
+            section.feature
+                display flex
+                flex-direction column
+                align-items center
+                width 100%
+                max-width var(--row-w)
+                padding 0 0 4rem
+            #traditions
+                max-width var(--row-w)
+            #details
+                --row-w: 1200px
+                --panel-pad: 1rem
+                @media (min-width: 768px)
+                    --panel-pad: 2rem
+            // Dark panels grow past the row width by their own padding, so what sits inside them lines up
+            // with the rows above and below. Edge to edge until there is room for a margin around them.
+            .panel
+                width calc(min(100%, var(--row-w)) + 2 * var(--panel-pad))
+                max-width none
+                padding-left var(--panel-pad)
+                padding-right var(--panel-pad)
+                border-radius 0
+                > *
+                    max-width 100%
+                @media (min-width: 1280px)
+                    border-radius 1.5rem
+            .power-cols
+                display grid
+                grid-template-columns minmax(0, 1fr)
+                gap 2rem
+                width 100%
+                @media (min-width: 768px)
+                    grid-template-columns repeat(3, minmax(0, 1fr))
+            .feature-title
+                font-size 1.875rem
+                line-height 1.2
+                margin 0 0 1.5rem
+                text-align center
+                color var(--color-gray-800)
+                @media (min-width: 1024px)
+                    font-size 2.25rem
+            .pro-pill
+                display inline-block
+                vertical-align middle
+                margin-left 0.6rem
+                margin-top -0.3rem
+                padding 0.1rem 0.55rem
+                border-radius 0.5rem
+                font-size 0.875rem
+                font-weight 700
+                letter-spacing 0.02em
+                color var(--color-ink-rose)
+                border 1.5px solid currentColor
+            // Title and copy in one column, demo in the other; .flip swaps sides from 1024px up,
+            // .lean is for sections with only a title. Phones and tablets stack title, copy, demo.
+            .beside
+                display grid
+                grid-template-columns minmax(0, 1fr)
+                gap 1.5rem
+                width 100%
+                align-items center
+                > .copy
+                    display flex
+                    flex-direction column
+                    gap 0.6rem
+                    text-align left
+                    min-width 0
+                    .feature-title
+                        text-align left
+                        margin 0 0 0.4rem
+                        text-wrap balance
+                > .demo
+                    display flex
+                    justify-content center
+                    min-width 0
+                // equal columns: a loop carries about the weight of its title and copy; tablets stack like phones
+                @media (min-width: 1024px)
+                    grid-template-columns minmax(0, 1fr) minmax(0, 1fr)
+                    grid-template-areas "copy demo"
+                    gap 3rem
+                    > .copy
+                        grid-area copy
+                    > .demo
+                        grid-area demo
+                    &.flip
+                        grid-template-areas "demo copy"
+                    // title-only sections: the title column hugs its text and the pair sits centred
+                    &.lean
+                        grid-template-columns minmax(10rem, max-content) minmax(0, 750px)
+                        justify-content center
+                    &.lean.flip
+                        grid-template-columns minmax(0, 750px) minmax(10rem, max-content)
+            .demo img
+                max-height calc(100svh - 6rem)
+                object-fit contain
+            // Loops fill their column (each is cropped so the subject fills the frame)
+            .clip-cap
+                width 100%
+                margin 0 auto
+            .demo-media
+                width 100%
+                img
+                    width 100%
+            .copy .codehilite, .copy pre
+                max-width 100%
+                overflow-x auto
+            .demo-media.wide
+                width 100%
+            // A section with two loops: title and copy on the row's two columns, then each loop across the
+            // whole row. Side by side they would be 584 px wide, which shrinks the loops' code to about 7 px;
+            // at the row's full 1200 px it stays close to its recorded size.
+            .lead
+                display grid
+                grid-template-columns minmax(0, 1fr)
+                gap 0.6rem
+                width 100%
+                text-align left
+                margin-bottom 2.5rem
+                .feature-title
+                    text-align left
+                    margin 0 0 0.4rem
+                > .copy
+                    display flex
+                    flex-direction column
+                    gap 0.6rem
+                    min-width 0
+                @media (min-width: 1024px)
+                    grid-template-columns minmax(0, 1fr) minmax(0, 1fr)
+                    gap 3rem
+                    align-items start
+            .pair
+                display flex
+                flex-direction column
+                gap 2.5rem
+                width 100%
+            .pair-clip
+                margin 0
+                min-width 0
+                text-align left
+            .pair-label
+                margin 0 0 0.75rem
+                font-size 1.125rem
+                line-height 1.3
+                font-weight 600
+                color tok('stone-700')
+                transition opacity 0.15s ease
+                @media (min-width: 1024px)
+                    font-size 1.375rem
+            // A click or tap plays a loop and the other pauses (initClips in clop-demos.js toggles
+            // .playing); the dim and play/pause button come from MotionPause.clip.
+            .pair-clip
+                .clip-cap
+                    position relative
+                &:not(.playing) .pair-label
+                    opacity 0.6
+            // Whole clip always visible: capped by the viewport height, never cropped, centred.
+            video.page-clip
+                display block
+                width 100%
+                height auto
+                max-height calc(100svh - 6rem)
+                margin 0 auto
+                border-radius 1rem
+                box-shadow 0 10px 30px -12px alpha(black, 0.35)
+            // Every loop spans its whole column, so frames start and end at the same x in every row.
+            // At most 576 px wide beside copy, which every clip covers natively (all are 1180 px or more).
+            #clop-video, #video-container .video-poster
+                width auto
+                max-width 100%
+                max-height calc(100svh - 6rem)
+                margin 0 auto
+            // poster and film share one frame, so the swap on play changes nothing but the picture
+            .film-frame
+                border-radius clamp(1.1rem, 3vw, 2rem)
+                box-shadow 0 28px 60px -24px tok('stone-800', 45), 0 6px 16px -8px tok('stone-800', 25)
+
+            // chapter thumbs under the film: generated by tools/clop-chapters.py, driven by clop-demos.js
+            #chapters
+                width 100%
+                max-width 1000px
+                margin-bottom 1.5rem
+            .chapter-row
+                display flex
+                justify-content safe center
+                gap 0.5rem
+                list-style none
+                margin 0
+                // room above for the raised thumb and below for its title, inside the scroller's clip
+                padding 0.6rem 16px 2.6rem
+                overflow-x auto
+                scroll-padding-inline 16px
+                scrollbar-width none
+                &::-webkit-scrollbar
+                    display none
+                li
+                    position relative
+                    flex 1 1 0
+                    min-width 5.5rem
+                    max-width 7.5rem
+                // wide screens fit every section under the film without scrolling
+                @media (min-width: 1024px)
+                    gap 0.4rem
+                    li
+                        min-width 0
+            .chapter
+                display block
+                width 100%
+                padding 0
+                border 0
+                background transparent
+                cursor pointer
+                img
+                    display block
+                    width 100%
+                    height auto
+                    aspect-ratio 16 / 9
+                    object-fit cover
+                    border-radius 0.6rem
+                    background tok('stone-800', 8)
+                    box-shadow 0 2px 6px -3px tok('stone-800', 40)
+                    opacity 0.8
+                    transition transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease, opacity 0.3s ease, filter 0.3s ease
+                &:hover img, &:focus-visible img
+                    opacity 1
+                    transform translateY(-2px)
+                &:focus-visible
+                    outline none
+                    img
+                        outline 2px solid tok('ink-rose', 70)
+                        outline-offset 2px
+            .chapter-title
+                position absolute
+                top calc(100% + 0.45rem)
+                left 50%
+                width max-content
+                max-width 9rem
+                transform translate(-50%, -3px)
+                font-size 0.72rem
+                line-height 1.2
+                font-weight 600
+                color var(--color-ink-mauve)
+                text-align center
+                opacity 0
+                pointer-events none
+                transition opacity 0.2s ease, transform 0.25s ease
+            .chapter:hover .chapter-title, .chapter:focus-visible .chapter-title
+                opacity 1
+                transform translate(-50%, 0)
+            // the ends keep their title inside the row instead of hanging past it
+            .chapter-row li:first-child .chapter-title
+                left 0
+                text-align left
+                transform translate(0, -3px)
+            .chapter-row li:last-child .chapter-title
+                left auto
+                right 0
+                text-align right
+                transform translate(0, -3px)
+            .chapter-row li:first-child .chapter:hover .chapter-title
+            .chapter-row li:first-child .chapter:focus-visible .chapter-title
+            .chapter-row li:last-child .chapter:hover .chapter-title
+            .chapter-row li:last-child .chapter:focus-visible .chapter-title
+                transform translate(0, 0)
+            // once the film plays, the section on screen is lifted off the row and the rest step back
+            #chapters.is-live .chapter img
+                opacity 0.6
+                filter saturate(0.7)
+            #chapters.is-live .chapter:hover img
+                opacity 0.9
+                filter none
+            .chapter-row li:has(.is-current)
+                z-index 1
+            #chapters .chapter.is-current img
+                opacity 1
+                filter none
+                transform translateY(-6px) scale(1.1)
+                box-shadow 0 14px 22px -10px tok('stone-800', 55), 0 3px 8px -4px tok('stone-800', 30)
+            @media (prefers-reduced-motion: reduce)
+                .chapter img, .chapter-title
+                    transition opacity 0.2s ease
+
+            // stats as plain type between two hairlines: a pastel swatch carries each stat's colour,
+            // the numbers use the deeper ink of the same hue so they stay AA on the gradient
+            #stats
+                display grid
+                grid-template-columns repeat(2, minmax(0, 1fr))
+                width 100%
+                border-top 1px solid tok('stone-800', 12)
+                border-bottom 1px solid tok('stone-800', 12)
+                @media (min-width: 1024px)
+                    grid-template-columns repeat(4, minmax(0, 1fr))
+                .stat
+                    display flex
+                    flex-direction column
+                    align-items flex-start
+                    gap 0.35rem
+                    padding 1.4rem 1rem 1.5rem
+                    text-align left
+                    min-width 0
+                    // inner hairlines between cells
+                    &:nth-child(even)
+                        border-left 1px solid tok('stone-800', 10)
+                    &:nth-child(-n+2)
+                        border-bottom 1px solid tok('stone-800', 10)
+                    @media (min-width: 1024px)
+                        padding 1.6rem 1.5rem 1.7rem
+                        &:nth-child(n)
+                            border-bottom none
+                            border-left 1px solid tok('stone-800', 10)
+                        &:first-child
+                            border-left none
+                .sw
+                    display grid
+                    place-items center
+                    width 2rem
+                    height 2rem
+                    border-radius 50%
+                .ic
+                    width 1.05rem
+                    height 1.05rem
+                .v
+                    font-size 1.6rem
+                    line-height 1.15
+                    font-weight 650
+                    letter-spacing -0.01em
+                    font-feature-settings 'tnum'
+                    @media (min-width: 768px)
+                        font-size 1.9rem
+                    @media (min-width: 1024px) and (max-width: 1279px)
+                        font-size 1.6rem
+                .l
+                    font-size 0.95rem
+                    line-height 1.35
+                    font-weight 500
+                    color var(--color-stone-600)
+
+            // FAQ screenshots sit side by side; on phones they wrap instead of running off the page
+            #faq .flex-center
+                flex-wrap wrap
+                gap 0.5rem
+                img
+                    max-width 100%
+                +mobile()
+                    img
+                        margin-left 0
