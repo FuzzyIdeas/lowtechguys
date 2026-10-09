@@ -362,3 +362,8 @@ endif
 	cfcli -d lowtechguys.com purge
 
 release: rebuild
+
+# The stylesheet every app's release notes and changelog link. Edit release-notes/release.css, run this,
+# then commit the stylesheet with release-notes/published-hashes.
+release-css:
+	@scripts/release-css.sh
